@@ -29,6 +29,7 @@ capybara-*.html
 /doc/
 /spec/tmp
 /config/database.yml
+/config/application.yml
 **.orig
 rerun.txt
 pickle-email-*.html
