@@ -32,6 +32,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'bootstrap-sass', '~> 3.3.4'
+
 #微信开发相关
 gem 'weixin_rails_middleware'
 gem 'weixin_authorize'
