@@ -1,5 +1,4 @@
-<div class="col-md-6" id="main" style="height: 400px"></div>
-<div class="col-md-6"><i class="iconfont">&#xe606;</i></div>
+<div class="col-md-6" id="main" style="min-height: 220px;"></div>
 <script>
     // 路径配置
     require.config({
@@ -26,15 +25,15 @@
               data:['要求能力','我的能力']
             },
             polar : [
-               {
-                   indicator : [
-                       { text: '形象力', max: 6000},
-                       { text: '决策力', max: 16000},
-                       { text: '协作力', max: 30000},
-                       { text: '控制力', max: 38000},
-                       { text: '沟通力', max: 52000},
-                    ]
-                }
+              {
+                indicator : [
+                  { text: '形象力', max: 6000},
+                  { text: '决策力', max: 16000},
+                  { text: '协作力', max: 30000},
+                  { text: '控制力', max: 38000},
+                  { text: '沟通力', max: 52000},
+                ]
+              }
             ],
             calculable : true,
             series : [
