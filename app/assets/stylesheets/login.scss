@@ -1,0 +1,28 @@
+.logo_bg {
+  background-color: #379DFF;
+  img {
+    margin-top: 30px;
+  }
+  .title {
+    margin-bottom: 40px;
+    color: #fff;
+  }
+}
+.input-a {
+  padding: 10px;
+  .input-login {
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    border-bottom: 2px solid #379DFF;
+    margin-bottom: 15px;
+  }
+  .btn-login {
+    background-color: #379DFF;
+    border: #379DFF;
+    border-radius: 0;
+  }
+  .input-group-btn {
+    padding-left: 5px;
+  }
+}
