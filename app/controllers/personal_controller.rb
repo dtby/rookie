@@ -1,2 +1,2 @@
-class PersonalController < ApplicationController
+class PersonalController < BaseController
 end

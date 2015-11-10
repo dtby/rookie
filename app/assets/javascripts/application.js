@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require ./echarts/echarts
-//= require_tree ./echarts/chart
 //= require bootstrap-sprockets
+//= require ./plugin/echarts/echarts
+//= require_tree ./plugin/echarts/chart
