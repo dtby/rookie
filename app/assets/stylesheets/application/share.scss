@@ -1,0 +1,28 @@
+@import "variables";
+
+.head{
+	height: 45px;
+	line-height: 45px;
+	font-size: 22px;
+	color: $color-white;
+	background: image-url("head_bg.png") repeat-x;
+	position: relative;
+	img{
+		position: absolute;
+		top: 8px;
+		right: 15px;
+	}
+}
+
+.foot-tab{
+	height: 55px;
+	color: $color-white;
+	background-color: $color-black-tab;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	padding-top: 5px;
+	img{
+		margin-bottom: 2px;
+	}
+}

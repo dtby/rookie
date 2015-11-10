@@ -1,0 +1,14 @@
+<%= render partial: "share/head", locals: { head_title: "公开课" } %>
+
+<div class="activity-item">
+	<p>课件：</p>
+	<p>地址：</p>
+	<p>时间：</p>
+	<p class="clearfix">
+		<span class="pull-left">主讲：</span>
+			<%= link_to "我要报名", "#", class: "btn btn-default btn-sm pull-right" %>
+			<%= link_to "查看详情", "#", class: "btn btn-default btn-sm pull-right" %>
+	</p>
+</div>
+
+<%= render partial: "share/foot_tab" %>
