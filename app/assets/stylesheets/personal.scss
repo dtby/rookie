@@ -11,8 +11,25 @@
     box-shadow: none;
     border-radius: 0;
     border-bottom: 1px solid #D8D9DA;
+    font-size: 18px;
+    color : #000;
   } 
+  .label-input {
+    padding: 22px 16px;
+  }
   .dropdown-menu {
     width: 100%;
+  }
+  input::-webkit-input-placeholder {
+    color: #000 !important;
+  }
+  input:-moz-placeholder {
+    color: #000 !important; /* Mozilla Firefox 4 to 18 */
+  }
+  input::-moz-placeholder {
+    color: #000 !important; /* Mozilla Firefox 19+ */
+  }
+  input:-ms-input-placeholder {
+    color: #000 !important; /* Internet Explorer 10+ */
   }
 }
