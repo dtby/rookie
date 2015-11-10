@@ -1,60 +1,62 @@
 <div class="col-md-6" id="main" style="min-height: 220px;"></div>
 <script>
-    // 路径配置
-    require.config({
-      paths: {
-        echarts: '/assets/javascripts/echarts'
-      }
-    });
-    // 使用
-    require(
-      [
+  // 路径配置
+  require.config({
+    paths: {
+      echarts: '/assets/javascripts/echarts'
+    }
+  });
+  // 使用
+  require(
+    [
       'echarts',
       'echarts/chart/radar' // 使用柱状图就加载bar模块，按需加载
-      ],
-      function (ec) {
-        var myChart = ec.init(document.getElementById('main')); 
-        var option = {
-            tooltip : {
-              trigger: 'axis'
-            },
-            legend: {
-              orient : 'vertical',
-              x : 'right',
-              y : 'top',
-              data:['要求能力','我的能力']
-            },
-            polar : [
-              {
-                indicator : [
-                  { text: '形象力', max: 6000},
-                  { text: '决策力', max: 16000},
-                  { text: '协作力', max: 30000},
-                  { text: '控制力', max: 38000},
-                  { text: '沟通力', max: 52000},
-                ]
-              }
-            ],
-            calculable : true,
-            series : [
-                {
-                    name: '要求能力 vs 我的能力',
-                    type: 'radar',
-                    data : [
-                        {
-                            value : [4300, 10000, 28000, 35000, 50000],
-                            name : '要求能力'
-                        },
-                         {
-                            value : [5000, 14000, 28000, 31000, 42000],
-                            name : '我的能力'
-                        }
-                    ]
-                }
+    ],
+    function (ec) {
+      var myChart = ec.init(document.getElementById('main')); 
+      var option = {
+        tooltip : {
+          trigger: 'axis'
+        },
+        legend: {
+          orient : 'vertical',
+          x : 'right',
+          y : 'top',
+          data:['要求能力','我的能力']
+        },
+        polar : [
+          {
+            indicator : [
+            { text: '形象力', max: 6000},
+            { text: '决策力', max: 16000},
+            { text: '协作力', max: 30000},
+            { text: '控制力', max: 38000},
+            { text: '沟通力', max: 52000},
             ]
-        };
-        // 为echarts对象加载数据 
-        myChart.setOption(option); 
+          }
+        ],
+        calculable : true,
+        series : [
+          {
+            name: '要求能力 vs 我的能力',
+            type: 'radar',
+            data : [
+            {
+              value : [4300, 10000, 28000, 35000, 50000],
+              name : '要求能力'
+            },
+            {
+              value : [5000, 14000, 28000, 31000, 42000],
+              name : '我的能力'
+            }
+            ]
+          }
+        ]
       }
-    );
+      ]
+    };
+    // 为echarts对象加载数据 
+    myChart.setOption(option); 
+    }
+  );
 </script>
