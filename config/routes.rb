@@ -17,6 +17,13 @@ Rails.application.routes.draw do
 
   resources :personal
 
+  # 官方活动(公开课：courses、FaceBoss：meetings、特训营：trainings)
+  resources :courses
+
+  resources :meetings
+
+  resources :trainings
+
   # Example resource route with options:
   #   resources :products do
   #     member do
