@@ -12,6 +12,7 @@
  *
  *= require_self
  *= require ./variables
+ *= require_tree ./date/.
  *= require_tree ./plugin/.
  *= require_tree ./application/.
  */

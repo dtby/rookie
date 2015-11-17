@@ -25,7 +25,8 @@
       <input type="text" class="form-control label-input" placeholder="年龄">
     </div>
     <div class="label-text">
-      <input type="month" id="date" class="form-control label-input" placeholder="生日" />
+      <!-- <input type="text" id="txt_date" value="2013/01/22"/> -->
+      <!-- <input type="month" id="date" class="form-control label-input" placeholder="生日" /> -->
     </div>
     <div class="dropdown label-text">
       <button class="btn btn-lg btn-block btn-default dropdown-toggle label-btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -60,16 +61,6 @@
         <li class="text-center"><a href="#">珠海</a></li>
       </ul>
     </div>
-    <!-- <div class="dropdown label-text">
-      <button class="btn btn-lg btn-block btn-default dropdown-toggle label-btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        <span class="pull-left">户口地</span>
-        <span class="pull-right"><span class="caret"></span></span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li class="text-center"><a href="#">上海</a></li>
-        <li class="text-center"><a href="#">北京</a></li>
-      </ul>
-    </div> -->
     <div class="col-xs-12 input-a">
         <button class="btn btn-primary btn-lg btn-block btn-login" type="button">我要注册</button>
     </div>
@@ -124,15 +115,6 @@
   </div><!-- /.modal -->
 </div>
 <script type="text/javascript">
-  window.onload = function() {
-    $('#myModal').modal(options)
-  };
-
-  var o = document.getElementById('date');
-  o.onfocus = function(){
-      this.removeAttribute('placeholder');
-  };
-  o.onblur = function(){
-      if(this.value == '') this.setAttribute('placeholder','生日');
-  };
+    var selectDate = new MobileSelectDate();
+    selectDate.init({trigger:'#txt_date',value:'2011/03/02',min:'1990/01/01',max:'2016/02/11'});
 </script>
