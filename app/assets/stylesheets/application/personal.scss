@@ -6,6 +6,10 @@
 }
 .label-text {
   margin: 5px;
+  #date {
+    padding-top: 10px;
+    padding-bottom: 33px;
+  }
   input, .label-btn {
     border: none;
     box-shadow: none;
@@ -16,9 +20,14 @@
   } 
   .label-input {
     padding: 22px 16px;
+    line-height: 28px;
   }
   .dropdown-menu {
     width: 100%;
+  }
+  input[type="month"]:before{
+    content: attr(placeholder);
+    color:#000;
   }
   input::-webkit-input-placeholder {
     color: #000 !important;
@@ -33,3 +42,49 @@
     color: #000 !important; /* Internet Explorer 10+ */
   }
 }
+.myModal-col {
+  padding: 80px 0 !important;
+  .modal-header {
+    background-color: #379DFF;
+    .modal-title {
+      letter-spacing: 5px;
+      color: #fff;
+    }
+  }
+}
+.myModal1 {
+  button {
+    padding: 5px 20px;
+    border-radius: 0;
+    border-color: #379DFF;
+  }
+  .btn-enter {
+    margin-right: 40px;
+    background-color: #379DFF;
+  }
+  .btn-del {
+    color: #379DFF;
+  }
+  .modal-radio {
+    margin: 20px 0;
+  }
+  .modal-input {
+    padding-bottom: 50px;
+    width: 70%;
+    input {
+      border-radius: 0;
+    }
+  }
+  .boypic {
+    position: absolute;
+    right: -16px;
+    top: 40px;
+    z-index: 2;
+    img {
+      width: 140px;
+    }
+  }
+}
+
+
+

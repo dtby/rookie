@@ -1,4 +1,6 @@
+<div id="ttt">
 <div class="col-md-6" id="main" style="height: 400px"></div>
+</div>
 <script>
   // 路径配置
   require.config({
@@ -13,7 +15,7 @@
     'echarts/chart/radar' // 使用柱状图就加载bar模块，按需加载
     ],
     function (ec) {
-      var myChart = ec.init(document.getElementById('main')); 
+      var myChart = ec.init(document.getElementById('main'));                 
       var option = {
         tooltip : {
           trigger: 'axis'
