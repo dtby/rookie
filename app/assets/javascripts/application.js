@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require ./date/mobile-select-date
+//= require ./date/dialog
+//= require ./date/zepto.min
 //= require ./plugin/echarts/echarts
 //= require_tree ./plugin/echarts/chart
 //= require_tree ./application

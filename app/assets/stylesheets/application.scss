@@ -12,7 +12,8 @@
  *
  *= require_self
  *= require ./variables
- *= require_tree ./date/.
+ *= require ./date/mobile-select-date
+ *= require ./date/dialog
  *= require_tree ./plugin/.
  *= require_tree ./application/.
  */
