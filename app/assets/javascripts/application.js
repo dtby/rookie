@@ -16,3 +16,4 @@
 //= require bootstrap-sprockets
 //= require ./plugin/echarts/echarts
 //= require_tree ./plugin/echarts/chart
+//= require_tree ./application

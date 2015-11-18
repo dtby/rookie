@@ -1,3 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  # 设置官方活动的内容模块高度
+  $(".activity-content").height(document.body.clientHeight - 115)
