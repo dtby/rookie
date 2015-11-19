@@ -11,14 +11,14 @@
   <div class="row">
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="col-xs-12 input-a">
-        <%= f.text_field :login, autofocus: true, class: "form-control input-login", placeholder: "手机号码" %>
+        <%= f.text_field :login, autofocus: true, input_html: {id: "userMobile"}, class: "form-control input-login", placeholder: "手机号码" %>
         <%#= f.input :email, required: false, autofocus: true, class:"form-control input-login", placeholder:"手机号码" %>
         <!-- <input type="text" class="form-control input-login" placeholder="手机号码"> -->
         <div class="input-group">
-          <%= f.text_field :password, class: "form-control input-login", placeholder:"验证码" %>
+          <%= f.text_field :message, wrapper: :inline_form , label: false, class: "form-control input-login", placeholder:"验证码" %>
           <!-- <input type="text" class="form-control input-login" placeholder="验证码"> -->
           <span class="input-group-btn ">
-            <button class="btn btn-primary btn-login" type="button">获取验证码</button>
+            <%= link_to("获取验证码", "javascript:void(0);" , class: "btn btn-primary btn-login", id: "getSmsBtn") %>
           </span>
         </div>
       </div>
@@ -29,3 +29,19 @@
     <% end %>
   </div>
 </div>
+<script type="text/javascript">
+  $(function(){
+    $("#getSmsBtn").click(function(){
+      var reg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
+      if(!$("#userMobile").val().match(reg)){
+        alert("请输入正确的手机号");
+      }else{
+        $.ajax({
+          type: "POST",
+          url: "<%= messages_path %>.js",
+          data: "message[mobile]=" + $("#userMobile").val()
+        });
+      }
+    });
+  });
+</script>

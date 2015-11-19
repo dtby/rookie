@@ -15,8 +15,10 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :messages, only: [:create]
+  resources :tasks
 
   resources :personal
+  resources :pages, only: [:index, :show]
 
   # 官方活动(公开课：courses、FaceBoss：meetings、特训营：trainings)
   resources :courses
