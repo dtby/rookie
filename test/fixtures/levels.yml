@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  figure: 1
+  communicate: 1
+  coordination: 1
+  control: 1
+  decision: 1
+  p_figure: 1
+  p_communicate: 1
+  p_coordination: 1
+  p_control: 1
+  p_decision: 1
+  theoretical: 1
+  practical: 1
+  grade: 1
+  title: 1
+  qualification: 1
+  identity: 1
+  deadline: 2015-11-18 14:39:01
+  put_time: 1
+  get_time: 1
+  user_id: 
+
+two:
+  figure: 1
+  communicate: 1
+  coordination: 1
+  control: 1
+  decision: 1
+  p_figure: 1
+  p_communicate: 1
+  p_coordination: 1
+  p_control: 1
+  p_decision: 1
+  theoretical: 1
+  practical: 1
+  grade: 1
+  title: 1
+  qualification: 1
+  identity: 1
+  deadline: 2015-11-18 14:39:01
+  put_time: 1
+  get_time: 1
+  user_id: 

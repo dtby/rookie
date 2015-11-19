@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  figure: 1
+  communicate: 1
+  coordination: 1
+  control: 1
+  decision: 1
+  p_figure: 1
+  p_communicate: 1
+  p_coordination: 1
+  p_control: 1
+  p_decision: 1
+  grade: 1
+  name: MyString
+  state: 1
+  deadline: 2015-11-18 15:08:59
+  range: 1
+  coin: 1
+  describe: MyText
+  goal: MyText
+  extra: MyText
+  place: MyString
+  user_id: 
+  task_type_id: 
+
+two:
+  figure: 1
+  communicate: 1
+  coordination: 1
+  control: 1
+  decision: 1
+  p_figure: 1
+  p_communicate: 1
+  p_coordination: 1
+  p_control: 1
+  p_decision: 1
+  grade: 1
+  name: MyString
+  state: 1
+  deadline: 2015-11-18 15:08:59
+  range: 1
+  coin: 1
+  describe: MyText
+  goal: MyText
+  extra: MyText
+  place: MyString
+  user_id: 
+  task_type_id: 

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company: MyString
+  start_time: 2015-11-18
+  end_time: 2015-11-18
+  position: MyString
+  user_id: 
+
+two:
+  company: MyString
+  start_time: 2015-11-18
+  end_time: 2015-11-18
+  position: MyString
+  user_id: 

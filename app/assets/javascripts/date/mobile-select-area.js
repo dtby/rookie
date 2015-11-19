@@ -1,15 +1,23 @@
+/*
+ * Created with Sublime Text 2.
+ * license: http://www.lovewebgames.com/jsmodule/index.html
+ * User: 田想兵
+ * Date: 2015-03-31
+ * Time: 09:49:11
+ * Contact: 55342775@qq.com
+ */
+;
 (function(root, factory) {
 	//amd
 	if (typeof define === 'function' && define.amd) {
-		define(['$'], factory);
+		define(['$', 'dialog'], factory);
 	} else if (typeof exports === 'object') { //umd
 		module.exports = factory();
 	} else {
-		root.MobileSelectDate = factory(window.Zepto || window.jQuery || $);
+		root.MobileSelectArea = factory(window.Zepto || window.jQuery || $);
 	}
-})(this, function($) {
-	//试图写个傻逼点的代码
-	var MobileSelectDate = function() {
+})(this, function($, Dialog) {
+	var MobileSelectArea = function() {
 		var rnd = Math.random().toString().replace('.', '');
 		this.id = 'scroller_' + rnd;
 		this.scroller;
@@ -22,57 +30,48 @@
 		this.mtop = 30;
 		this.separator = ' ';
 	};
-	MobileSelectDate.prototype = {
+	MobileSelectArea.prototype = {
 		init: function(settings) {
-			this.settings = $.extend({}, settings);
-			this.separator = "/";
-			var now = new Date();
-			this.settings.value = this.settings.value || $(this.settings.trigger).val() || now.getFullYear() + "/" + ("0" + (now.getMonth() + 1)).slice(-2) + '/' + ("0" + (now.getDate())).slice(-2);
-			this.settings.value = this.settings.value.replace(/\//g, ',');
-			this.settings.text = this.settings.value.split(',')
+			this.settings = $.extend({eventName:'click'}, settings);
 			this.trigger = $(this.settings.trigger);
+			level = parseInt(this.settings.level);
+			this.level = level > 0 ? level : 3;
 			this.trigger.attr("readonly", "readonly");
 			this.value = (this.settings.value && this.settings.value.split(",")) || [0, 0, 0];
 			this.text = this.settings.text || this.trigger.val().split(' ') || ['', '', ''];
 			this.oldvalue = this.value.concat([]);
-			this.min = new Date(this.settings.min || "1900/01/01");
-			this.settings.max ? this.max = new Date(this.settings.max) : this.max = new Date();
+			this.clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+			this.clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
 			this.getData();
 			this.bindEvent();
 		},
-		//覆盖数据方法,so easy
 		getData: function() {
-			var json = [];
-			for (var s = this.min.getFullYear(), l = this.max.getFullYear(); s <= l; s++) {
-				var obj = {};
-				obj['id'] = obj['name'] = s;
-				obj.child = [];
-				for (var m = 1; m <= 12; m++) {
-					var o = {};
-					o['id'] = o['name'] = ("0" + m).slice(-2);
-					o.child = [];
-					var days = new Date(s, m, 0).getDate();
-					for (var d = 1; d <= days; d++) {
-						var j = {};
-						j['id'] = j['name'] = ("0" + d).slice(-2);
-						if(s=="2016" && m ==2)
-							console.log('1')
-						if(!(m == this.max.getMonth()+1&& s == this.max.getFullYear() && d>this.max.getDate())){
-							o.child.push(j);
-						}
+			var _this = this;
+			if (typeof this.settings.data == "object") {
+				this.data = this.settings.data;
+			} else {
+				$.ajax({
+					dataType: 'json',
+					cache: true,
+					url: this.settings.data,
+					type: 'GET',
+					success: function(result) {
+						_this.data = result.data;
+					},
+					accepts: {
+						json: "application/json, text/javascript, */*; q=0.01"
 					}
-					if(!(m > this.max.getMonth()+1&& s == this.max.getFullYear())){
-						obj.child.push(o);
-					}
-				}
-				json.push(obj)
+				});
 			}
-			this.data = json;
 		},
 		bindEvent: function() {
 			var _this = this;
-			this.trigger.tap(function(e) {
-				$.confirm('<div class="ui-scroller-mask"><div id="' + _this.id + '" class="ui-scroller"><div></div><div ></div><div></div><p></p></div></div>', null, function(t, c) {
+			this.trigger[_this.settings.eventName](function(e) {
+				var dlgContent = '';
+				for (var i = 0; i < _this.level; i++) {
+					dlgContent += '<div></div>';
+				};
+				$.confirm('<div class="ui-scroller-mask"><div id="' + _this.id + '" class="ui-scroller">' + dlgContent + '<p></p></div></div>', null, function(t, c) {
 					if (t == "yes") {
 						_this.submit()
 					}
@@ -81,17 +80,18 @@
 					}
 					this.dispose();
 				}, {
-					fixed: true
+					width:320,
+					height:180
 				});
 				_this.scroller = $('#' + _this.id);
 				_this.format();
 				var start = 0,
 					end = 0
 				_this.scroller.children().bind('touchstart', function(e) {
-					start = e.changedTouches[0].pageY;
+					start = (e.changedTouches||e.originalEvent.changedTouches)[0].pageY;
 				});
 				_this.scroller.children().bind('touchmove', function(e) {
-					end = e.changedTouches[0].pageY;
+					end = (e.changedTouches||e.originalEvent.changedTouches)[0].pageY;
 					var diff = end - start;
 					var dl = $(e.target).parent();
 					if (dl[0].nodeName != "DL") {
@@ -103,7 +103,7 @@
 					return false;
 				});
 				_this.scroller.children().bind('touchend', function(e) {
-					end = e.changedTouches[0].pageY;
+					end = (e.changedTouches||e.originalEvent.changedTouches)[0].pageY;
 					var diff = end - start;
 					var dl = $(e.target).parent();
 					if (dl[0].nodeName != "DL") {
@@ -196,11 +196,11 @@
 				this.trigger.attr('data-value', this.value.join(','));
 			}
 			this.trigger.next(':hidden').val(this.value.join(','));
-			this.settings.callback && this.settings.callback(this.scroller);
+			this.settings.callback && this.settings.callback.call(this,this.scroller,this.text,this.value);
 		},
 		cancel: function() {
 			this.value = this.oldvalue.concat([]);
 		}
-	}
-	return MobileSelectDate;
-})
+	};
+	return MobileSelectArea;
+});
