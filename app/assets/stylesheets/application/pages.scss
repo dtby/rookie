@@ -1,0 +1,36 @@
+
+.pages__index{
+	font-size: 18px;
+	.pages-head{
+		background-color: #1b9dff;
+		padding: 8% 0;
+		#my-body{
+			padding-top: 10px;
+			color: #fff;
+			small{
+				color: #ebe740;
+				border-bottom: 1px solid #ebe740;
+			}
+		}
+	}
+
+	ul{
+		li{
+		list-style: none;
+		a{
+			color: #373737;
+			margin-right: 20px;
+		}
+		}
+		padding: 20px;
+		.divide{
+			border-color: #aeaeae;
+		}
+		img{
+			margin:0 15px;
+			width: 5%;
+
+		}
+
+	}
+}
