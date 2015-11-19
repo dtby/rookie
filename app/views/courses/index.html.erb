@@ -5,18 +5,28 @@
 <%= render partial: "share/head", locals: { head_title: "公开课" } %>
 
 <div class="activity-content">
-	<% 4.times do %>
+	<% 3.times do %>
 		<div class="activity-item">
-			<p>课件：</p>
-			<p>地址：</p>
-			<p>时间：</p>
+			<p><%=image_tag("course_text.png",width:"25")%> 课件 ：XXXXXXXXXXXXXXXXX</p>
+			<p><%=image_tag("course_address.png",width:"20")%> 地址 ：XX省XX市XX区XX街道XXXXX</p>
+			<p><%=image_tag("course_time.png",width:"20")%> 时间 ：2015-04-30</p>
 			<p class="clearfix">
-				<span class="pull-left">主讲：</span>
-					<%= link_to "我要报名", "#", class: "btn btn-default btn-sm pull-right" %>
-					<%= link_to "查看详情", "#", class: "btn btn-default btn-sm pull-right" %>
+				<span class="pull-left"><%=image_tag("course_user.png",width:"20")%> 主讲 ：XXX</span>
+					<%#= link_to "我要报名", "#", class: "btn btn-default btn-sm pull-right" %>
+					<%= link_to "查看详情>>", "#", class: "btn btn-default btn-sm btn-details pull-right" %>
 			</p>
 		</div>
 	<% end %>
+		<div class="activity-item">
+			<p><%=image_tag("course_text.png",width:"20")%> 课件 ：XXXXXXXXXXXXXXXXX</p>
+			<p><%=image_tag("course_address.png",width:"20")%> 地址 ：XX省XX市XX区XX街道XXXXX</p>
+			<p><%=image_tag("course_time.png",width:"20")%> 时间 ：2015-04-30</p>
+			<p class="clearfix">
+				<span class="pull-left"><%=image_tag("course_user.png",width:"20")%> 主讲 ：XXX</span>
+					<%#= link_to "我要报名", "#", class: "btn btn-default btn-sm pull-right" %>
+					<%= link_to "精彩回放>>", "#", class: "btn btn-default btn-sm btn-playback pull-right" %>
+			</p>
+		</div>
 </div>
 
 <%= render partial: "share/foot_tab" %>
