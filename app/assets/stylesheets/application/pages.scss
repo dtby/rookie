@@ -1,8 +1,10 @@
 
 .pages__index{
 	font-size: 18px;
+	font-weight: 500;
 	.pages-head{
 		background-color: #1b9dff;
+		font-weight: normal;
 		padding: 8% 0;
 		#my-body{
 			padding-top: 10px;
@@ -17,10 +19,19 @@
 	ul{
 		li{
 		list-style: none;
-		a{
-			color: #373737;
-			margin-right: 20px;
-		}
+			a{
+				color: #373737;
+				margin-right: 20px;
+				.mygt{
+					padding-right: 20px;
+					#badge{
+						background-color: red;
+						font-size: 14px;
+						font-weight: normal;
+						margin-right: 10px;
+					}
+				}
+			}
 		}
 		padding: 20px;
 		.divide{
