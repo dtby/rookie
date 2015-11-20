@@ -1,16 +1,71 @@
-<%= form_for @task, html: { class: "form-horizontal" }) do |f| %>
+<%= simple_form_for @task do |f| %>
   <div class="form-group">
-    <%= f.label :name, '分类名称', class: 'col-sm-2 control-label' %>
-    <div class="col-sm-4">
-      <%= f.text_field :name, class: 'form-control' %>
+    <div class="form-text">
+      <div class="col-xs-1">
+        <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+      </div>
+      <div class="col-xs-11">
+        <%= f.text_field :name, class: 'form-control form-input', placeholder: '任务包名称' %>
+      </div>
     </div>
+    <hr class="line">
+    <div class="form-text">
+      <div class="col-xs-1">
+        <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+      </div>
+      <div class="col-xs-11">
+        <%= f.input :grade, class: 'form-control form-input', placeholder: '任务包名称', collection: Task.final_educations, prompt: "任务包类型"%>
+        <%#= f.text_field :name, class: 'form-control form-input', placeholder: '任务包名称' %>
+      </div>
+    </div>
+    <hr class="line">
+    <div class="form-text">
+      <div class="col-xs-1">
+        <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+      </div>
+      <div class="col-xs-11">
+        <%= f.input :place, class: 'form-control form-input', placeholder: '任务包名称', collection: Task.finals, prompt: "工作地点"%>
+      </div>
+    </div>
+
+    <hr class="line">
+    <div class="col-xs-12 tag-show">
+      <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span><span>标签</span><span>标签</span><span>标签</span>
+    </div>
+    <div class="form-input-group input-group">
+      <%= f.text_field :name, class: 'form-control form-input', placeholder: '输入标签' %>
+      <span class="input-group-btn ">
+        <button class="btn btn-primary btn-task" type="button">添加</button>
+      </span>
+    </div>
+    <hr class="line">
+    <% 5.times do |i| %>
+      <div class="col-xs-4 form-text">
+        形象力要求
+      </div>
+      <div class="col-xs-4 form-text">
+        <%= f.input :figure, class: 'form-control form-input', placeholder: '知识要求', collection: Task.fractions, prompt: "知识要求"%>
+      </div>
+      <div class="col-xs-4 form-text">
+        <%= f.input :p_figure, class: 'form-control form-input', placeholder: '经验要求', collection: Task.fractions, prompt: "经验要求"%>
+      </div>
+    <% end %>
+    <hr class="line">
+      <div class="form-text">
+        <div class="col-xs-1">
+          <%= image_tag("tab1.png", width: 24) %>
+        </div>
+        <div class="col-xs-11">
+          <%= f.text_field :extra, class: 'form-control form-input', placeholder: '额外报酬（可不填）' %>
+        </div>
+      </div>
   </div>
-  <hr>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+  
+  <!-- <div class="form-group">
+    <div class="">
       <button class="btn btn-success" type="submit">
         <span class="glyphicon glyphicon-floppy-save">保存</span>
       </button>
     </div>
-  </div>
+  </div> -->
 <% end %>

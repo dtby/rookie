@@ -1,0 +1,36 @@
+.form-text {
+  .form-input {
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  select {
+    border: none;
+    background-color: #fff;
+    width: 80%;
+  }
+}
+.line {
+  border: 1px solid #B0B4B5;
+}
+.tag-show {
+  span {
+    margin-right: 10px;
+  }
+}
+.form-input-group {
+  padding: 10px 15px 0 15px !important;
+  .form-input {
+    border-radius: 0;
+  }
+  .input-group-btn {
+    padding-left: 8px;
+    border-radius: 0;
+    .btn-task {
+      background-color:#389EFF;
+      border: none;
+      border-radius: 0;
+    }
+  }
+}
+

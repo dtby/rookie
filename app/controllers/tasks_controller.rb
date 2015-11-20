@@ -1,18 +1,18 @@
 class TasksController < ApplicationController
-  before_action :set_category, only: [:edit, :update, :destroy]
+  # before_action :set_task
   def index
-    @categories = Category.page(params[:page]).per(10)
+    @tasks = Task.page(params[:page]).per(10)
   end
 
   def new
-    @category = Category.new
+    @task = Task.new
   end
 
   def create
-    @category = Category.new(category_params)
-    if @category.save
+    @task = Task.new(task_params)
+    if @task.save
       flash.now[:notice] = "创建成功"
-      redirect_to admin_categories_path
+      redirect_to tasks_path
     else
       render :new
     end
@@ -22,17 +22,17 @@ class TasksController < ApplicationController
   end
 
   def update
-    if @category.update(category_params)
+    if @task.update(task_params)
       flash.now[:notice] = "更新成功"
-      redirect_to admin_categories_path
+      redirect_to tasks_path
     else
       render :update
     end
   end
 
   def destroy
-    @category.destroy
-    redirect_to admin_categories_path
+    @task.destroy
+    redirect_to tasks_path
   end
 
   def show
@@ -40,10 +40,10 @@ class TasksController < ApplicationController
 
   private
 
-  def category_params
-    params.require(:category).permit(:name, :deleted_at)
+  def task_params
+    params.require(:task).permit(:name, :deleted_at)
   end
-  def set_category
-    @category = Category.find(params[:id])
-  end
+  # def set_task
+  #   @task = Task.find(params[:id])
+  # end
 end
