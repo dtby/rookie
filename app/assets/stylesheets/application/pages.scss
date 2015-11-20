@@ -1,4 +1,4 @@
-
+@import "variables";
 .pages__index{
 	font-size: 18px;
 	font-weight: 500;
@@ -15,7 +15,6 @@
 			}
 		}
 	}
-
 	ul{
 		li{
 		list-style: none;
@@ -42,6 +41,18 @@
 			width: 5%;
 
 		}
+	}
+}
 
+.pages__show{
+	background-color: #f2f2f2;
+	.pages-head{
+		background-color: #1b9dff;
+		font-weight: normal;
+		padding: 8% 0;
+	}
+	#my-body{
+		padding-top: 10px;
+		color: #fff;
 	}
 }

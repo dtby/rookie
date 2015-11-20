@@ -34,10 +34,20 @@ html, body{
 	overflow: auto;
 	padding-top: 15px;
 	.activity-item{
-		border-top: 1px solid #d1d1d1;
-		border-bottom: 1px solid #d1d1d1;
+		border-top: 1px solid $activity_item_border;
+		border-bottom: 1px solid $activity_item_border;
 		padding: 10px 30px;
 		margin-bottom: 15px;
-		background-color: #fff;
+		background-color: $color_white;
 	}	
 }
+
+/** 我的主页－－我的简历公用样式 **/
+.resume-content{
+	background-color: #F2F2F2;
+	.resume-item{
+		background-color: $color_white;
+		margin-bottom: 15px;
+	}
+}
+

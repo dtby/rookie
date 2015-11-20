@@ -1,0 +1,29 @@
+<% content_for :title do %>
+	我的活动
+<% end %>
+<%= render partial: "share/head", locals: { head_title: "我的简历" } %>
+
+<div class="container">
+	<div class="row pages-head">
+			<div class="col-xs-offset-2">
+				<div class="media">
+				  <div class="media-left media-middle">
+				    <%=image_tag("logo.png",width:"80")%>
+				  </div>
+				  <div class="media-body" id="my-body">
+				    <span>姓名：菜鸟01 &nbsp;&nbsp;</span><br>
+				    <span>编号：123456789</span><br>
+				    <span>更新时间：2015-10-10</span>
+				  </div>
+				</div>
+			</div>
+	</div>
+</div>
+
+
+
+<div class="resume-content">
+	<div class="resume-item clearfix">
+			<div>昵称<span class="pull-right">超级大菜鸟</span></div>
+	</div>
+</div>
