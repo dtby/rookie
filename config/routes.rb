@@ -28,16 +28,20 @@ Rails.application.routes.draw do
   resources :trainings
 
   # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+    resources :activities do
+      # member do
+      #   get 'my'
+      #   get 'official'
+      #   get 'else'
+      # end
+
+      collection do
+        get 'my'
+        get 'official'
+        get 'else'
+        get 'apply'
+      end
+    end
 
   # Example resource route with sub-resources:
   #   resources :products do
