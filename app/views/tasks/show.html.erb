@@ -1,0 +1,110 @@
+<%= render partial: "share/head", locals: { head_title: "任务包" } %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 gift-title">
+      <div class="task-show-title text-center">
+        <h3>任务包名称</h3>
+      </div>
+      <div class="col-xs-10 col-xs-offset-2 task-tabshow">
+        <p><%=image_tag("time.png",width:"21", class: 'icon')%><span>截止时间：2015年10月10日</span></p>
+        <p><%=image_tag("tab.png",width:"21", class: 'icon')%><span>标签：标签 标签</span></p>
+        <p><%=image_tag("map.png",width:"22", class: 'icon')%><span>任务地点：xxxxx</span></p>
+      </div>
+    </div>
+    <hr class="line">
+    <div class="col-xs-12 text-center">
+      <div class="gift-title">
+        <%=image_tag("gift.png",width:"21", class: 'icon')%><span>任务奖励</span>
+      </div>
+      <div class="col-xs-4">
+        <%=image_tag("5_03.png", width:"70%")%><p>120EXP</p>
+      </div>
+      <div class="col-xs-4">
+        <%=image_tag("5_05.png", width:"70%")%><p>120EXP</p>
+      </div>
+      <div class="col-xs-4">
+        <%=image_tag("5_07.png", width:"70%")%><p>120EXP</p>
+      </div>
+      <div class="col-xs-4">
+        <%=image_tag("5_13.png", width:"70%")%><p>120EXP</p>
+      </div>
+      <div class="col-xs-4">
+        <%=image_tag("5_15.png", width:"70%")%><p>120EXP</p>
+      </div>
+      <div class="col-xs-4">
+        <%=image_tag("5_17.png", width:"70%")%>2000
+      </div>
+    </div>
+    <hr class="line">
+    <div class="col-xs-12 text-center">
+      <div id="main" style="height: 300px"></div>
+      <button type="button" class="btn task-btn gift-title">匹配度：80%</button><br><p class="gift-title">我的能力值除以要求能力（最高100%）<br>得出五项能力值匹配度的平均值</p>
+    </div>
+    <hr class="line">
+    <div class="col-xs-12 task-description">
+      <%=image_tag("map.png",width:"20", class: 'icon')%><span>额外报酬：xxxxxxxxxxxx，xxxxxxxxx，xxx</span><br>
+      <%=image_tag("tab2_active.png",width:"19", class: 'icon')%><span>任务描述：xxxxx，xxxxxxxx，xxx</span><br>
+      <%=image_tag("star.png",width:"20", class: 'icon')%><span>任务目标：xxxxx，xxxxxxxx，xxx</span><br>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 路径配置
+  require.config({
+    paths: {
+      echarts: '/assets/javascripts/echarts'
+    }
+  });
+  // 使用
+  require(
+    [
+    'echarts',
+    'echarts/chart/radar' // 使用柱状图就加载bar模块，按需加载
+    ],
+    function (ec) {
+      var myChart = ec.init(document.getElementById('main'));                 
+      var option = {
+        tooltip : {
+          trigger: 'axis'
+        },
+        legend: {
+          orient : 'vertical',
+          x : 'right',
+          y : 'top',
+          data:['要求能力','我的能力']
+        },
+        polar : [
+          {
+           indicator : [
+             { text: '形象力', max: 6000},
+             { text: '决策力', max: 16000},
+             { text: '协作力', max: 30000},
+             { text: '控制力', max: 38000},
+             { text: '沟通力', max: 52000},
+            ]
+          }
+        ],
+        calculable : true,
+        series : [
+          {
+            name: '要求能力 vs 我的能力',
+            type: 'radar',
+            data : [
+              {
+                value : [4300, 10000, 28000, 35000, 50000],
+                name : '要求能力'
+              },
+              {
+                value : [5000, 14000, 28000, 31000, 42000],
+                name : '我的能力'
+              }
+            ]
+          }
+        ]
+      };
+      // 为echarts对象加载数据 
+      myChart.setOption(option); 
+    }
+  );
+</script>

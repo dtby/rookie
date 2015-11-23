@@ -1,0 +1,10 @@
+<%= render partial: "share/head", locals: { head_title: "我发布的任务包" } %>
+<div class="tasks-content">
+  <% 5.times do %>
+    <div class="tasks-item ">
+      <h4>任务包名称</h4>
+      <p><%=image_tag("course_text.png",width:"25")%> 任务概述 ：XXXXXXXXXXXXXXXXX</p>
+      <p><%=image_tag("course_time.png",width:"20")%> 执行时间：2015-04-30<%= link_to "查看详情>>", "#", class: "btn btn-default btn-sm btn-detail pull-right" %></p>
+    </div>
+  <% end %>
+</div>
