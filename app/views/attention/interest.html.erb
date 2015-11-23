@@ -1,0 +1,35 @@
+<% content_for :title do %>
+  我的活动
+<% end %>
+
+<%= render partial: "share/head", locals: { head_title: "感兴趣的任务" } %>
+<div class="container">
+<% 5.times do %>
+  <div class="row interest-content">
+    <div class="col-xs-3 interest-name">
+      <p><strong>任务包名</strong></p>
+      <p class="interest-person"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>发包人</p>
+    </div>
+    <div class="col-xs-6 interest-grade">
+      <p>等级:
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+      </p>
+      <p class="interest-time"><span><%=image_tag("time.png",width:"24", class: 'icon')%>9.30</span><span class="interest-map"><%=image_tag("map.png",width:"26", class: 'icon')%>珠海</span></p>
+    </div>
+    <div class="col-xs-3 text-center">
+      <p class="interest-word"><span>匹配度</span></p>
+      <p class="interest-word"><strong class="interest-match">125</strong><strong class="match-sub">%</strong></p>
+    </div>
+    <div class="col-xs-12 interest-5">
+      <p><%=image_tag("gift.png",width:"24", class: 'icon')%><span>沟通力＋200EXP</span><span>决策力＋200EXP</span></p>
+      <p class="interest-gift"><span>控制力＋200EXP</span><span>协作力＋200EXP</span></p>
+      <p class="interest-gift"><span>控制力＋200EXP</span><span>协作力＋200EXP</span></p>
+    </div>
+  </div>
+  <hr class="apply-line">
+<% end %>  
+</div>

@@ -1,0 +1,48 @@
+.interest-content {
+  padding: 20px 0 10px 0;
+  .interest-name {
+    padding-right: 0;
+    font-size: 15px;
+    .interest-person {
+      font-size: 14px;
+      span {
+        color: #3282FF;
+        padding-right: 7px;
+      }
+    }
+  }
+  .interest-5 {
+    font-size: 12px;
+    span {
+      padding-right: 70px;
+    }
+    .interest-gift {
+      padding-left: 24px;
+    }
+  }
+  .interest-grade {
+    padding-right: 0;
+    .interest-map {
+      padding-left: 25px;
+    }
+    .interest-time {
+      padding-top: 3px;
+    }
+    .glyphicon-star, .glyphicon-star-empty {
+      color: #F50602;
+    }
+  }
+  .interest-word {
+    margin-bottom: 0;
+  }
+  .interest-match {
+    color: #F50602;
+    font-size: 30px;
+  }
+  .match-sub {
+    color: #F50602;
+  }
+  .feedback-icon {
+    padding-left: 0;
+  }
+}

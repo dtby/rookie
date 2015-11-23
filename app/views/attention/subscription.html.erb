@@ -1,0 +1,19 @@
+<% content_for :title do %>
+  我的活动
+<% end %>
+
+<%= render partial: "share/head", locals: { head_title: "我的订阅" } %>
+<div class="container">
+<% 5.times do %>
+  <div class="row">
+    <div class="col-xs-8">
+      <p><span><%=image_tag("map.png",width:"25", class: 'icon')%></span><span>工作地点：无限制</span></p>
+      <p><span><%=image_tag("aa.png",width:"25", class: 'icon')%></span><span>工作类型：设计师</span></p>
+    </div>
+    <div class="col-xs-4">
+      <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+    </div>
+  </div>
+  <hr class="apply-line">
+<% end %>  
+</div>

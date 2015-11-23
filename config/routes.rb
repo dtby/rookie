@@ -20,6 +20,15 @@ Rails.application.routes.draw do
   resources :personal
   resources :pages, only: [:index, :show]
 
+  resources :attention do
+    collection do
+      get 'focus'
+      get 'subscription'
+      get 'feedback'
+      get 'interest'
+    end
+  end
+
   # 官方活动(公开课：courses、FaceBoss：meetings、特训营：trainings)
   resources :courses
 
@@ -29,12 +38,6 @@ Rails.application.routes.draw do
 
   # Example resource route with options:
     resources :activities do
-      # member do
-      #   get 'my'
-      #   get 'official'
-      #   get 'else'
-      # end
-
       collection do
         get 'my'
         get 'official'

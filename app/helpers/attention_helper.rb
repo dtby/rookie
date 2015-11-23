@@ -1,0 +1,2 @@
+module AttentionHelper
+end
