@@ -2,7 +2,7 @@
 	我的活动
 <% end %>
 <%= render partial: "share/head", locals: { head_title: "我的简历" } %>
-
+<!-- logo -->
 <div class="container">
 	<div class="row pages-head">
 			<div class="col-xs-offset-2">
@@ -20,10 +20,64 @@
 	</div>
 </div>
 
-
-
+<!-- 简历信息 -->
 <div class="resume-content">
 	<div class="resume-item clearfix">
-			<div>昵称<span class="pull-right">超级大菜鸟</span></div>
+			<div class="my-infos">昵称<span class="pull-right">超级大菜鸟</span></div>
+			<hr id="divide">
+			<div class="my-infos">性别<span class="pull-right">男</span></div>
+			<hr id="divide">
+			<div class="my-infos">年龄<span class="pull-right">22</span></div>
+			<hr id="divide">
+			<div class="my-infos">生日<span class="pull-right">96-01-01</span></div>
+			<hr id="divide">
+			<div class="my-infos">星座<span class="pull-right">魔蝎座</span></div>
+			<hr id="divide">
+			<div class="my-infos">民族<span class="pull-right">汉</span></div>
+			<hr id="divide">
+			<div class="my-infos">籍贯<span class="pull-right">沪</span></div>
+			<hr id="divide">
+			<div class="my-infos">现居地<span class="pull-right">上海－嘉定</span></div>
+			<hr id="divide">
+			<div class="my-infos">户口地<span class="pull-right">上海－黄浦</span></div>
 	</div>
+	<div class="resume-item clearfix">
+			<div class="my-infos">教育经历<span class="pull-right">大学</span></div>
+			<hr id="divide">
+			<div class="my-infos">学历<span class="pull-right">本科</span></div>
+			<hr id="divide">
+			<div class="my-infos">毕业院校<span class="pull-right">上海大学</span></div>
+			<hr id="divide">
+			<div class="my-infos">毕业时间<span class="pull-right">05-01-20</span></div>
+			<hr id="divide">
+			<div class="my-infos">政治面貌<span class="pull-right">党员</span></div>
+			<hr id="divide">
+			<div class="my-infos">爱好特长<span class="pull-right">唱歌跳舞</span></div>
+			<hr id="divide">
+			<div class="my-infos">语言能力<span class="pull-right">英语六级</span></div>
+	</div>
+	<div class="resume-item clearfix">
+			<div class="my-infos">现在公司名称<span class="pull-right">大唐邦彦</span></div>
+			<hr id="divide">
+			<div class="my-infos">任职时间<span class="pull-right">15-04-01～至今</span></div>
+			<hr id="divide">
+			<div class="my-infos">职位名称<span class="pull-right">设计总监</span></div>
+			<hr id="divide">
+			<div class="my-infos">以前公司名称<span class="pull-right">以前公司名称</span></div>
+			<hr id="divide">
+			<div class="my-infos">任职时间<span class="pull-right">14-04-01～15-04-01</span></div>
+			<hr id="divide">
+			<div class="my-infos">职位名称<span class="pull-right">设计师</span></div>
+	</div>
+	<div class="resume-item clearfix">
+			<div class="my-infos">实习公司名称<span class="pull-right">实习公司名称</span></div>
+			<hr id="divide">
+			<div class="my-infos">职位名称<span class="pull-right">职位名称</span></div>
+			<hr id="divide">
+			<div class="my-infos">实习业绩<span class="pull-right">实习业绩</span></div>
+	</div>
+</div>
+<!-- 底部按钮 -->
+<div class="my-btn text-center">
+	<button type="button" id="mybtn" class="btn btn-primary">一键生成简历</button>
 </div>
