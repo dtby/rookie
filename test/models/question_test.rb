@@ -1,18 +1,19 @@
 # == Schema Information
 #
-# Table name: educations
+# Table name: questions
 #
 #  id         :integer          not null, primary key
-#  stage      :integer
-#  time       :date
-#  user_id    :integer
+#  problem    :text(65535)
+#  level      :integer
+#  power      :integer
+#  genre      :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'test_helper'
 
-class EducationTest < ActiveSupport::TestCase
+class QuestionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
