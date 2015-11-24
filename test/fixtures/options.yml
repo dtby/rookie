@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: options
+#
+#  id          :integer          not null, primary key
+#  a           :text(65535)
+#  b           :text(65535)
+#  c           :text(65535)
+#  d           :text(65535)
+#  e           :text(65535)
+#  f           :text(65535)
+#  question_id :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  a: MyText
+  b: MyText
+  c: MyText
+  d: MyText
+  e: MyText
+  f: MyText
+  question_id: 
+
+two:
+  a: MyText
+  b: MyText
+  c: MyText
+  d: MyText
+  e: MyText
+  f: MyText
+  question_id: 

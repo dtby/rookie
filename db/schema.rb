@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124062659) do
+ActiveRecord::Schema.define(version: 20151124071500) do
 
   create_table "educations", force: :cascade do |t|
     t.integer  "stage",      limit: 4
@@ -87,6 +87,20 @@ ActiveRecord::Schema.define(version: 20151124062659) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "options", force: :cascade do |t|
+    t.text     "a",           limit: 65535
+    t.text     "b",           limit: 65535
+    t.text     "c",           limit: 65535
+    t.text     "d",           limit: 65535
+    t.text     "e",           limit: 65535
+    t.text     "f",           limit: 65535
+    t.integer  "question_id", limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "options", ["question_id"], name: "index_options_on_question_id", using: :btree
+
   create_table "questions", force: :cascade do |t|
     t.text     "problem",    limit: 65535
     t.integer  "level",      limit: 4
@@ -95,6 +109,10 @@ ActiveRecord::Schema.define(version: 20151124062659) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
+
+  add_index "questions", ["genre"], name: "index_questions_on_genre", using: :btree
+  add_index "questions", ["level"], name: "index_questions_on_level", using: :btree
+  add_index "questions", ["power"], name: "index_questions_on_power", using: :btree
 
   create_table "task_types", force: :cascade do |t|
     t.string   "type",       limit: 255
@@ -174,6 +192,7 @@ ActiveRecord::Schema.define(version: 20151124062659) do
   add_foreign_key "information", "users"
   add_foreign_key "internships", "users"
   add_foreign_key "levels", "users"
+  add_foreign_key "options", "questions"
   add_foreign_key "tasks", "task_types"
   add_foreign_key "tasks", "users"
   add_foreign_key "works", "users"

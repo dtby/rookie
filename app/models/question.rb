@@ -15,6 +15,8 @@ class Question < ActiveRecord::Base
 	validates :problem, :level, :power, :genre, presence: true
 	validates :level, :power, :genre, numericality: { only_integer: true }
 
+	has_many :options
+
 	# 试题所属等级
 	enum level: { low: 1, middle: 2, high: 3 }
 	LEVEL = { low: '初级', middle: '中级', high: '高级' }
@@ -26,4 +28,8 @@ class Question < ActiveRecord::Base
 	# 试题所属类型
 	enum genre = { social: 1, work: 2, home: 3, knowledge: 4 }
 	GENRE = { social: '社交', work: '职场', home: '居家', knowledge: '知识' }
+
+	scope :level, ->(l) { where(level: l) }
+	scope :power, ->(p) { where(power: p) }
+	scope :genre, ->(g) { where(genre: g) }
 end
