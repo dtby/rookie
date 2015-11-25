@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   # before_action :set_task
-  before_action :set_user
+  # before_action :set_user
   def index
     @tasks = Task.all
   end
@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     if @task.save
       flash.now[:notice] = "创建成功"
-      redirect_to user_tasks_path
+      redirect_to tasks_path
     else
       render :new
     end
@@ -26,7 +26,7 @@ class TasksController < ApplicationController
   def update
     if @task.update(task_params)
       flash.now[:notice] = "更新成功"
-      redirect_to user_task_path
+      redirect_to task_path
     else
       render :update
     end

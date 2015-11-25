@@ -1,5 +1,5 @@
 <%#= simple_form_for (@task, url: (is_edit_or_update? ? task_path(@task,user_id: params[:user_id]) : tasks_path(@task, user_id: params[:user_id])) do |f| %>
-<%= simple_form_for([:user, @task], wrapper: :task_form) do |f| %>
+<%= simple_form_for @task, wrapper: :task_form do |f| %>
   <%= f.error_notification %>
   <div class="form-group">
     <div class="form-text">
