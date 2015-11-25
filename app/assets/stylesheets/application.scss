@@ -18,5 +18,6 @@
  *= require ./date/dialog
  *= require_tree ./application/.
  */
+ @import "variables";
  @import "bootstrap-sprockets";
  @import "bootstrap";

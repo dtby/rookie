@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124071500) do
+ActiveRecord::Schema.define(version: 20151125005549) do
 
   create_table "educations", force: :cascade do |t|
     t.integer  "stage",      limit: 4
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20151124071500) do
     t.integer  "genre",      limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "answer",     limit: 4
   end
 
   add_index "questions", ["genre"], name: "index_questions_on_genre", using: :btree

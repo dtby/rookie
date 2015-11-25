@@ -1,0 +1,29 @@
+@import "variables";
+.tests__new{
+	.tests-head{
+		padding: 0 20px;
+		font-size: 16px;
+	}
+	.test-question{
+		font-size: 16px;
+		padding: 0 30px;
+		line-height: 2;
+		.problem{
+			padding: 20px 0;
+		}
+		.answer{
+			padding-bottom: 40px;
+		}
+	}
+	.test-btn{
+		padding: 0 30px;
+		position: fixed;
+		left: 0;
+		bottom: 50px;
+		width: 100%;
+		a{
+			background-color: $btn-blue;
+			font-size: 16px;
+		}
+	}
+}

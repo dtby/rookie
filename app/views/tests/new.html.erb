@@ -1,0 +1,13 @@
+<div class="head text-center tests-head">
+	<span class="pull-left"><%= Question::POWER[@question.power.to_sym] %></span>
+	<span><%= Question::LEVEL[@question.level.to_sym] %></span>
+	<span class="pull-right">10/20</span>
+</div>
+
+<div class="test-question">
+	<%= render partial: "question", locals: { question: @question } %>
+</div>
+
+<div class="test-btn">
+	<%= link_to "下一题", "#", class: "btn btn-info btn-block" %>
+</div>

@@ -24,10 +24,8 @@ Rails.application.routes.draw do
   resources :meetings
   resources :trainings
 
-  # [测试模块] 测试成绩
-  resources :scores
-  # [测试模块] 测试题
-  resources :questions
+  # 测试模块
+  resources :tests
 
   # 活动
   resources :activities do
