@@ -36,7 +36,11 @@
 				<span class="pull-right mygt"><span class="badge"id="badge">2</span>&gt;</span></a>
 			</li>
 			<hr class="divide">
-			<li><a href="#"><%=image_tag("pages_task.png")%>我发布的任务<span class="pull-right mygt">&gt;</span></a></li>
+			<li>
+				<%= link_to user_tasks_path do %>
+					<%=image_tag("pages_task.png")%>我发布的任务<span class="pull-right mygt">&gt;</span>
+				<% end %>
+			</li>
 		</ul>
 	</div>
 </div>

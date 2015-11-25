@@ -1,13 +1,24 @@
+.request {
+  padding-left: 0;
+}
 .form-text {
+  .iconnew {
+    padding: 8px 6px 4px 0;
+  }
   .form-input {
     border: none;
-    box-shadow: none;
     border-radius: 0;
   }
   select {
     border: none;
     background-color: #fff;
-    width: 80%;
+    box-shadow: none;
+  }
+  .form-control {
+    box-shadow: none;
+  }
+  .task-text {
+    height: 80px;
   }
 }
 .line {
@@ -33,6 +44,11 @@
       border-radius: 0;
     }
   }
+}
+.triangle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 //show pages

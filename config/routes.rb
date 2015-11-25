@@ -1,12 +1,21 @@
 Rails.application.routes.draw do
-  devise_for :users
   mount WeixinRailsMiddleware::Engine, at: "/"
 
-  root 'welcome#index'
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
+
+  # You can have the root of your site routed with "root"
+  root 'tasks#index'
+
+  # Example of regular route:
+  #   get 'products/:id' => 'catalog#view'
 
   resources :messages, only: [:create]
+  
+  devise_for :users
+  
+  resources :users
   resources :tasks
-
   resources :personal
   resources :pages, only: [:index, :show]
 
@@ -49,6 +58,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
+
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales

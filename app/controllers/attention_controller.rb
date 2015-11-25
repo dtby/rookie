@@ -1,4 +1,5 @@
 class AttentionController < ApplicationController
+  before_action :authenticate_user!
   def focus
     
   end

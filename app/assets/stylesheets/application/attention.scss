@@ -46,3 +46,15 @@
     padding-left: 0;
   }
 }
+
+.sub-content {
+  padding: 10px 20px 0 20px;
+  .delete-div {
+    line-height: 52px;
+    .delete {
+      background-color: #F51C03;
+      font-size: 25px;
+      color: #fff;
+    }
+  }
+}
