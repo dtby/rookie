@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user
   def index
     @tasks = Task.all
   end
@@ -43,5 +44,8 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:name, :figure, :communicate, :coordination, :control, :decision, :p_figure, :p_communicate, :p_coordination, :p_control, :p_decision, :grade, :state, :deadline, :range, :coin, :describe, :goal, :extra, :place)
+  end
+  def set_user
+    @user = current_user
   end
 end

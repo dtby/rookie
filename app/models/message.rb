@@ -3,7 +3,7 @@
 # Table name: messages
 #
 #  id         :integer          not null, primary key
-#  mobile     :string(255)
+#  photo     :string(255)
 #  code       :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -15,7 +15,7 @@ class Message < ActiveRecord::Base
 # Table name: message
 #
 #  id         :integer          not null, primary key
-#  mobile     :string(255)      not null
+#  photo     :string(255)      not null
 #  code       :string(255)      default("")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -38,10 +38,10 @@ class Message < ActiveRecord::Base
     #发送短信验证码
     tpl_params = { code: self.code , company: '菜鸟烩' }
     ChinaSMS.to '15856532836', tpl_params, tpl_id: 1
-    # msg = ChinaSMS.to self.mobile , tpl_params, tpl_id: 1
+    # msg = ChinaSMS.to self.photo , tpl_params, tpl_id: 1
 
     #log记录发送的信息
-    message_log.info "mobile number: #{self.mobile}"
+    message_log.info "photo number: #{self.photo}"
     message_log.info "code: #{self.code}"
 
     if msg["code"] == 0
@@ -76,8 +76,8 @@ class Message < ActiveRecord::Base
 
   #确认短信验证码是正确并有效
   #短信有效时间：30分钟
-  def self.is_right_message? mobile, code
+  def self.is_right_message? photo, code
     return true if code == "999999"
-    message.where("mobile = ? and code = ? and updated_at >= ?", mobile, code, (Time.at Time.now - 30*60) ).first
+    message.where("photo = ? and code = ? and updated_at >= ?", photo, code, (Time.at Time.now - 30*60) ).first
   end
 end

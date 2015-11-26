@@ -3,6 +3,7 @@
   <%= f.error_notification %>
   <div class="form-group">
     <div class="form-text">
+      <%= hidden_field_tag :user_id, current_user.id %>
       <div class="col-xs-1">
         <span><%=image_tag("tasknew_03.png",width:"24", class: 'iconnew')%></span>
       </div>

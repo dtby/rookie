@@ -70,6 +70,11 @@ begin
 	Option.create(id: 23, question_id: 23, a: "答案a", b: "答案b", c: "答案c", d: "答案d")
 	Option.create(id: 24, question_id: 24, a: "答案a", b: "答案b", c: "答案c", d: "答案d")
 
+Task_type.delete_all
+	Task_type.create!(id: 1, type: "IT")
+	Task_type.create!(id: 2, type: "互联网")
+	Task_type.create!(id: 3, type: "设计")
+
 rescue Exception => e
 	p e.message
 end
