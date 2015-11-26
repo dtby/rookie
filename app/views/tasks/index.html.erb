@@ -9,9 +9,9 @@
   <% @tasks.each do |task|%>
     <div class="tasks-item ">
       <h4><%= task.name %></h4>
-      <p><%=image_tag("course_text.png",width:"20")%> 任务概述 ：<%= task.describe %></p>
-      <p><%=image_tag("course_time.png",width:"20")%> 执行时间：2015年04月30日
-      <%= link_to "查看详情>>", task_path(:id, user_id: params[:user_id]), class: "btn btn-default btn-sm btn-detail pull-right" %></p>
+      <p><%= image_tag("course_text.png",width:"20")%> 任务概述 ：<%= task.describe %></p>
+      <p><%= image_tag("course_time.png",width:"20")%> 执行时间：2015年04月30日
+      <%= link_to "查看详情>>", task_path(task), class: "btn btn-default btn-sm btn-detail pull-right" %></p>
     </div>
   <% end %>
 </div>

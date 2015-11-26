@@ -8,7 +8,7 @@
       <div class="col-xs-10 col-xs-offset-2 task-tabshow">
         <p><%=image_tag("time.png",width:"21", class: 'icon')%><span>截止时间：2015年10月10日</span></p>
         <p><%=image_tag("tab.png",width:"21", class: 'icon')%><span>标签：标签 标签</span></p>
-        <p><%=image_tag("map.png",width:"22", class: 'icon')%><span>任务地点：xxxxx</span></p>
+        <p><%=image_tag("map.png",width:"22", class: 'icon')%><span>任务地点：<%= @task.place %></span></p>
       </div>
     </div>
     <hr class="line">
@@ -42,9 +42,9 @@
     </div>
     <hr class="line">
     <div class="col-xs-12 task-description">
-      <%=image_tag("map.png",width:"20", class: 'icon')%><span>额外报酬：xxxxxxxxxx，xxxxxx，xxx</span><br>
-      <%=image_tag("tab2_active.png",width:"19", class: 'icon')%><span>任务描述：xxxxx，xxxxxxxx，xxx</span><br>
-      <%=image_tag("star.png",width:"20", class: 'icon')%><span>任务目标：xxxxx，xxxxxxxx，xxx</span><br>
+      <%=image_tag("map.png",width:"20", class: 'icon')%><span>额外报酬：<%= @task.extra %></span><br>
+      <%=image_tag("tab2_active.png",width:"19", class: 'icon')%><span>任务描述：<%= @task.describe %></span><br>
+      <%=image_tag("star.png",width:"20", class: 'icon')%><span>任务目标：<%= @task.goal %></span><br>
     </div>
   </div>
 </div>

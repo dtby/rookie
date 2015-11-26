@@ -11,6 +11,7 @@
         <%#= f.input :user_id, value:'current_user', class: 'form-control hide' %>
       </div>
     </div>
+
     <hr class="line">
     <div class="form-text">
       <div class="col-xs-1">
@@ -21,6 +22,7 @@
         <%#= f.text_field :name, class: 'form-control form-input', placeholder: '任务包名称' %>
       </div>
     </div>
+
     <hr class="line">
     <div class="form-text">
       <div class="col-xs-1">
@@ -37,7 +39,7 @@
       <span>标签</span><span>标签</span><span>标签</span>
     </div>
     <div class="form-input-group input-group">
-      <%= f.text_field :name, class: 'form-control form-input', placeholder: '输入标签' %>
+      <%= f.input :tab, class: 'form-control form-input', placeholder: '输入标签' %>
       <span class="input-group-btn ">
         <button class="btn btn-primary btn-task" type="button">添加</button>
       </span>
@@ -48,50 +50,50 @@
         形象力要求
       </div>
       <div class="col-xs-4 request">
-        <%= f.input :figure, placeholder: '知识要求', collection: 1..600, prompt: "知识要求"%>
+        <%= f.input :figure, placeholder: '知识要求', collection: 1..300, prompt: "知识要求"%>
       </div>
       <div class="col-xs-4 request">
-        <%= f.input :p_figure, placeholder: '经验要求', collection: 1..600, prompt: "经验要求"%>
+        <%= f.input :p_figure, placeholder: '经验要求', collection: 1..300, prompt: "经验要求"%>
       </div>
 
       <div class="col-xs-4">
         沟通力要求
       </div>
       <div class="col-xs-4 request">
-        <%= f.input :communicate, placeholder: '知识要求', collection: 1..600, prompt: "知识要求"%>
+        <%= f.input :communicate, placeholder: '知识要求', collection: 1..300, prompt: "知识要求"%>
       </div>
       <div class="col-xs-4 request">
-        <%= f.input :p_communicate, placeholder: '经验要求', collection: 1..600, prompt: "经验要求"%>
+        <%= f.input :p_communicate, placeholder: '经验要求', collection: 1..300, prompt: "经验要求"%>
       </div>
 
       <div class="col-xs-4">
         控制力要求
       </div>
       <div class="col-xs-4 request">
-        <%= f.input :control, placeholder: '知识要求', collection: 1..600, prompt: "知识要求"%>
+        <%= f.input :control, placeholder: '知识要求', collection: 1..300, prompt: "知识要求"%>
       </div>
       <div class="col-xs-4 request">
-        <%= f.input :p_control, placeholder: '经验要求', collection: 1..600, prompt: "经验要求"%>
+        <%= f.input :p_control, placeholder: '经验要求', collection: 1..300, prompt: "经验要求"%>
       </div>
 
       <div class="col-xs-4">
         协作力要求
       </div>
       <div class="col-xs-4 request">
-        <%= f.input :coordination, placeholder: '知识要求', collection: 1..600, prompt: "知识要求"%>
+        <%= f.input :coordination, placeholder: '知识要求', collection: 1..300, prompt: "知识要求"%>
       </div>
       <div class="col-xs-4 request">
-        <%= f.input :p_coordination, placeholder: '经验要求', collection: 1..600, prompt: "经验要求"%>
+        <%= f.input :p_coordination, placeholder: '经验要求', collection: 1..300, prompt: "经验要求"%>
       </div>
 
       <div class="col-xs-4">
         决策力要求
       </div>
       <div class="col-xs-4 request">
-        <%= f.input :decision, placeholder: '知识要求', collection: 1..600, prompt: "知识要求"%>
+        <%= f.input :decision, placeholder: '知识要求', collection: 1..300, prompt: "知识要求"%>
       </div>
       <div class="col-xs-4 request">
-        <%= f.input :p_decision, placeholder: '经验要求', collection: 1..600, prompt: "经验要求"%>
+        <%= f.input :p_decision, placeholder: '经验要求', collection: 1..300, prompt: "经验要求"%>
       </div>
     
     <hr class="line">

@@ -1,13 +1,15 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  # before_action :set_task
-  # before_action :set_user
   def index
     @tasks = Task.all
   end
 
   def new
     @task = Task.new
+  end
+
+  def show
+    @task = Task.find(params[:id])
   end
 
   def create
@@ -37,18 +39,9 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
-  def show
-  end
-
   private
 
   def task_params
-    params.require(:task).permit(:name, :figure, :communicate, :coordination, :control, :decision, :p_figure, :p_communicate, :p_coordination, :p_control, :p_decision, :grade, :name, :state, :deadline, :range, :coin, :describe, :goal, :extra, :place)
-  end
-  def set_task
-    @task = Task.find(params[:id])
-  end
-  def set_user
-    @user = User.find(params[:user_id])
+    params.require(:task).permit(:name, :figure, :communicate, :coordination, :control, :decision, :p_figure, :p_communicate, :p_coordination, :p_control, :p_decision, :grade, :state, :deadline, :range, :coin, :describe, :goal, :extra, :place)
   end
 end
