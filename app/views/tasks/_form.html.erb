@@ -3,7 +3,7 @@
   <%= f.error_notification %>
   <div class="form-group">
     <div class="form-text">
-      <%= hidden_field_tag :user_id, current_user.id %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
       <div class="col-xs-1">
         <span><%=image_tag("tasknew_03.png",width:"24", class: 'iconnew')%></span>
       </div>
@@ -23,7 +23,7 @@
         <span><%=image_tag("tasknew_09.png",width:"24", class: 'iconnew')%></span>
       </div>
       <div class="col-xs-11">
-        <%= f.input :deadline, placeholder: '任务包名称', collection: Task.final_educations, prompt: "任务包类型"%>
+        <%= f.input :grades, placeholder: '任务包名称', collection: Task.grades, prompt: "任务包类型"%>
         <%#= f.text_field :name, class: 'form-control form-input', placeholder: '任务包名称' %>
       </div>
     </div> -->
@@ -34,7 +34,7 @@
         <span><%=image_tag("tasknew_09.png",width:"24", class: 'iconnew')%></span>
       </div>
       <div class="col-xs-11">
-        <%= f.input :grade, placeholder: '任务包名称', collection: Task.final_educations, prompt: "任务包类型"%>
+        <%= f.input :grade, placeholder: '任务包名称', collection: Task.grades, prompt: "任务包类型"%>
         <%#= f.text_field :name, class: 'form-control form-input', placeholder: '任务包名称' %>
       </div>
     </div>
@@ -45,7 +45,7 @@
         <span><%=image_tag("tasknew_12.png",width:"24", class: 'iconnew')%></span>
       </div>
       <div class="col-xs-11">
-        <%= f.input :place, placeholder: '任务包名称', collection: Task.finals, prompt: "工作地点"%>
+        <%= f.input :place, placeholder: '工作地点', collection: Task.places, prompt: "工作地点"%>
       </div>
     </div>
 

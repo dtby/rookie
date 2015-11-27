@@ -32,8 +32,16 @@
 class Task < ActiveRecord::Base
   belongs_to :user
   belongs_to :task_type
+  has_many :apply, dependent: :destroy
 
-  enum final_education: { 'A': 1, 'B': 2, 'C': 3, 'D': 4 }
-  enum final: { '上海': 1, '安徽': 2, '珠海': 3, '北京': 4 }
-  enum fraction: { '1分': 1, '2分': 2, '3分': 3, '4分': 4, '5分': 5 }
+  enum grade: { 'A': '1', 'B': '2', 'C': '3', 'D': '4' }
+  enum place: { '上海': '1', '安徽': '2', '珠海': '3', '北京': '4' }
+
+  enum degree: {
+    master: '1',
+    university: '2',
+    vocation: '3',
+    other: '4'
+  }
+  DEGREE = { master: '研究生', university: '本科', vocation: '高职', other: '其他' }
 end

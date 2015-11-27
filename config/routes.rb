@@ -5,17 +5,22 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'tasks#index'
-
+  root 'tasks#personal_tasks'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
   resources :messages, only: [:create]
   
+  resources :applies
+  
   devise_for :users
   
   resources :users
-  resources :tasks
+  resources :tasks do
+    collection do
+      get 'personal_tasks'
+    end
+  end
   resources :personal
   resources :pages, only: [:index, :show]
 

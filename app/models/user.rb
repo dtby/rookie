@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :task, dependent: :destroy
+  has_many :apply, dependent: :destroy
 
   attr_accessor :login
   # attr_accessor :message #短信验证码

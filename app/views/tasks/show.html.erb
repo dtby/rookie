@@ -3,12 +3,13 @@
   <div class="row">
     <div class="col-xs-12 gift-title">
       <div class="task-show-title text-center">
-        <h3>任务包名称</h3>
+        <h3><%= @task.name %></h3>
       </div>
       <div class="col-xs-10 col-xs-offset-2 task-tabshow">
         <p><%=image_tag("time.png",width:"21", class: 'icon')%><span>截止时间：2015年10月10日</span></p>
         <p><%=image_tag("tab.png",width:"21", class: 'icon')%><span>标签：<%= @task.tab %></span></p>
-        <p><%=image_tag("map.png",width:"22", class: 'icon')%><span>任务地点：<%= @task.place %></span></p>
+        <p><%=image_tag("map.png",width:"22", class: 'icon')%><span>任务地点：<%= @task.place %></span>
+        </p>
       </div>
     </div>
     <hr class="line">
@@ -38,7 +39,15 @@
     <hr class="line">
     <div class="col-xs-12 text-center">
       <div id="main" style="height: 300px"></div>
-      <button type="button" class="btn task-btn gift-title">匹配度：80%</button><br><p class="gift-title">我的能力值除以要求能力（最高100%）<br>得出五项能力值匹配度的平均值</p>
+      <button type="button" class="btn task-btn gift-title">匹配度：80%</button>
+      <% unless 1==3 %>
+        <%= simple_form_for @apply, wrapper: :task_form do |f| %>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <%= f.hidden_field :task_id, :value => params[:id] %>
+          <button type="submit" class="btn task-btn gift-title">申请接包</button>
+        <% end %>
+      <% end %>
+      <br><p class="gift-title">我的能力值除以要求能力（最高100%）<br>得出五项能力值匹配度的平均值</p>
     </div>
     <hr class="line">
     <div class="col-xs-12 task-description">

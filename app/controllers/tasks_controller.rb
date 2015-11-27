@@ -5,12 +5,17 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
+  def personal_tasks
+    @personal_tasks = current_user.task.all
+  end
+
   def new
     @task = Task.new
   end
 
   def show
     @task = Task.find(params[:id])
+    @apply = Apply.new
   end
 
   def create

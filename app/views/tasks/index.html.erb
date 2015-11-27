@@ -4,14 +4,37 @@
     <%= image_tag("head_add.png", width: 28) %>
   <% end %>
 </div>
-<%#= render partial: "share/head", locals: { head_title: "我发布的任务包" } %>
-<div class="tasks-content">
+
+<div class="container">
   <% @tasks.each do |task|%>
-    <div class="tasks-item ">
-      <h4><%= task.name %></h4>
-      <p><%= image_tag("course_text.png",width:"20")%> 任务概述 ：<%= task.describe %></p>
-      <p><%= image_tag("course_time.png",width:"20")%> 执行时间：2015年04月30日
-      <%= link_to "查看详情>>", task_path(task), class: "btn btn-default btn-sm btn-detail pull-right" %></p>
-    </div>
-  <% end %>
+    <%= link_to  task_path(task) do |i| %>
+      <div class="row interest-content">
+        <div class="col-xs-3 interest-name">
+          <p><strong><%= task.name %></strong></p>
+          <p class="interest-person"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= task.user.nickname %></p>
+        </div>
+        <div class="col-xs-6 interest-grade">
+          <p>等级:
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+          </p>
+          <p class="interest-time"><span><%=image_tag("time.png",width:"24", class: 'icon')%><%= task.deadline %></span><span class="interest-map"><%=image_tag("map.png",width:"26", class: 'icon')%><%= task.place %></span>
+          </p>
+        </div>
+        <div class="col-xs-3 text-center">
+          <p class="interest-word"><span>匹配度</span></p>
+          <p class="interest-word"><strong class="interest-match">125</strong><strong class="match-sub">%</strong></p>
+        </div>
+        <div class="col-xs-12 interest-5">
+          <p><%=image_tag("gift.png",width:"24", class: 'icon')%><span>沟通力＋200EXP</span><span>决策力＋200EXP</span></p>
+          <p class="interest-gift"><span>控制力＋200EXP</span><span>协作力＋200EXP</span></p>
+          <p class="interest-gift"><span>控制力＋200EXP</span><span>协作力＋200EXP</span></p>
+        </div>
+      </div>
+      <hr class="apply-line">
+    <% end %>
+  <% end %>  
 </div>
