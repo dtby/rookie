@@ -72,9 +72,9 @@ begin
 
 User.delete_all
 	User.create(:id => 1, :number => "0038485", :nickname => "Ending", :phone => "13800000000", :email => "rookie@example.com", :password => "12345678")
-	User.create(:id => 2, :number => "0038485", :nickname => "Ending", :phone => "13800000001", :email => "rookie@example1.com", :password => "12345678")
-	User.create(:id => 3, :number => "0038485", :nickname => "Ending", :phone => "13800000002", :email => "rookie@example2.com", :password => "12345678")
-	User.create(:id => 4, :number => "0038485", :nickname => "Ending", :phone => "13800000003", :email => "rookie@example3.com", :password => "12345678")
+	User.create(:id => 2, :number => "0038485", :nickname => "Ending1", :phone => "13800000001", :email => "rookie@example1.com", :password => "12345678")
+	User.create(:id => 3, :number => "0038485", :nickname => "Ending2", :phone => "13800000002", :email => "rookie@example2.com", :password => "12345678")
+	User.create(:id => 4, :number => "0038485", :nickname => "Ending3", :phone => "13800000003", :email => "rookie@example3.com", :password => "12345678")
 
 rescue Exception => e
 	p e.message
