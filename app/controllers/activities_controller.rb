@@ -12,7 +12,4 @@ class ActivitiesController < ApplicationController
     
   end
 
-  def apply
-    
-  end
 end

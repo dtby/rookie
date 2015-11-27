@@ -1,4 +1,4 @@
-<%= render partial: "share/head", locals: { head_title: "任务包" } %>
+<%= render partial: "head", locals: { head_title: "任务包" } %>
 <div class="container">
   <div class="row">
     <div class="col-xs-12 gift-title">
@@ -40,7 +40,7 @@
     <div class="col-xs-12 text-center">
       <div id="main" style="height: 300px"></div>
       <button type="button" class="btn task-btn gift-title">匹配度：80%</button>
-      <% unless 1==3 %>
+      <% unless Apply.where(:user_id => current_user.id, :task_id => @task.id).present? || current_user.id == @task.user_id %>
         <%= simple_form_for @apply, wrapper: :task_form do |f| %>
           <%= f.hidden_field :user_id, :value => current_user.id %>
           <%= f.hidden_field :task_id, :value => params[:id] %>

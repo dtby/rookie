@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     collection do
       get 'personal_tasks'
     end
+    member do
+      get 'apply'
+    end
   end
   resources :personal
   resources :pages, only: [:index, :show]
@@ -47,7 +50,6 @@ Rails.application.routes.draw do
       get 'my'
       get 'official'
       get 'else'
-      get 'apply'
     end
   end
 

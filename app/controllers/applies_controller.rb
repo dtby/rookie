@@ -40,7 +40,7 @@ class AppliesController < ApplicationController
   private
 
   def apply_params
-    params.require(:apply).permit(:user_id, :task_id)
+    params.require(:apply).permit(:user_id, :task_id, :state)
   end
   def set_user
     @user = current_user
