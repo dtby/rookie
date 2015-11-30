@@ -10,14 +10,14 @@ class TasksController < ApplicationController
   end
 
   def apply
-    if params(active_apply.user.id).present?
-      Apply.update(:state => true)
-      @task = Task.find(params[:id])
-      @active_applies  = Apply.where(:task_id => @task).state_is_ture
-    else
+    # if params(:id).present?
+    #   Apply.update(:state => true)
+    #   @task = Task.find(params[:id])
+    #   @active_applies  = Apply.where(:task_id => @task).state_is_ture
+    # else
       @task = Task.find(params[:id])
       @active_applies  = Apply.where(:task_id => @task)
-    end
+    # end
   end
 
   def new
