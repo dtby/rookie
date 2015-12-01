@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127083943) do
+ActiveRecord::Schema.define(version: 20151201133756) do
 
   create_table "applies", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -122,6 +122,29 @@ ActiveRecord::Schema.define(version: 20151127083943) do
   add_index "questions", ["genre"], name: "index_questions_on_genre", using: :btree
   add_index "questions", ["level"], name: "index_questions_on_level", using: :btree
   add_index "questions", ["power"], name: "index_questions_on_power", using: :btree
+
+  create_table "score_caches", force: :cascade do |t|
+    t.integer  "power",      limit: 4, default: 1
+    t.integer  "level",      limit: 4, default: 1
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "score_caches", ["user_id"], name: "index_score_caches_on_user_id", using: :btree
+
+  create_table "scores", force: :cascade do |t|
+    t.integer  "surface",     limit: 4, default: 0
+    t.integer  "communicate", limit: 4, default: 0
+    t.integer  "decision",    limit: 4, default: 0
+    t.integer  "cooperate",   limit: 4, default: 0
+    t.integer  "control",     limit: 4, default: 0
+    t.integer  "user_id",     limit: 4
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "scores", ["user_id"], name: "index_scores_on_user_id", using: :btree
 
   create_table "task_types", force: :cascade do |t|
     t.string   "type",       limit: 255
