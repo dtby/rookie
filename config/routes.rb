@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   
   resources :applies
   
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
   
   resources :users
   resources :tasks do
@@ -42,7 +44,14 @@ Rails.application.routes.draw do
   resources :trainings
 
   # 测试模块
-  resources :tests
+  resources :tests do
+    collection do
+      get 'result'
+      get 'next_question'
+      get 'next_level'
+      get 'next_power'
+    end
+  end
 
   # 活动
   resources :activities do

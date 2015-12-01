@@ -181,7 +181,6 @@ ActiveRecord::Schema.define(version: 20151127083943) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
-    t.string   "tab",                    limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -204,6 +203,8 @@ ActiveRecord::Schema.define(version: 20151127083943) do
   add_foreign_key "internships", "users"
   add_foreign_key "levels", "users"
   add_foreign_key "options", "questions"
+  add_foreign_key "score_caches", "users"
+  add_foreign_key "scores", "users"
   add_foreign_key "tasks", "task_types"
   add_foreign_key "tasks", "users"
   add_foreign_key "works", "users"

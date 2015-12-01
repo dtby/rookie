@@ -27,6 +27,7 @@
 #  task_type_id   :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  tab            :string(255)
 #
 
 class Task < ActiveRecord::Base

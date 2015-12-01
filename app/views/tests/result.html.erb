@@ -1,0 +1,14 @@
+<div class="result-head">
+	<%= image_tag("logo2.png", height: 60) %>
+</div>
+
+<div class="result-content">
+	<h3 class="text-center">恭喜您完成<%= power(session[:power]) %><%= level(session[:level]) %>测试</h3>
+	<br>
+	<p>您的等级是 <span class="score"><%= params[:score] %></span>	，是否需要保存进度休息一下，还是继续答题？</p>
+</div>
+
+<div class="test-btn">
+	<%= link_to("继续答题", next_level_tests_path, remote: true, format: :js, class: "btn btn-blue") %>
+	<%= link_to("保存退出", "#", class: "btn btn-white pull-right") %>
+</div>

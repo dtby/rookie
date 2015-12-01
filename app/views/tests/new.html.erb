@@ -1,13 +1,103 @@
-<div class="head text-center tests-head">
-	<span class="pull-left"><%= Question::POWER[@question.power.to_sym] %></span>
-	<span><%= Question::LEVEL[@question.level.to_sym] %></span>
-	<span class="pull-right">10/20</span>
+<!-- 顶部信息条 -->
+<div class="head text-center test-head">
+	<span class="pull-left"><%= Question::POWER[@questions[0].power.to_sym] %></span>
+	<span><%= Question::LEVEL[@questions[0].level.to_sym] %></span>
+	<span class="pull-right">
+		<span id="now_num"><%= 1 %></span>/<span id="total_num"><%= @questions.length %></span>
+	</span>
 </div>
 
-<div class="test-question">
-	<%= render partial: "question", locals: { question: @question } %>
+<div id="questionContent">
+	<!-- 所有题目答案 -->
+	<% @questions.each do |question| %>
+		<div class="test-question">
+			<!-- 问题 -->
+			<div class="problem">
+				<p class="text-justify"><%= question.problem %></p>
+			</div>
+			<div class="answer">
+				<!-- 答案选项 -->
+				<% [:a, :b, :c, :d, :e, :f].each_with_index do |option, index| %>
+					<% answer = question.option.send(option) %>
+					<% unless answer.nil? %>
+						<p>
+							<%= radio_button_tag("question#{question.id}", "#{index + 1}") %>&nbsp;
+							<label for="question<%= question.id %>_<%= index + 1%>"><%= option.to_s.upcase %>. <%= answer %></label>
+						</p>
+					<% end %>
+				<% end %>
+			</div>
+		</div>	
+	<% end %>
 </div>
 
+<!-- 下一题 -->
 <div class="test-btn">
-	<%= link_to "下一题", "#", class: "btn btn-info btn-block" %>
+	<%= link_to "下一题", "javascript:void(0);", class: "btn btn-info btn-block next-btn", alt: 0 %>
+	<%= link_to "提交", "javascript:void(0);", class: "btn btn-info btn-block commit-btn", style: "display: none;" %>
 </div>
+
+<script>
+	$(function(){
+		var bodyWidth = document.body.clientWidth;
+		var num = $(".test-question").length;
+		var wrap_width = num * bodyWidth;
+
+		//初始化容器宽度
+		$(".test-question").outerWidth(bodyWidth);
+		$("#questionContent").width(wrap_width);
+
+		//初始化每一题的位置
+		$(".test-question").each(function(index){
+			var leftVal = index * bodyWidth;
+      $(this).css("left", leftVal);
+		});
+		//定义用户答题记录表
+		var answers = new Array();
+		//点击下一题效果
+		$(".next-btn").click(function(){
+      var index = parseInt($(this).attr("alt"));
+      var select = $(".test-question").eq(index).find("input:radio:checked");
+      var total_num = parseInt($("#total_num").text());
+
+			if(select.length == 0){
+     	  alert("请选择你的答案");
+      }else{
+        index += 1; 
+				$(this).attr("alt", index);
+        //当前题号 + 1
+        $("#now_num").text(index + 1);
+        //存储用户答案
+        answers[index-1] = select.val();
+        //改变题目的位置
+        var leftVal = -(index * bodyWidth);
+        $(".test-question").eq(index-1).css("left", leftVal);
+        $(".test-question").eq(index).css("left", 0); 
+        //判断下一题是否是最后一题，是则改变按钮 
+        if(index == (total_num - 1)){
+		    	$(".next-btn").hide();
+		    	$(".commit-btn").show();
+        };     
+      }
+		});
+		
+		// 提交按钮的点击
+		$(".commit-btn").click(function(){
+			var index = parseInt($("#total_num").text());
+			var select = $(".test-question").eq(index-1).find("input:radio:checked");
+			if(select.length == 0){
+				alert("请选择你的答案");
+			}else{
+				answers[index-1] = select.val();
+				$.ajax({
+          type: "POST",
+          url: "<%= tests_path %>.js",
+          data: {answers: answers}
+        });
+			}
+		})
+	})	
+</script>
+
+
+

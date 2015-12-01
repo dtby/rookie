@@ -1,0 +1,21 @@
+<script>
+	$(function(){
+		$(".btn-block").click(function(){
+			var val = $("input:radio:checked").val();
+			var answer = $(".sr-only").text();
+			if(val == null){
+				alert("请选择你的答案");
+				return false;
+			}else{
+				if(val == answer){
+					var num = $.session.get('num') + 1;
+					$.session('num', num);
+					var score = $.session.get('score') + 1;
+					$.session.set('score', score);
+				}else{
+					//window.location.href = "<%#= new_test_url(num: num + 1, score: score) %>";
+				}
+			}
+		})	
+	})
+</script>

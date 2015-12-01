@@ -4,19 +4,19 @@
 	background-color: $boday_bg;
 
 	.btn-details{
-		color:$btn-blue;
-		border-color: $btn-blue;
+		color:$btn_blue;
+		border-color: $btn_blue;
 		margin:0 5px;
 	}
 	.btn-playback{
-		color: $btn-red;
-		border-color: $btn-red;
+		color: $btn_red;
+		border-color: $btn_red;
 	}
 }
 .meetings__index,.trainings__index{
 	.btn-apply{
-		color: $btn-green;
-		border-color: $btn-green;
+		color: $btn_green;
+		border-color: $btn_green;
 		padding: 5px 15px; 
 	}
 }

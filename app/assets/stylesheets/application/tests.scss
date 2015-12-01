@@ -1,10 +1,22 @@
 @import "variables";
+
+.test-btn{
+	padding: 0 30px;
+	position: fixed;
+	left: 0;
+	bottom: 50px;
+	width: 100%;
+}
+/** tests#new **/
 .tests__new{
-	.tests-head{
+	overflow-x: hidden;
+	.test-head{
 		padding: 0 20px;
 		font-size: 16px;
 	}
 	.test-question{
+		position: absolute;
+		float: left;
 		font-size: 16px;
 		padding: 0 30px;
 		line-height: 2;
@@ -15,15 +27,33 @@
 			padding-bottom: 40px;
 		}
 	}
-	.test-btn{
-		padding: 0 30px;
-		position: fixed;
-		left: 0;
-		bottom: 50px;
-		width: 100%;
-		a{
-			background-color: $btn-blue;
+	.next-btn, .commit-btn{
+		background-color: $btn_blue;
+		font-size: 16px;
+	}
+}
+
+/** tests#result **/
+.tests__result{
+	.result-head{
+		height: 100px;
+		line-height: 100px;
+		text-align: center;
+		background-color: $head_bg;
+	}
+	.result-content{
+		padding: 30px;
+		.score{
+			color: $head_bg;
+			font-size: 24px;
+		}
+		h3{
+			color: $head_bg;
+		}
+		p{
 			font-size: 16px;
+			line-height: 2;
+			text-align: justify;
 		}
 	}
 }

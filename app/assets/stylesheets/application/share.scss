@@ -52,3 +52,29 @@ html, body{
 	}
 }
 
+/** 蓝色与白色按钮（需加btn类） **/
+.btn-blue{
+  color: $color_white;
+  background-color: $head_bg;
+  border-color: $head_bg;
+  border-width: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  &:hover, &:focus{
+  	background-color: darken($head_bg, 10);
+  	color: $color_white;
+  	border-color: darken($head_bg, 10);
+  }
+}
+.btn-white{
+  color: $head_bg;
+  background-color: $color_white;
+  border-width: 2px;
+  border-color: $head_bg;	
+  padding-left: 20px;
+  padding-right: 20px;
+  &:hover, &:focus{
+  	background-color: $color_white;
+  	color: darken($head_bg, 10);
+  }
+}

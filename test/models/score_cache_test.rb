@@ -1,20 +1,18 @@
 # == Schema Information
 #
-# Table name: questions
+# Table name: score_caches
 #
 #  id         :integer          not null, primary key
-#  problem    :text(65535)
-#  level      :integer
-#  power      :integer
-#  genre      :integer
+#  power      :integer          default(1)
+#  level      :integer          default(1)
+#  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  answer     :integer
 #
 
 require 'test_helper'
 
-class QuestionTest < ActiveSupport::TestCase
+class ScoreCacheTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

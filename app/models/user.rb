@@ -33,6 +33,8 @@ class User < ActiveRecord::Base
 
   has_many :task, dependent: :destroy
   has_many :apply, dependent: :destroy
+  has_one :score, dependent: :destroy
+  has_one :score_cache, dependent: :destroy
 
   attr_accessor :login
   # attr_accessor :message #短信验证码
