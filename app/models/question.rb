@@ -52,35 +52,32 @@ class Question < ActiveRecord::Base
 		return cache.flatten
 	end
 
-	# 对比用户的答案与标准答案，计算答对题数
+	# 对比答案计算用户成绩
 	def self.score(power, level, user_answers)
 		score = 0
+
 		# 生成标准答案
 		standard_answers = []
 		questions = Question.select_questions(power, level)
 		questions.each do |question|
 			standard_answers.push question.answer
 		end
+
 		# 计算用户成绩
 		user_answers.each_with_index do |ua, index|
 			score += 1 if ua.to_i == standard_answers[index]
 		end
-		# 达到升级条件时把成绩存入score_cache
-		if score <= 3
-			
-		else
 
-		end
-		# 根据成绩判断段位
+		# 计算段位
 		case score
 		when 1
-			(level - 1) * 3 + 1
+			[(level - 1) * 3 + 1, 0]
 		when 2
-			(level - 1) * 3 + 2
+			[(level - 1) * 3 + 2, 0]
 		when 3
-			(level - 1) * 3 + 3
+			[(level - 1) * 3 + 3, 0]
 		when 4
-			'upgrade'
+			[(level - 1) * 3 + 3, 1]
 		end
 	end
 end

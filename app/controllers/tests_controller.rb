@@ -1,20 +1,23 @@
 class TestsController < ApplicationController
 	respond_to :html, :js
 
+	before_action :import_session, only: [:new, :create]
+
 	# 进入测试为用户的等级与能力级别
 	def new
 		# 取出测试题，参数 (能力，等级)
-		@questions = Question.select_questions(session[:power], session[:level])
+		@questions = Question.select_questions(@power, @level)
 	end
 
 	# 提交单次成绩
 	def create
-		@score = Question.score(session[:power], session[:level], params[:answers])
-		if @score = 4
-		
-		else
-			respond_with @score
-		end
+		@score = Question.score(@power, @level, params[:answers])
+		power_hash = Question.powers.invert.map { |key, value| [key, value.to_sym] }.to_h
+		pp power_hash, '11111'
+		b = current_user.score.update_columns(power_hash[@level] => @score.first)
+		pp b, "2222222"
+		current_user.score_cache.update(power: @power, level: @level + 1) if @score.second == 1
+		respond_with @score
 	end
 
 	# 保存退出
@@ -36,4 +39,10 @@ class TestsController < ApplicationController
 	def result
 
 	end
+
+	private
+		def import_session
+			@power = session[:power]
+			@level = session[:level]
+		end
 end

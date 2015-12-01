@@ -5,6 +5,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     super
+    # 注册成功时，创建用户的成绩与成绩暂存记录
+    current_user.create_score
+    current_user.create_score_cache
   end
 
   # POST /resource
