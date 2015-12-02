@@ -22,9 +22,10 @@ Rails.application.routes.draw do
     collection do
       get 'personal_tasks'
     end
-    # member do
-    #   get 'apply'
-    # end
+    member do
+      post :tag
+      get :remove
+    end
   end
   resources :personal
   resources :pages, only: [:index, :show]

@@ -6,10 +6,10 @@
         <h3><%= @task.name %></h3>
       </div>
       <div class="col-xs-10 col-xs-offset-2 task-tabshow">
-        <p><%=image_tag("time.png",width:"21", class: 'icon')%><span>截止时间：2015年10月10日</span></p>
-        <p><%=image_tag("tab.png",width:"21", class: 'icon')%><span>标签：<%= @task.tab %></span></p>
+        <p><%=image_tag("time.png",width:"21", class: 'icon')%><span>截止时间：<%= @task.deadline %></span></p>
         <p><%=image_tag("map.png",width:"22", class: 'icon')%><span>任务地点：<%= @task.place %></span>
         </p>
+        <p><%= render partial: "tag_new" %></p>
       </div>
     </div>
     <hr class="line">

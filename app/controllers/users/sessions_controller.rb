@@ -7,12 +7,12 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  def create
-    super
-    cache = current_user.score_cache
-    session[:power] = cache.power
-    session[:level] = cache.level
-  end
+  # def create
+  #   super
+  #   cache = current_user.score_cache
+  #   session[:power] = cache.power
+  #   session[:level] = cache.level
+  # end
 
   # DELETE /resource/sign_out
   # def destroy

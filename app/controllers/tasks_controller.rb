@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
+  respond_to :js, :json
   def index
     @tasks = Task.all
   end
@@ -8,18 +9,6 @@ class TasksController < ApplicationController
   def personal_tasks
     @personal_tasks = current_user.task.all
   end
-
-  # def apply
-  #     @task = Task.find(params[:id])
-  #     @active_applies  = Apply.where(:task_id => @task)
-      # if params(:id).present?
-      #   @apply_user = Apply.where(task_id: @task, user_id: params(:id))
-      #   @apply_user.state = ture
-      #   @active_applies  = @apply_user = Apply.where(task_id: @task, user_id: params(:id))
-      # else
-      #   redirect_to apply_task_path
-      # end
-  # end
 
   def new
     @task = Task.new
@@ -53,14 +42,36 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @task = Task.find(params[:id])
     @task.destroy
-    redirect_to tasks_path
+    redirect_to personal_tasks_tasks_path
+  end
+
+    #添加标签
+  def tag
+    if params[:tag].present?
+      @task = Task.where(id: params[:id]).first
+      @task.tag_list.add(params[:tag] ) 
+      @task.save
+    end
+     
+    respond_with @task
+  end
+
+  #删除标签
+  def remove
+    if params[:tag].present?
+      @task = Task.where(id: params[:id]).first
+      @task.tag_list.remove(params[:tag] ) 
+      @task.save
+    end
+    respond_with @task
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:name, :figure, :communicate, :coordination, :control, :decision, :p_figure, :p_communicate, :p_coordination, :p_control, :p_decision, :grade, :state, :deadline, :range, :user_id, :task_type_id, :tab, :coin, :describe, :goal, :extra, :place)
+    params.require(:task).permit(:tag_list, :name, :figure, :communicate, :coordination, :control, :decision, :p_figure, :p_communicate, :p_coordination, :p_control, :p_decision, :grade, :state, :deadline, :range, :user_id, :task_type_id, :tab, :coin, :describe, :goal, :extra, :place)
   end
   def set_user
     @user = current_user

@@ -22,13 +22,15 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
 # Use ActiveModel has_secure_password
+gem 'acts-as-taggable-on', '~> 3.4'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'china_sms'
 # Use Unicorn as the app server
 gem 'devise', '~> 3.4.1'
-# gem 'unicorn'
+
+gem 'unicorn'
+
 gem 'simple_form', '~> 3.1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

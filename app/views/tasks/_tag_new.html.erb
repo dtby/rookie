@@ -1,0 +1,34 @@
+<% if current_user.id == @task.user_id %>
+  <ul id="tagshow" class="tags">
+    <li><%=image_tag("tab.png",width:"21", class: 'icon')%><span>标签：</li>
+    <% @task.tag_list.each do |tag| %>
+      <li><a href="#"><%= tag %><%= link_to("x", remove_task_path(@task, tag: tag) ,class: 'close', remote: true, format: :js) %></a></li>
+    <% end %>
+
+    <div class="form-input-group input-group">
+      <input type="input" name="tags" id="addTag" value="" class="text-center tag-input" placeholder="请输入标签" >
+    </div>
+  </ul>
+<% else %>
+  <ul id="tagshow" class="tags">
+    <li><%=image_tag("tab.png",width:"21", class: 'icon')%><span>标签：</li>
+    <% @task.tag_list.each do |tag| %>
+      <li><a href="#"><%= tag %></a></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<script type="text/javascript">
+  $(function(){
+    //标签
+    $("#addTag").blur(function(){
+      if($(this).val() != ""){
+        $.ajax({
+          url: "<%= tag_task_path(@task)%>.js",
+          type: "post",
+          data: {tag: $(this).val()}
+        });
+      }
+    });
+  });
+</script>
