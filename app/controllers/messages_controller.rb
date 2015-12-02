@@ -10,6 +10,6 @@ class MessagesController < ApplicationController
 
   private
     def message_params
-      params.require(:message).permit(:mobile)
+      params.require(:message).permit(:phone)
     end
 end

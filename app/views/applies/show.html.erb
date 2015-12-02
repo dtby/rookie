@@ -11,7 +11,7 @@
       </div>
       <div class="col-xs-5 apply-discrib">
         <p><span><%= active_apply.user.nickname %></span></p>
-        <%= link_to "确认申请", apply_task_path(@task, active_apply), class: "btn btn-default apply-btn" %>
+        <%= link_to "确认申请", apply_path(@task, active_apply), method: :post, class: "btn btn-default apply-btn" %>
       </div>
       <div class="col-xs-4 apply-discrib text-center">
         <p class="match-word"><span>匹配度</span></p>

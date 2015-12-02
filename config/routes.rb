@@ -16,15 +16,15 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
-  
+
   resources :users
   resources :tasks do
     collection do
       get 'personal_tasks'
     end
-    member do
-      get 'apply'
-    end
+    # member do
+    #   get 'apply'
+    # end
   end
   resources :personal
   resources :pages, only: [:index, :show]

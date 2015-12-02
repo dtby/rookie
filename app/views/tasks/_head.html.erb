@@ -1,7 +1,7 @@
 <div class="head text-center">
   <%= head_title %>
   <% if current_user.id == @task.user_id %>
-    <%= link_to apply_task_path do %>
+    <%= link_to apply_path do %>
       <%= image_tag("head_add.png", width: 28) %>
     <% end %>
   <% end %>

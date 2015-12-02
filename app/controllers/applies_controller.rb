@@ -8,6 +8,8 @@ class AppliesController < ApplicationController
   end
 
   def show
+    @task = Task.find(params[:id])
+    @active_applies  = Apply.where(:task_id => @task)
   end
 
   def create
@@ -24,12 +26,7 @@ class AppliesController < ApplicationController
   end
 
   def update
-    if @apply.update(apply_params)
-      flash.now[:notice] = "更新成功"
-      redirect_to apply_path
-    else
-      render :update
-    end
+    
   end
 
   def destroy

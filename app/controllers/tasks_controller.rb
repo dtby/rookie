@@ -9,16 +9,17 @@ class TasksController < ApplicationController
     @personal_tasks = current_user.task.all
   end
 
-  def apply
-    # if params(:id).present?
-    #   Apply.update(:state => true)
-    #   @task = Task.find(params[:id])
-    #   @active_applies  = Apply.where(:task_id => @task).state_is_ture
-    # else
-      @task = Task.find(params[:id])
-      @active_applies  = Apply.where(:task_id => @task)
-    # end
-  end
+  # def apply
+  #     @task = Task.find(params[:id])
+  #     @active_applies  = Apply.where(:task_id => @task)
+      # if params(:id).present?
+      #   @apply_user = Apply.where(task_id: @task, user_id: params(:id))
+      #   @apply_user.state = ture
+      #   @active_applies  = @apply_user = Apply.where(task_id: @task, user_id: params(:id))
+      # else
+      #   redirect_to apply_task_path
+      # end
+  # end
 
   def new
     @task = Task.new

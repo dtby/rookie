@@ -36,34 +36,33 @@ class User < ActiveRecord::Base
   has_one :score, dependent: :destroy
   has_one :score_cache, dependent: :destroy
 
-  attr_accessor :login
-  # attr_accessor :message #短信验证码
-
+  validates :message, presence: true, on: :create
   # validates :mobile, presence: true, uniqueness: true, on: :create
   # validate :mobile_reg?, on: :create
-  #validates :nickname, presence: true, length: {minimum: 3, maximum: 50}
-  # validates :message, presence: true, on: :create
-  # validate :is_right_message?, if: "message.present?", on: :create
-  # validates :name, presence: true, on: :update
+  # validate :is_right_sms?, if: "sms.present?", on: :create
 
-  # def mobile_reg?
-  #   reg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/
-  #   if not mobile.match reg
-  #     errors.add(:mobile, :mobile_reg)
-  #   end
-  # end
+  attr_accessor :login
+  attr_accessor :message #短信验证码
 
-  # def is_right_message?
-  #   if ! Message.is_right_message? mobile, message
-  #     errors.add(:message, :message_error)
-  #   end
-  # end
   
   # 使用手机号登录
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     login = conditions.delete(:login)
     where(conditions).where(["phone = :value", { :value => login.strip }]).first
+  end
+
+  def mobile_reg?
+    reg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/
+    if not mobile.match reg
+      errors.add(:mobile, :mobile_reg)
+    end
+  end
+
+  def is_right_sms?
+    if ! Sms.is_right_sms? mobile, sms
+      errors.add(:message, :message_error)
+    end
   end
 
   #判断是否需要更新密码
