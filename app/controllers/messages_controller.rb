@@ -1,4 +1,4 @@
-# class MessagesController < ApplicationController
+# class MessagesController < BaseController
 #   respond_to :js, :json
 
 #   def create

@@ -1,5 +1,4 @@
-class ActivitiesController < ApplicationController
-  before_action :authenticate_user!
+class ActivitiesController < BaseController
   def my
     
   end

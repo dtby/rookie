@@ -1,5 +1,5 @@
-class AppliesController < ApplicationController
-  before_action :set_user
+class AppliesController < BaseController
+  
   def index
     @applies = current_user.apply.all
   end

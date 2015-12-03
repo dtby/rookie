@@ -1,4 +1,4 @@
-class TestsController < ApplicationController
+class TestsController < BaseController
 	respond_to :html, :js
 
 	before_action :import_session, only: [:new, :create, :update, :next]

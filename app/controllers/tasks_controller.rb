@@ -1,5 +1,5 @@
-class TasksController < ApplicationController
-  before_action :authenticate_user!
+class TasksController < BaseController
+  
   before_action :set_user
   respond_to :js, :json
   def index
