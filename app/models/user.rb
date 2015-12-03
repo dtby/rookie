@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
   has_many :task, dependent: :destroy
   has_many :apply, dependent: :destroy
-  has_one :score, dependent: :destroy
+  has_many :scores, dependent: :destroy
   has_one :score_cache, dependent: :destroy
 
   # validates :message, presence: true, on: :create
@@ -77,5 +77,44 @@ class User < ActiveRecord::Base
   # 不验证邮箱
   def email_required?
     false
+  end
+
+  # 测试：保存退出
+  def save_score(power, level, score, upgrade)
+    # {1=>:surface, 2=>:communicate, 3=>:decision, 4=>:cooperate, 5=>:control}
+    power_hash = Question.powers.invert.map { |key, value| [key, value.to_sym] }.to_h
+    user_score = (level - 1) * 3 + score.to_i
+    result = ''
+
+    User.transaction do
+      self.scores.last.update_columns(power_hash[power] => user_score)
+      # 达到升级条件后，根据当前能力和等级更新成绩
+      if upgrade.to_i == 1
+        if level == 3
+          # TODO power = 能力数
+          if power == 2
+            self.score_cache.update!(power: power + 1, level: level)
+            result = 'test_end'
+          else
+            self.score_cache.update!(power: power + 1, level: 1)
+            result = 'power_up'
+          end
+        else
+          self.score_cache.update!(power: power, level: level + 1)
+          result = 'level_up'
+        end
+      else
+        # TODO power = 能力数
+        if power == 2
+          self.score_cache.update!(power: power + 1, level: level)
+          result = 'test_end'
+        else
+          self.score_cache.update!(power: power + 1, level: 1)
+          result = 'power_up'
+        end
+      end
+    end
+
+    return result
   end
 end

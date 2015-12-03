@@ -1,0 +1,26 @@
+<div class="powers">
+	<div class="title">知识值</div>
+	<div id="js_powers" style="height: 300px"></div>
+
+	<div class="title">经验值</div>
+	<br>
+	<div class="clearfix">
+		<div class="col-xs-12">
+			<% Question::POWER.each do |power| %>
+				<div class="power-level">
+					<div class="power"><div><%= power[1] %>&nbsp;</div></div>
+					<div class="goal">
+						<div class="progress">
+						  <div class="progress-bar progress-bar-warning" 
+						  		 role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+						    <span class="sr-only">complete</span>
+						  </div>
+						</div>
+					</div>
+					<div class="level"><div>&nbsp;Lv6</div></div>
+				</div>
+			<% end %>	
+		</div>
+	</div>
+	<br><br>	
+</div>

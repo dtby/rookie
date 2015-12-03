@@ -2,13 +2,33 @@
 	<%= image_tag("logo2.png", height: 60) %>
 </div>
 
-<div class="result-content">
-	<h3 class="text-center">恭喜您完成<%= power(session[:power]) %><%= level(session[:level]) %>测试</h3>
-	<br>
-	<p>您的等级是 <span class="score"><%= params[:score] %></span>	，是否需要保存进度休息一下，还是继续答题？</p>
-</div>
+<!-- params[:power]存在说明已完成全部测试 -->
+<% if params[:status].present? %>
+	<div class="result-content">
+		<h3 class="text-center">恭喜您完成测试！</h3>
+		<br>
+		<p>为了保证用户的利益，所有在此平台接发包的用户请务必完成实名认证！</p>
+		<p>注：跳过将无法接受部分任务包的接包</p>
+	</div>
 
-<div class="test-btn">
-	<%= link_to("继续答题", next_level_tests_path, remote: true, format: :js, class: "btn btn-blue") %>
-	<%= link_to("保存退出", "#", class: "btn btn-white pull-right") %>
-</div>
+	<div class="test-btn">
+		<%= link_to("确定", "#", class: "btn btn-blue") %>
+		<%= link_to("跳过", user_path(current_user), class: "btn btn-white pull-right") %>
+	</div>
+<!-- 不存在说明是阶段测试 -->
+<% else %>
+	<div class="result-content">
+		<h3 class="text-center">恭喜您完成<%= power(session[:power]) %><%= level(session[:level]) %>测试！</h3>
+		<br>
+		<p>
+			您的等级是 
+			<span class="score"><%= "#{params[:score]} 阶" %></span>
+			<%= "或以上" if params[:upgrade] == 1 %>，
+			是否需要保存进度休息一下，还是继续答题？</p>
+	</div>
+
+	<div class="test-btn">
+		<%= link_to("继续答题", next_tests_path(score: params[:score], upgrade: params[:upgrade]), class: "btn btn-blue") %>
+		<%= link_to("保存退出", test_path(id: 1, score: params[:score], upgrade: params[:upgrade]), method: :put, class: "btn btn-white pull-right") %>
+	</div>
+<% end %>

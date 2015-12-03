@@ -1,0 +1,43 @@
+<%= render partial: "share/head", locals: { head_title: "个人信息" } %>
+
+<div class="user-head clearfix">
+	<div class="col-xs-3">
+		<%= image_tag("logo2.png", height: 60) %>
+	</div>
+	<div class="col-xs-9">
+		<p>&nbsp;&nbsp;姓名：<%= current_user.name %> <span class="text-warning">普通会员</span></p>
+		<p>&nbsp;&nbsp;编号：<%= current_user.number %></p>
+		<p>&nbsp;&nbsp;经验值：100/200</p>
+	</div>
+</div>
+
+<div class="user-tabs">
+  <!-- Nav tabs -->
+  <ul class="nav tab-ul" role="tablist">
+    <li role="presentation" class="left-none active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">个人信息</a></li>
+    <li role="presentation"><a href="#powers" id="powers_a" aria-controls="powers" role="tab" data-toggle="tab">五大能力</a></li>
+    <li role="presentation" class="right-none"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab">成长轨迹</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="info">
+			<%= render partial: "user_info" %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="powers">
+			<%= render partial: "powers" %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="groups">
+    	<%= render partial: "groups" %>
+    </div>
+  </div>
+</div>
+
+<!-- 五大能力图表 -->
+<script>
+	$("#powers_a").click(function(e){
+		 e.preventDefault()
+  	$(this).tab('show')
+		<%= render partial: "share/powers", locals: { id: "js_powers" } %>
+	})
+</script>

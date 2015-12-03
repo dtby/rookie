@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new
     super
     # 注册成功时，创建用户的成绩与成绩暂存记录
-    current_user.create_score
+    current_user.scores.create
     current_user.create_score_cache
   end
 

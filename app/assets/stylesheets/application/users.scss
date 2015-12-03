@@ -1,0 +1,120 @@
+@import "variables";
+
+.users__show{
+	.user-head{
+		height: 120px;
+		background-color: $head_bg;
+		padding: 30px 30px 0;
+		color: $color_white;
+		p{
+			margin-bottom: 0;
+		}
+	}
+	.user-tabs{
+		.tab-ul{
+			background-color: $tab-bg;
+			font-size: 18px;
+			> li{
+				display: table-cell;
+				width: 1%;
+				text-align: center;
+				padding: 8px 0;
+				a, a:hover{
+					border-left: 1px solid #9bd2fc;
+					border-right: 1px solid #42adfe;
+					padding: 0 !important;
+					padding: 8px 15px;
+					color: #333;
+				}
+			}
+			.active{
+					background-color: $tab-active;
+				a, a:hover{
+					border-left: 1px solid transparent;
+					border-right: 1px solid transparent;
+					background-color: $tab-active;
+					color: $color_white;
+				}
+			}
+			.left-none a, a:hover{
+				border-left: 1px solid transparent;
+			}
+			.right-none a, a:hover{
+				border-right: 1px solid transparent;
+			}
+		}
+		//个人信息
+		.user-info{
+			padding-top: 10px;
+			.generate-resume{
+				position: fixed;
+				left: 0;
+				bottom: 0px;
+				width: 100%;
+				padding: 0px 45px 15px;
+			}
+			.user-row{
+				height: 40px;
+				padding: 8px 30px 0 45px;
+				border-bottom: 1px solid #d4d4d4;
+				border-top: 1px solid #f4f4f4;
+			}
+			.top-none{
+				border-top: 1px solid transparent;
+			}
+			.bottom-none{
+				border-bottom: 1px solid transparent;
+			}
+			.user-btn{
+				padding: 2px 20px;
+			}
+			.pr-0{
+				padding-right: 0;
+			}
+		}
+		//五大能力
+		.powers{
+			padding: 0 15px;
+			.title{
+				height: 40px;
+				line-height: 39px;
+				border-bottom: 1px solid #ddd;
+				padding: 0 15px;
+				color: $tab-active;
+				margin-bottom: 10px;
+				font-size: 16px;
+			}
+			.power-level{
+				display: table-row;
+				width: 100%;
+				.goal{
+					display: table-cell;
+					padding: 0 0 30px;
+					.progress{
+						height: 15px;
+						margin-bottom: 0;
+						.progress-bar-warning{
+							background-color: #fbeb37;
+						}
+					}
+				}
+				.power, .level{
+					display: table-cell;
+					width: 1%;
+					div{
+						margin-top: -2px;
+						word-break:keep-all;           /* 不换行 */
+						white-space:nowrap;
+					}
+				}
+				.level{
+					font-size: 12px;
+				}
+			}
+		}
+		//成长轨迹
+		.groups{
+
+		}
+	}
+}

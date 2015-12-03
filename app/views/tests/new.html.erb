@@ -15,15 +15,26 @@
 			<div class="problem">
 				<p class="text-justify"><%= question.problem %></p>
 			</div>
-			<div class="answer">
+			<div class="answer row">
 				<!-- 答案选项 -->
 				<% [:a, :b, :c, :d, :e, :f].each_with_index do |option, index| %>
 					<% answer = question.option.send(option) %>
 					<% unless answer.nil? %>
-						<p>
-							<%= radio_button_tag("question#{question.id}", "#{index + 1}") %>&nbsp;
-							<label for="question<%= question.id %>_<%= index + 1%>"><%= option.to_s.upcase %>. <%= answer %></label>
-						</p>
+					 	<% if answer.last(4) == '.png' %>
+							<div class="col-xs-6">
+								<p>
+									<%= radio_button_tag("question#{question.id}", "#{index + 1}") %>&nbsp;
+									<label for="question<%= question.id %>_<%= index + 1%>"><%= option.to_s.upcase %>. <%= answer %></label>
+								</p>						
+							</div>
+						<% else %>
+							<div class="col-xs-12">
+								<p>
+									<%= radio_button_tag("question#{question.id}", "#{index + 1}") %>&nbsp;
+									<label for="question<%= question.id %>_<%= index + 1%>"><%= option.to_s.upcase %>. <%= answer %></label>
+								</p>
+							</div>
+						<% end %>
 					<% end %>
 				<% end %>
 			</div>

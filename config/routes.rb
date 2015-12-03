@@ -48,9 +48,7 @@ Rails.application.routes.draw do
   resources :tests do
     collection do
       get 'result'
-      get 'next_question'
-      get 'next_level'
-      get 'next_power'
+      get 'next'
     end
   end
 

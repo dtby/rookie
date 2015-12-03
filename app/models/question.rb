@@ -71,13 +71,13 @@ class Question < ActiveRecord::Base
 		# 计算段位
 		case score
 		when 1
-			[(level - 1) * 3 + 1, 0]
+			[1, 0]
 		when 2
-			[(level - 1) * 3 + 2, 0]
+			[2, 0]
 		when 3
-			[(level - 1) * 3 + 3, 0]
+			[3, 0]
 		when 4
-			[(level - 1) * 3 + 3, 1]
+			[3, 1]
 		end
 	end
 end
