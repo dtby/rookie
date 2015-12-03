@@ -15,7 +15,6 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require ./date/zepto.min
-//= require ./date/mobile-select-area
 //= require ./date/mobile-select-date
 //= require ./date/dialog
 //= require ./plugin/echarts/echarts
