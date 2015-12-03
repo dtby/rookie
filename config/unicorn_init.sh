@@ -15,12 +15,12 @@
 
     TIMEOUT=${TIMEOUT-60}
 
-    APP_ROOT=/Users/EndingJason/Documents/web D/rookie
+    APP_ROOT=/home/deploy/rookie
     #项目所在的详细路径（重点修改）
 
     PID=$APP_ROOT/tmp/pids/unicorn.pid
     CMD="cd $APP_ROOT; bundle exec unicorn_rails -D -c $APP_ROOT/config/unicorn.rb -E production"
-    AS_USER=EndingJason
+    AS_USER=deploy
     set -u
     OLD_PIN="$PID.oldbin"
 

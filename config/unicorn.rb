@@ -4,7 +4,7 @@ worker_processes 4 #数字大小看机器性能，能起多少服务就写几。
   working_directory app_root
   # Listen on fs socket for better performance
 
-  listen "/tmp/unicorn.sock", :backlog => 64
+  listen "/tmp/unicorn.rookie.sock", :backlog => 64
   #xxx.sock名字与上面nginx中sites_enable的default保持相同（重点修改）
 
   #listen 4201, :tcp_nopush => false
