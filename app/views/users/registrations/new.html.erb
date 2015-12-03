@@ -11,7 +11,7 @@
         <%#= f.input :message, wrapper: :inline_form , label: false %>
       </div>
       <div class="col-sm-5">
-        <%= link_to("获取验证码", "javascript:void(0);" , class: "btn btn-info devise-sms-btn", id: "getSmsBtn") %>
+        <%#= link_to("获取验证码", "javascript:void(0);" , class: "btn btn-info devise-sms-btn", id: "getSmsBtn") %>
       </div>
     </div> -->
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
