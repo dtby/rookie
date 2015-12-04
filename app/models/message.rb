@@ -35,23 +35,23 @@ class Message < ActiveRecord::Base
     # message_log.info "phone number: #{self.phone}"
     # message_log.info "code: #{self.code}"
 
-    # if msg["code"] == 0
-    #   #验证码发送成功则保存message
-    #   if self.save
-    #     message_log.info "send success"
-    #     send_message = true
-    #   else
-    #     message_log.info "message save Failure xxxxxxxxxxxxxxxxxxx"
-    #     message_log.info self.errors.to_s
-    #   end
-    # else
-    #   message_log.info "send Failure xxxxxxxxxxxxxxxxxxx"
-    #   send_message = false
-    # end 
+    if msg["code"] == 0
+      #验证码发送成功则保存message
+      if self.save
+        # message_log.info "send success"
+        send_message = true
+      else
+        # message_log.info "message save Failure xxxxxxxxxxxxxxxxxxx"
+        # message_log.info self.errors.to_s
+      end
+    else
+      # message_log.info "send Failure xxxxxxxxxxxxxxxxxxx"
+      send_message = false
+    end 
     # message_log.info msg.to_s
     # message_log.info "========send message end(#{Time.now}):========"
 
-    # send_message
+    send_message
   end
 
 
