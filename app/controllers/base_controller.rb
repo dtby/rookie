@@ -2,7 +2,7 @@ class BaseController < ApplicationController
   include ApplicationHelper
 
   before_action :weixin_global
-  # before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
 
   private

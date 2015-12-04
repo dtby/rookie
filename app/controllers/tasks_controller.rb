@@ -1,5 +1,4 @@
 class TasksController < BaseController
-  
   before_action :set_user
   respond_to :js, :json
   def index

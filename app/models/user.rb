@@ -36,13 +36,13 @@ class User < ActiveRecord::Base
   has_many :scores, dependent: :destroy
   has_one :score_cache, dependent: :destroy
 
-  # validates :message, presence: true, on: :create
-  # validates :mobile, presence: true, uniqueness: true, on: :create
-  # validate :mobile_reg?, on: :create
-  # validate :is_right_sms?, if: "sms.present?", on: :create
+  validates :message, presence: true, on: :create
+  validates :phone, presence: true, uniqueness: true, on: :create
+  validate :phone_reg?, on: :create
+  validate :is_right_sms?, if: "message.present?", on: :create
 
   attr_accessor :login
-  # attr_accessor :message #短信验证码
+  attr_accessor :message #短信验证码
 
   
   # 使用手机号登录
@@ -52,18 +52,18 @@ class User < ActiveRecord::Base
     where(conditions).where(["phone = :value", { :value => login.strip }]).first
   end
 
-  # def mobile_reg?
-  #   reg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/
-  #   if not mobile.match reg
-  #     errors.add(:mobile, :mobile_reg)
-  #   end
-  # end
+  def phone_reg?
+    reg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/
+    if not phone.match reg
+      errors.add(:phone, :phone_reg)
+    end
+  end
 
-  # def is_right_sms?
-  #   if ! Sms.is_right_sms? mobile, sms
-  #     errors.add(:message, :message_error)
-  #   end
-  # end
+  def is_right_sms?
+    if ! Message.is_right_sms? phone, message
+      errors.add(:message, :message_error)
+    end
+  end
 
   #判断是否需要更新密码
   # def update_judge(params)
