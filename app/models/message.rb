@@ -24,7 +24,7 @@ class Message < ActiveRecord::Base
     self.code = Message.rand_code 4
 
     #设置云片使用账号
-    ChinaSMS.use :yunpian, password: '52316cc0a8720e5c9f81b20bbaefd07b'
+    ChinaSMS.use :yunpian, password: 'a1b163c21980f071ca494def72634674'
 
     #发送短信验证码
     tpl_params = { code: self.code , company: '菜鸟烩' }
