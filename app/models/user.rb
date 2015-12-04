@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   has_one :score_cache, dependent: :destroy
 
   validates :message, presence: true, on: :create
-  validates :phone, presence: true, uniqueness: true, on: :create
+  validates :login, presence: true, uniqueness: true, on: :create
   validate :phone_reg?, on: :create
   validate :is_right_sms?, if: "message.present?", on: :create
 
@@ -54,13 +54,13 @@ class User < ActiveRecord::Base
 
   def phone_reg?
     reg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/
-    if not phone.match reg
-      errors.add(:phone, :phone_reg)
+    if not login.match reg
+      errors.add(:login, :phone_reg)
     end
   end
 
   def is_right_sms?
-    if ! Message.is_right_sms? phone, message
+    if ! Message.is_right_sms? login, message
       errors.add(:message, :message_error)
     end
   end

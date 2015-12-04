@@ -28,11 +28,11 @@ class Message < ActiveRecord::Base
 
     #发送短信验证码
     tpl_params = { code: self.code , company: '菜鸟烩' }
-    msg = ChinaSMS.to self.phone , tpl_params, tpl_id: 2
-    # msg = ChinaSMS.to self.phone , tpl_params, tpl_id: 1
+    msg = ChinaSMS.to self.login , tpl_params, tpl_id: 2
+    # msg = ChinaSMS.to self.login , tpl_params, tpl_id: 1
 
     #log记录发送的信息
-    message_log.info "phone number: #{self.phone}"
+    message_log.info "login number: #{self.login}"
     message_log.info "code: #{self.code}"
 
     if msg["code"] == 0
@@ -67,8 +67,8 @@ class Message < ActiveRecord::Base
 
   #确认短信验证码是正确并有效
   #短信有效时间：30分钟
-  def self.is_right_message? phone, code
+  def self.is_right_message? login, code
     return true if code == "999999"
-    message.where("phone = ? and code = ? and updated_at >= ?", phone, code, (Time.at Time.now - 30*60) ).first
+    Message.where("login = ? and code = ? and updated_at >= ?", login, code, (Time.at Time.now - 30*60) ).first
   end
 end

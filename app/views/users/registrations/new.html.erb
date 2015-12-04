@@ -4,8 +4,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%#= f.input :email, required: true, class: "form-control", placeholder: "邮箱" %>
-    <%= f.text_field :login, autofocus: true, class: "form-control input-login", placeholder: "手机号", autofocus: true %>
+    <%= f.input :email, required: true, class: "form-control", placeholder: "邮箱", label: false %>
+    <%= f.input :login, autofocus: true, class: "form-control input-login", placeholder: "手机号", label: false %>
     <div class="row">
       <div class="col-sm-7">
         <%= f.input :message, wrapper: :inline_form , placeholder: "验证码", label: false %>
@@ -37,9 +37,9 @@
         alert("请输入正确的手机号");
       }else{
         $.ajax({
-          url: "<%= messages_path %>.js",
           type: "POST",
-          data: "message[Phone]=" + $("#user_login").val()
+          url: "<%= messages_path %>.js",
+          data: "message[Login]=" + $("#user_login").val()
         });
       }
     });
