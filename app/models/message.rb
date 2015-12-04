@@ -27,8 +27,8 @@ class Message < ActiveRecord::Base
     ChinaSMS.use :yunpian, password: 'a1b163c21980f071ca494def72634674'
 
     #发送短信验证码
-    tpl_params = { code: self.code , company: '菜鸟烩' }
-    msg = ChinaSMS.to self.phone , tpl_params, tpl_id: 2
+    tpl_params = { code: self.code , company: '菜鸟烩', app: '菜鸟烩' }
+    msg = ChinaSMS.to self.phone , tpl_params, tpl_id: 5
     # msg = ChinaSMS.to self.phone , tpl_params, tpl_id: 1
 
     # #log记录发送的信息
