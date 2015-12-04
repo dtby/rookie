@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'acts-as-taggable-on', '~> 3.4'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'china_sms'
+
+gem 'logger', '~> 1.2.8'
 # Use Unicorn as the app server
 gem 'devise', '~> 3.4.1'
 
