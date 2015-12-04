@@ -3,12 +3,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    super
-    # 注册成功时，创建用户的成绩与成绩暂存记录
-    current_user.scores.create
-    current_user.create_score_cache
-  end
+  # def new
+  #   super
+  #   # 注册成功时，创建用户的成绩与成绩暂存记录
+  #   current_user.scores.create
+  #   current_user.create_score_cache
+  # end
 
   # POST /resource
   # def create

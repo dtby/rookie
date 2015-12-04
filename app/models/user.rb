@@ -37,30 +37,30 @@ class User < ActiveRecord::Base
   has_one :score_cache, dependent: :destroy
 
   validates :message, presence: true, on: :create
-  validates :login, presence: true, uniqueness: true, on: :create
+  validates :phone, presence: true, uniqueness: true, on: :create
   validate :phone_reg?, on: :create
   validate :is_right_sms?, if: "message.present?", on: :create
 
-  attr_accessor :login
+  # attr_accessor :login
   attr_accessor :message #短信验证码
 
   
   # 使用手机号登录
-  def self.find_for_database_authentication(warden_conditions)
-    conditions = warden_conditions.dup
-    login = conditions.delete(:login)
-    where(conditions).where(["phone = :value", { :value => login.strip }]).first
-  end
+  # def self.find_for_database_authentication(warden_conditions)
+  #   conditions = warden_conditions.dup
+  #   login = conditions.delete(:login)
+  #   where(conditions).where(["phone = :value", { :value => login.strip }]).first
+  # end
 
   def phone_reg?
     reg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/
-    if not login.match reg
-      errors.add(:login, :phone_reg)
+    if not phone.match reg
+      errors.add(:phone, :phone_reg)
     end
   end
 
   def is_right_sms?
-    if ! Message.is_right_sms? login, message
+    if ! Message.is_right_sms? phone, message
       errors.add(:message, :message_error)
     end
   end
