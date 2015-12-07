@@ -38,15 +38,21 @@ class Task < ActiveRecord::Base
   belongs_to :task_type
   has_many :apply, dependent: :destroy
 
-  enum grade: { 'A': '1', 'B': '2', 'C': '3', 'D': '4' }
-  enum place: { '上海': '1', '安徽': '2', '珠海': '3', '北京': '4' }
+  enum grade: { 
+    a: 1, 
+    b: 2, 
+    c: 3, 
+    d: 4 
+  }
+  GRADE = {a: '等级一', b: '等级二', c: '等级三', d: '等级四' }
+
   POWER = { surface: :p_figure, communicate: :p_communicate, decision: :p_decision, cooperate: :p_coordination, control: :p_control }
 
   enum degree: {
-    master: '1',
-    university: '2',
-    vocation: '3',
-    other: '4'
+    master: 1,
+    university: 2,
+    vocation: 3,
+    other: 4
   }
   DEGREE = { master: '研究生', university: '本科', vocation: '高职', other: '其他' }
 

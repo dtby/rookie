@@ -7,7 +7,7 @@
       </div>
       <div class="col-xs-10 col-xs-offset-2 task-tabshow">
         <p><%=image_tag("time.png",width:"21", class: 'icon')%><span>截止时间：<%= @task.deadline %></span></p>
-        <p><%=image_tag("map.png",width:"22", class: 'icon')%><span>任务地点：<%= @task.c %></span>
+        <p><%=image_tag("map.png",width:"22", class: 'icon')%><span>任务地点：<%= truncate(ChinaCity.get(@task.p)) %><%= truncate(ChinaCity.get(@task.c)) %></span>
         </p>
         <p><%= render partial: "tag_new" %></p>
       </div>
@@ -18,22 +18,22 @@
         <%=image_tag("gift.png",width:"21", class: 'icon')%><span>任务奖励</span>
       </div>
       <div class="col-xs-4">
-        <%=image_tag("5_03.png", width:"70%")%><p>120EXP</p>
+        <%=image_tag("5_03.png", width:"70%")%><p><%= step_g(@task.grade) %>EXP</p>
       </div>
       <div class="col-xs-4">
-        <%=image_tag("5_05.png", width:"70%")%><p>120EXP</p>
+        <%=image_tag("5_05.png", width:"70%")%><p><%= step_g(@task.grade) %>EXP</p>
       </div>
       <div class="col-xs-4">
-        <%=image_tag("5_07.png", width:"70%")%><p>120EXP</p>
+        <%=image_tag("5_07.png", width:"70%")%><p><%= step_g(@task.grade) %>EXP</p>
       </div>
       <div class="col-xs-4">
-        <%=image_tag("5_13.png", width:"70%")%><p>120EXP</p>
+        <%=image_tag("5_13.png", width:"70%")%><p><%= step_g(@task.grade) %>EXP</p>
       </div>
       <div class="col-xs-4">
-        <%=image_tag("5_15.png", width:"70%")%><p>120EXP</p>
+        <%=image_tag("5_15.png", width:"70%")%><p><%= step_g(@task.grade) %>EXP</p>
       </div>
       <div class="col-xs-4">
-        <%=image_tag("5_17.png", width:"70%")%>2000
+        <%=image_tag("5_17.png", width:"70%")%><%= coin(@task.grade) %>
       </div>
     </div>
     <hr class="line">

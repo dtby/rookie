@@ -25,7 +25,8 @@
           <span><%=image_tag("tasknew_09.png",width:"24", class: 'iconnew')%></span>
         </div>
         <div class="col-xs-11">
-          <%= f.input :grade, placeholder: '任务包等级', collection: Task.grades, prompt: "任务包等级"%>
+          <%= f.input :grade, placeholder: '任务包等级', collection: Task::GRADE.invert, prompt: "任务包等级", label: false %>
+          <%#= f.input :grade, placeholder: '任务包等级', collection: Task.grades, prompt: "任务包等级"%>
         </div>
       </div>
 
@@ -156,13 +157,15 @@
 <% end %>
 
 <script type="text/javascript">
+//时间选择器实现代码
   var selectDate = new MobileSelectDate();
   selectDate.init({trigger:'#task_deadline', min:'2015/01/01', max:'2050/12/30'});
 
-function onChangeSum(){
-  p = $("#p  option:selected").val();
-  $("#task_p").val(p);
-  c = $("#c  option:selected").val();
-  $("#task_c").val(c);
-};
+//地区选择器存取数据
+  function onChangeSum(){
+    p = $("#p  option:selected").val();
+    $("#task_p").val(p);
+    c = $("#c  option:selected").val();
+    $("#task_c").val(c);
+  };
 </script>
