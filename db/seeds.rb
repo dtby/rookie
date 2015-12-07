@@ -70,12 +70,6 @@ begin
 	Option.create(id: 23, question_id: 23, a: "答案a", b: "答案b", c: "答案c", d: "答案d")
 	Option.create(id: 24, question_id: 24, a: "答案a", b: "答案b", c: "答案c", d: "答案d")
 
-User.delete_all
-	User.create(:id => 1, :number => "0038485", :nickname => "Ending", :phone => "13800000000", :email => "rookie@example.com", :password => "12345678")
-	User.create(:id => 2, :number => "0038485", :nickname => "Ending1", :phone => "13800000001", :email => "rookie@example1.com", :password => "12345678")
-	User.create(:id => 3, :number => "0038485", :nickname => "Ending2", :phone => "13800000002", :email => "rookie@example2.com", :password => "12345678")
-	User.create(:id => 4, :number => "0038485", :nickname => "Ending3", :phone => "13800000003", :email => "rookie@example3.com", :password => "12345678")
-
 rescue Exception => e
 	p e.message
 end
