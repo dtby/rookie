@@ -10,6 +10,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  answer     :integer
+#  kind       :integer
 #
 
 require 'test_helper'

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>菜鸟烩－后台管理系统</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag ".ico" %>
+</head>
+<body>
+
+<div id="wrapper">
+  <%= render 'admin/share/left_nav'%>
+  <div id="page-wrapper" class="gray-bg">
+    <%= render 'admin/share/header'%>
+    <div class="wrapper wrapper-content">
+
+			<%= yield %>
+			
+    </div>
+    <%= render 'admin/share/footer'%>
+  </div>
+</div>
+
+</body>
+</html>

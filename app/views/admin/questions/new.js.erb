@@ -1,0 +1,3 @@
+$(".modal-backdrop").remove();
+$("#testsModal").html("<%= escape_javascript( render partial: 'admin/share/modal', locals: { title: '手动添加试题' } )%>");
+$('#global_modal').modal('show');

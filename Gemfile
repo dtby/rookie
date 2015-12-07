@@ -39,9 +39,17 @@ gem 'simple_form', '~> 3.1.0'
 
 gem 'bootstrap-sass'
 
+# 分页
+gem 'kaminari'
+
 #微信开发相关
 gem 'weixin_rails_middleware'
 gem 'weixin_authorize'
+
+# 导入功能
+gem "spreadsheet"
+gem 'roo', '~> 2.1.0'
+gem 'roo-xls'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

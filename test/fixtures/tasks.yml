@@ -16,7 +16,6 @@
 #  grade          :integer
 #  name           :string(255)
 #  state          :integer
-#  deadline       :datetime
 #  range          :integer
 #  coin           :integer
 #  describe       :text(65535)
@@ -28,6 +27,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  tab            :string(255)
+#  deadline       :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

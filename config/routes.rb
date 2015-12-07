@@ -1,23 +1,20 @@
 Rails.application.routes.draw do
   mount WeixinRailsMiddleware::Engine, at: "/"
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  root 'tasks#personal_tasks'
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  resources :messages, only: [:create]
-  
-  resources :applies
-  
+  # 前台用户登录
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
 
+  # 前台主页
+  root 'tasks#personal_tasks'
+
+  resources :messages, only: [:create]
+  
+  resources :applies
+
   resources :users
+
   resources :tasks do
     collection do
       get 'personal_tasks'
@@ -27,7 +24,9 @@ Rails.application.routes.draw do
       get :remove
     end
   end
+
   resources :personal
+
   resources :pages, only: [:index, :show]
 
   resources :attention do
@@ -58,6 +57,17 @@ Rails.application.routes.draw do
       get 'my'
       get 'official'
       get 'else'
+    end
+  end
+
+  #后台管理
+  namespace :admin do
+    root 'home#index'
+    resources :questions do
+      collection do
+        get 'import'
+        post 'import_create'
+      end
     end
   end
 

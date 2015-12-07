@@ -26,4 +26,22 @@ module TestsHelper
 			'高级'
 		end
 	end
+
+	# 答案
+	def answer(answer)
+		case answer
+		when 1
+			'A'
+		when 2
+			'B'
+		when 3
+			'C'
+		when 4
+			'D'
+		when 5
+			'E'
+		when 6
+			'F'
+		end
+	end
 end
