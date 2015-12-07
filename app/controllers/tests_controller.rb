@@ -51,5 +51,9 @@ class TestsController < BaseController
 			@level = session[:level]
 		end
 
-		# 获取用户的成绩缓存
+		# 获取用户上一次的成绩并存入session
+		def get_last_score
+			session[:power] = current_user.score_cache.power
+			session[:level] = current_user.score_cache.level
+		end
 end
