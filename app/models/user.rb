@@ -117,4 +117,13 @@ class User < ActiveRecord::Base
 
     return result
   end
+
+  # 用户的五大能力得分
+  def power_scores
+    cache = []
+    Question::powers.keys.each do |power|
+      cache.push self.scores.last.send(power)
+    end
+    return cache
+  end
 end

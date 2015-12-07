@@ -20,33 +20,26 @@ require(
         orient : 'vertical',
         x : 'right',
         y : 'top',
-        data:['要求能力','我的能力']
+        data:<%= raw legend_data %>
       },
       polar : [
         {
          indicator : [
-           { text: '形象力', max: 6000},
-           { text: '决策力', max: 16000},
-           { text: '协作力', max: 30000},
-           { text: '控制力', max: 38000},
-           { text: '沟通力', max: 52000},
+          <% Question::POWER.values.each do |power| %>
+           { text: '<%= power %>', max: 9},
+          <% end %>
           ]
         }
       ],
       calculable : true,
       series : [
         {
-          name: '要求能力 vs 我的能力',
+          name: '<%= legend_data[0] %> vs <%= legend_data[1] %>',
           type: 'radar',
           data : [
-            {
-              value : [4300, 10000, 28000, 35000, 50000],
-              name : '要求能力'
-            },
-            {
-              value : [5000, 14000, 28000, 31000, 42000],
-              name : '我的能力'
-            }
+            <% series_data.each do |serie| %>
+              {value : <%= raw serie[1] %>, name: '<%= serie[0] %>'},
+            <% end %>
           ]
         }
       ]

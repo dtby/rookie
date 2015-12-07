@@ -5,7 +5,7 @@
 		<%= image_tag("logo2.png", height: 60) %>
 	</div>
 	<div class="col-xs-9">
-		<p>&nbsp;&nbsp;姓名：<%= current_user.name %> <span class="text-warning">普通会员</span></p>
+		<p>&nbsp;&nbsp;姓名：<%= current_user.name %>&nbsp;&nbsp;<span class="club-style">普通会员</span></p>
 		<p>&nbsp;&nbsp;编号：<%= current_user.number %></p>
 		<p>&nbsp;&nbsp;经验值：100/200</p>
 	</div>
@@ -36,8 +36,12 @@
 <!-- 五大能力图表 -->
 <script>
 	$("#powers_a").click(function(e){
-		 e.preventDefault()
+		e.preventDefault()
   	$(this).tab('show')
-		<%= render partial: "share/powers", locals: { id: "js_powers" } %>
+		<%= render partial: "share/powers", locals: { id: "js_powers", 
+                                                  legend_data: ['我的能力'],
+                                                  series_data: [
+                                                    ['我的能力', current_user.power_scores],
+                                                  ] } %>
 	})
 </script>

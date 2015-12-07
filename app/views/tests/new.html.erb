@@ -20,6 +20,8 @@
 				<% [:a, :b, :c, :d, :e, :f].each_with_index do |option, index| %>
 					<% answer = question.option.send(option) %>
 					<% unless answer.nil? %>
+					
+						<!-- 图片模板 -->
 					 	<% if answer.last(4) == '.png' %>
 							<div class="col-xs-6">
 								<p>
@@ -27,6 +29,7 @@
 									<label for="question<%= question.id %>_<%= index + 1%>"><%= option.to_s.upcase %>. <%= answer %></label>
 								</p>						
 							</div>
+						<!-- 文字题模板 -->
 						<% else %>
 							<div class="col-xs-12">
 								<p>
@@ -35,6 +38,7 @@
 								</p>
 							</div>
 						<% end %>
+
 					<% end %>
 				<% end %>
 			</div>

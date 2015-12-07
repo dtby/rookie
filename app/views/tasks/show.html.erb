@@ -59,5 +59,10 @@
 </div>
 
 <script>
-  <%= render partial: "share/powers", locals: { id: "main" } %>
+  <%= render partial: "share/powers", locals: { id: "main", 
+                                              legend_data: ['我的能力', '要求能力'],
+                                              series_data: [
+                                                ['我的能力', current_user.power_scores],
+                                                ['要求能力', @task.require]
+                                              ] } %>
 </script>

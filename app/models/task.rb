@@ -40,6 +40,7 @@ class Task < ActiveRecord::Base
 
   enum grade: { 'A': '1', 'B': '2', 'C': '3', 'D': '4' }
   enum place: { '上海': '1', '安徽': '2', '珠海': '3', '北京': '4' }
+  POWER = { surface: :p_figure, communicate: :p_communicate, decision: :p_decision, cooperate: :p_coordination, control: :p_control }
 
   enum degree: {
     master: '1',
@@ -48,4 +49,13 @@ class Task < ActiveRecord::Base
     other: '4'
   }
   DEGREE = { master: '研究生', university: '本科', vocation: '高职', other: '其他' }
+
+  # 取得任务的要求能力
+  def require
+    cache = []
+    Question::POWER.keys.each do |power|
+      cache.push self.send(Task::POWER[power])
+    end
+    return cache
+  end
 end
