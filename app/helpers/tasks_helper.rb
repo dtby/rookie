@@ -9,6 +9,8 @@ module TasksHelper
       '300'
     when 'd'
       '400'
+    when 'e'
+      '500'
     end
   end
 
@@ -22,6 +24,8 @@ module TasksHelper
       '3000'
     when 'd'
       '4000'
+    when 'e'
+      '5000'
     end
   end
 end

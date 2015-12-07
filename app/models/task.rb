@@ -42,9 +42,10 @@ class Task < ActiveRecord::Base
     a: 1, 
     b: 2, 
     c: 3, 
-    d: 4 
+    d: 4,
+    e: 5
   }
-  GRADE = {a: '等级一', b: '等级二', c: '等级三', d: '等级四' }
+  GRADE = {a: '等级一', b: '等级二', c: '等级三', d: '等级四', e: '等级五' }
 
   POWER = { surface: :p_figure, communicate: :p_communicate, decision: :p_decision, cooperate: :p_coordination, control: :p_control }
 

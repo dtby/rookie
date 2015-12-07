@@ -133,9 +133,7 @@ class User < ActiveRecord::Base
 
   private
   def create_score_and_score_cache
-    if self.present?
       self.create_score_cache
       self.scores.create
-    end
   end
 end
