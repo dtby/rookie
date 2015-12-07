@@ -1,4 +1,5 @@
 <div class="container-fluid">
+
   <div class="row">
     <div class="col-xs-12 personal_bg">
       <div class="row text-center">
@@ -7,10 +8,12 @@
       </div>
     </div>
   </div>
+
   <div class="row">
     <div class="label-text">
       <input type="text" class="form-control label-input" placeholder="昵称">
     </div>
+
     <div class="dropdown label-text">
       <button class="btn btn-lg btn-block btn-default dropdown-toggle label-btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         <span class="pull-left" >性别</span>
@@ -21,13 +24,21 @@
         <li class="text-center"><a href="#">女</a></li>
       </ul>
     </div>
+
+    <div class='label-text city-group'>
+      <%= select_tag "p", options_for_select(ChinaCity.list) , prompt: '--省份--', class: ['city-select city-tag'] %>
+      <%= select_tag "c", options_for_select([]), prompt: '--城市--', class: ['city-select city-tag'] %>
+      <%= select_tag "a", options_for_select([]), prompt: '--地区--', class: ['city-select city-tag'] %>
+    </div>
+
     <div class="label-text">
       <input type="text" class="form-control label-input" placeholder="年龄">
     </div>
+
     <div class="label-text">
       <input type="text" id="txt_date" class="label-date" placeholder="生日"/>
-      <!-- <input type="month" id="date" class="form-control label-input" placeholder="生日" /> -->
     </div>
+
     <div class="dropdown label-text">
       <button class="btn btn-lg btn-block btn-default dropdown-toggle label-btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         <span class="pull-left">星座</span>
@@ -38,6 +49,7 @@
         <li class="text-center"><a href="#">处女座♍️</a></li>
       </ul>
     </div>
+
     <div class="dropdown label-text">
       <button class="btn btn-lg btn-block btn-default dropdown-toggle label-btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         <span class="pull-left">民族</span>
@@ -48,23 +60,16 @@
         <li class="text-center"><a href="#">羌族</a></li>
       </ul>
     </div>
+
     <div class="label-text">
       <input type="text" class="form-control label-input" placeholder="籍贯">
     </div>
+
     <div class="label-text">
       <input type="text" id="txt_area" class="label-date pull-left" placeholder="现居地"  data-value="12,124,3269" readonly="readonly">
       <input type="hidden" id="hd_area" value="12,124,3269">
     </div>
-    <!-- <div class="dropdown label-text">
-      <button class="btn btn-lg btn-block btn-default dropdown-toggle label-btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        <span class="pull-left">现居地</span>
-        <span class="pull-right"><span class="caret"></span></span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li class="text-center"><a href="#">上海</a></li>
-        <li class="text-center"><a href="#">珠海</a></li>
-      </ul>
-    </div> -->
+    
     <div class="col-xs-12 input-a">
       <%= link_to "提交信息", pages_path, class: "btn btn-primary btn-lg btn-block btn-login" %>
     </div>
@@ -121,8 +126,7 @@
 <script type="text/javascript">
   var selectDate = new MobileSelectDate();
   selectDate.init({trigger:'#txt_date', min:'1950/01/01'});
-
-  var selectArea = new MobileSelectArea();
-  selectArea.init({trigger:'#txt_area',value:$('#hd_area').val(),data:'data.json',eventName:'tap'});
+  // var selectArea = new MobileSelectArea();
+  // selectArea.init({trigger:'#txt_area',value:$('#hd_area').val(),data:'data.json',eventName:'tap'});
     
 </script>

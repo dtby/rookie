@@ -10,8 +10,8 @@
     <%= link_to  task_path(task) do |i| %>
       <div class="row interest-content">
         <div class="col-xs-3 interest-name">
-          <p><strong><%= task.name %></strong></p>
-          <p class="interest-person"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= task.user.nickname %></p>
+          <p><strong><%= truncate(task.name,length: 7) %></strong></p>
+          <p class="interest-person"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= truncate(task.user.nickname,length: 7) %></p>
         </div>
         <div class="col-xs-6 interest-grade">
           <p>等级:
@@ -21,7 +21,7 @@
             <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
             <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
           </p>
-          <p class="interest-time"><span><%=image_tag("time.png",width:"24", class: 'icon')%><%= task.deadline %></span><span class="interest-map"><%=image_tag("map.png",width:"26", class: 'icon')%><%= task.place %></span>
+          <p class="interest-time"><span><%=image_tag("time.png",width:"24", class: 'icon')%><%= task.deadline %></span><span class="interest-map"><%=image_tag("map.png",width:"26", class: 'icon')%><%= truncate(ChinaCity.get(task.c),length: 4) %></span>
           </p>
         </div>
         <div class="col-xs-3 text-center">

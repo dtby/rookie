@@ -55,6 +55,9 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    china_city (0.0.4)
+      jquery-rails
+      rails (>= 3.1.0)
     china_sms (0.0.7)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -224,6 +227,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
   bootstrap-sass
   byebug
+  china_city
   china_sms
   coffee-rails (~> 4.1.0)
   devise (~> 3.4.1)

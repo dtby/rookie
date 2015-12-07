@@ -16,15 +16,19 @@
     box-shadow: none;
   }
   .form-control {
+    background-color: #fff;
     box-shadow: none;
   }
   .task-text {
     height: 80px;
   }
+  .address {
+    padding-left: 10px;
+  }
 }
 .line {
   border: 1px solid #CFCFCF;
-  margin: 5px 8px 10px 8px;
+  margin: 5px 6px 10px 6px;
 }
 .tag-show {
   span {

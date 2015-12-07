@@ -16,6 +16,7 @@
 //= require bootstrap-sprockets
 //= require ./date/zepto.min
 //= require ./date/mobile-select-date
+//= require china_city/jquery.china_city
 //= require ./date/dialog
 //= require ./plugin/echarts/echarts
 //= require_tree ./plugin/echarts/chart

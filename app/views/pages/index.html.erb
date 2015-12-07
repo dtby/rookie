@@ -18,26 +18,44 @@
 	</div>
 	<div class="row">
 		<ul>
-			<li><a href="#"><%=image_tag("pages_resume.png")%>我的简历<span class="pull-right mygt mygt">&gt;</span></a></li>
-			<hr class="divide">
-			<li><a href="#"><%=image_tag("pages_attention.png")%>我的关注<span class="pull-right mygt">&gt;</span></a></li>
-			<hr class="divide">
-			<li><a href="#"><%=image_tag("pages_read.png")%>我的订阅<span class="pull-right mygt">&gt;</span></a></li>
-			<hr class="divide">
-			<li><a href="#"><%=image_tag("pages_send.png")%>投递反馈
-				<span class="pull-right mygt"><span class="badge"id="badge">1</span>&gt;</span></a>
-			</li>
-			<hr class="divide">
-			<li><a href="#"><%=image_tag("pages_interest.png")%>感兴趣的任务
-				<span class="pull-right mygt"><span class="badge"id="badge">1</span>&gt;</span></a>
-			</li>
-			<hr class="divide">
-			<li><a href="#"><%=image_tag("pages_activity.png")%>我的活动
-				<span class="pull-right mygt"><span class="badge"id="badge">2</span>&gt;</span></a>
+			<li>
+				<%=link_to "#" do |i| %>
+					<%=image_tag("pages_resume.png")%>我的简历<span class="pull-right mygt mygt">&gt;</span>
+				<% end %>
 			</li>
 			<hr class="divide">
 			<li>
-				<%= link_to user_tasks_path do %>
+				<%=link_to focus_attention_index_path do |i| %>
+					<%=image_tag("pages_attention.png")%>我的关注<span class="pull-right mygt">&gt;</span>
+				<% end %>
+			</li>
+			<hr class="divide">
+			<li>
+				<%=link_to subscription_attention_index_path do |i| %>
+					<%=image_tag("pages_read.png")%>我的订阅<span class="pull-right mygt">&gt;</span>
+				<% end %>
+			</li>
+			<hr class="divide">
+			<li>
+				<%=link_to feedback_attention_index_path do |i| %>
+					<%=image_tag("pages_send.png")%>投递反馈<span class="pull-right mygt"><span class="badge"id="badge">1</span>&gt;</span>
+				<% end %>
+			</li>
+			<hr class="divide">
+			<li>
+				<%=link_to interest_attention_index_path do |i| %>
+					<%=image_tag("pages_interest.png")%>感兴趣的任务<span class="pull-right mygt"><span class="badge"id="badge">1</span>&gt;</span>
+				<% end %>
+			</li>
+			<hr class="divide">
+			<li>
+				<%=link_to applies_path do |i| %>
+					<%=image_tag("pages_activity.png")%>我的活动<span class="pull-right mygt"><span class="badge"id="badge">2</span>&gt;</span>
+				<% end %>
+			</li>
+			<hr class="divide">
+			<li>
+				<%=link_to personal_tasks_tasks_path do %>
 					<%=image_tag("pages_task.png")%>我发布的任务<span class="pull-right mygt">&gt;</span>
 				<% end %>
 			</li>

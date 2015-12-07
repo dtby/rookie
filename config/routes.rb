@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
   mount WeixinRailsMiddleware::Engine, at: "/"
+  mount ChinaCity::Engine => '/china_city'
 
   # 前台用户登录
   devise_for :users, controllers: {
-    sessions: 'users/sessions'
+    sessions: 'users/sessions';
+    registrations: 'users/registrations'
   }
 
-  # 前台主页
-  root 'tasks#personal_tasks'
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
+
+  # You can have the root of your site routed with "root"
+  root 'pages#index'
+  # Example of regular route:
+  #   get 'products/:id' => 'catalog#view'
 
   resources :messages, only: [:create]
   

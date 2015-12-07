@@ -10,8 +10,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema.define(version: 20151204054246) do
+ActiveRecord::Schema.define(version: 20151207063204) do
 
   create_table "applies", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -199,6 +198,9 @@ ActiveRecord::Schema.define(version: 20151204054246) do
     t.datetime "updated_at",                   null: false
     t.string   "tab",            limit: 255
     t.string   "deadline",       limit: 255
+    t.string   "p",              limit: 255
+    t.string   "c",              limit: 255
+    t.string   "a",              limit: 255
   end
 
   add_index "tasks", ["task_type_id"], name: "index_tasks_on_task_type_id", using: :btree

@@ -7,7 +7,7 @@
       </div>
       <div class="col-xs-10 col-xs-offset-2 task-tabshow">
         <p><%=image_tag("time.png",width:"21", class: 'icon')%><span>截止时间：<%= @task.deadline %></span></p>
-        <p><%=image_tag("map.png",width:"22", class: 'icon')%><span>任务地点：<%= @task.place %></span>
+        <p><%=image_tag("map.png",width:"22", class: 'icon')%><span>任务地点：<%= @task.c %></span>
         </p>
         <p><%= render partial: "tag_new" %></p>
       </div>
