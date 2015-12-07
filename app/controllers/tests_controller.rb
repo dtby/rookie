@@ -42,7 +42,6 @@ class TestsController < BaseController
 
 	# 测试成绩
 	def result
-
 	end
 
 	private
@@ -51,4 +50,6 @@ class TestsController < BaseController
 			@power = session[:power]
 			@level = session[:level]
 		end
+
+		# 获取用户的成绩缓存
 end

@@ -20,7 +20,7 @@ class Question < ActiveRecord::Base
 
 	# 试题所属等级
 	enum level: { low: 1, middle: 2, high: 3 }
-	LEVEL = { low: '初级', middle: '中级', high: '高级' }
+	LEVEL = { low: '初阶题', middle: '中阶题', high: '高阶题' }
 
 	# 试题所属能力
 	enum power: { surface: 1, communicate: 2, decision: 3, cooperate: 4, control: 5 }
