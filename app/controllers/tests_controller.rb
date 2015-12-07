@@ -1,13 +1,15 @@
 class TestsController < BaseController
 	respond_to :html, :js
 
+	before_action :get_last_score, only: [:new]
 	before_action :import_session, only: [:new, :create, :update, :next]
 
 	# 进入测试为用户的等级与能力级别
 	def new
 		# 取出测试题，参数 (能力，等级)
-		if @power <= 2
-			@questions = Question.select_questions(@power, @level)
+		questions = Question.select_questions(@power, @level)
+		if @power <= 2 && questions.present?
+			@questions = questions
 		else
 			redirect_to result_tests_path(status: 'end')
 		end 

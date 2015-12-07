@@ -44,6 +44,8 @@ class User < ActiveRecord::Base
   # attr_accessor :login
   attr_accessor :message #短信验证码
 
+  after_create :create_score_and_score_cache
+
   
   # 使用手机号登录
   # def self.find_for_database_authentication(warden_conditions)
@@ -114,7 +116,6 @@ class User < ActiveRecord::Base
         end
       end
     end
-
     return result
   end
 
@@ -128,5 +129,13 @@ class User < ActiveRecord::Base
       end
     end
     return cache
+  end
+
+  private
+  def create_score_and_score_cache
+    if self.present?
+      self.create_score_cache
+      self.scores.create
+    end
   end
 end

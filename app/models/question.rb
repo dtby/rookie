@@ -49,7 +49,7 @@ class Question < ActiveRecord::Base
 		elsif p == 3
 			genre = { social: 1, work: 1, home: 1, knowledge: 1 }
 		else
-			genre = { social: 1, work: 1, home: 1, knowledge: 1 }
+			genre = { social: 4, work: 4, home: 2, knowledge: 10 }
 		end
 		# 按照题型和题型数选出试题，并存入cache
 		genre.each do |key, value|
@@ -92,7 +92,7 @@ class Question < ActiveRecord::Base
     options_index = [:a, :b, :c, :d, :e, :f]
     begin
       Question.transaction do
-        #self.destroy_all # 删除原来的题
+        self.destroy_all # 删除原来的题
         spreadsheet.each_with_index  do |row, index|
           next if index == 0
           # 题目创建
