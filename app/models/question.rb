@@ -20,7 +20,7 @@ class Question < ActiveRecord::Base
 
 	# 试题所属等级
 	enum level: { low: 1, middle: 2, high: 3 }
-	LEVEL = { low: '初阶题', middle: '中阶题', high: '高阶题' }
+	LEVEL = { low: '初阶题', middle: '进阶题', high: '高阶题' }
 
 	# 试题所属能力
 	enum power: { surface: 1, communicate: 2, decision: 3, cooperate: 4, control: 5 }
@@ -28,7 +28,7 @@ class Question < ActiveRecord::Base
 
 	# 试题所属类型
 	enum genre: { social: 1, work: 2, home: 3, knowledge: 4 }
-	GENRE = { social: '社交', work: '职场', home: '居家', knowledge: '知识' }
+	GENRE = { social: '社交', work: '职场', home: '居家', knowledge: '知识点' }
 
 	# 试题版式
 	enum kind: { word: 0, image: 1 }
@@ -44,6 +44,7 @@ class Question < ActiveRecord::Base
 	def self.select_questions(p, l)
 		cache = []
 		# 根据能力判断使用哪种题型数 【暂定未1题】
+
 		if p == 1 || p == 2
 			genre = { social: 1, work: 1, home: 1, knowledge: 1 }
 		elsif p == 3
@@ -51,6 +52,7 @@ class Question < ActiveRecord::Base
 		else
 			genre = { social: 4, work: 4, home: 2, knowledge: 10 }
 		end
+		pp genre ,'333'
 		# 按照题型和题型数选出试题，并存入cache
 		genre.each do |key, value|
 			cache.push(Question.power(p).level(l).send(key).shuffle[0, value])
@@ -72,14 +74,13 @@ class Question < ActiveRecord::Base
 			score += 1 if ua.to_i == standard_answers[index]
 		end
 		# 计算段位
-		case score
-		when 1
+		if score <= 6
 			[1, 0]
-		when 2
+		elsif score <= 12 && score > 6
 			[2, 0]
-		when 3
+		elsif score <= 18 && score > 12
 			[3, 0]
-		when 4
+		elsif score > 18
 			[3, 1]
 		end
 	end
@@ -98,16 +99,22 @@ class Question < ActiveRecord::Base
           # 题目创建
           question = Question.new
           values = row.slice(0..(header.size - 1))
-          values[1] = Question.powers[Question::POWER.invert[values[1].split(" ").join("")]]
-          values[2] = Question.levels[Question::LEVEL.invert[values[2].split(" ").join("")]]
-          values[3] = Question.genres[Question::GENRE.invert[values[3].split(" ").join("")]]
-          values[4] = answer[values[4].split(" ").join("")]
-          attrs = Hash[[header, values].transpose]
-          attrs[:kind] = 0
-          question.attributes = attrs
-          question.save!
-
+          if values.include? nil
+          	next
+          else
+	          values[1] = Question.powers[Question::POWER.invert[values[1].split(" ").join("")]]
+	          values[2] = Question.levels[Question::LEVEL.invert[values[2].split(" ").join("")]]
+	          values[3] = Question.genres[Question::GENRE.invert[values[3].split(" ").join("")]]
+	          values[4] = answer[values[4].split(" ").join("")]
+	          attrs = Hash[[header, values].transpose]
+	          attrs[:kind] = 0
+	          question.attributes = attrs
+	          pp question.attributes, "+++++++++++++++++++++++++++++++++++++++++"
+	          question.save!
+	          pp question, "----------------------------------------------"
+	        end
           # 保存选项
+
           options = Hash[[options_index, row.slice(header.size..row.size)].transpose]
           options[:question_id] = question.id
           Option.create!(options)

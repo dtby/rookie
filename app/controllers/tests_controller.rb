@@ -8,7 +8,7 @@ class TestsController < BaseController
 	def new
 		# 取出测试题，参数 (能力，等级)
 		questions = Question.select_questions(@power, @level)
-		if @power <= 2 && questions.present?
+		if @power <= 5 && questions.present?
 			@questions = questions
 		else
 			redirect_to result_tests_path(status: 'end')
