@@ -2,7 +2,7 @@ class TasksController < BaseController
   before_action :set_user
   respond_to :js, :json
   def index
-    @tasks = Task.all
+    @tasks = Task.order(grade: :desc)
   end
 
   def personal_tasks

@@ -18,7 +18,11 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:create]
   
-  resources :applies
+  resources :applies do
+    member do
+      post :deal
+    end
+  end
 
   resources :users
 

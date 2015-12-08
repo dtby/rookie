@@ -4,20 +4,7 @@
 
 <%= render partial: "share/head", locals: { head_title: "处理申请" } %>
 <div class="container">
-  <% @active_applies.each do |active_apply|%>
-    <div class="row apply-content">
-      <div class="col-xs-3 apply-logo">
-        <%= image_tag "logo.png", class: "",width:"100%" %>
-      </div>
-      <div class="col-xs-5 apply-discrib">
-        <p><span><%= active_apply.user.nickname %></span></p>
-        <%= link_to "确认申请", apply_path(@task, active_apply), method: :post, class: "btn btn-default apply-btn" %>
-      </div>
-      <div class="col-xs-4 apply-discrib text-center">
-        <p class="match-word"><span>匹配度</span></p>
-        <p><strong class="match-number">125</strong><strong class="match-sub">%</strong></p>
-      </div>
-    </div>
-    <hr class="apply-line">
-  <% end %>
+  <div id="apply-main", class="row apply-content">
+    <%= render partial: 'applied' %>
+  </div>
 </div>

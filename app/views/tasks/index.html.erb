@@ -16,7 +16,7 @@
         <div class="col-xs-6 interest-grade">
           <p>等级:
           <% (1..5).each do |i| %>
-            <span class="<%= task.grade.to_i >= i.to_i ? glyphicon glyphicon-star : glyphicon glyphicon-star-empty %>" aria-hidden="true"></span>
+            <span class="glyphicon <%= Task.grades[task.grade] >= i.to_i ? 'glyphicon-star' : 'glyphicon-star-empty' %>" aria-hidden="true"></span>
           <% end %>
           </p>
           <p class="interest-time"><span><%=image_tag("time.png",width:"24", class: 'icon')%><%= task.deadline %></span><span class="interest-map"><%=image_tag("map.png",width:"26", class: 'icon')%><%= task.c.present? ? truncate(ChinaCity.get(task.c),length: 4) : truncate(ChinaCity.get(task.p),length: 4) %></span>

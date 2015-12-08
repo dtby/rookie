@@ -1,15 +1,16 @@
 class AppliesController < BaseController
-  
+  respond_to :js, :json
   def index
     @applies = current_user.apply.all
   end
 
-  def new
-  end
-
   def show
     @task = Task.find(params[:id])
-    @active_applies  = Apply.where(:task_id => @task)
+    if @task.state.present?
+      @active_applies  = Apply.where(:task_id => @task, state: true)
+    else
+      @active_applies  = Apply.where(:task_id => @task)
+    end
   end
 
   def create
@@ -22,16 +23,12 @@ class AppliesController < BaseController
     end
   end
 
-  def edit
-  end
-
-  def update
-    
-  end
-
-  def destroy
-    @apply.destroy
-    redirect_to applies_path
+  def deal
+    @task = Task.where(id: params[:id]).first
+    @task.update_columns(state: true)
+    @active_apply = Apply.where(id: params[:active_apply]).first
+    @active_apply.update_columns(state: true)
+    @active_applies = Apply.where(task_id: params[:id], state: true)
   end
 
   private

@@ -8,7 +8,7 @@
   <% @applies.each do |apply|%>
     <div class="activity-item">
       <p><%=image_tag("course_text.png",width:"25")%> 任务描述 ：<%= apply.task.name %></p>
-      <p><%= image_tag("course_time.png",width:"20")%> 执行时间：2015年04月30日
+      <p><%= image_tag("course_time.png",width:"20")%> 执行时间：<%= apply.try(:created_at).try(:strftime,'%Y年%m月%d日') %>
       <%= link_to "查看详情>>", task_path(apply.task.id), class: "btn btn-default btn-sm btn-detail pull-right" %></p>
     </div>
   <% end %>

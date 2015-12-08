@@ -1,0 +1,15 @@
+<% @active_applies.each do |active_apply|%>
+  <div class="col-xs-3 apply-logo">
+    <%= image_tag "logo.png", class: "",width:"100%" %>
+  </div>
+  <div class="col-xs-5 apply-discrib">
+    <p><span><%= active_apply.user.nickname %></span></p>
+    <%= link_to("确认申请", deal_apply_path(@task, active_apply: active_apply ), method: :post ,class: 'btn btn-default apply-btn', remote: true, format: :js) %>
+    <%#= link_to "确认申请", deal_apply_path(@task), method: :post, class: "btn btn-default apply-btn" %>
+  </div>
+  <div class="col-xs-4 apply-discrib text-center">
+    <p class="match-word"><span>匹配度</span></p>
+    <p><strong class="match-number">125</strong><strong class="match-sub">%</strong></p>
+  </div>
+  <hr class="apply-line">
+<% end %>
