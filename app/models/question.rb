@@ -52,7 +52,6 @@ class Question < ActiveRecord::Base
 		else
 			genre = { social: 4, work: 4, home: 2, knowledge: 10 }
 		end
-		pp genre ,'333'
 		# 按照题型和题型数选出试题，并存入cache
 		genre.each do |key, value|
 			cache.push(Question.power(p).level(l).send(key).shuffle[0, value])
