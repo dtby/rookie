@@ -3,7 +3,7 @@
 # Table name: messages
 #
 #  id         :integer          not null, primary key
-#  phone     :string(255)
+#  phone      :string(255)
 #  code       :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

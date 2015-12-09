@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207063204) do
+ActiveRecord::Schema.define(version: 20151209054104) do
 
   create_table "applies", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(version: 20151207063204) do
   end
 
   add_index "educations", ["user_id"], name: "index_educations_on_user_id", using: :btree
+
+  create_table "images", force: :cascade do |t|
+    t.string   "avatar_file_name",    limit: 255
+    t.string   "avatar_content_type", limit: 255
+    t.integer  "avatar_file_size",    limit: 4
+    t.datetime "avatar_updated_at"
+    t.integer  "imageable_id",        limit: 4
+    t.string   "imageable_type",      limit: 255
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
 
   create_table "information", force: :cascade do |t|
     t.string   "birth_account",   limit: 255

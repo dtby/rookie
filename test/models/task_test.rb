@@ -28,6 +28,9 @@
 #  updated_at     :datetime         not null
 #  tab            :string(255)
 #  deadline       :string(255)
+#  p              :string(255)
+#  c              :string(255)
+#  a              :string(255)
 #
 
 require 'test_helper'
