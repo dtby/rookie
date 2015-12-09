@@ -25,6 +25,7 @@
 				text-align: center;
 				padding: 8px 0;
 				a, a:hover{
+					background-color: $tab-bg;
 					border-left: 1px solid #9bd2fc;
 					border-right: 1px solid #42adfe;
 					padding: 0 !important;
@@ -88,6 +89,13 @@
 				color: $tab-active;
 				margin-bottom: 10px;
 				font-size: 16px;
+				span{
+					color: #d1d1d1;
+				}
+			}
+			.begin-test{
+				padding-top: 2px;
+				padding-bottom: 2px;
 			}
 			.power-level{
 				display: table-row;

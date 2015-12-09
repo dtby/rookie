@@ -17,29 +17,35 @@
 			</div>
 			<div class="answer row">
 				<!-- 答案选项 -->
-				<% [:a, :b, :c, :d, :e, :f].each_with_index do |option, index| %>
+				<% index = 1 %>
+				<% [:a, :b, :c, :d, :e, :f].shuffle.each do |option| %>
 					<% answer = question.option.send(option) %>
+
 					<% unless answer.nil? %>
-					
 						<!-- 图片模板 -->
 					 	<% if answer.last(4) == '.png' %>
 							<div class="col-xs-6">
 								<p>
-									<%= radio_button_tag("question#{question.id}", "#{index + 1}") %>&nbsp;
-									<label for="question<%= question.id %>_<%= index + 1%>"><%= option.to_s.upcase %>. <%= answer %></label>
+									<%= radio_button_tag("question#{question.id}", "#{select_option(option)}") %>&nbsp;
+									<label for="question<%= question.id %>_<%= select_option(option) %>">
+										<%= answer(index) %>. <%= answer %>
+									</label>
 								</p>						
 							</div>
 						<!-- 文字题模板 -->
 						<% else %>
 							<div class="col-xs-12">
 								<p>
-									<%= radio_button_tag("question#{question.id}", "#{index + 1}") %>&nbsp;
-									<label for="question<%= question.id %>_<%= index + 1%>"><%= option.to_s.upcase %>. <%= answer %></label>
+									<%= radio_button_tag("question#{question.id}", "#{select_option(option)}") %>&nbsp;
+									<label for="question<%= question.id %>_<%= select_option(option) %>">
+										<%= answer(index) %>. <%= answer %>
+									</label>
 								</p>
 							</div>
 						<% end %>
-
+						<% index += 1 %>
 					<% end %>
+
 				<% end %>
 			</div>
 		</div>	
@@ -51,6 +57,8 @@
 	<%= link_to "下一题", "javascript:void(0);", class: "btn btn-info btn-block next-btn", alt: 0 %>
 	<%= link_to "提交", "javascript:void(0);", class: "btn btn-info btn-block commit-btn", style: "display: none;" %>
 </div>
+
+<div id="ids" data-ids="<%= @ids %>"></div>
 
 <script>
 	$(function(){
@@ -92,7 +100,7 @@
         if(index == (total_num - 1)){
 		    	$(".next-btn").hide();
 		    	$(".commit-btn").show();
-        };     
+        };
       }
 		});
 		
@@ -107,12 +115,9 @@
 				$.ajax({
           type: "POST",
           url: "<%= tests_path %>.js",
-          data: {answers: answers}
+          data: {answers: answers, questions_ids: $("#ids").data("ids")}
         });
 			}
 		})
 	})	
 </script>
-
-
-

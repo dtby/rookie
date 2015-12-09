@@ -19,11 +19,11 @@ module TestsHelper
 	def level(level)
 		case level
 		when 1
-			'初级'
+			'初阶题'
 		when 2
-			'中级'
+			'进阶题'
 		when 3
-			'高级'
+			'高阶题'
 		end
 	end
 
@@ -43,5 +43,10 @@ module TestsHelper
 		when 6
 			'F'
 		end
+	end
+
+	# 选项的值，用于单选框
+	def select_option(option)
+		return {a: 1, b: 2, c: 3, d: 4, e: 5, f: 6}[option]
 	end
 end

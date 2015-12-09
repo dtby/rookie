@@ -7,25 +7,24 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
+  
+  # 网站主页
   root 'pages#index'
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
 
+  # 短信验证
   resources :messages, only: [:create]
   
+  # 任务包申请
   resources :applies do
     member do
       post :deal
     end
   end
 
+  # 用户
   resources :users
 
+  # 任务
   resources :tasks do
     collection do
       get 'personal_tasks'
@@ -36,8 +35,10 @@ Rails.application.routes.draw do
     end
   end
 
+  # 个人信息
   resources :personal
 
+  # 我的主页
   resources :pages, only: [:index, :show]
 
   resources :attention do

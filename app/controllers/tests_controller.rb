@@ -6,18 +6,18 @@ class TestsController < BaseController
 
 	# 进入测试为用户的等级与能力级别
 	def new
-		# 取出测试题，参数 (能力，等级)
-		questions = Question.select_questions(@power, @level)
-		if @power <= 5 && questions.present?
-			@questions = questions
-		else
+		# 取出测试题[question_id, ...]，参数 (能力，等级)
+		@ids = Question.select_questions_ids(@power, @level)
+		@questions = Question.where(id: @ids)
+		unless @power <= 5 && @questions.present?
 			redirect_to result_tests_path(status: 'end')
 		end 
 	end
 
 	# 提交单次成绩
 	def create
-		@score = Question.score(@power, @level, params[:answers])
+		pp params[:questions_ids], '11111111'
+		@score = Question.score(params[:questions_ids], params[:answers])
 		respond_with @score
 	end
 

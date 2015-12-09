@@ -4,17 +4,7 @@
       <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
     </div>
     <ul class="nav navbar-top-links navbar-right">
-      <li>
-        <% if current_user %>
-          <%= link_to destroy_user_session_path, :method => :delete do |i| %>
-            <i class="fa fa-sign-out"></i>退出
-          <% end %>
-        <% else %>
-          <%= link_to new_user_session_path, :method => :delete do |i| %>
-            <i class="fa fa-sign-out"></i>登录
-          <% end %>
-        <% end %>
-      </li>
+      <li></li>
     </ul>
   </nav>
 </div>

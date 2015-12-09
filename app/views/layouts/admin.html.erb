@@ -8,20 +8,24 @@
   <%= csrf_meta_tags %>
   <%= favicon_link_tag ".ico" %>
 </head>
-<body>
+<body class="<%= "gray-bg" if params[:controller].first(8) == "managers" %>">
 
-<div id="wrapper">
-  <%= render 'admin/share/left_nav'%>
-  <div id="page-wrapper" class="gray-bg">
-    <%= render 'admin/share/header'%>
-    <div class="wrapper wrapper-content">
+  <% if params[:controller].first(8) == "managers" %>
+    <%= yield %>
+  <% else %>
+    <div id="wrapper">
+      <%= render 'admin/share/left_nav'%>
+      <div id="page-wrapper" class="gray-bg">
+        <%= render 'admin/share/header'%>
+        <div class="wrapper wrapper-content">
 
-			<%= yield %>
-			
-    </div>
-    <%= render 'admin/share/footer'%>
-  </div>
-</div>
+          <%= yield %>
+          
+        </div>
+        <%= render 'admin/share/footer'%>
+      </div>
+    </div>    
+  <% end %>
 
 </body>
 </html>

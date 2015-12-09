@@ -20,4 +20,5 @@
 //= require china_city/jquery.china_city
 //= require ./plugin/echarts/echarts
 //= require_tree ./plugin/echarts/chart
+//= require_tree ./common/.
 //= require_tree ./application

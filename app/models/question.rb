@@ -41,32 +41,32 @@ class Question < ActiveRecord::Base
 
 	# 选择测试题
 	# 参数：(能力) p in [1,2,3,4,5], (等级) l in [1,2,3]
-	def self.select_questions(p, l)
+	def self.select_questions_ids(p, l)
 		cache = []
 		# 根据能力判断使用哪种题型数 【暂定未1题】
 
 		if p == 1 || p == 2
-			genre = { social: 1, work: 1, home: 1, knowledge: 1 }
+			genre = { social: 5, work: 5, home: 4, knowledge: 6 }
 		elsif p == 3
-			genre = { social: 1, work: 1, home: 1, knowledge: 1 }
+			genre = { social: 4, work: 4, home: 3, knowledge: 8 }
 		else
 			genre = { social: 4, work: 4, home: 2, knowledge: 10 }
 		end
+		
 		# 按照题型和题型数选出试题，并存入cache
 		genre.each do |key, value|
-			cache.push(Question.power(p).level(l).send(key).shuffle[0, value])
+			cache.push(Question.power(p).level(l).send(key).pluck(:id).shuffle[0, value])
 		end
 		return cache.flatten
 	end
 
 	# 对比答案计算用户成绩
-	def self.score(power, level, user_answers)
+	def self.score(questions_ids, user_answers)
 		score = 0
 		# 生成标准答案
 		standard_answers = []
-		questions = Question.select_questions(power, level)
-		questions.each do |question|
-			standard_answers.push question.answer
+		questions_ids.each do |id|
+			standard_answers.push Question.find(id.to_i).answer
 		end
 		# 计算用户成绩
 		user_answers.each_with_index do |ua, index|
@@ -82,6 +82,16 @@ class Question < ActiveRecord::Base
 		elsif score > 18
 			[3, 1]
 		end
+
+		# if score == 1
+		# 	[1, 0]
+		# elsif score == 2
+		# 	[2, 0]
+		# elsif score == 3
+		# 	[3, 0]
+		# elsif score == 4
+		# 	[3, 1]
+		# end
 	end
 
 	# 从excel导入试题
@@ -92,7 +102,7 @@ class Question < ActiveRecord::Base
     options_index = [:a, :b, :c, :d, :e, :f]
     begin
       Question.transaction do
-        self.destroy_all # 删除原来的题
+        #self.destroy_all # 删除原来的题
         spreadsheet.each_with_index  do |row, index|
           next if index == 0
           # 题目创建
@@ -108,12 +118,10 @@ class Question < ActiveRecord::Base
 	          attrs = Hash[[header, values].transpose]
 	          attrs[:kind] = 0
 	          question.attributes = attrs
-	          pp question.attributes, "+++++++++++++++++++++++++++++++++++++++++"
 	          question.save!
-	          pp question, "----------------------------------------------"
 	        end
-          # 保存选项
 
+          # 保存选项
           options = Hash[[options_index, row.slice(header.size..row.size)].transpose]
           options[:question_id] = question.id
           Option.create!(options)
