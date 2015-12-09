@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require ./date/zepto.min
 //= require ./date/mobile-select-date
@@ -22,3 +22,4 @@
 //= require_tree ./plugin/echarts/chart
 //= require_tree ./common/.
 //= require_tree ./application
+//= require turbolinks

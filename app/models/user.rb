@@ -46,7 +46,21 @@ class User < ActiveRecord::Base
 
   after_create :create_score_and_score_cache
 
-  
+  enum gender: {'男': 1,'女': 2}
+
+  enum constellation: {'牡羊座♈️': 1,'金牛座♉️': 2,'双子座♊️': 3,'巨蟹座♋️': 4,'狮子座♌️': 5,'处女座♍️': 6,'天秤座♎️': 7,'天蝎座♏️': 8,'射手座♐️': 9,'摩羯座♑️': 10,'水瓶座♒️': 11,'双鱼座♓️': 12}
+
+  enum nation: {
+    '汉族': 'han','回族': 'huizu','阿昌族': 'achang','白族': 'bai','保安族': 'baoan','布朗族': 'bulang','布依族': 'buyi','朝鲜族': 'chaoxian',
+    '达斡尔族': 'dahan','傣族': 'daizu','德昂族': 'deang','侗族': 'dongzu','东乡族': 'dongxiang','独龙族': 'dulong','鄂伦春族': 'elun','俄罗斯族': 'eluosi',
+    '鄂温克族': 'ewen','高山族': 'gaoshan','仡佬族': 'yilao','哈尼族': 'hani','哈萨克族': 'hasake','赫哲族': 'hezhe','壮族': 'zhuangzu',
+    '京族': 'jinzu','景颇族': 'jingpo','柯尔克孜族': 'keer','拉祜族': 'lagu','黎族': 'lizu','傈僳族': 'lixv','珞巴族': 'luoba','满族': 'manzu',
+    '毛南族': 'maonan','门巴族': 'menba','蒙古族': 'menggu','苗族': 'miaozu','仫佬族': 'melao','纳西族': 'naxi','怒族': 'nuzu','普米族': 'pumi',
+    '羌族': 'qiangzu','撒拉族': 'sala','畲族': 'chuzu','水族': 'shuizu','塔吉克族': 'tajike','塔塔尔族': 'tataer','土族': 'tuzu','土家族': 'tujia',
+    '佤族': 'wazu','维吾尔族': 'weiwuer','乌兹别克族': 'wuzibieke','锡伯族': 'xibo','瑶族': 'yaozu','彝族': 'yizu','裕固族': 'yugu','藏族': 'zangzu'
+  }
+
+
   # 使用手机号登录
   # def self.find_for_database_authentication(warden_conditions)
   #   conditions = warden_conditions.dup
@@ -131,9 +145,19 @@ class User < ActiveRecord::Base
     return cache
   end
 
+  def self.address(number)
+    p = ChinaCity.get(number.split(',').first)
+    c = ChinaCity.get(number.split(',').last)
+    address = p+c
+  end
+  
   private
   def create_score_and_score_cache
       self.create_score_cache
       self.scores.create
+  end
+
+  def email_required?
+    false
   end
 end

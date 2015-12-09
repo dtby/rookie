@@ -22,7 +22,11 @@ Rails.application.routes.draw do
   end
 
   # 用户
-  resources :users
+  resources :users do
+    collection do
+      get 'personal'
+    end
+  end
 
   # 任务
   resources :tasks do
