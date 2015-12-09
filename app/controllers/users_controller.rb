@@ -6,11 +6,10 @@ class UsersController < BaseController
 
   # 个人信息
   def show
-  	
+  	@user = User.find(params[:id])
   end
 
   def update
-    pp user_params[:gender]
     if @user.update_columns(user_params)
       flash.now[:notice] = "更新成功"
       redirect_to user_path
