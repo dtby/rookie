@@ -14,9 +14,9 @@
 #
 
 class Question < ActiveRecord::Base
-	validates :problem, :level, :power, :genre, presence: true
+	validates :problem, :level, :power, :genre, :answer, :kind, presence: true
 
-	has_one :option, dependent: :destroy
+	has_many :options, dependent: :destroy
 
 	# 试题所属等级
 	enum level: { low: 1, middle: 2, high: 3 }
@@ -69,29 +69,29 @@ class Question < ActiveRecord::Base
 			standard_answers.push Question.find(id.to_i).answer
 		end
 		# 计算用户成绩
-		user_answers.each_with_index do |ua, index|
-			score += 1 if ua.to_i == standard_answers[index]
+		user_answers.each_with_index do |answer, index|
+			score += 1 if answer.to_i == standard_answers[index]
 		end
 		# 计算段位
-		if score <= 6
-			[1, 0]
-		elsif score <= 12 && score > 6
-			[2, 0]
-		elsif score <= 18 && score > 12
-			[3, 0]
-		elsif score > 18
-			[3, 1]
-		end
-
-		# if score == 1
+		# if score <= 6
 		# 	[1, 0]
-		# elsif score == 2
+		# elsif score <= 12 && score > 6
 		# 	[2, 0]
-		# elsif score == 3
+		# elsif score <= 18 && score > 12
 		# 	[3, 0]
-		# elsif score == 4
+		# elsif score > 18
 		# 	[3, 1]
 		# end
+
+		if score == 1
+			[1, 0]
+		elsif score == 2
+			[2, 0]
+		elsif score == 3
+			[3, 0]
+		elsif score == 4
+			[3, 1]
+		end
 	end
 
 	# 从excel导入试题
@@ -99,7 +99,6 @@ class Question < ActiveRecord::Base
 		spreadsheet = Question.open_spreadsheet(file)
     header = [:problem, :power, :level, :genre, :answer]
     answer = {"A" => 1, "B" => 2, "C" => 3, "D" => 4, "E" => 5, "F" => 6}
-    options_index = [:a, :b, :c, :d, :e, :f]
     begin
       Question.transaction do
         #self.destroy_all # 删除原来的题
@@ -122,9 +121,9 @@ class Question < ActiveRecord::Base
 	        end
 
           # 保存选项
-          options = Hash[[options_index, row.slice(header.size..row.size)].transpose]
-          options[:question_id] = question.id
-          Option.create!(options)
+          row.slice(header.size..row.size).each_with_index do |option, index|
+          	Option.create!(tab: index + 1, content: option, question_id: question.id) if option.present?
+          end
         end
       end
     rescue Exception => e
@@ -144,5 +143,16 @@ class Question < ActiveRecord::Base
     else raise "未知格式: #{file.original_filename}"
     end
   end
+
+  # 可选的选项标识(用于后台添加选项)
+	def valid_tabs
+		existed = self.options.pluck(:tab)
+		tabs = {'A' => 1, 'B' => 2, 'C' => 3, 'D' => 4, 'E' => 5, 'F' => 6 }
+		cache = {}
+		tabs.each do |key, value|
+			cache[key] = value unless existed.include? value
+		end
+		return cache
+	end
 
 end

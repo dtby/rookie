@@ -16,7 +16,6 @@ class TestsController < BaseController
 
 	# 提交单次成绩
 	def create
-		pp params[:questions_ids], '11111111'
 		@score = Question.score(params[:questions_ids], params[:answers])
 		respond_with @score
 	end

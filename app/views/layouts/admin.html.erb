@@ -17,6 +17,7 @@
       <%= render 'admin/share/left_nav'%>
       <div id="page-wrapper" class="gray-bg">
         <%= render 'admin/share/header'%>
+        <%= yield :breadcrumb %>
         <div class="wrapper wrapper-content">
 
           <%= yield %>
@@ -26,6 +27,8 @@
       </div>
     </div>    
   <% end %>
+
+  <%= yield :scripts %>
 
 </body>
 </html>

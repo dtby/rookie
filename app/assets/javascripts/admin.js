@@ -13,8 +13,13 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery.remotipart
 //= require bootstrap-sprockets
-//= require_tree ./frame
+//= require ./frame/jquery.metisMenu
+//= require ./frame/jquery.slimscroll.min
+//= require ./frame/inspinia
+//= require ./frame/pace.min
+//= require ./frame/dropzone
 //= require_tree ./admin/.
 //= require_tree ./common/.
 //= require turbolinks

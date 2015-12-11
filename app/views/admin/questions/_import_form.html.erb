@@ -8,7 +8,9 @@
 				</div>
 			</div>
 			<br>
-      <%= f.submit "导入试卷", class: "btn btn-primary btn-block", onclick: "if($('#attachment').val()==''){alert('请选择要上传的文件');return false;}" %>
+      <%= f.submit "导入试卷", class: "btn btn-primary btn-block",
+      												data: { disable_with: "正在导入..." },
+      											  onclick: "if($('#attachment').val()==''){alert('请选择要上传的文件');return false;}" %>
     <% end %>
 	</div>
 </div>

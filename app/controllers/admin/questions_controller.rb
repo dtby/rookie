@@ -12,7 +12,30 @@ class Admin::QuestionsController < Admin::BaseController
 	end
 
 	def create
+		@question = Question.new(question_params)
+		if @question.save
+			respond_to do |format|
+				format.js {render js: "location.href='#{admin_questions_path(kind: question_params[:kind])}'"}
+			end
+		else
+			respond_with @question
+		end
+	end
 
+	def edit
+		@question = Question.find(params[:id])
+		respond_with @question
+	end
+
+	def update
+		@question = Question.find(params[:id])
+		if @question.update(question_params)
+			respond_to do |format|
+				format.js {render js: "location.href='#{admin_questions_path(kind: question_params[:kind])}'"}
+			end
+		else
+			respond_with @question
+		end
 	end
 
 	# 从Excel表导入
@@ -30,5 +53,10 @@ class Admin::QuestionsController < Admin::BaseController
 		@question = Question.find(params[:id])
 		@question.destroy
 		redirect_to admin_questions_path(kind: params[:kind], page: params[:page])
+	end
+
+	private
+	def question_params
+		params.require(:question).permit(:problem, :power, :level, :genre, :answer, :kind)
 	end
 end

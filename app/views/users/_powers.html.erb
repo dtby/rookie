@@ -17,7 +17,7 @@
 					<div class="goal">
 						<div class="progress">
 						  <div class="progress-bar progress-bar-warning" 
-						  		 role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <%= score.to_i * 10 %>%">
+						  		 role="progressbar" aria-valuenow="<%= score.to_i %>" aria-valuemin="0" aria-valuemax="9" style="width: <%= score.to_i * 100 / 9 %>%">
 						    <span class="sr-only">complete</span>
 						  </div>
 						</div>

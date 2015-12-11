@@ -54,6 +54,7 @@ Rails.application.routes.draw do
   # resources :personal
 
 
+  #
   resources :attention do
     collection do
       get 'focus'
@@ -88,10 +89,17 @@ Rails.application.routes.draw do
   #后台管理
   namespace :admin do
     root 'home#index'
-    resources :questions do
+    # 所有问题
+    resources :questions, except: [:show] do
       collection do
         get 'import'
         post 'import_create'
+      end
+      # 问题的所有选项
+      resources :options, except: [:show] do
+        collection do
+          post 'uploads'
+        end
       end
     end
   end

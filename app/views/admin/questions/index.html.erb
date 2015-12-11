@@ -6,16 +6,22 @@
           <h5>题目列表</h5>
           <div class="pull-right">
             <div class="ibox-tools">
-              <a class="collapse-link">
-                <i class="fa fa-chevron-up"></i>
-              </a>
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-plus"></i>
-              </a>
-              <ul class="dropdown-menu dropdown-user">
-                <li><%= link_to "手动添加试题", new_admin_question_path, remote: true, format: :js %></li>
-                <li><%= link_to "从Excel导入试题", import_admin_questions_path, remote: true, format: :js %></li>
-              </ul>
+              <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              <% if current_page?(kind: 'word') %>
+                <!-- 手动添加文字题 -->
+                <%= link_to new_admin_question_path(kind: 'word'), remote: true, format: :js do %>
+                  <i class="fa fa-pencil"></i>
+                <% end %>
+                <!-- 从Excel导入试题 -->
+                <%= link_to import_admin_questions_path, remote: true, format: :js do %>
+                  <i class="fa fa-file-excel-o"></i>
+                <% end %>
+              <% else %>
+                <!-- 添加图片题 -->
+                <%= link_to new_admin_question_path(kind: 'image'), remote: true, format: :js do %>
+                  <i class="fa fa-pencil"></i>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -36,18 +42,20 @@
               <% @questions.each do |question| %>
                 <tr class="text-center">
                   <td><%= question.id %></td>
-                  <td><%= question.problem %></td>
+                  <td class="problem"><%= question.problem %></td>
                   <td><%= Question::POWER[question.power.to_sym] %></td>
                   <td><%= Question::LEVEL[question.level.to_sym] %></td>
                   <td><%= Question::GENRE[question.genre.to_sym] %></td>
-                  <td><%= answer(question.answer) %></td> 
+                  <td><%= answer(question.answer) %></td>
                   <td>
-                    <%= link_to "#", class: "btn btn-xs btn-info" do %>
+                    <%= link_to admin_question_options_path(question, kind: question.kind), class: "btn btn-xs btn-info" do %>
                       <span class="glyphicon glyphicon-list"></span>
                     <% end %>
-                    <%= link_to "#", class: 'btn btn-xs btn-default', remote: true, format: :js do %>
+
+                    <%= link_to edit_admin_question_path(question, kind: question.kind), class: 'btn btn-xs btn-default', remote: true, format: :js do %>
                       <span class="glyphicon glyphicon-edit"></span>
                     <% end %>
+
                     <%= link_to admin_question_path(question, kind: params[:kind], page: params[:page]), method: :delete, data: { confirm: "确定删除？" }, class: 'btn btn-xs btn-danger' do %>
                       <span class="glyphicon glyphicon-trash"></span>
                     <% end %>
@@ -55,13 +63,6 @@
                 </tr>
               <% end %>
             </tbody>
-            <tfoot>
-              <tr>
-                <td class="text-center" colspan="6">
-                  <ul class="pagination"></ul>
-                </td>
-              </tr>
-            </tfoot>
           </table>
           <h3 class="text-center"><%= paginate @questions %></h3>
         </div>

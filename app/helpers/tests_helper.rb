@@ -1,4 +1,9 @@
 module TestsHelper
+	# 答案（用于添加试题表单）
+	def answers
+		{'A' => 1, 'B' => 2, 'C' => 3, 'D' => 4, 'E' => 5, 'F' => 6 }
+	end
+
 	# 能力
 	def power(power)
 		case power

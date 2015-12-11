@@ -7,117 +7,106 @@
 	</span>
 </div>
 
+<!-- 取出所有题目的id -->
+<div id="ids" data-ids="<%= @ids %>"></div>
+
+<!-- 所有题目及选项 -->
 <div id="questionContent">
-	<!-- 所有题目答案 -->
 	<% @questions.each do |question| %>
 		<div class="test-question">
 			<!-- 问题 -->
 			<div class="problem">
 				<p class="text-justify"><%= question.problem %></p>
 			</div>
-			<div class="answer row">
-				<!-- 答案选项 -->
-				<% index = 1 %>
-				<% [:a, :b, :c, :d, :e, :f].shuffle.each do |option| %>
-					<% answer = question.option.send(option) %>
-
-					<% unless answer.nil? %>
-						<!-- 图片模板 -->
-					 	<% if answer.last(4) == '.png' %>
-							<div class="col-xs-6">
-								<p>
-									<%= radio_button_tag("question#{question.id}", "#{select_option(option)}") %>&nbsp;
-									<label for="question<%= question.id %>_<%= select_option(option) %>">
-										<%= answer(index) %>. <%= answer %>
-									</label>
-								</p>						
-							</div>
-						<!-- 文字题模板 -->
-						<% else %>
-							<div class="col-xs-12">
-								<p>
-									<%= radio_button_tag("question#{question.id}", "#{select_option(option)}") %>&nbsp;
-									<label for="question<%= question.id %>_<%= select_option(option) %>">
-										<%= answer(index) %>. <%= answer %>
-									</label>
-								</p>
-							</div>
-						<% end %>
-						<% index += 1 %>
-					<% end %>
-
+			<!-- 选项 -->
+			<div class="answer">
+				<% if question.kind == 'word' %>
+					<%= render partial: "word_options", locals: {question: question} %>
+				<% else %>
+					<%= render partial: "image_options", locals: {question: question} %>
 				<% end %>
 			</div>
 		</div>	
 	<% end %>
 </div>
 
-<!-- 下一题 -->
+<!-- 下一题 (最后一题显示提交)-->
 <div class="test-btn">
 	<%= link_to "下一题", "javascript:void(0);", class: "btn btn-info btn-block next-btn", alt: 0 %>
 	<%= link_to "提交", "javascript:void(0);", class: "btn btn-info btn-block commit-btn", style: "display: none;" %>
 </div>
 
-<div id="ids" data-ids="<%= @ids %>"></div>
 
 <script>
-	$(function(){
-		var bodyWidth = document.body.clientWidth;
-		var num = $(".test-question").length;
-		var wrap_width = num * bodyWidth;
+	$(function() {
+	  var answers, bodyWidth, num, wrap_width;
+	  bodyWidth = document.body.clientWidth;
+	  num = $(".test-question").length;
+	  wrap_width = num * bodyWidth;
 
-		//初始化容器宽度
-		$(".test-question").outerWidth(bodyWidth);
-		$("#questionContent").width(wrap_width);
+	  // 初始化容器宽度
+	  $(".test-question").outerWidth(bodyWidth);
+	  $("#questionContent").width(wrap_width);
 
-		//初始化每一题的位置
-		$(".test-question").each(function(index){
-			var leftVal = index * bodyWidth;
-      $(this).css("left", leftVal);
-		});
-		//定义用户答题记录表
-		var answers = new Array();
-		//点击下一题效果
-		$(".next-btn").click(function(){
-      var index = parseInt($(this).attr("alt"));
-      var select = $(".test-question").eq(index).find("input:radio:checked");
-      var total_num = parseInt($("#total_num").text());
+	  // 初始化每一题的位置
+	  $(".test-question").each(function(index) {
+	    var leftVal;
+	    leftVal = index * bodyWidth;
+	    return $(this).css("left", leftVal);
+	  });
 
-			if(select.length == 0){
-     	  alert("请选择你的答案");
-      }else{
-        index += 1; 
-				$(this).attr("alt", index);
-        //当前题号 + 1
-        $("#now_num").text(index + 1);
-        //存储用户答案
-        answers[index-1] = select.val();
-        //改变题目的位置
-        var leftVal = -(index * bodyWidth);
-        $(".test-question").eq(index-1).css("left", leftVal);
-        $(".test-question").eq(index).css("left", 0); 
-        //判断下一题是否是最后一题，是则改变按钮 
-        if(index == (total_num - 1)){
-		    	$(".next-btn").hide();
-		    	$(".commit-btn").show();
-        };
-      }
-		});
-		
-		// 提交按钮的点击
-		$(".commit-btn").click(function(){
-			var index = parseInt($("#total_num").text());
-			var select = $(".test-question").eq(index-1).find("input:radio:checked");
-			if(select.length == 0){
-				alert("请选择你的答案");
-			}else{
-				answers[index-1] = select.val();
-				$.ajax({
-          type: "POST",
-          url: "<%= tests_path %>.js",
-          data: {answers: answers, questions_ids: $("#ids").data("ids")}
-        });
-			}
-		})
-	})	
+	  // 定义用户答题记录表
+	  answers = new Array();
+
+	  // 点击下一题效果
+	  $(".next-btn").click(function() {
+	    var index, leftVal, select, total_num;
+	    index = parseInt($(this).attr("alt"));
+	    select = $(".test-question").eq(index).find("input:radio:checked");
+	    total_num = parseInt($("#total_num").text());
+	    if (select.length === 0) {
+	      return alert("请选择你的答案");
+	    } else {
+	      index += 1;
+	      $(this).attr("alt", index);
+
+	      // 当前题号 + 1
+	      $("#now_num").text(index + 1);
+
+	      // 存储用户答案
+	      answers[index - 1] = select.val();
+
+	      // 改变题目的位置
+	      leftVal = -(index * bodyWidth);
+	      $(".test-question").eq(index - 1).css("left", leftVal);
+	      $(".test-question").eq(index).css("left", 0);
+
+	      // 判断下一题是否是最后一题，是则改变按钮
+	      if (index === (total_num - 1)) {
+	        $(".next-btn").hide();
+	        return $(".commit-btn").show();
+	      }
+	    }
+	  });
+
+	  // 提交按钮的点击
+	  $(".commit-btn").click(function() {
+	    var index, select;
+	    index = parseInt($("#total_num").text());
+	    select = $(".test-question").eq(index - 1).find("input:radio:checked");
+	    if (select.length === 0) {
+	      return alert("请选择你的答案");
+	    } else {
+	      answers[index - 1] = select.val();
+	      $.ajax({
+	        type: "POST",
+	        url: "<%= tests_path %>.js",
+	        data: {
+	          answers: answers,
+	          questions_ids: $("#ids").data("ids")
+	        }
+	      });
+	    }
+	  });
+	});
 </script>

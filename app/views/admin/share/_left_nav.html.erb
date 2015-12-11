@@ -22,7 +22,7 @@
         </div>
       </li>
 
-      <li class="<%= 'active' if current_page?(admin_questions_url) %>">
+      <li class="<%= 'active' if params[:controller] == 'admin/questions' || params[:question_id].present? %>">
         <%= link_to "#" do %>
           <i class="fa fa-th-large"></i> 
           <span class="nav-label">测试</span>
