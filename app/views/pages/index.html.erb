@@ -10,7 +10,7 @@
 				    <%=image_tag("logo.png",width:"80")%>
 				  </div>
 				  <div class="media-body" id="my-body">
-				    <p>姓名：菜鸟01 &nbsp;&nbsp;<small>普图会员</small></p>
+				    <p>姓名：<%= current_user.nickname %> &nbsp;&nbsp;<small>普通会员</small></p>
 				    <p>编号：123456789</p>
 				  </div>
 				</div>
@@ -19,7 +19,7 @@
 	<div class="row">
 		<ul>
 			<li>
-				<%=link_to "#" do |i| %>
+				<%=link_to resume_user_pages_path do |i| %>
 					<%=image_tag("pages_resume.png")%>我的简历<span class="pull-right mygt mygt">&gt;</span>
 				<% end %>
 			</li>

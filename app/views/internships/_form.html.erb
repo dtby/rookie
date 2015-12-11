@@ -1,0 +1,21 @@
+<%= simple_form_for(:internship, url: user_internships_path(@user), remote: true, format: :js) do |f| %>
+  <div class="row">
+    
+    <div class="label-text">
+      <%= f.input :company, class: 'form-control form-input', placeholder: '公司名称', label: false %>
+    </div>
+
+    <div class="label-text">
+      <%= f.input :position, class: 'form-control form-input', placeholder: '职位', label: false %>
+    </div>
+
+    <div class="label-text">
+      <%= f.input :performance, class: 'form-control form-input', placeholder: '主要业绩', label: false %>
+    </div>
+
+    <div class="col-xs-12 input-a">
+      <button type: "submit" class: "btn btn-primary btn-lg btn-block btn-login">提交信息</button>
+      <%= link_to '取消', resume_user_pages_path(@user), class: 'btn btn-delete btn-sm'  %>
+    </div>
+  </div>
+<% end %>

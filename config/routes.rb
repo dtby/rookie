@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   }
   
   # 网站主页
-  root 'pages#index'
+  root 'tests#new'
 
   # 短信验证
   resources :messages, only: [:create]
@@ -23,7 +23,18 @@ Rails.application.routes.draw do
 
   # 用户
   resources :users do
-    collection do
+    resources :educations
+    resources :works
+    resources :internships
+    # 我的主页
+    resources :pages, only: [:index] do
+      collection do
+        get 'resume'
+        get 'info'
+      end
+    end
+    #个人基础信息
+    member do
       get 'personal'
     end
   end
@@ -39,11 +50,9 @@ Rails.application.routes.draw do
     end
   end
 
-  # 个人信息
-  resources :personal
+  # # 个人信息
+  # resources :personal
 
-  # 我的主页
-  resources :pages, only: [:index, :show]
 
   resources :attention do
     collection do

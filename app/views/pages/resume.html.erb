@@ -1,0 +1,90 @@
+<% content_for :title do %>
+  我的活动
+<% end %>
+<%= render partial: "share/head", locals: { head_title: "我的简历" } %>
+<!-- logo -->
+<div class="container">
+  <div class="row pages-head">
+      <div class="col-xs-offset-2">
+        <div class="media">
+          <div class="media-left media-middle">
+            <%=image_tag("logo.png",width:"80")%>
+          </div>
+          <div class="media-body" id="my-body">
+            <span>姓名：菜鸟01 &nbsp;&nbsp;</span><br>
+            <span>编号：123456789</span><br>
+            <span>更新时间：2015-10-10</span>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- 简历信息 -->
+<div class="resume-content">
+  <!-- <div class="resume clearfix">
+    <%#= link_to info_user_pages_path(current_user), remote: true, format: :js do |i|  %>
+      <span class="glyphicon glyphicon-pencil" aria-hidden="true">编辑</span>
+    <%#= end %>
+  </div> -->
+  <div class="resume-item clearfix" id="base_resume">
+    <div class="my-infos">昵称<span class="pull-right"><%= @user.nickname %></span></div>
+    <hr id="divide">
+    <div class="my-infos">性别<span class="pull-right"><%= @user.gender %></span></div>
+    <hr id="divide">
+    <div class="my-infos">年龄<span class="pull-right"><%= getage(@user.birth) %></span></div>
+    <hr id="divide">
+    <div class="my-infos">生日<span class="pull-right"><%= @user.birth %></span></div>
+    <hr id="divide">
+    <div class="my-infos">星座<span class="pull-right"><%= constellation(@user.birth) %></span></div>
+    <hr id="divide">
+    <div class="my-infos">民族<span class="pull-right"><%= @user.nation %></span></div>
+    <hr id="divide">
+    <div class="my-infos">籍贯<span class="pull-right"><%= truncate(User.address(@user.native),length: 7) %></span></div>
+    <hr id="divide">
+    <div class="my-infos">现居地<span class="pull-right"><%= truncate(User.address(@user.present),length: 7) %></span></div>
+    <hr id="divide">
+    <div class="my-infos">户口地<span class="pull-right"><%= truncate(User.address(@user.native),length: 7) %></span></div>
+  </div>
+
+  <div class="my-infos clearfix">
+    <h4>教育信息</h4>
+    <span class="">
+      <%= link_to '新增', new_user_education_path(@user), class: "btn btn-info btn-sm", remote: true, format: :js %>
+    </span>
+  </div>
+  <hr id="divide">
+  <div id="education">
+    <%= render partial: "education" %>
+    <div id="education_form"></div>
+  </div>
+
+  <div class="my-infos clearfix">
+    <h4>工作信息</h4>
+    <span class="">
+      <%= link_to '新增', new_user_work_path(@user), class: "btn btn-info btn-sm", remote: true, format: :js %>
+    </span>
+  </div>
+  <hr id="divide">
+  <div id="work">
+    <%= render partial: "work" %>
+    <div id="work_form"></div>
+  </div>
+
+  <div class="my-infos clearfix">
+    <h4>实习信息</h4>
+    <span class="">
+      <%= link_to '新增', new_user_internship_path(@user), class: "btn btn-info btn-sm", remote: true, format: :js %>
+    </span>
+  </div>
+  <hr id="divide">
+  <div id="internship">
+    <%= render partial: "internship" %>
+    <div id="internship_form"></div>
+  </div>
+
+</div>
+<!-- 底部按钮 -->
+<div class="my-btn text-center">
+  <button type="button" id="mybtn" class="btn btn-primary">一键生成简历</button>
+</div>

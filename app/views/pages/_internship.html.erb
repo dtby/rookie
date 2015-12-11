@@ -1,0 +1,11 @@
+<% @internships.each do |internship| %>
+  <div class="resume-item clearfix">
+    <div class="my-infos">现在公司名称<span class="pull-right"><%= internship.company %></span></div>
+    <hr id="divide">
+    <div class="my-infos">职位名称<span class="pull-right"><%= internship.position %></span></div>
+    <hr id="divide">
+    <div class="my-infos">主要业绩<span class="pull-right"><%= internship.performance %></span></div>
+    <hr id="divide">
+    <div class="my-infos"><%= link_to '删除', user_internship_path(@user, internship), method: :delete, class: "btn btn-delete btn-sm", remote: true, format: :js %></div>
+  </div>
+<% end -%>

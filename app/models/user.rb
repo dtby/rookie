@@ -32,6 +32,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :task, dependent: :destroy
+  has_many :education, dependent: :destroy
+  has_many :work, dependent: :destroy
+  has_many :internship, dependent: :destroy
   has_many :apply, dependent: :destroy
   has_many :scores, dependent: :destroy
   has_one :score_cache, dependent: :destroy

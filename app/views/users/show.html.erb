@@ -14,20 +14,20 @@
 <div class="user-tabs">
   <!-- Nav tabs -->
   <ul class="nav tab-ul" role="tablist">
-    <li role="presentation" class="left-none active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">个人信息</a></li>
+    <li role="presentation" class="left-none"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">个人信息</a></li>
     <li role="presentation"><a href="#powers" id="powers_a" aria-controls="powers" role="tab" data-toggle="tab">五大能力</a></li>
-    <li role="presentation" class="right-none"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab">成长轨迹</a></li>
+    <li role="presentation" class="right-none active"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab">成长轨迹</a></li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="info">
+    <div role="tabpanel" class="tab-pane" id="info">
 			<%= render partial: "user_info" %>
     </div>
     <div role="tabpanel" class="tab-pane" id="powers">
 			<%= render partial: "powers" %>
     </div>
-    <div role="tabpanel" class="tab-pane" id="groups">
+    <div role="tabpanel" class="tab-pane active" id="groups">
     	<%= render partial: "groups" %>
     </div>
   </div>

@@ -12,4 +12,5 @@
 
 class Education < ActiveRecord::Base
   belongs_to :user
+  enum final_education: { '大专': 1, '本科': 2, '硕士': 3, '博士': 4 }
 end

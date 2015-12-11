@@ -21,7 +21,7 @@
 	<div class="user-row bottom-none row">
 		<div class="col-xs-6 pr-0">个人信息完善度：<%= perfection(@user).round(0) %>%</div>
 		<div class="col-xs-6 pr-0">
-			<button class="btn btn-white user-btn">完善资料</button>
+			<%= link_to '完善资料', user_pages_path(current_user), class:"btn btn-white user-btn"  %>
 		</div>
 	</div>
 

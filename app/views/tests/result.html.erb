@@ -12,8 +12,8 @@
 	</div>
 
 	<div class="test-btn">
-		<%= link_to("完善个人基本信息", personal_users_path(current_user), class: "btn btn-blue") %>
-		<%= link_to("跳过", user_path(current_user), class: "btn btn-white pull-right") %>
+		<%= link_to("完善个人基本信息", '#', class: "btn btn-blue") %>
+		<%= link_to("跳过", personal_user_path(current_user), class: "btn btn-white pull-right") %>
 	</div>
 <!-- 不存在说明是阶段测试 -->
 <% else %>

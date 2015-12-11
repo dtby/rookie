@@ -1,0 +1,11 @@
+<% @educations.each do |edu| %>
+  <div class="resume-item clearfix">
+    <div class="my-infos">阶段<span class="pull-right"><%= edu.stage %></span></div>
+    <hr id="divide">
+    <div class="my-infos">毕业时间<span class="pull-right"><%= edu.time %></span></div>
+    <hr id="divide">
+    <div class="my-infos">学校<span class="pull-right"><%= edu.name %></span></div>
+    <hr id="divide">
+    <div class="my-infos"><%= link_to '删除', user_education_path(@user, edu), method: :delete, class: "btn btn-delete btn-sm", remote: true, format: :js %></div>
+  </div>
+<% end -%>
