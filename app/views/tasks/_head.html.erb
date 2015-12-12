@@ -4,5 +4,15 @@
     <%= link_to apply_path do %>
       <%= image_tag("head_add.png", width: 28) %>
     <% end %>
-  <% end %>
+  <% else %>
+    <%= link_to("javascript:void(0);", title: current_user.try(:voted_up_on?, @task, vote_scope: "collect") ? "取消收藏" : "收藏", class: "vote-create-a btn btn-info btn-xs", voteable_id: @task.id, voteable_type: @task.class, style_type: "task-list", id: "taskListShowLink#{@task.id}", scope: "collect") do %>
+      <%= ((current_user.try(:voted_up_on?,@task, vote_scope: "collect")) ? "取消收藏" : "收藏") %>
+    <% end -%>
+  <% end -%>
 </div>
+<%= content_for :scripts do %>
+  <%= javascript_tag do %>
+    vote_create_path = "<%= votes_path %>.js"
+  <% end %>
+  <%= javascript_include_tag "app/votes", 'data-turbolinks-track' => true  %>
+<% end %>

@@ -12,5 +12,6 @@
 
 class Education < ActiveRecord::Base
   belongs_to :user
-  enum final_education: { '大专': 1, '本科': 2, '硕士': 3, '博士': 4 }
+  enum stage: { dazhuan: 1, benke: 2, shuoshi: 3, boshi: 4 }
+  STAGE = { dazhuan:'大专', benke:'本科', shuoshi:'硕士', boshi:'博士'}
 end

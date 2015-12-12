@@ -26,10 +26,14 @@
 #
 
 class User < ActiveRecord::Base
+  #关注功能
+  acts_as_votable
+  acts_as_voter
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
 
   has_many :task, dependent: :destroy
   has_many :education, dependent: :destroy
@@ -44,8 +48,8 @@ class User < ActiveRecord::Base
   validates :message, presence: true, on: :create
   validate :is_right_sms?, if: "message.present?", on: :create
 
-  # attr_accessor :login
-  attr_accessor :message #短信验证码
+  #短信验证码
+  attr_accessor :message
 
   after_create :create_score_and_score_cache
 

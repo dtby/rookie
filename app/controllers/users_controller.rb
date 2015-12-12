@@ -6,7 +6,6 @@ class UsersController < BaseController
 
   # 个人信息
   def show
-  	@user = User.find(params[:id])
   end
 
   def update
@@ -24,6 +23,6 @@ class UsersController < BaseController
     params.require(:user).permit(:number, :nickname, :name, :birth, :nation, :gender, :phone, :native, :email, :present, :constellation)
   end
   def set_user
-    @user = current_user
+    @user = User.find(params[:id])
   end
 end

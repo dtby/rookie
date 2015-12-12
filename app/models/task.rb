@@ -36,6 +36,10 @@
 class Task < ActiveRecord::Base
   acts_as_taggable # Alias for acts_as_taggable_on :tags
   acts_as_taggable_on :skills, :interests
+  
+  #收藏功能
+  acts_as_votable
+
 
   belongs_to :user
   belongs_to :task_type

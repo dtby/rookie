@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   # 短信验证
   resources :messages, only: [:create]
-  
+  resources :votes, only: [:create]
   # 任务包申请
   resources :applies do
     member do
@@ -23,9 +23,23 @@ Rails.application.routes.draw do
 
   # 用户
   resources :users do
+
     resources :educations
+
     resources :works
+    
     resources :internships
+
+    # 我的主页
+    resources :attention do
+      collection do
+        get 'focus'
+        get 'subscription'
+        get 'feedback'
+        get 'interest'
+      end
+    end
+
     # 我的主页
     resources :pages, only: [:index] do
       collection do
@@ -33,6 +47,7 @@ Rails.application.routes.draw do
         get 'info'
       end
     end
+
     #个人基础信息
     member do
       get 'personal'
@@ -47,20 +62,6 @@ Rails.application.routes.draw do
     member do
       post :tag
       get :remove
-    end
-  end
-
-  # # 个人信息
-  # resources :personal
-
-
-  #
-  resources :attention do
-    collection do
-      get 'focus'
-      get 'subscription'
-      get 'feedback'
-      get 'interest'
     end
   end
 

@@ -21,7 +21,9 @@
 	<div class="user-row bottom-none row">
 		<div class="col-xs-6 pr-0">个人信息完善度：<%= perfection(@user).round(0) %>%</div>
 		<div class="col-xs-6 pr-0">
-			<%= link_to '完善资料', user_pages_path(current_user), class:"btn btn-white user-btn"  %>
+		<% if current_user.id == @user.id %>
+			<%= link_to '完善资料', user_pages_path(@user), class:"btn btn-white user-btn"  %>
+		<% end -%>
 		</div>
 	</div>
 
