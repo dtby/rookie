@@ -55,6 +55,11 @@ class Admin::QuestionsController < Admin::BaseController
 		redirect_to admin_questions_path(kind: params[:kind], page: params[:page])
 	end
 
+	def clear
+		Question.kind(params[:kind]).destroy_all
+		redirect_to admin_questions_path(kind: 'word')
+	end
+
 	private
 	def question_params
 		params.require(:question).permit(:problem, :power, :level, :genre, :answer, :kind)

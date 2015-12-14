@@ -6,7 +6,12 @@
           <h5>题目列表</h5>
           <div class="pull-right">
             <div class="ibox-tools">
-              <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              <!-- <a class="collapse-link"><i class="fa fa-chevron-up"></i></a> -->
+              <!-- 清空试题 -->
+              <%= link_to clear_admin_questions_path(kind: params[:kind]), method: :delete, data: { confirm: "确定删除？" } do %>
+                <i class="fa fa-trash-o"></i>
+              <% end %>
+
               <% if current_page?(kind: 'word') %>
                 <!-- 手动添加文字题 -->
                 <%= link_to new_admin_question_path(kind: 'word'), remote: true, format: :js do %>

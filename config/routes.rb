@@ -95,6 +95,7 @@ Rails.application.routes.draw do
       collection do
         get 'import'
         post 'import_create'
+        delete 'clear'
       end
       # 问题的所有选项
       resources :options, except: [:show] do

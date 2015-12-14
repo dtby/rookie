@@ -8,10 +8,13 @@ class TestsController < BaseController
 	def new
 		# 取出测试题[question_id, ...]，参数 (能力，等级)
 		@ids = Question.select_questions_ids(@power, @level)
-		@questions = Question.where(id: @ids)
+		@questions = []
+		@ids.each do |id|
+			@questions.push Question.find(id)
+		end
 		unless @power <= 5 && @questions.present?
 			redirect_to result_tests_path(status: 'end')
-		end 
+		end
 	end
 
 	# 提交单次成绩

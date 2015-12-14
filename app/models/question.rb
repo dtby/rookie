@@ -57,7 +57,7 @@ class Question < ActiveRecord::Base
 		genre.each do |key, value|
 			cache.push(Question.power(p).level(l).send(key).pluck(:id).shuffle[0, value])
 		end
-		return cache.flatten
+		return cache.shuffle[0,20].flatten
 	end
 
 	# 对比答案计算用户成绩

@@ -4,15 +4,28 @@
 	<div class="row">
 		<% two_option.each do |option| %>
 			<div class="col-xs-6 <%= index.odd? ? 'p-r-0' : 'p-l-0' %>">
-				<form class="form-group">
-					<%= radio_button_tag("question#{question.id}", "#{option.tab}") %>&nbsp;
+				<p>
+					<%= radio_button_tag("question#{question.id}", "#{option.tab}") %>
 					<label for="question<%= question.id %>_<%= option.tab %>">
 						<span class="pull-left"><%= "#{answer(index)}." %></span>&nbsp;
-						<span class="pull-left"><%= image_tag option.try(:image).try(:avatar).try(:url, :option) %></span>
+						<span class="pull-right img-block">
+							<%= image_tag option.try(:image).try(:avatar).try(:url, :option) %>
+						</span>
 					</label>
-				</form>
+				</p>
 			</div>
 			<% index += 1 %>
 		<% end %>
 	</div>
 <% end %> <!-- end 答案选项 -->
+
+<script>
+	$(function(){
+		// 控制图片题的显示
+		var width = $(".answer").width() / 2 - 46;
+		var a = $(".img-block");
+		a.each(function(){
+			$(this).width(width);
+		})
+	})
+</script>

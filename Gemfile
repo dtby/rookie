@@ -34,15 +34,19 @@ gem 'acts_as_votable', '~> 0.10.0'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'china_sms'
 
+# 城市选择
 gem 'china_city'
 
 gem 'logger', '~> 1.2.8'
-# Use Unicorn as the app server
+
+# 登录功能
 gem 'devise', '~> 3.4.1'
 
+# Use Unicorn as the app server
 gem 'unicorn'
 
 gem 'simple_form', '~> 3.1.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -63,6 +67,9 @@ gem 'roo-xls'
 # 图片上传
 gem "paperclip", "~> 4.3"
 gem 'remotipart', '~> 1.2'
+
+# 权限管理
+gem 'cancancan', '~> 1.10'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -39,6 +39,18 @@
 
 <script>
 	$(function() {
+		// 禁止测试页面的拖动，恢复可改变tag
+		var tag=0;
+		document.addEventListener("touchmove",function(e){
+			if(tag==0){
+				// 禁止手势缩放
+				e.preventDefault();
+				// 禁止拖动
+				e.stopPropagation();
+			}
+		},false);
+
+		// 初始化
 	  var answers, bodyWidth, num, wrap_width;
 	  bodyWidth = document.body.clientWidth;
 	  num = $(".test-question").length;

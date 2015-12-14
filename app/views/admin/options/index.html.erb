@@ -6,9 +6,9 @@
           <h5>选项列表</h5>
           <div class="pull-right">
             <div class="ibox-tools">
-              <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               <!-- 添加选项 -->
-              <%= link_to new_admin_question_option_path(params[:question_id], kind: @question.kind), remote: true, format: :js do %>
+              <%= link_to new_admin_question_option_path(params[:question_id], kind: @question.kind), 
+                          remote: true, format: :js do %>
                 <i class="fa fa-plus"></i>
               <% end %>
             </div>
@@ -35,11 +35,13 @@
                     <% end %>
                   </td>
                   <td>
-                    <%= link_to edit_admin_question_option_path(@question, option), class: 'btn btn-xs btn-info', remote: true, format: :js do %>
+                    <%= link_to edit_admin_question_option_path(@question, option), 
+                                class: 'btn btn-xs btn-info', remote: true, format: :js do %>
                       <span class="glyphicon glyphicon-edit"></span>
                     <% end %>
 
-                    <%= link_to [:admin, @question, option], method: :delete, data: { confirm: "确定删除？" }, class: 'btn btn-xs btn-danger' do %>
+                    <%= link_to [:admin, @question, option], method: :delete, 
+                                data: { confirm: "确定删除？" }, class: 'btn btn-xs btn-danger' do %>
                       <span class="glyphicon glyphicon-trash"></span>
                     <% end %>
                   </td>
