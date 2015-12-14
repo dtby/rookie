@@ -1,7 +1,7 @@
 <%= simple_form_for(:education, url: user_educations_path(@user), remote: true, format: :js) do |f| %>
-  <div class="row">
+  <div class="row form-input-group">
     <div class="label-text">
-      <%= f.input :stage, collection: Education::STAGE.invert, prompt: "请选择学位", label: false %>
+      <%= f.input :stage, class: 'form-control form-input', collection: Education::STAGE.invert, prompt: "请选择学位", label: false %>
     </div>
     
     <div class="label-text">

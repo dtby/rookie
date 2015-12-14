@@ -37,8 +37,13 @@
 }
 .form-input-group {
   padding: 10px 15px 0 15px !important;
+  margin: 0 5px; 
+  background-color: #019BFF;
+  border: 1px solid #019BFF;
+  border-radius: 10px;
   .form-input {
     border-radius: 0;
+    width: 90%;
   }
   .input-group-btn {
     padding-left: 8px;

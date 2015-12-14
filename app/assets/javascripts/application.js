@@ -12,8 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.remotipart
-//= require turbolinks
+//= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require ./date/zepto.min
 //= require ./date/mobile-select-date

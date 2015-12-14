@@ -122,12 +122,16 @@ SimpleForm.setup do |config|
     b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
   end
 
+# 前台页面表单
   config.wrappers :task_form, tag: 'div', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
     b.use :input, class: 'form-control form-input'
     b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
     b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+    b.optional :maxlength
+    b.optional :pattern
+    b.optional :min_max
     b.optional :readonly
 
   end

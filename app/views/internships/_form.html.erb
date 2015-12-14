@@ -1,5 +1,5 @@
 <%= simple_form_for(:internship, url: user_internships_path(@user), remote: true, format: :js) do |f| %>
-  <div class="row">
+  <div class="row form-input-group">
     
     <div class="label-text">
       <%= f.input :company, class: 'form-control form-input', placeholder: '公司名称', label: false %>
