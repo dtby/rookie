@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
   # 短信验证
   resources :messages, only: [:create]
+  
   resources :votes, only: [:create]
+
   # 任务包申请
   resources :applies do
     member do
@@ -54,7 +56,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # 任务
+  # 所有的任务
   resources :tasks do
     collection do
       get 'personal_tasks'
@@ -90,14 +92,14 @@ Rails.application.routes.draw do
   #后台管理
   namespace :admin do
     root 'home#index'
-    # 所有问题
+    # 所有测试题
     resources :questions, except: [:show] do
       collection do
         get 'import'
         post 'import_create'
         delete 'clear'
       end
-      # 问题的所有选项
+      # 测试题的所有选项
       resources :options, except: [:show] do
         collection do
           post 'uploads'

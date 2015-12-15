@@ -5,7 +5,10 @@
 		<%= image_tag("logo2.png", height: 60) %>
 	</div>
 	<div class="col-xs-9">
-		<p>&nbsp;&nbsp;姓名：<%= current_user.name %>&nbsp;&nbsp;<span class="club-style">普通会员[<%= current_user.level %>]</span></p>
+		<p>
+      &nbsp;&nbsp;姓名：<%= current_user.nickname %>&nbsp;&nbsp;
+      <span class="club-style"><%= User::ROLE[current_user.role.to_sym] %></span>
+    </p>
 		<p>&nbsp;&nbsp;编号：CNH15<%= current_user.id %>
       <% unless current_user.id == @user.id %>
         <%= link_to("javascript:void(0);", title: current_user.try(:voted_up_on?, @user, vote_scope: "collect") ? "取消关注" : "关注", class: "vote-create-a btn btn-info btn-xs", voteable_id: @user.id, voteable_type: @user.class, style_type: "user-list", id: "userListShowLink#{@user.id}", scope: "collect") do %>

@@ -4,10 +4,11 @@
 #
 #  id         :integer          not null, primary key
 #  stage      :integer
-#  time       :date
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  time       :string(255)
+#  name       :string(255)
 #
 
 class Education < ActiveRecord::Base

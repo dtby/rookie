@@ -14,7 +14,7 @@
 #
 
 class Question < ActiveRecord::Base
-	validates :problem, :level, :power, :genre, :answer, :kind, presence: true
+	validates :problem, :level, :power, :genre, :kind, presence: true
 
 	has_many :options, dependent: :destroy
 

@@ -13,7 +13,7 @@
 #  present                :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  email                  :string(255)      default(""), not null
+#  email                  :string(255)      default("")
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
 #  reset_password_sent_at :datetime
@@ -23,6 +23,9 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
+#  birth                  :string(255)
+#  constellation          :integer
+#  role                   :integer          default(1)
 #
 
 class User < ActiveRecord::Base
@@ -54,6 +57,9 @@ class User < ActiveRecord::Base
   attr_accessor :message
 
   after_create :create_score_and_score_cache
+
+  enum role: {admin: 0, rookie: 1, rookie_glod: 2, rookie_diamond: 3, boss: 4, boss_gold: 5, boss_diamond: 6}
+  ROLE = {admin: "管理员", rookie: "普通菜鸟", rookie_glod: "黄金菜鸟", rookie_diamond: "钻石菜鸟", boss: "普通BOSS", boss_gold: "黄金BOSS", boss_diamond: "钻石BOSS"}
 
   enum gender: {'男': 1,'女': 2}
 
