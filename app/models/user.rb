@@ -26,6 +26,8 @@
 #
 
 class User < ActiveRecord::Base
+  has_merit
+
   #关注功能
   acts_as_votable
   acts_as_voter
