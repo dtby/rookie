@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151214064043) do
+ActiveRecord::Schema.define(version: 20151214090510) do
 
   create_table "applies", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -287,6 +287,7 @@ ActiveRecord::Schema.define(version: 20151214064043) do
     t.string   "last_sign_in_ip",        limit: 255
     t.string   "birth",                  limit: 255
     t.integer  "constellation",          limit: 4
+    t.integer  "role",                   limit: 4,   default: 1
     t.integer  "sash_id",                limit: 4
     t.integer  "level",                  limit: 4,   default: 0
   end
