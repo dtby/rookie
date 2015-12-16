@@ -1,1 +1,9 @@
-$("#global_modal .modal-body").html("<%= j( render partial: 'form', locals: {question: @question, kind: params[:kind]} )%>")
+<% if @success %>
+	window.location.href='<%= admin_questions_path(kind: @kind) %>';
+<% else %>
+	<% if @kind == 'image' %>
+		$(".image_form").html("<%= j( render partial: "image_form", locals: {question: @question} )%>");
+	<% else %>
+		$("#global_modal .modal-body").html("<%= j( render partial: 'form', locals: {question: @question, kind: @kind} )%>");
+	<% end %>
+<% end %>

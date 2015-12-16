@@ -1,9 +1,27 @@
-<div class="lg-box animated fadeInRightBig">
+<div class="lg-box animated">
   <div class="row">
+    <% if params[:kind] == 'image' %>
+      <!-- 添加试题表单 -->
+      <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title">
+            <h5>添加试题</h5>
+            <div class="ibox-tools">
+              <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </div>
+          </div>
+          <div class="ibox-content image_form">
+            <%= render partial: "image_form", locals: {question: @question} %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- 试题列表 -->
     <div class="col-lg-12">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
-          <h5>题目列表</h5>
+          <h5><%= Question::KIND[params[:kind].to_sym] %>列表</h5>
           <div class="pull-right">
             <div class="ibox-tools">
               <!-- <a class="collapse-link"><i class="fa fa-chevron-up"></i></a> -->
@@ -21,58 +39,20 @@
                 <%= link_to import_admin_questions_path, remote: true, format: :js do %>
                   <i class="fa fa-file-excel-o"></i>
                 <% end %>
-              <% else %>
-                <!-- 添加图片题 -->
-                <%= link_to new_admin_question_path(kind: 'image'), remote: true, format: :js do %>
-                  <i class="fa fa-pencil"></i>
-                <% end %>
-              <% end %>
+              <% end %>  
             </div>
           </div>
         </div>
-        <div class="ibox-content">
-          <table class="table">
-            <thead>
-              <tr class="tests-table">
-                <th>序号</th>
-                <th>题目</th>
-                <th>能力</th>
-                <th>等级</th> 
-                <th>题型</th>
-                <th>正确答案</th>
-                <th>操作</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @questions.each do |question| %>
-                <tr class="text-center">
-                  <td><%= question.id %></td>
-                  <td class="problem"><%= question.problem %></td>
-                  <td><%= Question::POWER[question.power.to_sym] %></td>
-                  <td><%= Question::LEVEL[question.level.to_sym] %></td>
-                  <td><%= Question::GENRE[question.genre.to_sym] %></td>
-                  <td><%= answer(question.answer) %></td>
-                  <td>
-                    <%= link_to admin_question_options_path(question, kind: question.kind), class: "btn btn-xs btn-info" do %>
-                      <span class="glyphicon glyphicon-list"></span>
-                    <% end %>
-
-                    <%= link_to edit_admin_question_path(question, kind: question.kind), class: 'btn btn-xs btn-default', remote: true, format: :js do %>
-                      <span class="glyphicon glyphicon-edit"></span>
-                    <% end %>
-
-                    <%= link_to admin_question_path(question, kind: params[:kind], page: params[:page]), method: :delete, data: { confirm: "确定删除？" }, class: 'btn btn-xs btn-danger' do %>
-                      <span class="glyphicon glyphicon-trash"></span>
-                    <% end %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-          <h3 class="text-center"><%= paginate @questions %></h3>
+        <div class="ibox-content" id="tests_index">
+          <% if params[:kind] == 'word' %>
+            <%= render partial: "word_index", locals: {questions: @questions} %>
+          <% else %>
+            <%= render partial: "image_index", locals: {questions: @questions} %>
+          <% end %>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 <div id="testsModal"></div>

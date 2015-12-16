@@ -6,12 +6,7 @@
 			<%= f.input :level, collection: Question::LEVEL.invert, prompt: "选择等级" %>
 			<%= f.input :genre, collection: Question::GENRE.invert, prompt: "选择类型" %>
 			<%= f.input :answer, collection: answers, prompt: "选择标准答案"%>
-			
-			<% if kind == 'word' %>
-				<%= f.hidden_field :kind, value: 'word' %>
-			<% else %>
-				<%= f.hidden_field :kind, value: 'image' %>
-			<% end %>
+			<%= f.hidden_field :kind, value: 'word' %>
 			
 			<% if params[:action] == 'new' || params[:action] == 'create' %>
 				<%= f.submit "添加", data: {disable_with: "正在添加..."}, class: "btn btn-primary btn-block" %>

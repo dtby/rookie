@@ -4,6 +4,10 @@ module TestsHelper
 		{'A' => 1, 'B' => 2, 'C' => 3, 'D' => 4, 'E' => 5, 'F' => 6 }
 	end
 
+	def image_answers
+		{'A' => 1, 'B' => 2, 'C' => 3, 'D' => 4 }
+	end
+
 	# 能力
 	def power(power)
 		case power

@@ -15,10 +15,8 @@ class Admin::OptionsController < Admin::BaseController
 
 	def create
 		@option = @question.options.build(option_params)
-		# 如果图片存在，则保持记录
-  	@option.create_image(avatar: params[:option][:image]) if params[:option][:image].present?
 		respond_to do |format|
-			if @option.save && @option.image.save
+			if @option.save
 				format.js { render js: "location.href='#{admin_question_options_path(@question, kind: @question.kind)}'" }
 			else
 				format.js
@@ -26,23 +24,11 @@ class Admin::OptionsController < Admin::BaseController
 		end
 	end
 
-	# 上传选项图片
-	def uploads
-		
-	end
-
 	def edit
 		respond_with @option
 	end
 
 	def update
-		# 如果图片存在，更新图片
-		if params[:option][:image].present?
-			@option.image.avatar = nil
-    	@option.build_image(avatar: params[:option][:image]) 
-    	@option.save
-		end
-
 		respond_to do |format|
 			if @option.update(option_params)
 				format.js { render js: "location.href='#{admin_question_options_path(@question, kind: @question.kind)}'" }

@@ -74,6 +74,12 @@ gem 'remotipart', '~> 1.2'
 # 权限管理
 gem 'cancancan', '~> 1.10'
 
+# 后台表格控件
+# gem "wice_grid", '3.6.0.pre4'
+
+# 图标
+gem 'font-awesome-sass',  '~> 4.3'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

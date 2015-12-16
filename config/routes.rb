@@ -100,11 +100,7 @@ Rails.application.routes.draw do
         delete 'clear'
       end
       # 测试题的所有选项
-      resources :options, except: [:show] do
-        collection do
-          post 'uploads'
-        end
-      end
+      resources :options, except: [:show]
     end
   end
 

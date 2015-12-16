@@ -2,7 +2,8 @@ class Admin::QuestionsController < Admin::BaseController
 	respond_to :html, :js
 	# 后台测试题
 	def index
-		@questions = Question.kind(params[:kind]).page params[:page]
+		@questions = Question.kind(params[:kind]).order(id: :desc).page params[:page]
+		@question = Question.new
 	end
 
 	# 手动添加试题
@@ -11,15 +12,17 @@ class Admin::QuestionsController < Admin::BaseController
 		respond_with @question
 	end
 
+	# 创建试题
 	def create
-		@question = Question.new(question_params)
-		if @question.save
-			respond_to do |format|
-				format.js {render js: "location.href='#{admin_questions_path(kind: question_params[:kind])}'"}
-			end
+		@kind = question_params[:kind]
+		if @kind == 'image'
+			images = params[:question].slice(:imagea, :imageb, :imagec, :imaged)
+			@question = Question.save_question_with_images(question_params, images)
 		else
-			respond_with @question
+			question = Question.new(question_params)
+			@question = question.save
 		end
+		respond_with @question
 	end
 
 	def edit
@@ -28,14 +31,15 @@ class Admin::QuestionsController < Admin::BaseController
 	end
 
 	def update
-		@question = Question.find(params[:id])
-		if @question.update(question_params)
-			respond_to do |format|
-				format.js {render js: "location.href='#{admin_questions_path(kind: question_params[:kind])}'"}
-			end
+		images = params[:question].slice(:imagea, :imageb, :imagec, :imaged)
+		question = Question.find(params[:id])
+		@kind = question.kind
+		if @kind == 'image'
+			@success = question.update_question_with_images(question_params, images)
 		else
-			respond_with @question
+			@success = question.update(question_params)
 		end
+		respond_with @success
 	end
 
 	# 从Excel表导入
@@ -52,12 +56,12 @@ class Admin::QuestionsController < Admin::BaseController
 	def destroy
 		@question = Question.find(params[:id])
 		@question.destroy
-		redirect_to admin_questions_path(kind: params[:kind], page: params[:page])
+		respond_with @question
 	end
 
 	def clear
 		Question.kind(params[:kind]).destroy_all
-		redirect_to admin_questions_path(kind: 'word')
+		redirect_to admin_questions_path(kind: params[:kind])
 	end
 
 	private

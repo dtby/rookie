@@ -1,13 +1,9 @@
 <div class="row">
 	<div class="col-xs-12">
 		<%= simple_form_for([:admin, question, option], remote: true, format: :js, wrapper: :admin_form,  html: { multipart: true }) do |f| %>
-			<%= f.input :tab, collection: question.valid_tabs, prompt: "选项标识" %>
+			<%= f.input :tab, required: true, collection: question.valid_tabs, prompt: "选项标识" %>
 	
-			<% if params[:kind] == 'word' %>
-				<%= f.input :content, placeholder: "选项内容" %>
-			<% else %>
-				<%= f.input :image, as: :file %>
-			<% end %>
+			<%= f.input :content, required: true, placeholder: "选项内容" %>
 
 			<% if params[:action] == 'new' || params[:action] == 'create' %>
 				<%= f.submit "添加", data: {disable_with: "正在添加..."}, class: "btn btn-primary btn-block" %>

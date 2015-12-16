@@ -1,4 +1,6 @@
-$(".modal-backdrop").remove();
-$("#testsModal").html("<%= escape_javascript( render partial: 'admin/share/modal', locals: { title: '手动添加试题' } )%>");
-$("#global_modal .modal-body").html("<%= j( render partial: 'form', locals: {question: @question, kind: params[:kind]} )%>")
-$('#global_modal').modal('show');
+<% if params[:kind] == 'word' %>
+	$(".modal-backdrop").remove();
+	$("#testsModal").html("<%= escape_javascript( render partial: 'admin/share/modal', locals: { title: '手动添加试题' } )%>");
+	$("#global_modal .modal-body").html("<%= j( render partial: 'form', locals: {question: @question} )%>")
+	$('#global_modal').modal('show');
+<% end %>

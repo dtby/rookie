@@ -32,14 +32,14 @@ class Question < ActiveRecord::Base
 
 	# 试题版式
 	enum kind: { word: 0, image: 1 }
-	TYPE = { word: '文字题', image: '图片题' }
+	KIND = { word: '文字题', image: '图片题' }
 
 	scope :level, ->(l) { where(level: l) }
 	scope :power, ->(p) { where(power: p) }
 	scope :genre, ->(g) { where(genre: g) }
 	scope :kind, ->(t) { where(kind: self.kinds[t]) }
 
-	# 选择测试题
+	# 按规则抽出测试题
 	# 参数：(能力) p in [1,2,3,4,5], (等级) l in [1,2,3]
 	def self.select_questions_ids(p, l)
 		cache = []
@@ -153,6 +153,40 @@ class Question < ActiveRecord::Base
 			cache[key] = value unless existed.include? value
 		end
 		return cache
+	end
+
+	# 创建图片题，同时创建对应选项
+	def self.save_question_with_images(params, images)
+		begin
+			Question.transaction do
+				question = self.create!(params)
+				if images.present?
+					Option.create_image_options(question, images)
+				else
+					raise ActiveRecord::Rollback
+				end
+			end
+		rescue Exception => e
+			e.message.present? ? false : true
+		end
+	end
+
+	# 更新图片题，同时更新对应选项
+	def update_question_with_images(params, images)
+		begin
+			Question.transaction do
+				question = self.update!(params)
+				if images.present?
+					Option.update_image_options(self.id, images)
+				else
+					raise ActiveRecord::Rollback
+				end
+			end
+		rescue Exception => e
+			puts "==================="
+			puts e.message
+			e.message.present? ? false : true
+		end
 	end
 
 end

@@ -4,3 +4,28 @@
 .problem{
 	max-width: 500px;
 }
+.image-problem{
+	max-width: 300px;
+}
+.image_form{
+	.file{
+		margin-bottom: 10px !important;
+		margin-right: 0 !important;
+		border: none !important;
+	}
+	.control-label{
+		text-align: right;
+		line-height: 32px;
+	}
+	.file-preview {
+		width: 100%;
+	}
+	.file-caption-name{
+		width: 70%;
+	}
+}
+
+// 支持火狐浏览器的表格响应式
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}
