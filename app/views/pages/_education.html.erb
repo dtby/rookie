@@ -1,6 +1,6 @@
 <% @educations.each do |edu| %>
   <div class="resume-item clearfix">
-    <div class="my-infos">阶段<span class="pull-right"><%= edu.stage %></span></div>
+    <div class="my-infos">阶段<span class="pull-right"><%= Education::STAGE[edu.stage.to_sym] %></span></div>
     <hr id="divide">
     <div class="my-infos">毕业时间<span class="pull-right"><%= edu.time %></span></div>
     <hr id="divide">

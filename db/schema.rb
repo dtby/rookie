@@ -287,9 +287,9 @@ ActiveRecord::Schema.define(version: 20151214090510) do
     t.string   "last_sign_in_ip",        limit: 255
     t.string   "birth",                  limit: 255
     t.integer  "constellation",          limit: 4
-    t.integer  "role",                   limit: 4,   default: 1
     t.integer  "sash_id",                limit: 4
     t.integer  "level",                  limit: 4,   default: 0
+    t.integer  "role",                   limit: 4,   default: 1
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

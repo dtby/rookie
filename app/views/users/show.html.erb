@@ -16,7 +16,9 @@
         <% end -%>
       <% end -%>
     </p>
-		<p>&nbsp;&nbsp;经验值：<%= current_user.points %>/200</p>
+    <p>&nbsp;&nbsp;经验值：<%= current_user.points(category: 'experience') %>/200</p>
+    <p>&nbsp;&nbsp;鸟币：<%= current_user.points(category: 'coin') %></p>
+		<!-- <p>&nbsp;&nbsp;等级：<%= current_user.level %></p> -->
 	</div>
 </div>
 
@@ -55,9 +57,6 @@
 	})
 </script>
 
-<%= content_for :scripts do %>
-  <%= javascript_tag do %>
-    vote_create_path = "<%= votes_path %>.js"
-  <% end %>
-  <%= javascript_include_tag "app/votes", 'data-turbolinks-track' => true  %>
+<%= javascript_tag do %>
+  vote_create_path = "<%= votes_path %>.js"
 <% end %>

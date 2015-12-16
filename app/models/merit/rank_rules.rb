@@ -16,15 +16,19 @@ module Merit
 
     def initialize
       set_rank level: 1, to: User do |user|
-        user.points >= 0 && user.points < 200
+        user.points(category: 'experience') >= 0
       end
       
       set_rank level: 2, to: User do |user|
-        user.points >= 200 && user.points < 500
+        user.points(category: 'experience') >= 200
       end
       
       set_rank level: 3, to: User do |user|
-        user.points >= 500
+        user.points(category: 'experience') >= 220
+      end
+
+      set_rank level: 4, to: User do |user|
+        user.points(category: 'experience') >= 250
       end
     end
   end
