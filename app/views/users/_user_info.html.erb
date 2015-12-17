@@ -27,7 +27,14 @@
 		</div>
 	</div>
 
-	<div class="generate-resume1" style="margin-top: 100px;">
-		<%= link_to("一键生成简历", "#", class: "btn btn-blue btn-block" ) %>
+	<div class="generate-resume1 text-center" style="margin-top: 100px;" id="sign_t">
+		<% if @signed %>
+			<button class="btn btn-info btn-lg" disabled="disabled">今日已签到,明天再来吧！</button>
+		<% else %>
+			<%= link_to "今日签到!", "javascript:void(0);", class: "sign-create btn btn-info btn-lg", id: 'sign_s',user_id: current_user.id  %>
+		<% end %>
 	</div>
 </div>
+<%= javascript_tag do %>
+  sign_create_path = "<%= user_signs_path(@user) %>.js"
+<% end %>

@@ -16,6 +16,22 @@ module Merit
       score 10, :on => 'users#create' do |user|
         user.bio.present?
       end
+
+      score 1, :on => 'signs#create', category: 'experience' do |task|
+        User.roles[task.user.try(:role)] <= 3
+      end
+      score 1, :on => 'signs#create', category: 'experience' do |task|
+        User.roles[task.user.try(:role)] > 3
+      end
+
+      score 5, :on => 'signs#create', category: 'coin' do |task|
+        User.roles[task.user.try(:role)] <= 3
+      end
+      score 20, :on => 'signs#create', category: 'coin' do |task|
+        User.roles[task.user.try(:role)] > 3
+      end
+
+
       score 5, :on => 'tasks#create', category: 'experience' do |task|
         task.grade == 'a' && User.roles[task.user.try(:role)] <= 3
       end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151214090510) do
+ActiveRecord::Schema.define(version: 20151216021540) do
 
   create_table "applies", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -203,6 +203,12 @@ ActiveRecord::Schema.define(version: 20151214090510) do
   end
 
   add_index "scores", ["user_id"], name: "index_scores_on_user_id", using: :btree
+
+  create_table "signs", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id",        limit: 4

@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
 
   has_many :task, dependent: :destroy
   has_many :education, dependent: :destroy
+  has_many :sign, dependent: :destroy
   has_many :work, dependent: :destroy
   has_many :internship, dependent: :destroy
   has_many :apply, dependent: :destroy

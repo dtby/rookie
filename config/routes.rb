@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   
   resources :votes, only: [:create]
 
+
   # 任务包申请
   resources :applies do
     member do
@@ -31,6 +32,8 @@ Rails.application.routes.draw do
     resources :works
     
     resources :internships
+
+    resources :signs, only: [:create]
 
     # 我的主页
     resources :attention do

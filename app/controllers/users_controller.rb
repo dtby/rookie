@@ -1,11 +1,16 @@
 class UsersController < BaseController
   before_action :set_user
-  def index
-  	
+  def index	
   end
 
   # 个人信息
   def show
+    @sign_in = Sign.where(user_id:current_user.id).last
+    if @sign_in.try(:created_at).try(:to_date) == Time.now.to_date
+      @signed = true
+    else
+      @signed = false
+    end
   end
 
   def update

@@ -10,9 +10,6 @@
     <% end -%>
   <% end -%>
 </div>
-<%= content_for :scripts do %>
-  <%= javascript_tag do %>
-    vote_create_path = "<%= votes_path %>.js"
-  <% end %>
-  <%= javascript_include_tag "app/votes", 'data-turbolinks-track' => true  %>
+<%= javascript_tag do %>
+  vote_create_path = "<%= votes_path %>.js"
 <% end %>
