@@ -1,0 +1,8 @@
+<div class="row">
+	<div class="col-md-12">
+		<%= simple_form_for([:admin, user], remote: true, format: :js, wrapper: :admin_form) do |f| %>
+			<%= f.input :role, collection: User::ROLE.invert, prompt: "选择身份" %>
+			<%= f.submit "更新", data: {disable_with: "正在更新..."}, class: "btn btn-primary btn-block" %>
+		<% end %>
+	</div>
+</div>

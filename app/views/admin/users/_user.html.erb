@@ -1,0 +1,24 @@
+<tr class="text-center <%= "tr_#{user.id}" %>">
+  <td><%= user.id %></td>
+  <td><%= user.number %></td>
+  <td><%= user.nickname %></td>
+  <td><%= user.name %></td>
+  <td><%= user.nation %></td>
+  <td><%= user.gender %></td>
+  <td><%= user.phone %></td>
+  <td><%= user.email %></td>
+  <td><%= User.address(user.native) %></td>
+  <td><%= User.address(user.present) %></td>
+  <td><%= user.birth %></td>
+  <td><%= constellation(user.birth) %></td>
+  <td id="<%= "role_#{user.id}" %>"><%= User::ROLE[user.role.to_sym] %></td>
+  <td>
+    <%= link_to edit_admin_user_path(user, role: params[:role], page: params[:page]), class: 'btn btn-xs btn-info', remote: true, format: :js do %>
+      <span class="glyphicon glyphicon-edit"></span>
+    <% end %>
+
+    <%= link_to admin_user_path(user, role: params[:role], page: params[:page]), method: :delete, data: { confirm: "确定删除？" }, class: 'btn btn-xs btn-danger' do %>
+      <span class="glyphicon glyphicon-trash"></span>
+    <% end %>
+  </td>
+</tr>

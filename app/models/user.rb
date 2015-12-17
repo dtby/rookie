@@ -162,9 +162,13 @@ class User < ActiveRecord::Base
   end
 
   def self.address(number)
-    p = ChinaCity.get(number.split(',').first)
-    c = ChinaCity.get(number.split(',').last)
-    address = p+c
+    if number.present?
+      p = ChinaCity.get(number.split(',').first)
+      c = ChinaCity.get(number.split(',').last)
+      address = p+c
+    else
+      address = ''
+    end
   end
   
   private

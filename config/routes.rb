@@ -70,11 +70,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # 官方活动(公开课：courses、FaceBoss：meetings、特训营：trainings)
-  resources :courses
-  resources :meetings
-  resources :trainings
-
   # 测试模块
   resources :tests do
     collection do
@@ -94,6 +89,7 @@ Rails.application.routes.draw do
 
   #后台管理
   namespace :admin do
+
     root 'home#index'
     # 所有测试题
     resources :questions, except: [:show] do
@@ -105,7 +101,17 @@ Rails.application.routes.draw do
       # 测试题的所有选项
       resources :options, except: [:show]
     end
+
+    # 用户
+    resources :users
   end
+
+
+  # 官方活动(公开课：courses、FaceBoss：meetings、特训营：trainings)
+  # resources :courses, only: [:index]
+  # resources :meetings, only: [:index]
+  # resources :trainings, only: [:index]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

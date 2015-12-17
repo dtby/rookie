@@ -1,19 +1,19 @@
 <%= simple_form_for(@user, url: user_path(@user), html: { method: :patch }) do |f| %>
   <div class="row">
     <div class="label-text">
-      <%= f.input :nickname, class: 'form-control label-input', placeholder: '昵称', label: false %>
+      <%= f.input :nickname, required: true, class: 'form-control label-input', placeholder: '昵称', label: false %>
     </div>
 
     <div class="dropdown label-text">
-      <%= f.input :gender, collection: User.genders, prompt: "性别", label: false %>
+      <%= f.input :gender, required: true, collection: User.genders, prompt: "性别", label: false %>
     </div>
 
     <div class="label-text">
-      <%= f.input :birth, class: 'form-control form-input', placeholder: '生日', label: false %>
+      <%= f.input :birth, required: true, class: 'form-control form-input', placeholder: '生日', label: false %>
     </div>
 
     <div class="dropdown label-text">
-      <%= f.input :nation, collection: User.nations, prompt: "民族", label: false %>
+      <%= f.input :nation, required: true, collection: User.nations, prompt: "民族", label: false %>
     </div>
 
     <div class='label-text city-group'>
