@@ -1,0 +1,21 @@
+<div class="explain-head">
+	<%= image_tag("logo2.png", height: 70) %>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-5 p-0 explain-boy">
+			<%= image_tag "boy.png" %>
+		</div>
+		<div class="col-xs-7">
+			<h3 class="explain-title text-center">恭喜您注册成功！</h3>
+			<p class="explain-content">知道自己的长版在哪里，适合的工作室什么，选择比努力更重要！</p>
+			<p class="explain-tips">注：必须完成此测试才可以进行接包</p>
+
+				<div class="">
+					<%= link_to("测试", new_test_path, class: "btn btn-blue") %>
+					<%= link_to("跳过", user_path(params[:id]), class: "btn btn-white pull-right") %>
+				</div>
+		</div>
+	</div>
+</div>

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   }
   
   # 网站主页
-  root 'tests#new'
+  #root 'tests#new'
 
   # 短信验证
   resources :messages, only: [:create]
@@ -17,7 +17,12 @@ Rails.application.routes.draw do
   resources :votes, only: [:create]
 
   # 用户
-  resources :users do
+  resources :users, only: [:show, :personal, :personal, :explain] do
+    #个人基础信息, 我的活动
+    member do
+      get 'personal'
+      get 'explain'
+    end
 
     resources :educations
 
@@ -43,11 +48,6 @@ Rails.application.routes.draw do
         get 'resume'
         get 'info'
       end
-    end
-
-    #个人基础信息, 我的活动
-    member do
-      get 'personal'
     end
   end
 

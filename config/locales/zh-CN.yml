@@ -124,7 +124,7 @@ zh-CN:
       odd: 必须为单数
       record_invalid: '验证失败: %{errors}'
       date_format: '请输入YYYY-MM-DD格式的日期（例：1989-01-12）'
-      mobile_reg: '请输入正确格式的手机号'
+      phone_reg: '请输入正确格式的手机号'
       sms_error: '短信验证码不正确'
       restrict_dependent_destroy:
         one: 由于 %{record} 需要此记录，所以无法移除记录

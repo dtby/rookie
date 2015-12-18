@@ -94,3 +94,42 @@ html, body{
   	color: darken($head_bg, 10);
   }
 }
+
+/** 注册完成 & 测试完成 **/
+.explain-head{
+	height: 120px;
+	line-height: 120px;
+	text-align: center;
+	background-color: $head_bg;
+}
+.explain-title{
+	color: $head_bg;
+	margin-top: 40px;
+	margin-bottom: 50px;
+	font-weight: bolder;
+}
+.explain-content{
+	font-size: 16px;
+	line-height: 2;
+	text-align: justify;
+	font-weight: bold;
+}
+.explain-tips{
+	color: #F53735;
+	margin-bottom: 50px;
+	font-weight: bold;
+}
+.explain-boy{
+	padding-top: 10px !important;
+	img{
+		height: 400px;
+	}
+}
+
+/** 控制pading margin **/
+.p-0{
+	padding: 0;
+}
+.p-l-0{
+	padding-left: 0;
+}

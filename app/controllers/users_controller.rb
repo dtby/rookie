@@ -1,7 +1,5 @@
 class UsersController < BaseController
-  before_action :set_user
-  def index	
-  end
+  before_action :set_user, only: [:show, :update, :personal]
 
   # 个人信息
   def show
@@ -11,6 +9,14 @@ class UsersController < BaseController
     else
       @signed = false
     end
+  end
+
+  # 注册后的说明页
+  def explain
+  end
+
+  # 完善个人基本信息
+  def personal
   end
 
   def update

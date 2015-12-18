@@ -47,28 +47,3 @@
 		font-size: 16px;
 	}
 }
-
-/** tests#result **/
-.tests__result{
-	.result-head{
-		height: 100px;
-		line-height: 100px;
-		text-align: center;
-		background-color: $head_bg;
-	}
-	.result-content{
-		padding: 30px;
-		.score{
-			color: $head_bg;
-			font-size: 24px;
-		}
-		h3{
-			color: $head_bg;
-		}
-		p{
-			font-size: 16px;
-			line-height: 2;
-			text-align: justify;
-		}
-	}
-}
