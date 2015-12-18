@@ -31,6 +31,7 @@
 #  p              :string(255)
 #  c              :string(255)
 #  a              :string(255)
+#  member_count   :integer
 #
 
 class Task < ActiveRecord::Base
@@ -43,9 +44,11 @@ class Task < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :task_type
-  has_many :apply, dependent: :destroy
+  has_many :applies, dependent: :destroy
+  # 任务包接包用户
+  has_many :members, dependent: :destroy
 
-  validates :grade, presence: true, on: :create
+  validates :grade, :member_count, presence: true, on: :create
   validates :name, presence: true, on: :create
   validates :deadline, presence: true, on: :create
 

@@ -8,14 +8,30 @@ html, body{
 .head{
 	height: 45px;
 	width: 100%;
-	line-height: 45px;
 	font-size: 22px;
 	color: $color_white;
 	background: image-url("head_bg.png") repeat-x;
-	img{
-		position: absolute;
-		top: 8px;
-		right: 15px;
+	padding: 0 15px;
+	.title{
+		line-height: 45px;
+	}
+	.image{
+		img{
+			margin-top: 10px;
+		}
+	}
+	.head-drop{
+		margin: 10px 0 0;
+		border: 1px solid $head_bg;
+		border-radius: 0;
+		padding: 0;
+		.head-li{
+			border-top: 1px solid $head_bg;
+		}
+		li a{
+			padding: 10px 10px;
+			text-align: center;
+		}
 	}
 }
 

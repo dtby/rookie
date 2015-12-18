@@ -2,16 +2,9 @@
   我的活动
 <% end %>
 
-<%= render partial: "share/head", locals: { head_title: "我的任务" } %>
-
-<div class="activity-content">
-  <% @applies.each do |apply|%>
-    <div class="activity-item">
-      <p><%=image_tag("course_text.png",width:"25")%> 任务描述 ：<%= apply.try(:task).try(:name) %></p>
-      <p><%= image_tag("course_time.png",width:"20")%> 执行时间：<%= apply.try(:created_at).try(:strftime,'%Y年%m月%d日') %>
-      <%= link_to "查看详情>>", task_path(apply.try(:task_id)), class: "btn btn-default btn-sm btn-detail pull-right" %></p>
-    </div>
-  <% end %>
+<%= render partial: "share/head", locals: { head_title: "处理申请" } %>
+<div class="container">
+  <div id="apply-main", class="row apply-content">
+    <%= render partial: 'applied' %>
+  </div>
 </div>
-
-<%= render partial: "foot_tab" %>

@@ -24,7 +24,8 @@
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
 #  birth                  :string(255)
-#  constellation          :integer
+#  sash_id                :integer
+#  level                  :integer          default(0)
 #  role                   :integer          default(1)
 #
 

@@ -32,6 +32,7 @@
           <p><%=image_tag("gift.png",width:"24", class: 'icon')%><span>沟通力＋<%= step_g(task.grade) %>EXP</span><span>决策力＋<%= step_g(task.grade) %>EXP</span></p>
           <p class="interest-gift"><span>控制力＋<%= step_g(task.grade) %>EXP</span><span>协作力＋<%= step_g(task.grade) %>EXP</span></p>
           <p class="interest-gift"><span>控制力＋<%= step_g(task.grade) %>EXP</span><span>协作力＋<%= step_g(task.grade) %>EXP</span></p>
+          <p>剩余名额：<%= task.member_count %> </p>
         </div>
       </div>
       <hr class="apply-line">

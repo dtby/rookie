@@ -31,6 +31,7 @@
 #  p              :string(255)
 #  c              :string(255)
 #  a              :string(255)
+#  member_count   :integer
 #
 
 require 'test_helper'

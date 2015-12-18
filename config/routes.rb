@@ -16,14 +16,6 @@ Rails.application.routes.draw do
   
   resources :votes, only: [:create]
 
-
-  # 任务包申请
-  resources :applies do
-    member do
-      post :deal
-    end
-  end
-
   # 用户
   resources :users do
 
@@ -53,7 +45,7 @@ Rails.application.routes.draw do
       end
     end
 
-    #个人基础信息
+    #个人基础信息, 我的活动
     member do
       get 'personal'
     end
@@ -61,6 +53,9 @@ Rails.application.routes.draw do
 
   # 所有的任务
   resources :tasks do
+    # 任务包申请
+    resources :applies
+
     collection do
       get 'personal_tasks'
     end

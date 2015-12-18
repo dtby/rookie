@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151216021540) do
+ActiveRecord::Schema.define(version: 20151218014037) do
 
   create_table "applies", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
     t.integer  "task_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.boolean  "state"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "state",      limit: 4, default: 2
   end
 
   create_table "badges_sashes", force: :cascade do |t|
@@ -265,6 +265,7 @@ ActiveRecord::Schema.define(version: 20151216021540) do
     t.string   "p",              limit: 255
     t.string   "c",              limit: 255
     t.string   "a",              limit: 255
+    t.integer  "member_count",   limit: 4
   end
 
   add_index "tasks", ["task_type_id"], name: "index_tasks_on_task_type_id", using: :btree
@@ -292,7 +293,6 @@ ActiveRecord::Schema.define(version: 20151216021540) do
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
     t.string   "birth",                  limit: 255
-    t.integer  "constellation",          limit: 4
     t.integer  "sash_id",                limit: 4
     t.integer  "level",                  limit: 4,   default: 0
     t.integer  "role",                   limit: 4,   default: 1

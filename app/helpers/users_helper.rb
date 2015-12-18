@@ -33,7 +33,7 @@ module UsersHelper
   def user_categories
     { all: "所有用户", 
       rookie: "普通菜鸟", 
-      rookie_glod: "黄金菜鸟", 
+      rookie_gold: "黄金菜鸟", 
       rookie_diamond: "钻石菜鸟", 
       boss: "普通BOSS", 
       boss_gold: "黄金BOSS", 
