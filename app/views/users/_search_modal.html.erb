@@ -1,0 +1,21 @@
+<div id="myModal" class="modal fade myModal-col col-xs-10 col-xs-offset-1 bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog myModal1">
+    <div class="modal-content">
+      <div class="modal-header"><h3 class="modal-title text-center">问卷调查</h3></div>
+      <div class="modal-body modal-search">
+        <h4>请问您是通过什么渠道知道菜鸟烩的呢？</h4>
+        <%= simple_form_for :search, url: searchs_path, remote: true, format: :js do |f| %>
+          <%= f.input :options, collection: Search::OPTIONS.invert , as: :radio_buttons, label: false %>
+          <div class="modal-input">
+            <%= f.input :other, class: 'text-center', placeholder: '请输入描述的文字', label: false %>
+          </div>
+          <button type="submit" class="btn btn-enter btn-primary">确定</button>
+          <button type="button" class="btn btn-del btn-default" data-dismiss="modal">取消</button>
+        <% end %>
+        <div class="boypic">
+          <%= image_tag "girl.png" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

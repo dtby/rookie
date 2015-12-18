@@ -1,13 +1,15 @@
 <div class="powers">
-	<div class="title">知识值&nbsp;&nbsp;<span class="glyphicon glyphicon-info-sign"></span></div>
+	<!-- <div class="title">知识值&nbsp;&nbsp;<span class="glyphicon glyphicon-info-sign"></span></div> -->
+	<!-- Small modal -->
+<div type="button" class="title" data-toggle="modal" data-target=".bs-know-modal-lg">知识值&nbsp;&nbsp;<span class="glyphicon glyphicon-info-sign"></span></div>
 	<div id="js_powers" style="height: 300px"></div>
 	<div class="text-center">
 		<%= link_to "开始测试", new_test_path, class: "btn btn-white user-btn begin-test" %>
 	</div>
 	<br>
-
-	<div class="title">经验值&nbsp;&nbsp;<span class="glyphicon glyphicon-info-sign"></span></div>
+	<div type="button" class="title" data-toggle="modal" data-target=".bs-experience-modal-lg">经验值&nbsp;&nbsp;<span class="glyphicon glyphicon-info-sign"></span></div>
 	<br>
+	<%= render partial: "know_modal" %>
 	<div class="clearfix">
 		<div class="col-xs-12">
 			<% Question::powers.keys.each do |power| %>

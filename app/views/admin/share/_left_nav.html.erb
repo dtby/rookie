@@ -54,6 +54,15 @@
           </li>
         </ul> 
       </li>
+
+      <!-- 调查问卷数据 -->
+      <li class="<%= 'active' if params[:controller] == 'admin/searchs' %>">
+        <%= link_to admin_searchs_path do %>
+          <i class="fa fa-th-large"></i> 
+          <span class="nav-label">调查问卷数据</span>
+        <% end %> 
+      </li>
+
     </ul>
   </div>
 </nav>

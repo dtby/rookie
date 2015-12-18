@@ -204,6 +204,13 @@ ActiveRecord::Schema.define(version: 20151218014037) do
 
   add_index "scores", ["user_id"], name: "index_scores_on_user_id", using: :btree
 
+  create_table "searches", force: :cascade do |t|
+    t.integer  "options",    limit: 4
+    t.string   "other",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "signs", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
     t.datetime "created_at",           null: false

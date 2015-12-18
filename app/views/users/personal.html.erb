@@ -1,5 +1,4 @@
 <div class="container-fluid">
-
   <div class="row">
     <div class="col-xs-12 personal_bg">
       <div class="row text-center">
@@ -7,68 +6,20 @@
         </div>
       </div>
     </div>
+  </div>  
+  <div class="info-form">
+    <%= render partial: "base_info_form" %>
   </div>
-  <%= render partial: "base_info_form" %>
-</div>
-<%#= unless current_user.sign_in_count != 1  %>
-  <div class="row">
-    <div id="myModal" class="modal fade myModal-col col-xs-10 col-xs-offset-1 bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-      <div class="modal-dialog myModal1">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title text-center">问卷调查</h3>
-          </div>
-
-          <%= simple_form_for @user do |f| %>
-            <%= f.input :name %>
-            <%= f.collection_radio_buttons :diettype, [[vegan, 'vegan'] ,[vegetarian, 'vegetarian']]%>
-            <%= f.button :submit %>
-          <% end %>
-
-          <div class="modal-body">
-            <h4>请问您是通过什么渠道知道菜鸟烩的呢？</h4>
-            <div class="radio modal-radio">
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                朋友圈的转发文章
-              </label>
-            </div>
-            <div class="radio modal-radio">
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                校园公开课
-              </label>
-            </div>
-            <div class="radio modal-radio">
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                好友推荐
-              </label>
-            </div>
-            <div class="radio modal-radio">
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                其他
-              </label>
-            </div>
-            <div class="modal-input">
-              <input type="text" class="form-control text-center" placeholder="请输入描述的文字" />
-            </div>
-            <button type="button" class="btn btn-enter btn-primary">确定</button>
-            <button type="button" class="btn btn-del btn-default" data-dismiss="modal">取消</button>
-            <div class="boypic">
-              <%= image_tag "girl.png" %>
-            </div>
-          </div>
-        </div>
-      </div>
+  <% unless current_user.sign_in_count != 1 %>
+    <div class="row" id="searchmodal">
+      <%= render partial: "search_modal" %>
     </div>
-  </div>
-<%#= end -%>
+  <% end -%>
+</div>
 <script type="text/javascript">
-  $(document).ready(function(){ 
-    $('#myModal').modal({
-      keyboard: false
-    });
+  $(function(){ 
+      $('#myModal').modal({
+        keyboard: false
+      });
   });
 </script>

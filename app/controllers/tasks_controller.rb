@@ -9,6 +9,9 @@ class TasksController < BaseController
     @personal_tasks = current_user.task.all
   end
 
+  def search_city
+  end
+
   def new
     @task = Task.new
   end

@@ -176,3 +176,28 @@
     background-color: #fff;
   } 
 }
+
+// 所有任务搜索导航样式
+.search-nav-modal {
+  .navbar-nav {
+    height: 250px;
+    .city-select {
+      border: 0px;
+      padding: 5px;
+      option {
+        display: block;
+      }
+    }
+    .city-div {
+      border-right: 1px solid #EEF3F4;
+      .city-line {
+        padding: 10px;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+
+
+

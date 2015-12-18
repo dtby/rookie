@@ -58,6 +58,7 @@ Rails.application.routes.draw do
 
     collection do
       get 'personal_tasks'
+      get :search_city
     end
     member do
       post :tag
@@ -99,6 +100,10 @@ Rails.application.routes.draw do
 
     # 用户
     resources :users
+
+    # 调查问卷
+    resources :searchs, only: [:index]
+
   end
 
 

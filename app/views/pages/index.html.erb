@@ -4,17 +4,7 @@
 <%= render partial: "share/head", locals: { head_title: "我的主页" } %>
 <div class="container">
 	<div class="row pages-head">
-			<div class="col-xs-offset-2">
-				<div class="media">
-				  <div class="media-left media-middle">
-				    <%=image_tag("logo.png",width:"80")%>
-				  </div>
-				  <div class="media-body" id="my-body">
-				    <p>姓名：<%= current_user.nickname %> &nbsp;&nbsp;<small><%= User::ROLE[@user.role.to_sym] %></small></p>
-				    <p>编号：CNH15<%= current_user.id %></p>
-				  </div>
-				</div>
-			</div>
+		<%= render partial: "pages_header" %>
 	</div>
 	<div class="row">
 		<ul>
