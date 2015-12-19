@@ -25,11 +25,12 @@
         <div class="col-xs-6 city-div">
           <% search_city.each_with_index do |city, index| %>
             <li class="active city-line">
-              <%= link_to "#{city.first}", search_city_tasks_path(index), remote: true, format: :js %>
+              <%= link_to "#{city.first}", search_city_tasks_path, remote: true, format: :js %>
             </li>
-          <% end %>
-        </div>
+          
         <div class="col-xs-6" id="search_city_line"></div>
+        <% end %>
+        </div>
       </div>
     </div><!-- /.navbar-collapse -->
     <div class="collapse navbar-collapse" id="bs-ability-navbar-collapse-1">
