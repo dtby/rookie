@@ -6,19 +6,17 @@
 	</div>
 	<div class="col-xs-9">
 		<p>
-      &nbsp;&nbsp;姓名：<%= current_user.nickname %>&nbsp;&nbsp;
-      <span class="club-style"><%= User::ROLE[current_user.role.to_sym] %></span>
+      &nbsp;&nbsp;姓名：<%= @user.nickname %>&nbsp;&nbsp;
+      <span class="club-style"><%= User::ROLE[@user.role.to_sym] %></span>
     </p>
-		<p>&nbsp;&nbsp;编号：CNH15<%= current_user.id %>
+		<p>&nbsp;&nbsp;编号：CNH15<%= @user.id %>
       <% unless current_user.id == @user.id %>
         <%= link_to("javascript:void(0);", title: current_user.try(:voted_up_on?, @user, vote_scope: "collect") ? "取消关注" : "关注", class: "vote-create-a btn btn-info btn-xs", voteable_id: @user.id, voteable_type: @user.class, style_type: "user-list", id: "userListShowLink#{@user.id}", scope: "collect") do %>
           <%= ((current_user.try(:voted_up_on?,@user, vote_scope: "collect")) ? "取消关注" : "关注") %>
         <% end -%>
       <% end -%>
     </p>
-    <div id="integral">
-      <%= render partial: "integral" %>
-    </div>
+    <p>&nbsp;&nbsp;经验值：<%= @user.points(category: 'experience') %></p>
 	</div>
 </div>
 

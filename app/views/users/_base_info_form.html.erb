@@ -1,4 +1,4 @@
-<%= simple_form_for(@user, url: user_path(@user), html: { method: :patch }) do |f| %>
+<%= simple_form_for(current_user, url: user_path(current_user), html: { method: :patch }) do |f| %>
   <div class="row">
     <div class="label-text">
       <%= f.input :nickname, required: true, class: 'form-control label-input', placeholder: '昵称', label: false %>

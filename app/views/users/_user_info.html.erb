@@ -1,6 +1,7 @@
 <div class="user-info">
 	<div class="user-row top-none row">
-		<div class="col-xs-12">昵称：<%= @user.nickname %></div>
+		<div class="col-xs-6 pr-0">昵称：<%= @user.nickname %></div>
+		<div class="col-xs-6 pr-0">鸟币：<%= @user.points(category: 'coin') %></div>
 	</div>
 	<div class="user-row row">
 		<div class="col-xs-6 pr-0">性别：<%= @user.gender %></div>
