@@ -41,7 +41,7 @@
       <div id="main" style="height: 300px"></div>
       <button type="button" class="btn task-btn gift-title">匹配度：80%</button>
       <% unless Apply.where(:user_id => current_user.id, :task_id => @task.id).present? || current_user.id == @task.user_id %>
-        <%= simple_form_for @apply, wrapper: :task_form do |f| %>
+        <%= simple_form_for :apply, url: task_applies_path(current_user), wrapper: :task_form do |f| %>
           <%= f.hidden_field :user_id, :value => current_user.id %>
           <%= f.hidden_field :task_id, :value => params[:id] %>
           <button type="submit" class="btn task-btn gift-title">申请接包</button>

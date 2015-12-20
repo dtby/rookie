@@ -8,10 +8,6 @@ class AttentionController < BaseController
     
   end
 
-  def feedback
-    
-  end
-
   def interest
     @interests = @user.votes.up.for_type(Task).votables
   end

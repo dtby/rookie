@@ -20,11 +20,12 @@ Rails.application.routes.draw do
   resources :votes, only: [:create]
 
   # 用户
-  resources :users, only: [:show, :personal, :personal, :explain, :update] do
+  resources :users do
     #个人基础信息, 我的活动
     member do
       get 'personal'
       get 'explain'
+      get 'feedback'
     end
 
     resources :educations
@@ -40,7 +41,6 @@ Rails.application.routes.draw do
       collection do
         get 'focus'
         get 'subscription'
-        get 'feedback'
         get 'interest'
       end
     end

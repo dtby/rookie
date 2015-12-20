@@ -29,6 +29,11 @@ class UsersController < BaseController
     end
   end
 
+  # 投递反馈
+  def feedback
+    @applies = current_user.applies
+  end
+
   private
 
   def user_params

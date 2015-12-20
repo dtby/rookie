@@ -3,7 +3,6 @@
     <div class="col-xs-8 col-xs-offset-2 title"><%= head_title %></div>
     <div class="col-xs-2 image">
       <% if current_user.id == @task.user_id %>
-
         <div class="dropdown">
           <a id="dLabel" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <%= image_tag("head_add.png", width: 25) %>

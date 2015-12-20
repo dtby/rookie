@@ -1,8 +1,8 @@
 module UsersHelper
   def perfection(user)
-    p = User.column_names.size.to_f
-    b = (user.attributes.values.count{|u| u.blank?}-3).to_f
-    match = ((p-b)/p)*100
+    sum = 0
+    user.slice(:nickname, :name, :nation, :gender, :native, :present, :email, :birth).values.each { |x| x.present? ? sum += 1 : sum }
+    return "#{(sum / 8.0 * 100).round(0)}%"
   end
 
   # 计算年龄
