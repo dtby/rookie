@@ -59,3 +59,18 @@
     }
   }
 }
+
+.vote-a{
+  color: #333;
+  .follow-row{
+    padding: 0 15px;
+    .vote-border{
+      min-height: 50px;
+      padding: 15px;
+      height: 80px;
+      line-height: 50px;
+      border-bottom: 1px solid #eee;
+    }
+  }
+}
+

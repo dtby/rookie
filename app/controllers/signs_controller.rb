@@ -7,7 +7,6 @@ class SignsController < ApplicationController
     if @sign.save
       current_user.grow_logs.create!(content: "每日签到", grow_type: 5)
       pp "每日签到============="
-      
       @coin = current_user.points(category: 'coin')
       @experience = current_user.points(category: 'experience')
       @user_id = params[:id]

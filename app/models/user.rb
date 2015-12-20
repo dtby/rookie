@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :grow_logs, dependent: :destroy
-  has_many :task, dependent: :destroy
+  has_many :tasks, dependent: :destroy
   has_many :education, dependent: :destroy
   has_many :sign, dependent: :destroy
   has_many :work, dependent: :destroy

@@ -1,12 +1,18 @@
 .foot-tab {
   position: fixed;
   bottom: 0;
+  a{
+    color: #fff;
+    text-decoration: none;
+  }
+  .active{
+    color: #019BFF;
+  }
 }
 .tasks-content {
   margin-bottom: 55px;
 }
 .apply-content {
-  padding: 20px 10px 6px 10px;
   .apply-logo {
     padding-right: 8px;
   }

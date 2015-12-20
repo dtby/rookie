@@ -39,7 +39,6 @@
 .form-input-group {
   padding: 10px 15px 0 15px !important;
   margin: 0 5px; 
-  background-color: #019BFF;
   border: 1px solid #019BFF;
   border-radius: 10px;
   .form-input {
@@ -166,8 +165,13 @@
   border-color: #39A0FF;
 }
 .btn-delete {
+  background-color: #fff !important;
   color: #D1544B;
   border-color: #D1544B;
+}
+.btn-submit{
+  color: #337ab7;
+  border-color: #337ab7;
 }
 .tasks-content{
   overflow: auto;

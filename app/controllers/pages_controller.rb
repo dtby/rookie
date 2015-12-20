@@ -1,8 +1,9 @@
 class PagesController < BaseController
-  before_action :set_user 
+  before_action :set_user, only: [:resume, :info]
   respond_to :js, :json
+
   def index
-    
+
   end
 
   def resume
@@ -13,6 +14,7 @@ class PagesController < BaseController
 
   def info
   end
+  
   private
   def set_user
     @user = User.find(params[:user_id])

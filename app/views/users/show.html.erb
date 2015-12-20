@@ -11,7 +11,7 @@
     </p>
 		<p>&nbsp;&nbsp;编号：CNH15<%= @user.id %>
       <% unless current_user.id == @user.id %>
-        <%= link_to("javascript:void(0);", title: current_user.try(:voted_up_on?, @user, vote_scope: "collect") ? "取消关注" : "关注", class: "vote-create-a btn btn-info btn-xs", voteable_id: @user.id, voteable_type: @user.class, style_type: "user-list", id: "userListShowLink#{@user.id}", scope: "collect") do %>
+        <%= link_to("javascript:void(0);", title: current_user.try(:voted_up_on?, @user, vote_scope: "collect") ? "取消关注" : "关注", class: "vote-create-a btn btn-info btn-xs m-t-0", voteable_id: @user.id, voteable_type: @user.class, style_type: "user-list", id: "userListShowLink#{@user.id}", scope: "collect") do %>
           <%= ((current_user.try(:voted_up_on?,@user, vote_scope: "collect")) ? "取消关注" : "关注") %>
         <% end -%>
       <% end -%>

@@ -9,9 +9,9 @@
     <div class="label-text">
       <%= f.input :time, class: 'form-control form-input', placeholder: '毕业日期', label: false %>
     </div>
-    <div class="col-xs-12 input-a">
-      <button type: "submit" class: "btn btn-primary btn-lg btn-block btn-login">提交信息</button>
+    <div class="col-xs-12 input-a text-right">
       <%= link_to '取消', resume_user_pages_path(@user), class: 'btn btn-delete btn-sm'  %>
+      <%= f.submit "提交信息", class: "btn btn-info btn-sm" %>
     </div>
   </div>
 <% end %>
