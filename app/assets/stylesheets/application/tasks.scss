@@ -28,6 +28,7 @@
 }
 .line {
   border: 1px solid #CFCFCF;
+  border-bottom-width: 0;
   margin: 5px 6px 10px 6px;
 }
 .tag-show {
@@ -182,6 +183,7 @@
 
 // 所有任务搜索导航样式
 .search-nav-modal {
+  margin-bottom: 0;
   .navbar-nav {
     height: 250px;
     overflow:auto;

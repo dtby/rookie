@@ -20,7 +20,7 @@ class AppliesController < BaseController
     @apply = Apply.new(apply_params)
     if @apply.save
       flash.now[:notice] = "创建成功"
-      #redirect_to applies_path
+      respond_with @apply
     else
       render :new
     end
