@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   }
   
   # 网站主页
-  #root 'tests#new'
+  root 'tests#new'
 
   # 注册完成时的问卷调查
   resources :searchs, only: [:new, :create]
