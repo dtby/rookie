@@ -5,9 +5,14 @@ module UsersHelper
     match = ((p-b)/p)*100
   end
 
+  # 计算年龄
   def getage(birth)
-    old = Time.now - birth.to_time
-    ages = (old/(60*60*24*365)).to_i
+    if birth.present?
+      old = Time.now - birth.to_time
+      ages = (old/(60*60*24*365)).to_i
+    else
+      ''
+    end
   end
 
   def constellation(birth)
@@ -38,6 +43,15 @@ module UsersHelper
       boss: "普通BOSS", 
       boss_gold: "黄金BOSS", 
       boss_diamond: "钻石BOSS"}
+  end
+
+  # 成长轨迹类型
+  def grow_type
+    { 1 => 'green_1.png', 
+      2 => 'red.png', 
+      3 => 'yellow.png', 
+      4 => 'blue.png', 
+      5 => 'green.png'}
   end
 end
 

@@ -5,9 +5,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   # def new
   #   super
-  #   # 注册成功时，创建用户的成绩与成绩暂存记录
-  #   current_user.scores.create
-  #   current_user.create_score_cache
   # end
 
   # POST /resource
@@ -52,9 +49,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    explain_user_path(current_user)
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

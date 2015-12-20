@@ -8,11 +8,14 @@ class TestsController < BaseController
 	def new
 		# 取出测试题[question_id, ...]，参数 (能力，等级)
 		@ids = Question.select_questions_ids(@power, @level)
-		@questions = []
-		@ids.each do |id|
-			@questions.push Question.find(id)
-		end
-		unless @power <= 5 && @questions.present?
+		if @power <= 5 && @ids.present?
+			@questions = []
+			@ids.each do |id|
+				@questions.push Question.find(id)
+			end
+		else
+			current_user.grow_logs.create!(content: "完成能力测试", grow_type: 2)
+			pp "完成能力测试=============="
 			redirect_to result_tests_path(status: 'end')
 		end
 	end
@@ -20,6 +23,7 @@ class TestsController < BaseController
 	# 提交单次成绩
 	def create
 		@score = Question.score(params[:questions_ids], params[:answers])
+		pp params[:questions_ids], "===", params[:answers]
 		respond_with @score
 	end
 

@@ -1,0 +1,28 @@
+<div class="wrapper">
+  <div class="timeline"><div class="number"><p>完成总数</p><p class="num"><%= @grow_logs.count %></p></div></div>
+  <div class="momentscontainer row">
+    <% @grow_logs.reverse.each_with_index do |log, index| %>
+      <% if index.odd? %>
+        <div class="col-xs-6 moment left">
+          <div class="col-xs-8 l-title">
+            <h4 class="name"><%= log.content %></h4>
+            <h5 class="time"><%= log.created_at.strftime("%F") %></h5>
+          </div>
+          <div class="col-xs-4 l-img">
+            <%= image_tag "#{grow_type[log.grow_type]}",width:'100%' %>
+          </div>
+        </div>
+      <% else %>
+        <div class="col-xs-6 moment right">
+          <div class="col-xs-4 r-img">
+            <%= image_tag "#{grow_type[log.grow_type]}",width:'100%' %>
+          </div>
+          <div class="col-xs-8 r-title">
+            <h4 class="name"><%= log.content %></h4>
+            <h5 class="time"><%= log.created_at.strftime("%F") %></h5>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

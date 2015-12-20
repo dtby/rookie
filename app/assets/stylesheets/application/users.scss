@@ -2,9 +2,9 @@
 @import "group";
 .users__show{
 	.user-head{
-		height: 120px;
+		height: 100px;
 		background-color: $head_bg;
-		padding: 30px 30px 0;
+		padding: 20px 40px 0;
 		color: $color_white;
 		p{
 			margin-bottom: 0;
@@ -138,5 +138,24 @@
 .modal-search {
 	.radio {
 		margin-bottom: 26px;
+	}
+}
+
+.select-city{
+	margin-bottom: 15px;
+}
+
+.select-input{
+	padding-top: 15px;
+	select{
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		border-radius: 0px !important;
+		-webkit-box-shadow: none;
+    box-shadow: none;
+    appearance:none;
+	 -moz-appearance:none; /* Firefox */
+	 -webkit-appearance:none; /* Safari 和 Chrome */
 	}
 }

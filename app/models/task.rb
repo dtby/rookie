@@ -45,8 +45,6 @@ class Task < ActiveRecord::Base
   belongs_to :user
   belongs_to :task_type
   has_many :applies, dependent: :destroy
-  # 任务包接包用户
-  has_many :members, dependent: :destroy
 
   validates :grade, :member_count, presence: true, on: :create
   validates :name, presence: true, on: :create

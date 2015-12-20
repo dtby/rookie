@@ -1,9 +1,11 @@
 class SearchsController < ApplicationController
   before_action :set_user
   respond_to :js, :json
+
   def new
     @search = Search.new
   end
+  
   def create
     @search = Search.new(search_params)
     pp search_params

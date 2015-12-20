@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
+  has_many :grow_logs, dependent: :destroy
   has_many :task, dependent: :destroy
   has_many :education, dependent: :destroy
   has_many :sign, dependent: :destroy
@@ -54,6 +54,9 @@ class User < ActiveRecord::Base
   validate :phone_reg?, on: :create
   validates :message, presence: true, on: :create
   validate :is_right_sms?, if: "message.present?", on: :create
+
+  # 回调
+  after_create :add_grow_log
 
   #短信验证码
   attr_accessor :message
@@ -173,12 +176,16 @@ class User < ActiveRecord::Base
   end
   
   private
-  def create_score_and_score_cache
+    def create_score_and_score_cache
       self.create_score_cache
       self.scores.create
-  end
+    end
 
-  def email_required?
-    false
-  end
+    def email_required?
+      false
+    end
+
+    def add_grow_log
+      self.grow_logs.create!(content: '注册菜鸟烩会员', grow_type: 1)
+    end
 end

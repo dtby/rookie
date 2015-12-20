@@ -1,7 +1,7 @@
 <div class="user-info">
 	<div class="user-row top-none row">
 		<div class="col-xs-6 pr-0">昵称：<%= @user.nickname %></div>
-		<div class="col-xs-6 pr-0">鸟币：<%= @user.points(category: 'coin') %></div>
+		<div class="col-xs-6 pr-0" id="<%= "coin_#{params[:id]}"%>">鸟币：<%= @user.points(category: 'coin') %></div>
 	</div>
 	<div class="user-row row">
 		<div class="col-xs-6 pr-0">性别：<%= @user.gender %></div>
@@ -29,7 +29,7 @@
 	</div>
 
 	<% unless current_user.id != @user.id %>
-		<div class="generate-resume1 text-center" style="margin-top: 100px;" id="sign_t">
+		<div class="generate-resume1 text-center" style="margin-top: 50px;" id="sign_t">
 			<% if @signed %>
 				<button class="btn btn-blue" disabled="disabled">今日已签到,明天再来吧！</button>
 			<% else %>

@@ -3,6 +3,7 @@ class UsersController < BaseController
 
   # 个人信息
   def show
+    @grow_logs = @user.grow_logs
     @sign_in = Sign.where(user_id:current_user.id).last
     if @sign_in.try(:created_at).try(:to_date) == Time.now.to_date
       @signed = true

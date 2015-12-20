@@ -27,6 +27,8 @@ class Apply < ActiveRecord::Base
 
   	if now_count < required_count
   		self.update_columns(state: 1)
+      self.user.grow_logs.create!(content: "接包成功：#{self.task.name}", grow_type: 3)
+      puts "接包成功============"
   		return true
   	else
   		self.update_columns(state: 0)

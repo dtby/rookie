@@ -16,7 +16,7 @@
         <% end -%>
       <% end -%>
     </p>
-    <p>&nbsp;&nbsp;经验值：<%= @user.points(category: 'experience') %></p>
+    <p id="<%= "experience_#{params[:id]}"%>">&nbsp;&nbsp;经验值：<%= @user.points(category: 'experience') %></p>
 	</div>
 </div>
 
@@ -37,7 +37,7 @@
 			<%= render partial: "powers" %>
     </div>
     <div role="tabpanel" class="tab-pane" id="groups">
-    	<%= render partial: "groups" %>
+    	<%= render partial: "grows" %>
     </div>
   </div>
 </div>

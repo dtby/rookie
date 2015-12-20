@@ -2,14 +2,17 @@ class SignsController < ApplicationController
   respond_to :js, :json
 
   def create
-    @sign = Sign.create(user_id: params[:user_id])
+    @sign = Sign.new(user_id: params[:id])
     
     if @sign.save
-      @success = true
+      current_user.grow_logs.create!(content: "每日签到", grow_type: 5)
+      pp "每日签到============="
+      @coin = current_user.points(category: 'coin')
+      @experience = current_user.points(category: 'experience')
+      @user_id = params[:id]
     else
-      @success = false
+      @user_id = nil
     end
-    respond_with @sign,@success
+    respond_with @sign
   end
-
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151218014037) do
+ActiveRecord::Schema.define(version: 20151220072133) do
 
   create_table "applies", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 20151218014037) do
   end
 
   add_index "educations", ["user_id"], name: "index_educations_on_user_id", using: :btree
+
+  create_table "grow_logs", force: :cascade do |t|
+    t.string   "content",    limit: 255
+    t.integer  "grow_type",  limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "grow_logs", ["user_id"], name: "index_grow_logs_on_user_id", using: :btree
 
   create_table "images", force: :cascade do |t|
     t.string   "avatar_file_name",    limit: 255
@@ -335,6 +345,7 @@ ActiveRecord::Schema.define(version: 20151218014037) do
   add_index "works", ["user_id"], name: "index_works_on_user_id", using: :btree
 
   add_foreign_key "educations", "users"
+  add_foreign_key "grow_logs", "users"
   add_foreign_key "information", "users"
   add_foreign_key "internships", "users"
   add_foreign_key "levels", "users"

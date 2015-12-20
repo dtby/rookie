@@ -11,13 +11,16 @@ Rails.application.routes.draw do
   # 网站主页
   #root 'tests#new'
 
+  # 注册完成时的问卷调查
+  resources :searchs, only: [:new, :create]
+
   # 短信验证
   resources :messages, only: [:create]
   
   resources :votes, only: [:create]
 
   # 用户
-  resources :users, only: [:show, :personal, :personal, :explain] do
+  resources :users, only: [:show, :personal, :personal, :explain, :update] do
     #个人基础信息, 我的活动
     member do
       get 'personal'
@@ -103,7 +106,6 @@ Rails.application.routes.draw do
 
     # 调查问卷
     resources :searchs, only: [:index]
-
   end
 
 
