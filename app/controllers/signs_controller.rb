@@ -2,7 +2,7 @@ class SignsController < ApplicationController
   respond_to :js, :json
 
   def create
-    @sign = Sign.new(user_id: params[:id])
+    @sign = Sign.new(user_id: params[:user_id])
     
     if @sign.save
       current_user.grow_logs.create!(content: "每日签到", grow_type: 5)
