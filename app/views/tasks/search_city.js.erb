@@ -1,1 +1,5 @@
-$("#search_city_line").html("<%= escape_javascript(render partial: "search_city_line")%>");
+<% if @option.present? %>
+  $("#search_city_line").html("<%= escape_javascript(render partial: "search_city_line", locals: {option: @option}) %>");
+<% else %> 
+  $("#city_line").html("<%= escape_javascript(render partial: "city_line", locals: {province: @province}) %>");
+<% end %>

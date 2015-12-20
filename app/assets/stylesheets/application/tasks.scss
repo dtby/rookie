@@ -184,6 +184,8 @@
 .search-nav-modal {
   .navbar-nav {
     height: 250px;
+    overflow:auto;
+    overflow-x:hidden;
     .city-select {
       border: 0px;
       padding: 5px;
@@ -192,10 +194,19 @@
       }
     }
     .city-div {
-      border-right: 1px solid #EEF3F4;
+      border-right: 2px solid #EEF3F4;
+      height: 250px;
+      overflow:auto;
+      overflow-x:hidden;
       .city-line {
         padding: 10px;
-        font-size: 20px;
+        font-size: 16px;
+        a {
+          color: #7A7A7A;
+          :focus {
+            background-color: #E7E7E7;
+          }
+        }
       }
     }
   }

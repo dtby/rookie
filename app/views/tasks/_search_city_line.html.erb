@@ -1,5 +1,5 @@
-  <% search_city[city.first].each do |ct| %>
-    <li class="active city-line">
-      <%= link_to "#{ct}", admin_users_path(role: city.first) %>
-    </li>
-  <% end -%>
+<% search_type[option].each do |ct| %>
+  <li class="active city-line">
+    <%= link_to "#{ct}", admin_users_path %>
+  </li>
+<% end -%>

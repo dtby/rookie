@@ -10,6 +10,8 @@ class TasksController < BaseController
   end
 
   def search_city
+    @option = params[:option]
+    @province = params[:province]
   end
 
   def new
@@ -75,7 +77,7 @@ class TasksController < BaseController
   private
 
   def task_params
-    params.require(:task).permit(:tag_list, :name, :figure, :communicate, :coordination, :control, 
+    params.require(:task).permit(:tag_list, :name, :task_type, :figure, :communicate, :coordination, :control, 
                                   :decision, :p_figure, :p_communicate, :p_coordination, :p_control, 
                                   :p_decision, :grade, :state, :deadline, :range, :user_id, :task_type_id, 
                                   :tab, :coin, :describe, :goal, :extra, :place, :p, :c, :a, :member_count)

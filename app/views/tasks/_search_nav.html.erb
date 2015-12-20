@@ -12,35 +12,43 @@
         <span>五大能力</span>
       </div>
     </div>
+  
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-address-navbar-collapse-1">
-      <div class="nav navbar-nav">
-        <%= select_tag :p, options_for_select(ChinaCity.list), prompt: '--省份--', onChange:'onChangeSum()', class: ['city-select'] %>
-        <%= select_tag :c, options_for_select([]), prompt: '--城市--', onChange:'onChangeSum()', class: ['city-select'] %>
+      <div class="nav navbar-nav text-center">
+        <div class="col-xs-6 city-div">
+          <% cities.each do |city| %>
+            <li class="city-line">
+              <%= link_to "#{city.first}", search_city_tasks_path(province: city.first), remote: true, format: :js %>
+            </li>
+          <% end %>
+        </div>
+        <div class="col-xs-6 city-div" id="city_line"></div>
       </div>
     </div><!-- /.navbar-collapse -->
+
     <div class="collapse navbar-collapse" id="bs-type-navbar-collapse-1">
       <div class="nav navbar-nav text-center">
         <div class="col-xs-6 city-div">
-          <% search_city.each_with_index do |city, index| %>
-            <li class="active city-line">
-              <%= link_to "#{city.first}", search_city_tasks_path, remote: true, format: :js %>
+          <% search_type.each do |type| %>
+            <li class="city-line">
+              <%= link_to "#{type.first}", search_city_tasks_path(option: type.first), remote: true, format: :js %>
             </li>
-          
-        <div class="col-xs-6" id="search_city_line"></div>
-        <% end %>
+          <% end %>
         </div>
+        <div class="col-xs-6 city-div" id="search_city_line"></div>
       </div>
     </div><!-- /.navbar-collapse -->
+
     <div class="collapse navbar-collapse" id="bs-ability-navbar-collapse-1">
       <div class="nav navbar-nav text-center">
-        <li class="active"><a href="#">不限<span class="sr-only">(current)</span></a></li>
-        <li><a href="#">形象力</a></li>
-        <li><a href="#">沟通力</a></li>
-        <li><a href="#">决策力</a></li>
-        <li><a href="#">控制力</a></li>
-        <li><a href="#">协作力</a></li>
+        <li class="active city-line"><a href="#">不限<span class="sr-only">(current)</span></a></li>
+        <li class="city-line"><a href="#">形象力</a></li>
+        <li class="city-line"><a href="#">沟通力</a></li>
+        <li class="city-line"><a href="#">决策力</a></li>
+        <li class="city-line"><a href="#">控制力</a></li>
+        <li class="city-line"><a href="#">协作力</a></li>
       </div>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
