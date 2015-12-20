@@ -69,4 +69,16 @@ class Task < ActiveRecord::Base
     end
     return cache
   end
+
+  # 匹配度计算
+  def suit_degree user
+    sum = 0
+    task_powers = [figure, communicate, decision, coordination, control]
+    user_powers = user.scores.last.slice(:surface, :communicate, :decision, :cooperate, :control).values
+    user_powers.each_with_index do |power, index|
+      sum += (power.to_f / task_powers[index]) * 100 / 5
+      puts sum
+    end
+    return sum.round(0)
+  end
 end
