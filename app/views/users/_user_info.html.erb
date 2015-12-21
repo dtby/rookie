@@ -20,7 +20,7 @@
 		<div class="col-xs-6 pr-0">户口地：<%= truncate(User.address(@user.native),length: 7) %></div>
 	</div>
 	<div class="user-row bottom-none row">
-		<div class="col-xs-6 pr-0">信息完善度：<%= perfection(@user) %></div>
+		<div class="col-xs-6 pr-0">信息完善度：<%= perfection(@user, @education, @work, @internship) %></div>
 		<div class="col-xs-6 pr-0">
 		<% if current_user.id == @user.id %>
 			<%= link_to '完善资料', resume_user_pages_path(current_user), class:"btn btn-white user-btn"  %>

@@ -1,8 +1,6 @@
 class SubscriptionsController < ApplicationController
   before_action :set_user
-  def index
-    @subscriptions = Subscription.order(created_at: :desc)
-  end
+  respond_to :js, :json
 
   def new
     @subscription = Subscription.new
@@ -10,15 +8,14 @@ class SubscriptionsController < ApplicationController
 
   def create
     @subscription = Subscription.new(subscription_params)
+    @subscriptions = Subscription.order(created_at: :desc)
     if @subscription.save
       flash.now[:notice] = "创建成功"
-      redirect_to subscription_user_attention_index_path(@user)
+      respond_with @subscriptions
+      # redirect_to subscription_user_attention_index_path(@user)
     else
       render :new
     end
-  end
-
-  def edit
   end
 
   def destroy
