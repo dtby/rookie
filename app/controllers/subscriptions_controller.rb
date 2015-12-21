@@ -7,8 +7,8 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    @subscription = Subscription.new(subscription_params)
-    @subscriptions = Subscription.order(created_at: :desc)
+    @subscription = @user.subscription.new(subscription_params)
+    @subscriptions = @user.subscription.order(created_at: :desc)
     if @subscription.save
       flash.now[:notice] = "创建成功"
       respond_with @subscriptions

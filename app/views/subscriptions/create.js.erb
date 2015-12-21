@@ -1,2 +1,2 @@
- $("#subscrip").html("<%= escape_javascript(render partial: "attention/subscrip_index", local: {suscriptions:@suscriptions}) %>");
+ $("#subscrip").html("<%= escape_javascript(render partial: "attention/subscrip_index", local: {suscriptions:@suscriptions, user:@user}) %>");
  $('#myModal4').modal('hide');
