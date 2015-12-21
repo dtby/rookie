@@ -5,7 +5,7 @@ class AttentionController < BaseController
   end
 
   def subscription
-    @subscriptions = @user.subscription.order(created_at: :desc)
+    @subscriptions = @user.subscriptions.order(created_at: :desc)
   end
 
   def interest
