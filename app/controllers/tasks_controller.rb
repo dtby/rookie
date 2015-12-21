@@ -12,6 +12,8 @@ class TasksController < BaseController
   def search_city
     @option = params[:option]
     @province = params[:province]
+    @city = params[:city]
+    @tasks = Task.order(grade: :desc)
   end
 
   def new

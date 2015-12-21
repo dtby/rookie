@@ -1,0 +1,32 @@
+<% @tasks.each do |task|%>
+  <% if (ChinaCity.get(task.c) == @city && ChinaCity.get(task.p) == @province ) || (ChinaCity.get(task.p) == @province && @city == "不限") %> 
+    <%= link_to  task_path(task) do |i| %>
+      <div class="row interest-content">
+        <div class="col-xs-3 interest-name">
+          <p><strong><%= truncate(task.name,length: 6) %></strong></p>
+          <p class="interest-person"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= truncate(task.user.nickname,length: 4) %></p>
+        </div>
+        <div class="col-xs-6 interest-grade">
+          <p>等级:
+          <% (1..5).each do |i| %>
+            <span class="glyphicon <%= Task.grades[task.grade] >= i.to_i ? 'glyphicon-star' : 'glyphicon-star-empty' %>" aria-hidden="true"></span>
+          <% end %>
+          </p>
+          <p class="interest-time"><span><%=image_tag("time.png",width:"24", class: 'icon')%><%= task.deadline %></span><span class="interest-map"><%=image_tag("map.png",width:"26", class: 'icon')%><%= task.c.present? ? truncate(ChinaCity.get(task.c),length: 4) : truncate(ChinaCity.get(task.p),length: 4) %></span>
+          </p>
+        </div>
+        <div class="col-xs-3 text-center">
+          <p class="interest-word"><span>匹配度</span></p>
+          <p class="interest-word"><strong class="interest-match"><%= task.suit_degree(current_user) %></strong><strong class="match-sub">%</strong></p>
+        </div>
+        <div class="col-xs-12 interest-5">
+          <p><%=image_tag("gift.png",width:"24", class: 'icon')%><span>沟通力＋<%= step_g(task.grade) %>EXP</span><span>决策力＋<%= step_g(task.grade) %>EXP</span></p>
+          <p class="interest-gift"><span>控制力＋<%= step_g(task.grade) %>EXP</span><span>协作力＋<%= step_g(task.grade) %>EXP</span></p>
+          <p class="interest-gift"><span>控制力＋<%= step_g(task.grade) %>EXP</span><span>协作力＋<%= step_g(task.grade) %>EXP</span></p>
+          <p>剩余名额：<%= task.member_count %> </p>
+        </div>
+      </div>
+      <hr class="apply-line">
+    <% end %>
+  <% end %>
+<% end %>

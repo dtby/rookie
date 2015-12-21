@@ -1,5 +1,8 @@
 <% if @option.present? %>
   $("#search_city_line").html("<%= escape_javascript(render partial: "search_city_line", locals: {option: @option}) %>");
-<% else %> 
-  $("#city_line").html("<%= escape_javascript(render partial: "city_line", locals: {province: @province}) %>");
+  <% elsif @province.present? %> 
+    $("#city_line").html("<%= escape_javascript(render partial: "city_line", locals: {province: @province}) %>");
+    $("#task-index").html("<%= escape_javascript(render partial: "task_index", locals: {tasks: @tasks, city:@city, province: @province}) %>");
+  <% else %>
+    $("#task-index").html("<%= escape_javascript(render partial: "task_index", locals: {tasks: @tasks, city:@city}) %>");
 <% end %>

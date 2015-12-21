@@ -1,5 +1,5 @@
 <% cities[province].each do |city| %>
   <li class="active city-line">
-    <%= link_to "#{city}", admin_users_path %>
+    <%= link_to "#{city}", search_city_tasks_path(province:province, city:city), remote: true, format: :js %>
   </li>
 <% end -%>
