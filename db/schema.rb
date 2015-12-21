@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151221070235) do
+ActiveRecord::Schema.define(version: 20151221074825) do
 
   create_table "applies", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -274,7 +274,7 @@ ActiveRecord::Schema.define(version: 20151221070235) do
     t.integer  "p_decision",     limit: 4
     t.integer  "grade",          limit: 4
     t.string   "name",           limit: 255
-    t.integer  "state",          limit: 4
+    t.integer  "state",          limit: 4,     default: 3
     t.integer  "range",          limit: 4
     t.integer  "coin",           limit: 4
     t.text     "describe",       limit: 65535
@@ -322,7 +322,6 @@ ActiveRecord::Schema.define(version: 20151221070235) do
     t.integer  "sash_id",                limit: 4
     t.integer  "level",                  limit: 4,   default: 0
     t.integer  "role",                   limit: 4,   default: 1
-    t.integer  "user_id",                limit: 4
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
