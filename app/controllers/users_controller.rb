@@ -34,6 +34,11 @@ class UsersController < BaseController
     @applies = current_user.applies
   end
 
+  # 充值会员
+  def vip
+    @user = User.find(params[:id])
+  end
+
   private
 
   def user_params

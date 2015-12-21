@@ -10,7 +10,7 @@ class InternshipsController < ApplicationController
   end
 
   def create
-    @internship = current_user.internship.create(internship_params)
+    @internship = current_user.internships.create(internship_params)
     if @internship.save
       flash.now[:notice] = "创建成功"
       respond_with @internship
@@ -46,6 +46,6 @@ class InternshipsController < ApplicationController
     @user = current_user
   end
   def find_internship
-    @internships = current_user.internship
+    @internships = current_user.internships
   end
 end

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       get 'personal'
       get 'explain'
       get 'feedback'
+      get 'vip'
     end
 
     resources :educations

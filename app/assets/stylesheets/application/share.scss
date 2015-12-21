@@ -8,13 +8,12 @@ html, body{
 .head{
 	height: 45px;
 	width: 100%;
-	font-size: 22px;
+	font-size: 18px;
 	color: $color_white;
 	background: image-url("head_bg.png") repeat-x;
 	padding: 0 15px;
 	.title{
 		line-height: 45px;
-    padding-left: 45px;
 	}
 	.image{
 		img{
@@ -133,6 +132,9 @@ html, body{
 }
 .p-l-0{
 	padding-left: 0;
+}
+.p-r-0{
+	padding-right: 0;
 }
 .m-t-0{
 	margin-top: 0 !important;

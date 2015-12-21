@@ -10,7 +10,7 @@ class EducationsController < ApplicationController
   end
 
   def create
-    @education = @user.education.create(education_params)
+    @education = @user.educations.create(education_params)
     if @education.save
       flash.now[:notice] = "创建成功"
       respond_with @education
@@ -46,6 +46,6 @@ class EducationsController < ApplicationController
     @user = current_user
   end
   def find_edu
-    @educations = current_user.education
+    @educations = current_user.educations
   end
 end

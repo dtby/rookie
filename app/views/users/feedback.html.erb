@@ -2,7 +2,7 @@
   我的活动
 <% end %>
 
-<%= render partial: "share/head", locals: { head_title: "投递反馈" } %>
+<%= render partial: "share/head", locals: { head_title: "投递反馈", url: "#" } %>
 <div class="container">
 <% @applies.each do |apply| %>
   <% task = apply.task %>

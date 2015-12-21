@@ -2,7 +2,8 @@
   我的活动
 <% end %>
 
-<%= render partial: "share/head", locals: { head_title: "我的订阅" } %>
+<%= render partial: "share/head", locals: { head_title: "我的订阅", url: "#" } %>
+
 <div class="container">
 <% @subscriptions.each do |subs| %>
   <div class="row sub-content">

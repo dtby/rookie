@@ -16,6 +16,9 @@ class TasksController < BaseController
 
   def new
     @task = Task.new
+    unless can? :create, @task
+      redirect_to vip_user_path(current_user)
+    end
   end
 
   def show

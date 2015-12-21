@@ -42,10 +42,10 @@ class User < ActiveRecord::Base
 
   has_many :grow_logs, dependent: :destroy
   has_many :tasks, dependent: :destroy
-  has_many :education, dependent: :destroy
-  has_many :sign, dependent: :destroy
-  has_many :work, dependent: :destroy
-  has_many :internship, dependent: :destroy
+  has_many :educations, dependent: :destroy
+  has_many :signs, dependent: :destroy
+  has_many :works, dependent: :destroy
+  has_many :internships, dependent: :destroy
   has_many :applies, dependent: :destroy
   has_many :scores, dependent: :destroy
   has_one :score_cache, dependent: :destroy

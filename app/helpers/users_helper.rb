@@ -53,6 +53,16 @@ module UsersHelper
       4 => 'blue.png', 
       5 => 'green.png'}
   end
+
+  # 判断用户类别
+  def role_kind user
+    role = User.roles[user.role.to_sym].to_i
+    if role >= 1 && role <= 3
+      return '菜鸟'
+    elsif role >=4 && role <= 6
+      return 'BOSS'
+    end
+  end
 end
 
                                                            

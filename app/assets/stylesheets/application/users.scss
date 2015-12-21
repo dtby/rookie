@@ -9,11 +9,6 @@
 		p{
 			margin-bottom: 0;
 		}
-		.club-style{
-			font-size: 10px;
-			text-decoration: underline;
-			color: #fff001;
-		}
 	}
 	.user-tabs{
 		.tab-ul{
@@ -133,6 +128,59 @@
 
 		}
 	}
+}
+
+// 会员升级页面
+.users__vip{
+	.title_bar{
+		height: 50px;
+		line-height: 50px;
+		text-align: center;
+		background-color: #C0E2FB;
+		font-size: 22px;
+		font-weight: bold;
+		letter-spacing: 5px;
+	}
+	.indent{
+		text-indent: 22px;
+	}
+	table{
+		border: 1px solid $head_bg;
+		thead > tr > th{
+			text-align: center;
+			border: 1px solid $head_bg;
+			color: $head_bg;
+		}
+		tbody > tr > td{
+			font-weight: 100;
+			border: 1px solid $head_bg;
+		}
+		tbody > tr > th{
+			font-weight: 100;
+			color: #6E6F70;
+			border: 1px solid $head_bg;
+		}
+		.glyphicon-remove{
+			color: #F52826;
+		}
+		.glyphicon-ok{
+			color: $head_bg;
+		}
+	}
+	.btn-blue{
+		padding-top: 1px;
+		padding-bottom: 1px;
+	}
+	.btn-white{
+		padding-top: 1px;
+		padding-bottom: 1px;
+	}
+}
+
+.club-style{
+	font-size: 10px;
+	text-decoration: underline;
+	color: #fff001;
 }
 
 .modal-search {

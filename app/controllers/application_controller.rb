@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   # 无权限后的操作
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+    redirect_to my_user_path(current_user), :alert => exception.message
   end
 
   private

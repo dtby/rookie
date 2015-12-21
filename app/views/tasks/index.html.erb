@@ -1,14 +1,9 @@
-<div class="head text-center" style="line-height: 45px;">
-  所有任务
-  <% if can? :create, Task %>
-    <%= link_to new_task_path do %>
-      <%= image_tag("head_add.png", width: 28) %>
-    <% end %>
-  <% end %>
-</div>
+<%= render partial: "share/head", locals: { head_title: "所有任务", url: new_task_path } %>
+
 <div class="search-nav">
   <%= render partial: "search_nav" %>
 </div>
+
 <div class="container">
   <% @tasks.each do |task|%>
     <%= link_to  task_path(task) do |i| %>

@@ -10,7 +10,7 @@ class WorksController < ApplicationController
   end
 
   def create
-    @work = current_user.work.create(work_params)
+    @work = current_user.works.create(work_params)
     if @work.save
       flash.now[:notice] = "创建成功"
       respond_with @work
@@ -46,6 +46,6 @@ class WorksController < ApplicationController
     @user = current_user
   end
   def find_work
-    @works = current_user.work
+    @works = current_user.works
   end
 end

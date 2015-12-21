@@ -7,9 +7,9 @@ class PagesController < BaseController
   end
 
   def resume
-    @educations = current_user.education
-    @works = current_user.work
-    @internships = current_user.internship
+    @educations = current_user.educations
+    @works = current_user.works
+    @internships = current_user.internships
   end
 
   def info
