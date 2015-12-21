@@ -1,0 +1,25 @@
+<div id="myModal" class="modal fade myModal-col col-xs-10 col-xs-offset-1 bs-subscription-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog myModal1">
+    <div class="modal-content">
+      <div class="modal-header"><h4 class="modal-title text-center">添加订阅</h4></div>
+      <div class="modal-body">
+        <%= simple_form_for(:subscription, url: user_subscriptions_path(@user), remote: true, format: :js) do |f| %>
+          <div class="row">
+            <div class="label-text">
+              <%= f.input :address, class: 'form-control form-input', collection: search_type.keys, prompt: "工作类型", label: false %>
+            </div>
+            <hr class="divide">
+            <div class="label-text">
+              <%= f.input :task_type, class: 'form-control form-input', collection: cities.keys, prompt: "工作地点", label: false %>
+            </div>
+            <hr class="divide">
+            <div class="col-xs-12 text-center">
+              <div class="col-xs-6"><%= f.submit "添加订阅", class: 'btn btn-enter btn-primary' %></div>  
+              <div class="col-xs-6"><%= link_to '取消订阅', "#", class: 'btn btn-del btn-default'  %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

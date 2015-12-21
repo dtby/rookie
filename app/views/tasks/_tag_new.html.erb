@@ -4,10 +4,10 @@
     <% @task.tag_list.each do |tag| %>
       <li><a href="#"><%= tag %><%= link_to("x", remove_task_path(@task, tag: tag) ,class: 'close', remote: true, format: :js) %></a></li>
     <% end %>
+    <div class="input-group">
+      <input type="input" name="tags" id="addTag" value="" class="text-center tag-input" placeholder="请输入标签" >
+    </div>
   </ul>
-  <div class="input-group">
-    <input type="input" name="tags" id="addTag" value="" class="text-center tag-input" placeholder="请输入标签" >
-  </div>
 <% else %>
   <ul id="tagshow" class="tags">
     <li><%=image_tag("tab.png",width:"21", class: 'icon')%><span>标签：</li>

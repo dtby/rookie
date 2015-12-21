@@ -4,7 +4,18 @@
 			<%= head_title %>
 		</div>
 		<div class="col-xs-2 image">
-			<%= image_tag("head_add.png", width: 25) %>
+      <div class="dropdown">
+        <a id="dLabel" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <%= image_tag("head_add.png", width: 25) %>
+        </a>
+
+        <ul class="dropdown-menu dropdown-menu-right head-drop" aria-labelledby="dLabel">
+          <li><div type="button" class="title" data-toggle="modal" data-target=".bs-subscription-modal-lg"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;添加订阅</div></li>
+          <li class="head-li"><a href="<%#= task_applies_path(@task) %>"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;编辑订阅</a></li>
+        </ul>
+      </div>
 		</div>
 	</div>
 </div>
+
+<%= render partial: "attention/subscript_form_modal" %>

@@ -9,9 +9,11 @@ class SignsController < ApplicationController
       pp "每日签到============="
       @coin = current_user.points(category: 'coin')
       @experience = current_user.points(category: 'experience')
-      @user_id = params[:id]
+      @user_id = params[:user_id]
+      @user = current_user
+      @success = true
     else
-      @user_id = nil
+      @success = false
     end
     respond_with @sign
   end

@@ -34,6 +34,8 @@ Rails.application.routes.draw do
     
     resources :internships
 
+    resources :subscriptions
+
     resources :signs, only: [:create]
 
     # 我的主页
