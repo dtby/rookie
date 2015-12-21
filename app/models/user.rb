@@ -166,6 +166,7 @@ class User < ActiveRecord::Base
     return cache
   end
 
+  # 用的地址输出
   def self.address(number)
     if number.present?
       p = ChinaCity.get(number.split(',').first)
@@ -175,6 +176,8 @@ class User < ActiveRecord::Base
       address = ''
     end
   end
+
+  # 用户权限
   
   private
     def create_score_and_score_cache

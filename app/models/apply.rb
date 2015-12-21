@@ -26,9 +26,19 @@ class Apply < ActiveRecord::Base
   	now_count = task.applies.success.count
 
   	if now_count < required_count
-  		self.update_columns(state: 1)
-      self.user.grow_logs.create!(content: "接包成功：#{self.task.name}", grow_type: 3)
-      puts "接包成功============"
+      begin
+    		Apply.transaction do 
+          self.update!(state: 1)
+          task.update!(state: 2)
+          self.user.grow_logs.create!(content: "接包成功：#{self.task.name}", grow_type: 3)
+          puts "接包成功============"
+        end
+      rescue Exception => e
+        puts "===================deal_apply======================="
+        puts e.message
+        puts "===================deal_apply======================="
+        ActiveRecord::Rollback
+      end
   		return true
   	else
   		self.update_columns(state: 0)

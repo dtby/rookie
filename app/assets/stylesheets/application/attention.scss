@@ -19,6 +19,27 @@
     .interest-gift {
       padding-left: 24px;
     }
+    .task-state-btn{
+      padding: 1px 5px;
+      font-size: 10px;
+      border-width: 1px;
+    }
+    .default{
+      border-color: #ccc;
+      color: #333;
+    }
+    .failed{
+      border-color: #D1544B;
+    }
+    .complete{
+      border-color: #66B854;
+    }
+    .underway{
+      border-color: #407ABA;
+    }
+    .wait{
+      border-color: #6AC0E0;
+    }
   }
   .interest-grade {
     padding-right: 0;

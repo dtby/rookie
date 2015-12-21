@@ -57,6 +57,10 @@ class Task < ActiveRecord::Base
     d: 4,
     e: 5
   }
+
+  enum state: {failed: 0, complete: 1, underway: 2, wait: 3}
+  STATE = {failed: '已失效', complete: '已完成', underway: '进行中', wait: '召集中'}
+
   GRADE = {a: '等级一', b: '等级二', c: '等级三', d: '等级四', e: '等级五' }
 
   POWER = { surface: :p_figure, communicate: :p_communicate, decision: :p_decision, cooperate: :p_coordination, control: :p_control }

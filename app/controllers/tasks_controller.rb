@@ -1,4 +1,6 @@
 class TasksController < BaseController
+  load_and_authorize_resource
+  
   before_action :set_user
   respond_to :js, :json
   def index
@@ -18,9 +20,6 @@ class TasksController < BaseController
 
   def new
     @task = Task.new
-    unless can? :create, @task
-      redirect_to vip_user_path(current_user)
-    end
   end
 
   def show

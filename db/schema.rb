@@ -283,8 +283,8 @@ ActiveRecord::Schema.define(version: 20151221070235) do
     t.string   "place",          limit: 255
     t.integer  "user_id",        limit: 4
     t.integer  "task_type_id",   limit: 4
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.string   "tab",            limit: 255
     t.string   "deadline",       limit: 255
     t.string   "p",              limit: 255

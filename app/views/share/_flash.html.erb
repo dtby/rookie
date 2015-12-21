@@ -1,0 +1,8 @@
+<% for name in [:info, :warning, :error, :notice] %>
+  <% if flash[name] %>
+    <p class="text-center">
+    	<%= flash[name].html_safe %> %>
+    </p>
+    <% flash[name] = nil %>
+  <% end %>
+<% end %>

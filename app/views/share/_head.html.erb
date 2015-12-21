@@ -16,7 +16,9 @@
           </ul>
         </div>
       <% else %>
-        <%= image_tag("head_add.png", width: 25) %>
+        <%= link_to "#{url}" do %>
+          <%= image_tag("head_add.png", width: 25) %>
+        <% end %>
       <% end %>
 		</div>
 	</div>
