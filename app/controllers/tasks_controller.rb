@@ -46,7 +46,6 @@ class TasksController < BaseController
     @task = Task.new(task_params)
     if @task.save
       current_user.grow_logs.create!(content: "发包成功：#{task_params[:name]}", grow_type: 4)
-      pp "发包成功============="
       flash.now[:notice] = "创建成功"
       redirect_to tasks_path
     else

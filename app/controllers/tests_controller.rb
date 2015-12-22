@@ -22,7 +22,6 @@ class TestsController < BaseController
 	# 提交单次成绩
 	def create
 		@score = Question.score(params[:questions_ids], params[:answers])
-		pp params[:questions_ids], "===", params[:answers]
 		respond_with @score
 	end
 

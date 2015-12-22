@@ -6,7 +6,6 @@ class VotesController < ApplicationController
   def create
     promise_class = ["Task", "User"]
     @voteable_class = params[:voteable_type]
-    pp @voteable_class, "vvvvvvvvvvvvvvvvvvvvv"
     unless promise_class.include? @voteable_class
       @success = false
     else
@@ -19,7 +18,6 @@ class VotesController < ApplicationController
       else
         @success = false 
       end
-      pp @success, "sssssssssssss"
     end
     respond_with @success, @is_like
   end

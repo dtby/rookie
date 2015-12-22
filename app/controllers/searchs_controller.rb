@@ -8,7 +8,6 @@ class SearchsController < ApplicationController
   
   def create
     @search = Search.new(search_params)
-    pp search_params
     if @search.save
       flash.now[:notice] = "创建成功"
       respond_with personal_user_path(@user)
