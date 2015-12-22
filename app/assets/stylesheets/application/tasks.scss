@@ -1,3 +1,4 @@
+@import "variables";
 .request {
   padding-left: 0;
   padding-bottom: 10px;
@@ -188,10 +189,27 @@
 // 所有任务搜索导航样式
 .search-nav-modal {
   margin-bottom: 0;
+  min-height: 34px;
+  background-color: #E2F3FF;
+  .mbtn{
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 6px;
+  }
+  .work-nav{
+    border-left: 1px solid $head-bg;
+    border-right: 1px solid $head-bg;
+  }
+  .navbar-collapse{
+    border-top: 2px solid #CCE3F2;
+  }
   .navbar-nav {
+    background-color: #fff;
     height: 250px;
     overflow:auto;
     overflow-x:hidden;
+    margin-top: 0;
+    margin-bottom: 0;
     .city-select {
       border: 0px;
       padding: 5px;
