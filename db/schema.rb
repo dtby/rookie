@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151221074825) do
+ActiveRecord::Schema.define(version: 20151222023014) do
 
   create_table "applies", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -171,6 +171,18 @@ ActiveRecord::Schema.define(version: 20151221074825) do
 
   add_index "options", ["question_id"], name: "index_options_on_question_id", using: :btree
 
+  create_table "permissions", force: :cascade do |t|
+    t.integer  "role",              limit: 4
+    t.boolean  "boss"
+    t.string   "level",             limit: 255
+    t.boolean  "money"
+    t.integer  "release",           limit: 4
+    t.integer  "receive_per_month", limit: 4
+    t.integer  "meanwhile",         limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
   create_table "questions", force: :cascade do |t|
     t.text     "problem",    limit: 65535
     t.integer  "level",      limit: 4
@@ -322,6 +334,7 @@ ActiveRecord::Schema.define(version: 20151221074825) do
     t.integer  "sash_id",                limit: 4
     t.integer  "level",                  limit: 4,   default: 0
     t.integer  "role",                   limit: 4,   default: 1
+    t.integer  "permission_id",          limit: 4
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

@@ -27,6 +27,7 @@
 #  sash_id                :integer
 #  level                  :integer          default(0)
 #  role                   :integer          default(1)
+#  permission_id          :integer
 #
 
 class User < ActiveRecord::Base

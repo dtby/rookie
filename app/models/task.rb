@@ -15,7 +15,7 @@
 #  p_decision     :integer
 #  grade          :integer
 #  name           :string(255)
-#  state          :integer
+#  state          :integer          default(3)
 #  range          :integer
 #  coin           :integer
 #  describe       :text(65535)
@@ -32,6 +32,7 @@
 #  c              :string(255)
 #  a              :string(255)
 #  member_count   :integer
+#  task_type      :string(255)
 #
 
 class Task < ActiveRecord::Base

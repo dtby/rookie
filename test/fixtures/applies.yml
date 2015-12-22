@@ -7,7 +7,7 @@
 #  task_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  state      :integer
+#  state      :integer          default(2)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

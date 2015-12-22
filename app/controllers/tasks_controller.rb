@@ -72,7 +72,7 @@ class TasksController < BaseController
   def remove
     if params[:tag].present?
       @task = Task.where(id: params[:id]).first
-      @task.tag_list.remove(params[:tag] ) 
+      @task.tag_list.remove(params[:tag] )
       @task.save
     end
     respond_with @task
