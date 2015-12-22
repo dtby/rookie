@@ -30,15 +30,19 @@
     }
     .failed{
       border-color: #D1544B;
+      color: #D1544B;
     }
     .complete{
-      border-color: #66B854;
+      border-color: #407ABA;
+      color: #407ABA;
     }
     .underway{
-      border-color: #407ABA;
+      border-color: #66B854;
+      color: #66B854;
     }
     .wait{
       border-color: #6AC0E0;
+      color: #6AC0E0;
     }
   }
   .interest-grade {
