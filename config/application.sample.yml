@@ -1,9 +1,9 @@
 defaults: &defaults
-  APPID: "wx345ff6c203aba807"
-  APPSECRET: "4ec49b85222209e720ccfcb2c789a088"
-  HOST: "https://xiaocuixt.localtunnel.me"
-  WeixinTokenString: "70b2efce43fcd88856a210a0"
-  WeixinSecretString: "Z4cFZIBrf2wBML__OgR7YoiXng792lmc"
+  APPID: "wx8cbc369ae3d74887"
+  APPSECRET: "6f719d088020a1ed5b6dbf8eda94c2b4"
+  HOST: "https://120.24.80.204"
+  WeixinTokenString: "529f2ed084b685624be3bde1"
+  WeixinSecretString: "ReWckhxChahsXgBR9TWMaeH66-qqvzK0"
 
 development:
   <<: *defaults
