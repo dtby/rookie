@@ -84,14 +84,7 @@ class User < ActiveRecord::Base
     '佤族': 'wazu','维吾尔族': 'weiwuer','乌兹别克族': 'wuzibieke','锡伯族': 'xibo','瑶族': 'yaozu','彝族': 'yizu','裕固族': 'yugu','藏族': 'zangzu'
   }
 
-
-  # 使用手机号登录
-  # def self.find_for_database_authentication(warden_conditions)
-  #   conditions = warden_conditions.dup
-  #   login = conditions.delete(:login)
-  #   where(conditions).where(["phone = :value", { :value => login.strip }]).first
-  # end
-
+  # 手机格式
   def phone_reg?
     reg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/
     if not phone.match reg
@@ -99,20 +92,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  # 验证码是否正确
   def is_right_sms?
     if ! Message.is_right_sms? phone, message
       errors.add(:message, :sms_error)
     end
   end
-
-  #判断是否需要更新密码
-  # def update_judge(params)
-  #   if params[:password].present? || params[:password_confirmation].present?
-  #     update(params)
-  #   else
-  #     update_without_password(params)
-  #   end
-  # end
 
   # 不验证邮箱
   def email_required?
@@ -180,17 +165,18 @@ class User < ActiveRecord::Base
     end
   end
 
-  # 用户权限
-  def can_issue?
-    { 
-      rookie: "普通菜鸟", 
-      rookie_gold: "黄金菜鸟", 
-      rookie_diamond: "钻石菜鸟", 
-      boss: {a: 2, b: 1, c: 0, d: 0}, 
-      boss_gold: {a: 20, b: 10, c: 2, d: 0}, 
-      boss_diamond: {a: 999, b: 999, c: 40, d: 20}
-    }
-    
+  # 菜鸟权限
+  def rookie_can?
+    # 每月可接包数量
+    receive_per_month = self.receive_per_month
+    # 同事接包数量
+    meanwhile = self.meanwhile
+  end
+
+  # boss权限
+  def boss_can?
+    # 发包数量
+    release = self.release
   end
   
   private

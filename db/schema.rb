@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151222023014) do
+ActiveRecord::Schema.define(version: 20151222154418) do
 
   create_table "applies", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -304,6 +304,7 @@ ActiveRecord::Schema.define(version: 20151222023014) do
     t.string   "a",              limit: 255
     t.integer  "member_count",   limit: 4
     t.string   "task_type",      limit: 255
+    t.integer  "applies_count",  limit: 4
   end
 
   add_index "tasks", ["task_type_id"], name: "index_tasks_on_task_type_id", using: :btree
@@ -334,7 +335,6 @@ ActiveRecord::Schema.define(version: 20151222023014) do
     t.integer  "sash_id",                limit: 4
     t.integer  "level",                  limit: 4,   default: 0
     t.integer  "role",                   limit: 4,   default: 1
-    t.integer  "user_id",                limit: 4
     t.integer  "permission_id",          limit: 4
   end
 

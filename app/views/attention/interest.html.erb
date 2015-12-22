@@ -31,7 +31,7 @@
           <p class="interest-gift"><span>控制力＋<%= step_g(interest.grade) %>EXP</span><span>协作力＋<%= step_g(interest.grade) %>EXP</span></p>
         </div>
         <div class="col-xs-12 interest-5 text-right">
-          <button class="btn btn-white default task-state-btn">名额：<%= interest.member_count - interest.applies.count %></button>
+          <button class="btn btn-white default task-state-btn">名额：<%= interest.member_count - interest.applies.size %></button>
           <button class="btn btn-white task-state-btn <%= interest.state %>"><%= Task::STATE[interest.state.to_sym] %></button>
         </div>
       </div>

@@ -43,7 +43,7 @@ class Task < ActiveRecord::Base
   acts_as_votable
 
 
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   belongs_to :task_type
   has_many :applies, dependent: :destroy
 

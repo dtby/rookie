@@ -43,13 +43,19 @@ class TasksController < BaseController
   end
 
   def create
-    @task = Task.new(task_params)
-    if @task.save
-      current_user.grow_logs.create!(content: "发包成功：#{task_params[:name]}", grow_type: 4)
-      flash.now[:notice] = "创建成功"
-      redirect_to tasks_path
+    release = Permission.where(role: User.roles[current_user.role.to_sym], grade: Task.grades[task_params[:grade].to_sym]).first.release
+    released = current_user.tasks.size
+    if released < release
+      @task = Task.new(task_params)
+      if @task.save
+        current_user.grow_logs.create!(content: "发包成功：#{task_params[:name]}", grow_type: 4)
+        flash.now[:notice] = "创建成功"
+        redirect_to tasks_path
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to vip_user_path(current_user)
     end
   end
 

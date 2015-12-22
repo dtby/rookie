@@ -16,8 +16,6 @@
 
 class Permission < ActiveRecord::Base
 
-
-
 	enum grade: { a: 1, b: 2, c: 3, d: 4 }
 
 	enum money: { yes: true, no: false}

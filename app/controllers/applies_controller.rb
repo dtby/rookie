@@ -1,4 +1,6 @@
 class AppliesController < BaseController
+  load_and_authorize_resource param_method: :apply_params
+
   respond_to :js, :json
   def index
     task = Task.find(params[:task_id])

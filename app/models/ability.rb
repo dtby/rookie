@@ -6,16 +6,16 @@ class Ability
     if user.admin?
       can :manage, :all
     elsif user.rookie?
-      can :read, Task
+      cannot :create, Task
     elsif user.rookie_gold?
-      can :read, Task
+      cannot :create, Task
     elsif user.rookie_diamond?
-      can :read, Task
-    elsif user.boss? && user.can_issue?
+      cannot :create, Task
+    elsif user.boss?
       can :manage, Task
-    elsif user.boss_gold? && user.can_issue?
+    elsif user.boss_gold?
       can :manage, Task
-    elsif user.boss_diamond? && user.can_issue?
+    elsif user.boss_diamond?
       can :manage, Task
     end
       
