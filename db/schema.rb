@@ -174,13 +174,13 @@ ActiveRecord::Schema.define(version: 20151222023014) do
   create_table "permissions", force: :cascade do |t|
     t.integer  "role",              limit: 4
     t.boolean  "boss"
-    t.string   "level",             limit: 255
+    t.integer  "grade",             limit: 4
     t.boolean  "money"
     t.integer  "release",           limit: 4
     t.integer  "receive_per_month", limit: 4
     t.integer  "meanwhile",         limit: 4
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "questions", force: :cascade do |t|

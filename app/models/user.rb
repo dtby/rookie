@@ -52,6 +52,8 @@ class User < ActiveRecord::Base
   has_many :scores, dependent: :destroy
   has_one :score_cache, dependent: :destroy
 
+  belongs_to :permission
+
   validates :phone, presence: true, uniqueness: true, on: :create
   validate :phone_reg?, on: :create
   validates :message, presence: true, on: :create

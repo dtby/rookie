@@ -34,3 +34,10 @@ zh-CN:
         email: '邮箱'
         password: '密码'
         remember_me: '记住我'
+      permission:
+        release: '发包数量'
+        receive_per_month: '接包数量/月'
+        meanwhile: '同时接包数量'
+        boss: '身份'
+        role: '权限级别'
+        money: '涉及现金'

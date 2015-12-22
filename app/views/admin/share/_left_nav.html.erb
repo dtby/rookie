@@ -36,11 +36,29 @@
             </li>
           <% end %>
         </ul> 
-      </li>      
+      </li>  
+
+      <!-- 权限管理 -->
+      <li class="<%= 'active' if params[:controller] == 'admin/permissions' %>">
+        <%= link_to admin_permissions_path do %>
+          <i class="fa fa-legal"></i> 
+          <span class="nav-label">用户权限</span>
+          <span class="fa arrow"></span>
+        <% end %>
+
+        <ul class="nav nav-second-level collapse">
+          <% user_categories.each do |category| %>
+            <li class="<%= 'active' if current_page?(role: category.first) %>">
+              <%= link_to "#{category.second}", admin_permissions_path(role: category.first) %>
+            </li>
+          <% end %>
+        </ul> 
+      </li> 
+          
       <!-- 测试题 -->
       <li class="<%= 'active' if params[:controller] == 'admin/questions' || params[:question_id].present? %>">
         <%= link_to "#" do %>
-          <i class="fa fa-th-large"></i> 
+          <i class="fa fa-book"></i> 
           <span class="nav-label">测试</span>
           <span class="fa arrow"></span>
         <% end %> 
@@ -58,7 +76,7 @@
       <!-- 调查问卷数据 -->
       <li class="<%= 'active' if params[:controller] == 'admin/searchs' %>">
         <%= link_to admin_searchs_path do %>
-          <i class="fa fa-th-large"></i> 
+          <i class="fa fa-edit"></i> 
           <span class="nav-label">调查问卷数据</span>
         <% end %> 
       </li>

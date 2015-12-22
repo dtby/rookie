@@ -5,7 +5,7 @@
 #  id                :integer          not null, primary key
 #  role              :integer
 #  boss              :boolean
-#  level             :string(255)
+#  grade             :integer
 #  money             :boolean
 #  release           :integer
 #  receive_per_month :integer

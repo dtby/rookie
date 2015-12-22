@@ -3,7 +3,7 @@ class CreatePermissions < ActiveRecord::Migration
     create_table :permissions do |t|
       t.integer :role
       t.boolean :boss
-      t.string :level
+      t.integer :grade
       t.boolean :money
       t.integer :release
       t.integer :receive_per_month

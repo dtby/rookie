@@ -1,0 +1,27 @@
+<tr class="text-center">
+  <td><%= permission.id %></td>
+  <td><%= Permission::BOSS.invert[permission.boss] %></td>
+  <td><%= Permission::ROLE[permission.role.to_sym] %></td>
+  <td><%= permission.grade.upcase %></td>
+  <% if ['boss', 'boss_gold', 'boss_diamond'].include? params[:role] %>
+    <td><%= export_number(permission.release) %></td>
+  <% elsif params[:role] == 'all' %>
+    <td><%= export_number(permission.release) %></td>  
+    <td><%= permission.money %></td>
+    <td><%= export_number(permission.receive_per_month) %></td>
+    <td><%= export_number(permission.meanwhile) %></td>
+  <% else %>
+    <td><%= permission.money %></td>
+    <td><%= export_number(permission.receive_per_month) %></td>
+    <td><%= export_number(permission.meanwhile) %></td>
+  <% end %>
+  <td>
+    <%= link_to edit_admin_permission_path(permission, role: params[:role], page: params[:page]), class: 'btn btn-xs btn-info', remote: true, format: :js do %>
+      <span class="glyphicon glyphicon-edit"></span>
+    <% end %>
+
+    <%= link_to admin_permission_path(permission, role: params[:role], page: params[:page]), method: :delete, data: { confirm: "确定删除？" }, class: 'btn btn-xs btn-danger' do %>
+      <span class="glyphicon glyphicon-trash"></span>
+    <% end %>
+  </td>
+</tr>

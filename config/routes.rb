@@ -91,8 +91,8 @@ Rails.application.routes.draw do
 
   #后台管理
   namespace :admin do
-
     root 'home#index'
+
     # 所有测试题
     resources :questions, except: [:show] do
       collection do
@@ -109,6 +109,9 @@ Rails.application.routes.draw do
 
     # 调查问卷
     resources :searchs, only: [:index]
+
+    # 用户权限管理
+    resources :permissions
   end
 
 

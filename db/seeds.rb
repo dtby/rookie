@@ -165,6 +165,52 @@ begin
 	Option.create(id: 95, question_id: 24, tab: 3, content: "答案c" )
 	Option.create(id: 96, question_id: 24, tab: 4, content: "答案d" )
 
+	# 创建用户权限数据
+	Permission.destroy_all
+	# 普通菜鸟
+	Permission.create!(id: 1, role: 1, boss: false, grade: 1, money: true, release: 0, receive_per_month: 0, meanwhile: 0)
+	Permission.create!(id: 2, role: 1, boss: false, grade: 1, money: false, release: 0, receive_per_month: 3, meanwhile: 1)
+	Permission.create!(id: 3, role: 1, boss: false, grade: 2, money: true, release: 0, receive_per_month: 0, meanwhile: 0)
+	Permission.create!(id: 4, role: 1, boss: false, grade: 2, money: false, release: 0, receive_per_month: 2, meanwhile: 1)
+	Permission.create!(id: 5, role: 1, boss: false, grade: 3, money: true, release: 0, receive_per_month: 0, meanwhile: 0)
+	Permission.create!(id: 6, role: 1, boss: false, grade: 3, money: false, release: 0, receive_per_month: 1, meanwhile: 1)
+	Permission.create!(id: 7, role: 1, boss: false, grade: 4, money: true, release: 0, receive_per_month: 0, meanwhile: 0)
+	Permission.create!(id: 8, role: 1, boss: false, grade: 4, money: false, release: 0, receive_per_month: 1, meanwhile: 1)
+	# 黄金菜鸟
+	Permission.create!(id: 9, role: 2, boss: false, grade: 1, money: true, release: 0, receive_per_month: 5, meanwhile: 3)
+	Permission.create!(id: 10, role: 2, boss: false, grade: 1, money: false, release: 0, receive_per_month: 9999, meanwhile: 5)
+	Permission.create!(id: 11, role: 2, boss: false, grade: 2, money: true, release: 0, receive_per_month: 3, meanwhile: 2)
+	Permission.create!(id: 12, role: 2, boss: false, grade: 2, money: false, release: 0, receive_per_month: 9999, meanwhile: 2)
+	Permission.create!(id: 13, role: 2, boss: false, grade: 3, money: true, release: 0, receive_per_month: 2, meanwhile: 1)
+	Permission.create!(id: 14, role: 2, boss: false, grade: 3, money: false, release: 0, receive_per_month: 9999, meanwhile: 1)
+	Permission.create!(id: 15, role: 2, boss: false, grade: 4, money: true, release: 0, receive_per_month: 1, meanwhile: 1)
+	Permission.create!(id: 16, role: 2, boss: false, grade: 4, money: false, release: 0, receive_per_month: 9999, meanwhile: 1)
+	#钻石菜鸟
+	Permission.create!(id: 17, role: 3, boss: false, grade: 1, money: true, release: 0, receive_per_month: 9999, meanwhile: 3)
+	Permission.create!(id: 18, role: 3, boss: false, grade: 1, money: false, release: 0, receive_per_month: 9999, meanwhile: 5)
+	Permission.create!(id: 19, role: 3, boss: false, grade: 2, money: true, release: 0, receive_per_month: 9999, meanwhile: 3)
+	Permission.create!(id: 20, role: 3, boss: false, grade: 2, money: false, release: 0, receive_per_month: 9999, meanwhile: 3)
+	Permission.create!(id: 21, role: 3, boss: false, grade: 3, money: true, release: 0, receive_per_month: 9999, meanwhile: 2)
+	Permission.create!(id: 22, role: 3, boss: false, grade: 3, money: false, release: 0, receive_per_month: 9999, meanwhile: 2)
+	Permission.create!(id: 23, role: 3, boss: false, grade: 4, money: true, release: 0, receive_per_month: 9999, meanwhile: 2)
+	Permission.create!(id: 24, role: 3, boss: false, grade: 4, money: false, release: 0, receive_per_month: 9999, meanwhile: 2)
+
+	# 普通BOSS
+	Permission.create!(id: 25, role: 4, boss: true, grade: 1, release: 2)
+	Permission.create!(id: 26, role: 4, boss: true, grade: 2, release: 1)
+	Permission.create!(id: 27, role: 4, boss: true, grade: 3, release: 0)
+	Permission.create!(id: 28, role: 4, boss: true, grade: 4, release: 0)
+	# 黄金BOSS
+	Permission.create!(id: 29, role: 5, boss: true, grade: 1, release: 20)
+	Permission.create!(id: 30, role: 5, boss: true, grade: 2, release: 10)
+	Permission.create!(id: 31, role: 5, boss: true, grade: 3, release: 2)
+	Permission.create!(id: 32, role: 5, boss: true, grade: 4, release: 0)
+	# 钻石BOSS
+	Permission.create!(id: 33, role: 6, boss: true, grade: 1, release: 9999)
+	Permission.create!(id: 34, role: 6, boss: true, grade: 2, release: 9999)
+	Permission.create!(id: 35, role: 6, boss: true, grade: 3, release: 40)
+	Permission.create!(id: 36, role: 6, boss: true, grade: 4, release: 20)
+
 rescue Exception => e
 	p e.message
 end
