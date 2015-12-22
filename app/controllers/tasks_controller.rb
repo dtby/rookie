@@ -1,5 +1,5 @@
 class TasksController < BaseController
-  load_and_authorize_resource
+  load_and_authorize_resource param_method: :task_params
   
   before_action :set_user
   respond_to :js, :json
@@ -43,7 +43,7 @@ class TasksController < BaseController
   end
 
   def update
-    if @task.update(task_params)
+    if @task.update_attributes(task_params)
       flash.now[:notice] = "更新成功"
       redirect_to task_path
     else

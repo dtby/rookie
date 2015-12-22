@@ -178,6 +178,17 @@ class User < ActiveRecord::Base
   end
 
   # 用户权限
+  def can_issue?
+    { 
+      rookie: "普通菜鸟", 
+      rookie_gold: "黄金菜鸟", 
+      rookie_diamond: "钻石菜鸟", 
+      boss: {a: 2, b: 1, c: 0, d: 0}, 
+      boss_gold: {a: 20, b: 10, c: 2, d: 0}, 
+      boss_diamond: {a: 999, b: 999, c: 40, d: 20}
+    }
+    
+  end
   
   private
     def create_score_and_score_cache

@@ -11,11 +11,11 @@ class Ability
       can :read, Task
     elsif user.rookie_diamond?
       can :read, Task
-    elsif user.boss?
+    elsif user.boss? && user.can_issue?
       can :manage, Task
-    elsif user.boss_gold?
+    elsif user.boss_gold? && user.can_issue?
       can :manage, Task
-    elsif user.boss_diamond?
+    elsif user.boss_diamond? && user.can_issue?
       can :manage, Task
     end
       
