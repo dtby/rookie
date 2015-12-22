@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount WeixinRailsMiddleware::Engine, at: "/"
+  mount WeixinRailsMiddleware::Engine, at: "/"
   mount ChinaCity::Engine => '/china_city'
 
   # 前台用户登录

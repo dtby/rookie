@@ -7,7 +7,7 @@ class BaseController < ApplicationController
   private
   def weixin_global
     unless $client.try(:is_valid?)
-      $client ||= WeixinAuthorize::Client.new(ENV["APPID"], ENV["APPSECRET"])
+      $client ||= WeixinAuthorize::Client.new('wx8cbc369ae3d74887', '6f719d088020a1ed5b6dbf8eda94c2b4')
     end
   end
 

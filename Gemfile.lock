@@ -70,6 +70,7 @@ GEM
       jquery-rails
       rails (>= 3.1.0)
     china_sms (0.0.7)
+    chronic (0.10.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.7)
@@ -264,6 +265,7 @@ DEPENDENCIES
   cancancan (~> 1.10)
   china_city
   china_sms
+  chronic
   coffee-rails (~> 4.1.0)
   devise (~> 3.4.1)
   font-awesome-sass (~> 4.3)

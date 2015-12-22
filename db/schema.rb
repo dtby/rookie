@@ -334,6 +334,7 @@ ActiveRecord::Schema.define(version: 20151222023014) do
     t.integer  "sash_id",                limit: 4
     t.integer  "level",                  limit: 4,   default: 0
     t.integer  "role",                   limit: 4,   default: 1
+    t.integer  "user_id",                limit: 4
     t.integer  "permission_id",          limit: 4
   end
 
