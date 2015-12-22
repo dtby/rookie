@@ -15,7 +15,6 @@ class TestsController < BaseController
 			end
 		else
 			current_user.grow_logs.create!(content: "完成能力测试", grow_type: 2)
-			pp "完成能力测试=============="
 			redirect_to result_tests_path(status: 'end')
 		end
 	end
