@@ -1,6 +1,6 @@
 <% @tasks.each do |task|%>
-  <% if (ChinaCity.get(task.c) == @city && ChinaCity.get(task.p) == @province ) || (ChinaCity.get(task.p) == @province && @city == "不限") %> 
-    <%= link_to  task_path(task) do |i| %>
+  <% if @type.present? || ((ChinaCity.get(task.c) == @city && ChinaCity.get(task.p) == @province ) || (ChinaCity.get(task.p) == @province && @city == "不限") || @province == "不限") %>
+    <%= link_to  task_path(task) do |i| %> 
       <div class="row interest-content">
         <div class="col-xs-3 interest-name">
           <p><strong><%= truncate(task.name,length: 6) %></strong></p>

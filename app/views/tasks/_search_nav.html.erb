@@ -42,12 +42,12 @@
 
     <div class="collapse navbar-collapse" id="bs-ability-navbar-collapse-1">
       <div class="nav navbar-nav text-center">
-        <li class="active city-line"><a href="#">不限<span class="sr-only">(current)</span></a></li>
-        <li class="city-line"><a href="#">形象力</a></li>
-        <li class="city-line"><a href="#">沟通力</a></li>
-        <li class="city-line"><a href="#">决策力</a></li>
-        <li class="city-line"><a href="#">控制力</a></li>
-        <li class="city-line"><a href="#">协作力</a></li>
+        <li class="city-line"><%= link_to "不限", search_city_tasks_path(type:'type', unlimit:'unlimit'), remote: true, format: :js %></li>
+        <li class="city-line"><%= link_to "形象力", search_city_tasks_path(type:'type', figure:'figure'), remote: true, format: :js %></li>
+        <li class="city-line"><%= link_to "沟通力", search_city_tasks_path(type:'type', communicate:'communicate'), remote: true, format: :js %></li>
+        <li class="city-line"><%= link_to "决策力", search_city_tasks_path(type:'type', decision:'decision'), remote: true, format: :js %></li>
+        <li class="city-line"><%= link_to "控制力", search_city_tasks_path(type:'type', control:'control'), remote: true, format: :js %></li>
+        <li class="city-line"><%= link_to "协作力", search_city_tasks_path(type:'type', coordination:'coordination'), remote: true, format: :js %></li>
       </div>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

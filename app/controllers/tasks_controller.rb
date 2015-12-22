@@ -14,8 +14,23 @@ class TasksController < BaseController
   def search_city
     @option = params[:option]
     @province = params[:province]
+    @type = params[:type]
     @city = params[:city]
+    if @type.present? && params[:figure] == "figure"
+    @tasks = Task.order(p_figure: :desc)
+    elsif @type.present? && params[:communicate] == "communicate"
+    @tasks = Task.order(p_communicate: :desc)
+    elsif @type.present? && params[:decision] == "decision"
+    @tasks = Task.order(p_decision: :desc)
+    elsif @type.present? && params[:control] == "control"
+    @tasks = Task.order(p_control: :desc)
+    elsif @type.present? && params[:coordination] == "coordination"
+    @tasks = Task.order(p_coordination: :desc)
+    elsif @type.present? && params[:unlimit] == "unlimit"
     @tasks = Task.order(grade: :desc)
+    else
+    @tasks = Task.order(grade: :desc)
+    end
   end
 
   def new
