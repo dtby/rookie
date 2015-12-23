@@ -21,7 +21,6 @@ class AppliesController < BaseController
   def create
     @apply = Apply.new(apply_params)
     if @apply.save
-      flash.now[:notice] = "创建成功"
       respond_with @apply
     else
       render :new
@@ -31,7 +30,7 @@ class AppliesController < BaseController
   private
 
   def apply_params
-    params.require(:apply).permit(:user_id, :task_id, :state)
+    params.require(:apply).permit(:user_id, :task_id, :state, :money, :grade)
   end
 
   def set_user

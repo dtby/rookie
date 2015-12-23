@@ -56,6 +56,8 @@
         <%= simple_form_for :apply, url: task_applies_path(current_user), remote: true, format: :js, wrapper: :task_form do |f| %>
           <%= f.hidden_field :user_id, :value => current_user.id %>
           <%= f.hidden_field :task_id, :value => params[:id] %>
+          <%= hidden_field_tag :grade, Task.grades[task.grade.to_sym] %>
+          <%= hidden_field_tag :money, task.extra.present? %>
           <%= f.submit "申请接包", class: "btn btn-blue btn-block", id: "apply_task" %>
           <button id="applied" class="btn btn-info btn-block" disabled="disabled" style="display: none;">已申请</button>
         <% end %>
