@@ -11,9 +11,9 @@
             <%=image_tag("logo.png",width:"80")%>
           </div>
           <div class="media-body" id="my-body">
-            <span>姓名：菜鸟01 &nbsp;&nbsp;</span><br>
-            <span>编号：123456789</span><br>
-            <span>更新时间：2015-10-10</span>
+            <span>姓名：<%= current_user.nickname %></span><br>
+            <span>编号：CNH15<%= current_user.id %></span><br>
+            <span>更新时间：<%= current_user.id %></span>
           </div>
         </div>
       </div>

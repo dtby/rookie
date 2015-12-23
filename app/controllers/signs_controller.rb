@@ -7,8 +7,14 @@ class SignsController < ApplicationController
     
     if @sign.save
       current_user.grow_logs.create!(content: "每日签到", grow_type: 5)
-      @coin = current_user.points(category: 'coin')
-      @experience = current_user.points(category: 'experience')
+      if User.roles[current_user.try(:role)] <= 3
+        @coin = current_user.points(category: 'coin')+5
+        @experience = current_user.points(category: 'experience')+1
+      else
+        @coin = current_user.points(category: 'coin')+20
+        @experience = current_user.points(category: 'experience')+1
+      end
+      # score_points.where("created_at > '#{1.month.ago}'").sum(:num_points)
       @user_id = params[:user_id]
       @user = current_user
       @success = true

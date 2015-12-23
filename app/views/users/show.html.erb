@@ -16,7 +16,7 @@
         <% end -%>
       <% end -%>
     </p>
-    <p id="<%= "experience_#{params[:id]}"%>">&nbsp;&nbsp;经验值：<%= @user.points(category: 'experience') %></p>
+    <p>&nbsp;&nbsp;经验值：<span id="<%= "experience_#{params[:id]}"%>"><%= @user.points(category: 'experience') %></span></p>
 	</div>
 </div>
 

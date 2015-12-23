@@ -31,7 +31,6 @@ module Merit
         User.roles[task.user.try(:role)] > 3
       end
 
-
       score 5, :on => 'tasks#create', category: 'experience' do |task|
         task.grade == 'a' && User.roles[task.user.try(:role)] <= 3
       end
