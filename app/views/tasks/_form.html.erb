@@ -40,11 +40,8 @@
             <%= f.hidden_field :p %>
             <%= select_tag :c, options_for_select([]), prompt: '--城市--', onChange:'onChangeSum()', class: ['city-select'] %>
             <%= f.hidden_field :c %>
-            <%#= select_tag :a, options_for_select([]), prompt: '--地区--', class: ['city-select '] %>
           </div>
         </div>
-        <%#= ChinaCity.get('350000') %><%#= ChinaCity.get('350500') %>
-        <%#= f.input :place, placeholder: '工作地点', collection: Task.places, prompt: "工作地点"%>
       </div>
 
     <hr class="line">
@@ -57,15 +54,15 @@
         </div>
       </div>
 
-    <!-- <hr class="line">
+    <hr class="line">
       <div class="form-text clearfix">
         <div class="col-xs-1" style="height: 34px; line-height: 34px;">
           <span class="glyphicon glyphicon-user"></span>
         </div>
         <div class="col-xs-11">
-          <%#= f.input :task_type, required: true, placeholder: '任务包类型', collection: search_type.keys, label: false %>
+          <%= f.input :task_type, required: true, prompt: '任务包类型', collection: search_type.keys, label: false %>
         </div>
-      </div> -->
+      </div>
 
     <hr class="line">
       <div class="col-xs-4">

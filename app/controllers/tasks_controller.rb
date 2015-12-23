@@ -15,21 +15,24 @@ class TasksController < BaseController
     @option = params[:option]
     @province = params[:province]
     @type = params[:type]
+    @typ = params[:typ]
     @city = params[:city]
     if @type.present? && params[:figure] == "figure"
-    @tasks = Task.order(p_figure: :desc)
+      @tasks = Task.order(p_figure: :desc)
     elsif @type.present? && params[:communicate] == "communicate"
-    @tasks = Task.order(p_communicate: :desc)
+      @tasks = Task.order(p_communicate: :desc)
     elsif @type.present? && params[:decision] == "decision"
-    @tasks = Task.order(p_decision: :desc)
+      @tasks = Task.order(p_decision: :desc)
     elsif @type.present? && params[:control] == "control"
-    @tasks = Task.order(p_control: :desc)
+      @tasks = Task.order(p_control: :desc)
     elsif @type.present? && params[:coordination] == "coordination"
-    @tasks = Task.order(p_coordination: :desc)
+      @tasks = Task.order(p_coordination: :desc)
     elsif @type.present? && params[:unlimit] == "unlimit"
-    @tasks = Task.order(grade: :desc)
+      @tasks = Task.order(grade: :desc)
+    elsif @typ.present?
+      @tasks = Task.where(task_type:params[:option]).order(grade: :desc)
     else
-    @tasks = Task.order(grade: :desc)
+      @tasks = Task.order(grade: :desc)
     end
   end
 

@@ -44,7 +44,7 @@ class Task < ActiveRecord::Base
 
 
   belongs_to :user, counter_cache: true
-  belongs_to :task_type
+  # belongs_to :task_type
   has_many :applies, dependent: :destroy
 
   validates :grade, :member_count, presence: true, on: :create
