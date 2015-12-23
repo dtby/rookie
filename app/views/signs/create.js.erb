@@ -1,7 +1,7 @@
 <% if @success %>
 	$("#sign_t").html('<button class="btn btn-blue" disabled="disabled">今日已签到,明天再来吧！</button>');
-	$("#coin_<%= @user_id %>").text("鸟币：<%= @coin %>");
-	$("#experience_<%= @user_id %>").text("<%= raw('&nbsp;&nbsp;经验值：@experience') %>");
+	$("#coin_<%= @user.id %>").text("鸟币：<%= @coin %>");
+	$("#experience_<%= @user.id %>").text("<%= "&nbsp;&nbsp;经验值：#{@experience}" %>".html_safe);
 <% else %>
 	alert("签到失败，请联系我们，谢谢！");
 <% end %>

@@ -49,15 +49,15 @@
       <%=image_tag("star.png",width:"20", class: 'icon')%><span>任务目标：<%= @task.goal %></span><br>
     </div>
     <div class="col-xs-12">
-      <% if current_user.id == @task.user_id %>
+      <% if current_user.id == @task.user_id && User.roles[current_user.role.to_sym] > 3 %>
       <% elsif Apply.where(:user_id => current_user.id, :task_id => @task.id).present? %>
         <button class="btn btn-info btn-block" disabled="disabled">已申请</button>
       <% else %>
         <%= simple_form_for :apply, url: task_applies_path(current_user), remote: true, format: :js, wrapper: :task_form do |f| %>
           <%= f.hidden_field :user_id, :value => current_user.id %>
           <%= f.hidden_field :task_id, :value => params[:id] %>
-          <%= hidden_field_tag :grade, Task.grades[task.grade.to_sym] %>
-          <%= hidden_field_tag :money, task.extra.present? %>
+          <%= hidden_field_tag :grade, Task.grades[@task.grade.to_sym] %>
+          <%= hidden_field_tag :money, @task.extra.present? %>
           <%= f.submit "申请接包", class: "btn btn-blue btn-block", id: "apply_task" %>
           <button id="applied" class="btn btn-info btn-block" disabled="disabled" style="display: none;">已申请</button>
         <% end %>

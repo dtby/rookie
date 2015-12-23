@@ -33,11 +33,11 @@
 			<% if @signed %>
 				<button class="btn btn-blue" disabled="disabled">今日已签到,明天再来吧！</button>
 			<% else %>
-				<%= link_to "今日签到!", "javascript:void(0);", class: "sign-create btn btn-blue", id: 'sign_s', user_id: current_user.id  %>
+				<%= link_to "今日签到!", "javascript:void(0);", class: "sign-create btn btn-blue", id: 'sign_s'  %>
 			<% end %>
 		</div>
 	<% end -%>
 </div>
 <%= javascript_tag do %>
-  sign_create_path = "<%= user_signs_path(@user) %>.js"
+  sign_create_path = "<%= user_signs_path(current_user) %>.js"
 <% end %>

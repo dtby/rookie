@@ -83,7 +83,7 @@ class Question < ActiveRecord::Base
 		# 	[3, 1]
 		# end
 
-		if score == 1
+		if score <= 1
 			[1, 0]
 		elsif score == 2
 			[2, 0]
