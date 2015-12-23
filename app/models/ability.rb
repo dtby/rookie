@@ -7,12 +7,15 @@ class Ability
       can :manage, :all
     elsif user.rookie?
       cannot :create, Task
+      can :manage, Apply
       can :read, Task
     elsif user.rookie_gold?
       cannot :create, Task
+      can :manage, Apply
       can :read, Task
     elsif user.rookie_diamond?
       cannot :create, Task
+      can :manage, Apply
       can :read, Task
     elsif user.boss?
       can :manage, Task
