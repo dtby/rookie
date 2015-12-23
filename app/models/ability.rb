@@ -9,14 +9,17 @@ class Ability
       cannot :create, Task
       can :manage, Apply
       can :read, Task
+      can :search_city, Task
     elsif user.rookie_gold?
       cannot :create, Task
       can :manage, Apply
       can :read, Task
+      can :search_city, Task
     elsif user.rookie_diamond?
       cannot :create, Task
       can :manage, Apply
       can :read, Task
+      can :search_city, Task
     elsif user.boss?
       can :manage, Task
     elsif user.boss_gold?

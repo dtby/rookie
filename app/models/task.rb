@@ -82,9 +82,9 @@ class Task < ActiveRecord::Base
     user_powers = user.scores.last.slice(:surface, :communicate, :decision, :cooperate, :control).values
     user_powers.each_with_index do |power, index|
       unless power.present?
-        sum += (power.to_f / task_powers[index]) * 100 / 5
-      else
         sum = 0
+      else
+        sum += (power.to_f / task_powers[index]) * 100 / 5
       end
       puts sum
     end
