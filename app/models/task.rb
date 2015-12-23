@@ -83,9 +83,8 @@ class Task < ActiveRecord::Base
       unless power.present?
         sum = 0
       else
-        sum += (power.to_f / task_powers[index]) * 100 / 5
+        task_powers.empty? ? sum += (power.to_f / task_powers[index]) * 100 / 5 : sum = 0
       end
-      puts sum
     end
     return sum.round(0)
   end
