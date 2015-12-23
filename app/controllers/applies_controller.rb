@@ -3,9 +3,9 @@ class AppliesController < BaseController
 
   respond_to :js, :json
   def index
-    task = Task.find(params[:task_id])
-    applies_all = task.applies
-    if applies_all.success.count == task.member_count
+    @task = Task.find(params[:task_id])
+    applies_all = @task.applies
+    if applies_all.success.count == @task.member_count
       @applies = applies_all.success
     else
       @applies = applies_all

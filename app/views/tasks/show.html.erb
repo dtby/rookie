@@ -39,7 +39,7 @@
     <hr class="line">
     <div class="col-xs-12 text-center">
       <div id="main" style="height: 300px"></div>
-      <button type="button" class="btn task-btn gift-title">匹配度：80%</button>
+      <button type="button" class="btn task-btn gift-title">匹配度：<%= @task.suit_degree(current_user) %>%</button>
       <br><p class="gift-title">我的能力值除以要求能力（最高100%）<br>得出五项能力值匹配度的平均值</p>
     </div>
     <hr class="line">

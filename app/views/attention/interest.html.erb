@@ -23,7 +23,7 @@
         </div>
         <div class="col-xs-3 text-center">
           <p class="interest-word"><span>匹配度</span></p>
-          <p class="interest-word"><strong class="interest-match">125</strong><strong class="match-sub">%</strong></p>
+          <p class="interest-word"><strong class="interest-match"><%= interest.suit_degree(current_user) %></strong><strong class="match-sub">%</strong></p>
         </div>
         <div class="col-xs-12 interest-5">
           <p><%=image_tag("gift.png",width:"24", class: 'icon')%><span>沟通力＋<%= step_g(interest.grade) %>EXP</span><span>决策力＋<%= step_g(interest.grade) %>EXP</span></p>

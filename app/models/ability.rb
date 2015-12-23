@@ -21,11 +21,14 @@ class Ability
       can :read, Task
       can :search_city, Task
     elsif user.boss?
+      can :manage, Apply
       can :manage, Task
     elsif user.boss_gold?
       can :manage, Task
+      can :manage, Apply
     elsif user.boss_diamond?
       can :manage, Task
+      can :manage, Apply
     end
       
     # Define abilities for the passed in user here. For example:

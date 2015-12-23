@@ -16,7 +16,7 @@
   </div>
   <div class="col-xs-4 apply-discrib text-center">
     <p class="match-word"><span>匹配度</span></p>
-    <p><strong class="match-number">125</strong><strong class="match-sub">%</strong></p>
+    <p><strong class="match-number"><%= @task.suit_degree(current_user) %></strong><strong class="match-sub">%</strong></p>
   </div>
   <hr class="apply-line">
 <% end %>
