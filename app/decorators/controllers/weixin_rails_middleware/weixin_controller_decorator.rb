@@ -11,7 +11,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
   private
 
     def response_text_message(options={})
-      reply_text_message("Your Message: #{@keyword}")
+      reply_text_message("您发送的消息为: #{@keyword}")
     end
 
     # <Location_X>23.134521</Location_X>
@@ -23,7 +23,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       @ly    = @weixin_message.Location_Y
       @scale = @weixin_message.Scale
       @label = @weixin_message.Label
-      reply_text_message("Your Location: #{@lx}, #{@ly}, #{@scale}, #{@label}")
+      reply_text_message("您的位置信息: #{@lx}, #{@ly}, #{@scale}, #{@label}")
     end
 
     # <PicUrl><![CDATA[this is a url]]></PicUrl>

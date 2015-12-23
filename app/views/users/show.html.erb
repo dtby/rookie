@@ -17,8 +17,6 @@
       <% end -%>
     </p>
     <p id="<%= "experience_#{params[:id]}"%>">&nbsp;&nbsp;经验值：<%= @user.points(category: 'experience') %></p>
-    URL：<%= weixin_engine.weixin_server_url(@user.weixin_secret_key) %>
-    Token：<%= @user.weixin_token %>
 	</div>
 </div>
 
