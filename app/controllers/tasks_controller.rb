@@ -1,10 +1,12 @@
 class TasksController < BaseController
   load_and_authorize_resource param_method: :task_params
-  
+
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :complete, :tag, :remove]
   before_action :set_user
+
   respond_to :js, :json
   def index
-    @tasks = Task.order(grade: :desc)
+    @tasks = Task.where.not(state: 1).order(grade: :desc)
   end
 
   def personal_tasks
@@ -41,13 +43,12 @@ class TasksController < BaseController
   end
 
   def show
-    @task = Task.find(params[:id])
     @apply = Apply.new
   end
 
   def create
     release = Permission.where(role: User.roles[current_user.role.to_sym], grade: Task.grades[task_params[:grade].to_sym]).first.release
-    released = current_user.tasks.size
+    released = current_user.tasks.send(task_params[:grade]).size
     if released < release
       @task = Task.new(task_params)
       if @task.save
@@ -74,8 +75,13 @@ class TasksController < BaseController
     end
   end
 
+  # 任务完成归档
+  def complete
+    @success = @task.complete_task
+    respond_with :js
+  end
+
   def destroy
-    @task = Task.find(params[:id])
     @task.destroy
     redirect_to personal_tasks_tasks_path
   end
@@ -83,19 +89,16 @@ class TasksController < BaseController
     #添加标签
   def tag
     if params[:tag].present?
-      @task = Task.where(id: params[:id]).first
       @task.tag_list.add(params[:tag] ) 
       @task.save
     end
-     
     respond_with @task
   end
 
   #删除标签
   def remove
     if params[:tag].present?
-      @task = Task.where(id: params[:id]).first
-      @task.tag_list.remove(params[:tag] )
+      @task.tag_list.remove(params[:tag])
       @task.save
     end
     respond_with @task
@@ -109,7 +112,12 @@ class TasksController < BaseController
                                   :p_decision, :grade, :state, :deadline, :range, :user_id, :task_type_id, 
                                   :tab, :coin, :describe, :goal, :extra, :place, :p, :c, :a, :member_count)
   end
+
   def set_user
     @user = current_user
+  end
+
+  def set_task
+    @task = Task.find(params[:id])
   end
 end

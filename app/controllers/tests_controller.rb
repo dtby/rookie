@@ -14,14 +14,16 @@ class TestsController < BaseController
 				@questions.push Question.find(id)
 			end
 		else
-			current_user.grow_logs.create!(content: "完成能力测试", grow_type: 2)
 			redirect_to result_tests_path(status: 'end')
 		end
 	end
 
 	# 提交单次成绩
 	def create
+		powers = { 1 => '形象力', 2 => '沟通力', 3 => '决策力', 4 => '协作力', 5 => '控制力'}
+		levels = { 1 => '初阶题', 2 => '进阶题', 3 => '高阶题'}
 		@score = Question.score(params[:questions_ids], params[:answers])
+		current_user.grow_logs.create!(content: "完成#{powers[@power]}-#{levels[@level]}测试", grow_type: 2)
 		respond_with @score
 	end
 

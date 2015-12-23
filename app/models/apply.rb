@@ -14,8 +14,8 @@ class Apply < ActiveRecord::Base
   belongs_to :user
   belongs_to :task, counter_cache: true
 
-  enum state: { fail: 0, success: 1, deal: 2 }
-  STATE = { deal: "正在处理", success: "接包成功", fail: "接包失败" }
+  enum state: { fail: 0, success: 1, deal: 2, complete: 3 }
+  STATE = { fail: "接包失败", success: "接包成功", deal: "正在处理", complete: '任务结束' }
 
   scope :members, -> { where(state: true) }
 

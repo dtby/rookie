@@ -2,8 +2,10 @@
   <div class="form-group">
       <div class="form-text clearfix">
         <%= f.hidden_field :user_id, :value => current_user.id %>
-        <div class="col-xs-1">
-          <span><%=image_tag("tasknew_03.png",width:"24", class: 'iconnew')%></span>
+        <div class="col-xs-1 input-icon">
+          <span><%#=image_tag("tasknew_03.png",width:"24", class: 'iconnew')%>
+            <span class="glyphicon glyphicon-folder-open"></span>
+          </span>
         </div>
         <div class="col-xs-11">
           <%= f.input :name, class: 'form-control form-input', placeholder: '任务包名称' %>
@@ -11,8 +13,10 @@
       </div>
     <hr class="line">
       <div class="form-text clearfix">
-        <div class="col-xs-1">
-          <span><%=image_tag("tasknew_03.png",width:"24", class: 'iconnew')%></span>
+        <div class="col-xs-1 input-icon">
+          <span><%#=image_tag("tasknew_03.png",width:"24", class: 'iconnew')%>
+            <span class="glyphicon glyphicon-time"></span>
+          </span>
         </div>
         <div class="col-xs-11">
           <%= f.input :deadline, class: 'form-control form-input', placeholder: '截止时间' %>
@@ -20,8 +24,10 @@
       </div>
     <hr class="line">
       <div class="form-text clearfix">
-        <div class="col-xs-1">
-          <span><%=image_tag("tasknew_09.png",width:"24", class: 'iconnew')%></span>
+        <div class="col-xs-1 input-icon">
+          <span><%#=image_tag("tasknew_09.png",width:"24", class: 'iconnew')%>
+            <span class="glyphicon glyphicon-sort-by-alphabet"></span>
+          </span>
         </div>
         <div class="col-xs-11">
           <%= f.input :grade, placeholder: '任务包等级', collection: Task::GRADE.invert, prompt: "任务包等级", label: false %>
@@ -30,8 +36,10 @@
 
     <hr class="line">
       <div class="form-text clearfix">
-        <div class="col-xs-1">
-          <span><%=image_tag("tasknew_12.png",width:"24", class: 'iconnew')%></span>
+        <div class="col-xs-1 input-icon">
+          <span><%#=image_tag("tasknew_12.png",width:"24", class: 'iconnew')%>
+            <span class="glyphicon glyphicon-map-marker"></span>
+          </span>
         </div>
         <div class="col-xs-11">
           <h5 class="address">任务地点</h5>
@@ -46,7 +54,7 @@
 
     <hr class="line">
       <div class="form-text clearfix">
-        <div class="col-xs-1" style="height: 34px; line-height: 34px;">
+        <div class="col-xs-1 input-icon">
           <span class="glyphicon glyphicon-user"></span>
         </div>
         <div class="col-xs-11">
@@ -56,8 +64,8 @@
 
     <hr class="line">
       <div class="form-text clearfix">
-        <div class="col-xs-1" style="height: 34px; line-height: 34px;">
-          <span class="glyphicon glyphicon-user"></span>
+        <div class="col-xs-1 input-icon">
+          <span class="glyphicon glyphicon-tag"></span>
         </div>
         <div class="col-xs-11">
           <%= f.input :task_type, required: true, prompt: '任务包类型', collection: search_type.keys, label: false %>

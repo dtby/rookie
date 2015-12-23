@@ -19,11 +19,24 @@ class AppliesController < BaseController
   end
 
   def create
-    @apply = Apply.new(apply_params)
-    if @apply.save
-      respond_with @apply
+    permission = Permission.where(role: User.roles[current_user.role.to_sym], grade: params[:grade].to_i, money: (params[:money] == "true")).first
+    # 用户同时接包数量
+    meanwhile_count = current_user.applies.success.size
+    # 用户本月接包数量
+    month_applies = current_user.applies.by_month(Date.today.month)
+    month_count = month_applies.success.size + month_applies.complete.size
+
+    if meanwhile_count < permission.meanwhile && month_count < permission.receive_per_month
+      @apply = Apply.new(apply_params)
+      if @apply.save
+        respond_with @apply
+      else
+        render :new
+      end
     else
-      render :new
+      respond_to do |format|
+        format.js { render js: "location.href='#{vip_user_path(current_user)}'" }
+      end
     end
   end
 

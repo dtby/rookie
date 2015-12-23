@@ -69,6 +69,7 @@ Rails.application.routes.draw do
     member do
       post :tag
       get :remove
+      put :complete
     end
   end
 

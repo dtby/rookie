@@ -55,14 +55,13 @@ class Task < ActiveRecord::Base
     a: 1, 
     b: 2, 
     c: 3, 
-    d: 4,
-    e: 5
+    d: 4
   }
 
   enum state: {failed: 0, complete: 1, underway: 2, wait: 3}
   STATE = {failed: '已失效', complete: '已完成', underway: '进行中', wait: '召集中'}
 
-  GRADE = {a: '等级一', b: '等级二', c: '等级三', d: '等级四', e: '等级五' }
+  GRADE = {a: 'A级', b: 'B级', c: 'C级', d: 'D级' }
 
   POWER = { surface: :p_figure, communicate: :p_communicate, decision: :p_decision, cooperate: :p_coordination, control: :p_control }
 
@@ -89,5 +88,24 @@ class Task < ActiveRecord::Base
       puts sum
     end
     return sum.round(0)
+  end
+
+  # 归档任务
+  def complete_task
+    begin
+      Task.transaction do
+        self.update!(state: 1)
+        self.applies.each do |apply|
+          apply.update!(state: 3)
+        end
+      end
+    rescue Exception => e
+      puts "===================complete_task======================="
+      puts e.message
+      puts "===================complete_task======================="
+      ActiveRecord::Rollback
+    end
+    # 判断是否成功
+    return e.present? ? false : true
   end
 end
