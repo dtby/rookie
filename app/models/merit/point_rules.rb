@@ -44,6 +44,9 @@ module Merit
       score 30, :on => 'tasks#create', category: 'experience' do |task|
         task.grade == 'd' && User.roles[task.user.try(:role)] <= 3
       end
+      score 30, :on => 'tasks#create', category: 'experience' do |task|
+        task.grade == 'e' && User.roles[task.user.try(:role)] <= 3
+      end
 
       score 10, :on => 'tasks#create', category: 'coin' do |task|
         task.grade == 'a' && User.roles[task.user.try(:role)] <= 3
@@ -56,6 +59,9 @@ module Merit
       end
       score 100, :on => 'tasks#create', category: 'coin' do |task|
         task.grade == 'd' && User.roles[task.user.try(:role)] <= 3
+      end
+      score 100, :on => 'tasks#create', category: 'coin' do |task|
+        task.grade == 'e' && User.roles[task.user.try(:role)] <= 3
       end
 
 
@@ -71,6 +77,9 @@ module Merit
       score 40, :on => 'tasks#create', category: 'experience' do |task|
         task.grade == 'd' && User.roles[task.user.try(:role)] > 3
       end
+      score 40, :on => 'tasks#create', category: 'experience' do |task|
+        task.grade == 'e' && User.roles[task.user.try(:role)] > 3
+      end
 
       score 88, :on => 'tasks#create', category: 'coin' do |task|
         task.grade == 'a' && User.roles[task.user.try(:role)] > 3
@@ -83,6 +92,9 @@ module Merit
       end
       score 388, :on => 'tasks#create', category: 'coin' do |task|
         task.grade == 'd' && User.roles[task.user.try(:role)] > 3
+      end
+      score 388, :on => 'tasks#create', category: 'coin' do |task|
+        task.grade == 'e' && User.roles[task.user.try(:role)] > 3
       end
     end
   end
