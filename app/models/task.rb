@@ -80,10 +80,10 @@ class Task < ActiveRecord::Base
     task_powers = [figure, communicate, decision, coordination, control]
     user_powers = user.scores.last.slice(:surface, :communicate, :decision, :cooperate, :control).values
     user_powers.each_with_index do |power, index|
-      if power == 0
+      if power == 0 || task_powers[index].nil?
         sum = 0
       else
-        task_powers.empty? ? sum = 0 : sum += (power.to_f / task_powers[index]) * 100 / 5
+        task_powers.empty? ? sum = 0 : sum += ((power.to_f / task_powers[index]) * 100 / 5)
       end
     end
     return sum.round(0)
