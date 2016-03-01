@@ -199,6 +199,13 @@
     padding-top: 0px;
     padding-bottom: 0px;
     margin-top: 6px;
+    margin-bottom: 6px;
+    text-align: center;
+    color: #333;
+  }
+  .mbtn-selected {
+    text-decoration: none;
+    color: #00ACFE;
   }
   .work-nav{
     border-left: 1px solid $head-bg;
@@ -207,8 +214,22 @@
   .navbar-collapse{
     border-top: 2px solid #CCE3F2;
   }
+  .power-select {
+    background-color: #F8FDFF;
+    li a {
+      display: inline;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 8px;
+      text-decoration: none;
+      padding: 3px 15px; 
+      &:hover {
+        color: #00ACFE;
+        border: 2px solid #38A4FE;
+      }
+    }
+  }
   .navbar-nav {
-    background-color: #fff;
     height: 250px;
     overflow:auto;
     overflow-x:hidden;
@@ -226,9 +247,22 @@
       height: 250px;
       overflow:auto;
       overflow-x:hidden;
+      background-color: #F8FDFF;
       .city-line {
         padding: 10px;
-        font-size: 16px;
+        font-size: 14px;
+        .selected {
+          color: #00ACFE;
+          border: 2px solid #38A4FE;
+          border-radius: 8px;
+          text-decoration: none;
+          padding: 3px 15px; 
+        }
+        .linked {
+          color: #00ACFE;
+          text-decoration: none;
+          padding: 3px 15px; 
+        }
         a {
           color: #7A7A7A;
           :focus {

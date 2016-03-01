@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= yield :title %></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<title><%= yield :title %></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
 </head>
 <body class="<%= controller.controller_path.gsub('/','__') + '__' + controller.action_name %>">
-<%# if current_user %>
-  <%#= link_to('登出', destroy_user_session_path, :method => :delete) %>
-  <%#= link_to('修改密碼', edit_registration_path(:user)) %>
-<%# else %>
-  <%#= link_to('註冊', new_registration_path(:user)) %>
-  <%#= link_to('登入', new_session_path(:user)) %>
-<%# end %>
-<%#= render partial: "share/flash" %>
+	<%# if current_user %>
+	<%#= link_to('登出', destroy_user_session_path, :method => :delete) %>
+	<%#= link_to('修改密碼', edit_registration_path(:user)) %>
+	<%# else %>
+	<%#= link_to('註冊', new_registration_path(:user)) %>
+	<%#= link_to('登入', new_session_path(:user)) %>
+	<%# end %>
+	<%#= render partial: "share/flash" %>
 
-<%= yield %>
-<%#= debug params %>
+	<%= yield %>
+	<%#= debug params %>
 
-<%= yield :scripts %>
-<%= link_to('登出', destroy_user_session_path, :method => :delete) %>
+	<%= yield :scripts %>
+	<%= link_to('登出', destroy_user_session_path, :method => :delete) %>
 </body>
 </html>

@@ -4,7 +4,7 @@
 			<%= head_title %>
 		</div>
 		<div class="col-xs-2 image">
-      <% unless params[:action] != 'subscription' %>
+      <% if params[:action] == 'subscription' %>
         <div class="dropdown">
           <a id="dLabel" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <%= image_tag("head_add.png", width: 25) %>
@@ -15,10 +15,6 @@
             <li class="head-li"><a href="<%#= task_applies_path(@task) %>"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;编辑订阅</a></li>
           </ul>
         </div>
-      <% else %>
-        <%= link_to "#{url}" do %>
-          <%= image_tag("head_add.png", width: 25) %>
-        <% end %>
       <% end %>
 		</div>
 	</div>

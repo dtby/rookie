@@ -2,46 +2,40 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <div class="btn mbtn col-xs-4" data-toggle="collapse" data-target="#bs-address-navbar-collapse-1" aria-expanded="false">
-        <span>工作地点</span>
-      </div>
-      <div class="btn mbtn col-xs-4 work-nav" data-toggle="collapse" data-target="#bs-type-navbar-collapse-1" aria-expanded="false">
-        <span>工作类型</span>
-      </div>
-      <div class="btn mbtn col-xs-4" data-toggle="collapse" data-target="#bs-ability-navbar-collapse-1" aria-expanded="false">
-        <span>五大能力</span>
-      </div>
+      <a href="#" class="mbtn col-xs-4" data-toggle="collapse" data-target="#address-navbar-collapse" aria-expanded="false">工作地点</a>
+      <a href="#" class="mbtn col-xs-4 work-nav" data-toggle="collapse" data-target="#type-navbar-collapse" aria-expanded="false">工作类型</a>
+      <a href="#" class="mbtn col-xs-4" data-toggle="collapse" data-target="#ability-navbar-collapse" aria-expanded="false">五大能力</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-address-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="address-navbar-collapse">
       <div class="nav navbar-nav text-center">
-        <div class="col-xs-6 city-div">
+        <div class="col-xs-6 city-div address-left">
           <% cities.each do |city| %>
             <li class="city-line">
               <%= link_to "#{city.first}", search_city_tasks_path(province: city.first), remote: true, format: :js %>
             </li>
           <% end %>
         </div>
-        <div class="col-xs-6 city-div" id="city_line"></div>
+        <div class="col-xs-6 city-div select-right" id="city_line"></div>
       </div>
     </div><!-- /.navbar-collapse -->
 
-    <div class="collapse navbar-collapse" id="bs-type-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="type-navbar-collapse">
       <div class="nav navbar-nav text-center">
-        <div class="col-xs-6 city-div">
+        <div class="col-xs-6 city-div type-left">
           <% search_type.each do |type| %>
             <li class="city-line">
               <%= link_to "#{type.first}", search_city_tasks_path(option: type.first), remote: true, format: :js %>
             </li>
           <% end %>
         </div>
-        <div class="col-xs-6 city-div" id="search_city_line"></div>
+        <div class="col-xs-6 city-div select-right" id="search_city_line"></div>
       </div>
     </div><!-- /.navbar-collapse -->
 
-    <div class="collapse navbar-collapse" id="bs-ability-navbar-collapse-1">
-      <div class="nav navbar-nav text-center">
+    <div class="collapse navbar-collapse" id="ability-navbar-collapse">
+      <div class="nav navbar-nav text-center power-select">
         <li class="city-line"><%= link_to "不限", search_city_tasks_path(type:'type', unlimit:'unlimit'), remote: true, format: :js %></li>
         <li class="city-line"><%= link_to "形象力", search_city_tasks_path(type:'type', figure:'figure'), remote: true, format: :js %></li>
         <li class="city-line"><%= link_to "沟通力", search_city_tasks_path(type:'type', communicate:'communicate'), remote: true, format: :js %></li>
@@ -54,9 +48,38 @@
 </nav>
 
 <script type="text/javascript">
-  $('.btn').click(function(){
-    $('#bs-address-navbar-collapse-1').collapse('hide');
-    $('#bs-type-navbar-collapse-1').collapse('hide');
-    $('#bs-ability-navbar-collapse-1').collapse('hide');
+  $('.mbtn').click(function(){
+    $('#address-navbar-collapse').collapse('hide');
+    $('#type-navbar-collapse').collapse('hide');
+    $('#ability-navbar-collapse').collapse('hide');
+  });
+  // nav button 选中效果
+  $('.mbtn').click(function(){
+    $('.mbtn').each(function(){
+      $(this).removeClass("mbtn-selected");
+    })
+    $(this).addClass("mbtn-selected");
+  })
+  // 地区左边选项选中效果
+  $('.address-left li a').click(function(){
+    $('.address-left li a').each(function(){
+      $(this).removeClass("selected");
+    })
+    $(this).addClass("selected");
+  });
+  // 类型左边选项选中效果
+  $('.type-left li a').click(function(){
+    $('.type-left li a').each(function(){
+      $(this).removeClass("selected");
+    })
+    $(this).addClass("selected");
+  });
+
+  // 右边选项选中效果
+  $('.select-right li a').click(function(){
+    $('.select-right li a').each(function(){
+      $(this).removeClass("linked");
+    })
+    $(this).addClass("linked");
   });
 </script>

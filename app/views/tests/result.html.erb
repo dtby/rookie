@@ -1,3 +1,7 @@
+<% content_for :title do %>
+  测试结果
+<% end %>
+
 <div class="explain-head">
 	<%= image_tag("logo2.png", height: 70) %>
 </div>
@@ -10,7 +14,7 @@
 				<%= image_tag "boy.png" %>
 			</div>
 			<div class="col-xs-7 text-center">
-				<h3 class="explain-title text-center">恭喜您完成测试！</h3>
+				<h3 class="explain-title text-center">恭喜您完成测试!</h3>
 				<p class="explain-content">为了保证用户的利益，所有在此平台接发包的用户请完善个人的基本信息！</p>
 				<p class="explain-tips"></p>
 				<% if current_user.nickname.present? && current_user.gender? && current_user.birth.present? %>

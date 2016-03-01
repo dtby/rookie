@@ -38,6 +38,11 @@ class TasksController < BaseController
     end
   end
 
+  #点击右侧选项，刷新任务列表
+  def search_task
+    
+  end
+
   def new
     @task = Task.new
   end
