@@ -2,13 +2,8 @@ module UsersHelper
   def perfection(user, education, work, internships)
     sum = 0
     user.slice(:nickname, :name, :nation, :gender, :native, :present, :email, :birth).values.each { |x| x.present? ? sum += 1 : sum }
+    
     return "#{(sum / 8.0 * 100).round(0)}%"
-
-    # a = user.attributes.values.count{|u| u.blank?}
-    # b = education.attributes.values.count{|u| u.blank?}
-    # c = work.attributes.values.count{|u| u.blank?}
-    # d = internship.attributes.values.count{|u| u.blank?}
-    # sum = a+b+c+d
   end
 
   # 计算年龄

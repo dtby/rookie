@@ -34,7 +34,7 @@
 		}
 		padding: 20px;
 		.divide {
-			border-color: #aeaeae;
+			border-top:1px solid #aeaeae;
 		}
 		img {
 			margin: 0 15px;
@@ -56,10 +56,19 @@
 	}
 	#divide{
 		margin: 10px;
-		border:1px solid #E0E0E0;
+		border-top:1px solid #E0E0E0;
 	}
 	.my-infos{
-		padding: 0 14%;
+		padding: 0 12%;
+	}
+	.resume-title{
+		font-size: 16px;
+		font-weight: bold;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		a{
+			color: $tab-active;
+		}
 	}
 	.my-btn{
 		margin: 15px 0;
