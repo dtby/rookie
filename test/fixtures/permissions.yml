@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: permissions
+#
+#  id                :integer          not null, primary key
+#  role              :integer
+#  boss              :boolean
+#  grade             :integer
+#  money             :boolean
+#  release           :integer
+#  receive_per_month :integer
+#  meanwhile         :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  role: 1
+  boss: false
+  level: MyString
+  money: false
+  release: 1
+  receive_per_month: 1
+  meanwhile: 1
+
+two:
+  role: 1
+  boss: false
+  level: MyString
+  money: false
+  release: 1
+  receive_per_month: 1
+  meanwhile: 1

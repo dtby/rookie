@@ -1,0 +1,56 @@
+<div class="row image_form">
+	<div class="col-md-12">
+		<%= simple_form_for([:admin, question], remote: true, format: :js, wrapper: :image_form) do |f| %>
+			<%= f.hidden_field :kind, value: 'image' %>
+		  <%= f.input :problem, autofocus: true, placeholder: "试题题目", input_html: {rows: 2}, wrapper: :admin_form %>
+			<div class="row">
+				<%= f.input :power, collection: Question::POWER.invert, prompt: "选择能力" %>
+			  <%= f.input :level, collection: Question::LEVEL.invert, prompt: "选择等级" %>
+			  <%= f.input :genre, collection: Question::GENRE.invert, prompt: "选择类型" %>
+			</div>
+		  <!-- 添加图片 -->
+		  <div class="row" style="margin-bottom: 10px;">
+		  	<div class="col-md-3">
+		  		<%= f.file_field :imagea, required: true %>
+		  	</div>
+		  	<div class="col-md-3">
+		  		<%= f.file_field :imageb, required: true %>
+		  	</div>
+		  	<div class="col-md-3">
+	  			<%= f.file_field :imagec, required: true %>
+		  	</div>
+		  	<div class="col-md-3">
+		  		<%= f.file_field :imaged, required: true %>
+		  	</div>
+		  </div>
+			
+			<div class="row">
+				<div class="col-md-3">
+				  <%= f.input :answer, required: true, collection: image_answers, prompt: "选择标准答案", wrapper: :admin_form %>
+				</div>	
+			</div>	
+			<hr>
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<%= f.submit "添加 / 更新", data: {disable_with: "正在添加 / 更新..."}, class: "btn btn-primary btn-block" %>		
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<script>
+	$(function(){
+		$("input[type='file']").fileinput();
+		var a = new Array(4);
+		a[0] = '选项A';
+		a[1] = '选项B';
+		a[2] = '选项C';
+		a[3] = '选项D';
+		var index = 0;
+		$(".file-caption-name").each(function(){
+			$(this).text(a[index]);
+			index += 1;
+		});
+	})
+</script>

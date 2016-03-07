@@ -1,0 +1,221 @@
+@import "variables";
+@import "group";
+.users__show{
+	.user-head{
+		height: 100px;
+		background-color: $head_bg;
+		padding: 20px 15px 0 40px;
+		color: $color_white;
+		p{
+			margin-bottom: 0;
+		}
+	}
+	.user-tabs{
+		.tab-ul{
+			background-color: $tab-bg;
+			font-size: 18px;
+			> li{
+				display: table-cell;
+				width: 1%;
+				text-align: center;
+				padding: 8px 0;
+				a, a:hover{
+					background-color: $tab-bg;
+					border-left: 1px solid #9bd2fc;
+					border-right: 1px solid #42adfe;
+					padding: 0 !important;
+					padding: 8px 15px;
+					color: #333;
+				}
+			}
+			.active{
+					background-color: $tab-active;
+				a, a:hover{
+					border-left: 1px solid transparent;
+					border-right: 1px solid transparent;
+					background-color: $tab-active;
+					color: $color_white;
+				}
+			}
+			.left-none a, a:hover{
+				border-left: 1px solid transparent;
+			}
+			.right-none a, a:hover{
+				border-right: 1px solid transparent;
+			}
+		}
+		//个人信息
+		.user-info{
+			padding-top: 10px;
+			.generate-resume{
+				position: fixed;
+				left: 0;
+				bottom: 0px;
+				width: 100%;
+				padding: 0px 45px 15px;
+			}
+			.row {
+				margin-right: 0 ;
+			}
+			.user-row{
+				height: 40px;
+				padding: 8px 15px 0 30px;
+				border-bottom: 1px solid #d4d4d4;
+				border-top: 1px solid #f4f4f4;
+			}
+			.top-none{
+				border-top: 1px solid transparent;
+			}
+			.bottom-none{
+				border-bottom: 1px solid transparent;
+			}
+			.user-btn{
+				padding: 2px 20px;
+			}
+			.pr-0{
+				padding-right: 0;
+			}
+		}
+		//五大能力
+		.powers{
+			padding: 0 15px;
+			.title{
+				height: 40px;
+				line-height: 39px;
+				border-bottom: 1px solid #ddd;
+				padding: 0 15px;
+				color: $tab-active;
+				margin-bottom: 10px;
+				font-size: 16px;
+				span{
+					color: #d1d1d1;
+				}
+			}
+			.begin-test{
+				padding-top: 2px;
+				padding-bottom: 2px;
+			}
+			.power-level{
+				display: table-row;
+				width: 100%;
+				.goal{
+					display: table-cell;
+					padding: 0 0 30px;
+					.progress{
+						height: 15px;
+						margin-bottom: 0;
+						.progress-bar-warning{
+							background-color: #fbeb37;
+						}
+					}
+				}
+				.power, .level{
+					display: table-cell;
+					width: 1%;
+					div{
+						margin-top: -2px;
+						word-break:keep-all;           /* 不换行 */
+						white-space:nowrap;
+					}
+				}
+				.level{
+					font-size: 12px;
+				}
+			}
+		}
+		//成长轨迹
+		.groups{
+
+		}
+	}
+}
+
+// 会员升级页面
+.users__vip{
+	.title_bar{
+		height: 50px;
+		line-height: 50px;
+		text-align: center;
+		background-color: #C0E2FB;
+		font-size: 22px;
+		font-weight: bold;
+		letter-spacing: 5px;
+	}
+	.indent{
+		text-indent: 22px;
+	}
+	table{
+		border: 1px solid $head_bg;
+		thead > tr > th{
+			text-align: center;
+			border: 1px solid $head_bg;
+			color: $head_bg;
+		}
+		tbody > tr > td{
+			font-weight: 100;
+			border: 1px solid $head_bg;
+		}
+		tbody > tr > th{
+			font-weight: 100;
+			color: #6E6F70;
+			border: 1px solid $head_bg;
+		}
+		.glyphicon-remove{
+			color: #F52826;
+		}
+		.glyphicon-ok{
+			color: $head_bg;
+		}
+	}
+	.btn-blue{
+		padding-top: 1px;
+		padding-bottom: 1px;
+	}
+	.btn-white{
+		padding-top: 1px;
+		padding-bottom: 1px;
+	}
+}
+
+.club-style{
+	font-size: 10px;
+	text-decoration: underline;
+	color: #fff001;
+}
+
+.modal-search {
+	.radio {
+		margin-bottom: 26px;
+	}
+}
+
+.select-city{
+	margin-bottom: 15px;
+}
+
+.select-input{
+	padding-top: 15px;
+	select{
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		border-radius: 0px !important;
+		-webkit-box-shadow: none;
+    box-shadow: none;
+    appearance:none;
+	 -moz-appearance:none; /* Firefox */
+	 -webkit-appearance:none; /* Safari 和 Chrome */
+	}
+}
+
+.users__sessions__new{
+	.signup{
+		padding: 5px;
+		width: 100%;
+	}
+}
+
+.btn-sms{
+	background-color: $head_bg;
+	border-color: $head_bg;
+}

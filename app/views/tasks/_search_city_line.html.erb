@@ -1,0 +1,5 @@
+<% search_type[option].each do |ct| %>
+  <li class="active city-line">
+    <%= link_to "#{ct}", search_city_tasks_path(option:option,typ:ct), remote: true, format: :js %>
+  </li>
+<% end -%>

@@ -1,0 +1,21 @@
+<%= simple_form_for(:education, url: user_educations_path(@user), remote: true, format: :js) do |f| %>
+  <div class="row form-input-group">
+    <div class="label-text">
+      <%= f.input :stage, class: 'form-control form-input', collection: Education::STAGE.invert, prompt: "请选择学位", label: false %>
+    </div>
+    <div class="label-text">
+      <%= f.input :name, class: 'form-control form-input', placeholder: '学校', label: false %>
+    </div>
+    <div class="label-text">
+      <%= f.input :time, class: 'form-control form-input', placeholder: '毕业日期', label: false %>
+    </div>
+    <div class="col-xs-12 input-a text-right">
+      <%= link_to '取消', resume_user_pages_path(@user), class: 'btn btn-delete btn-sm'  %>
+      <%= f.submit "提交信息", class: "btn btn-info btn-sm" %>
+    </div>
+  </div>
+<% end %>
+<script type="text/javascript">
+  var selectDate = new MobileSelectDate();
+  selectDate.init({trigger:'#education_time', min:'1970/01/01'});
+</script>

@@ -1,0 +1,24 @@
+<% @applies.each do |apply|%>
+  <% apply_user = apply.user %>
+  <div class="col-xs-3 apply-logo">
+    <%= link_to user_path(apply_user) do %>
+      <%= image_tag "logo.png", class: "",width:"100%" %>
+    <% end -%>
+  </div>
+  <div class="col-xs-5 apply-discrib">
+    <p><span>&nbsp;<%= apply_user.nickname %></span></p>
+    <% if apply.success? %>
+      <a href="#" class="btn btn-default apply-btn disabled">已确认</a>
+    <% elsif apply.fail? %>
+      <a href="#" class="btn btn-default apply-btn disabled">已失效</a>
+    <% else %>
+      <%= link_to("确认申请", task_apply_path(params[:task_id], apply), 
+                  class: 'btn btn-default apply-btn',id: "apply_#{apply.id}",  remote: true, format: :js) %>
+    <% end %>
+  </div>
+  <div class="col-xs-4 apply-discrib text-center">
+    <p class="match-word"><span>匹配度</span></p>
+    <p><strong class="match-number"><%= @task.suit_degree(current_user) %></strong><strong class="match-sub">%</strong></p>
+  </div>
+  <hr class="apply-line">
+<% end %>

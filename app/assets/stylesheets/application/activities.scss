@@ -1,0 +1,47 @@
+.foot-tab {
+  position: fixed;
+  bottom: 0;
+  a{
+    color: #fff;
+    text-decoration: none;
+  }
+  .active{
+    color: #019BFF;
+  }
+}
+.tasks-content {
+  margin-bottom: 55px;
+}
+.apply-content {
+  .apply-logo {
+    padding-right: 8px;
+  }
+  .match-number {
+    color: #DB2F33;
+    font-size: 32px;
+  }
+  .match-sub {
+    color: #DB2F33;
+    font-size: 18px;
+  }
+  .match-word {
+    margin-bottom: 0;
+  }
+  .apply-discrib {
+    padding-top: 6px;
+    .apply-btn, {
+      padding: 1px 20px;
+      color: #62A9EE;
+      border: 2px solid #62A9EE;
+    }
+    a:active {
+      color: #fff;
+      background-color: #62A9EE;
+    }
+  }
+}
+.apply-line {
+  border-top: 1px solid #D1D2D3;
+  margin: 0; 
+  margin-bottom: 15px;
+}

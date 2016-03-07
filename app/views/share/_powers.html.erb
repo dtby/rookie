@@ -1,0 +1,50 @@
+// 路径配置
+require.config({
+  paths: {
+    echarts: '/assets/javascripts/echarts'
+  }
+});
+// 使用
+require(
+  [
+  'echarts',
+  'echarts/chart/radar' // 使用柱状图就加载bar模块，按需加载
+  ],
+  function (ec) {
+    var myChart = ec.init(document.getElementById('<%= id %>'));                 
+    var option = {
+      tooltip : {
+        trigger: 'axis'
+      },
+      legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'top',
+        data:<%= raw legend_data %>
+      },
+      polar : [
+        {
+         indicator : [
+          <% Question::POWER.values.each do |power| %>
+           { text: '<%= power %>', max: 9},
+          <% end %>
+          ]
+        }
+      ],
+      calculable : true,
+      series : [
+        {
+          name: '<%= legend_data[0] %> vs <%= legend_data[1] %>',
+          type: 'radar',
+          data : [
+            <% series_data.each do |serie| %>
+              {value : <%= raw serie[1] %>, name: '<%= serie[0] %>'},
+            <% end %>
+          ]
+        }
+      ]
+    };
+    // 为echarts对象加载数据 
+    myChart.setOption(option); 
+  }
+);

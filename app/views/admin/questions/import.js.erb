@@ -1,0 +1,4 @@
+$(".modal-backdrop").remove();
+$("#testsModal").html("<%= escape_javascript( render partial: 'admin/share/modal', locals: { title: '从Excel导入试题' } )%>");
+$("#global_modal .modal-body").html("<%= escape_javascript( render partial: 'import_form' )%>")
+$('#global_modal').modal('show');

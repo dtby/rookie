@@ -1,0 +1,28 @@
+# == Schema Information
+#
+# Table name: questions
+#
+#  id         :integer          not null, primary key
+#  problem    :text(65535)
+#  level      :integer
+#  power      :integer
+#  genre      :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  answer     :integer
+#  kind       :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  problem: MyText
+  level: 1
+  power: 1
+  genre: 1
+
+two:
+  problem: MyText
+  level: 1
+  power: 1
+  genre: 1

@@ -1,0 +1,194 @@
+<%= simple_form_for @task, wrapper: :task_form do |f| %>
+  <div class="form-group">
+      <div class="form-text clearfix">
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <div class="col-xs-1 input-icon">
+          <span><%#=image_tag("tasknew_03.png",width:"24", class: 'iconnew')%>
+            <span class="glyphicon glyphicon-folder-open"></span>
+          </span>
+        </div>
+        <div class="col-xs-11">
+          <%= f.input :name, class: 'form-control form-input', placeholder: '任务包名称' %>
+        </div>
+      </div>
+    <hr class="line">
+      <div class="form-text clearfix">
+        <div class="col-xs-1 input-icon">
+          <span><%#=image_tag("tasknew_03.png",width:"24", class: 'iconnew')%>
+            <span class="glyphicon glyphicon-time"></span>
+          </span>
+        </div>
+        <div class="col-xs-11">
+          <%= f.input :deadline, class: 'form-control form-input', placeholder: '截止时间' %>
+        </div>
+      </div>
+    <hr class="line">
+      <div class="form-text clearfix">
+        <div class="col-xs-1 input-icon">
+          <span><%#=image_tag("tasknew_09.png",width:"24", class: 'iconnew')%>
+            <span class="glyphicon glyphicon-sort-by-alphabet"></span>
+          </span>
+        </div>
+        <div class="col-xs-11">
+          <%= f.input :grade, placeholder: '任务包等级', collection: Task::GRADE.invert, prompt: "任务包等级", label: false %>
+        </div>
+      </div>
+
+    <hr class="line">
+      <div class="form-text clearfix">
+        <div class="col-xs-1 input-icon">
+          <span><%#=image_tag("tasknew_12.png",width:"24", class: 'iconnew')%>
+            <span class="glyphicon glyphicon-map-marker"></span>
+          </span>
+        </div>
+        <div class="col-xs-11">
+          <h5 class="address">任务地点</h5>
+          <div class='label-text city-group'>
+            <%= select_tag :p, options_for_select(ChinaCity.list) , prompt: '--省份--', onChange:'onChangeSum()', class: ['city-select'] %>
+            <%= f.hidden_field :p %>
+            <%= select_tag :c, options_for_select([]), prompt: '--城市--', onChange:'onChangeSum()', class: ['city-select'] %>
+            <%= f.hidden_field :c %>
+          </div>
+        </div>
+      </div>
+
+    <hr class="line">
+      <div class="form-text clearfix">
+        <div class="col-xs-1 input-icon">
+          <span class="glyphicon glyphicon-user"></span>
+        </div>
+        <div class="col-xs-11">
+          <%= f.input :member_count, required: true, placeholder: '可接包人数', label: false %>
+        </div>
+      </div>
+
+    <hr class="line">
+      <div class="form-text clearfix">
+        <div class="col-xs-1 input-icon">
+          <span class="glyphicon glyphicon-tag"></span>
+        </div>
+        <div class="col-xs-11">
+          <%= f.input :task_type, required: true, prompt: '任务包类型', collection: search_type.keys, label: false %>
+        </div>
+      </div>
+
+    <hr class="line">
+      <div class="col-xs-4">
+        形象力要求
+      </div>
+      <div class="col-xs-4 request">
+        <%= f.input :figure, required: true, placeholder: '知识要求', collection: 1..9, prompt: "知识要求"%>
+      </div>
+      <div class="col-xs-4 request">
+        <%= f.input :p_figure, required: true, placeholder: '经验要求', collection: 1..9, prompt: "经验要求"%>
+      </div>
+
+      <div class="col-xs-4">
+        沟通力要求
+      </div>
+      <div class="col-xs-4 request">
+        <%= f.input :communicate, required: true, placeholder: '知识要求', collection: 1..9, prompt: "知识要求"%>
+      </div>
+      <div class="col-xs-4 request">
+        <%= f.input :p_communicate, required: true, placeholder: '经验要求', collection: 1..9, prompt: "经验要求"%>
+      </div>
+
+      <div class="col-xs-4">
+        控制力要求
+      </div>
+      <div class="col-xs-4 request">
+        <%= f.input :control, required: true, placeholder: '知识要求', collection: 1..9, prompt: "知识要求"%>
+      </div>
+      <div class="col-xs-4 request">
+        <%= f.input :p_control, required: true, placeholder: '经验要求', collection: 1..9, prompt: "经验要求"%>
+      </div>
+
+      <div class="col-xs-4">
+        协作力要求
+      </div>
+      <div class="col-xs-4 request">
+        <%= f.input :coordination, required: true, placeholder: '知识要求', collection: 1..9, prompt: "知识要求"%>
+      </div>
+      <div class="col-xs-4 request">
+        <%= f.input :p_coordination, required: true, placeholder: '经验要求', collection: 1..9, prompt: "经验要求"%>
+      </div>
+      <div class="col-xs-4">
+        决策力要求
+      </div>
+      <div class="col-xs-4 request">
+        <%= f.input :decision, required: true, placeholder: '知识要求', collection: 1..9, prompt: "知识要求"%>
+      </div>
+      <div class="col-xs-4 request">
+        <%= f.input :p_decision, required: true, placeholder: '经验要求', collection: 1..9, prompt: "经验要求"%>
+      </div>
+    
+    <hr class="line">
+
+      <div class="form-text clearfix">
+        <div class="col-xs-1">
+          <span><%=image_tag("tasknew_17.png",width:"24", class: 'iconnew')%></span>
+          <%#= image_tag("tab1.png", width: 24) %>
+        </div>
+        <div class="col-xs-11 task-text">
+          <%= f.text_field :extra, class: 'form-control form-input', placeholder: '额外报酬（无报酬可不填）' %>
+        </div>
+      </div>
+
+    <hr class="line">
+
+      <div class="form-text clearfix">
+        <div class="col-xs-1">
+          <span><%=image_tag("tasknew_17.png",width:"24", class: 'iconnew')%></span>
+          <%#= image_tag("tab1.png", width: 24) %>
+        </div>
+        <div class="col-xs-11 task-text">
+          <%= f.text_field :describe, class: 'form-control form-input', placeholder: '任务描述' %>
+          <span><%=image_tag("tasknew_21.png",width:"24", class: 'iconnew triangle')%></span>
+        </div>
+      </div>
+
+    <hr class="line">
+
+      <div class="form-text clearfix">
+        <div class="col-xs-1">
+          <span><%=image_tag("tasknew_24.png",width:"28", class: 'iconnew')%></span>
+          <%#= image_tag("tab1.png", width: 24) %>
+        </div>
+        <div class="col-xs-11 task-text">
+          <%= f.text_field :goal, class: 'form-control form-input', placeholder: '任务目标' %>
+          <span><%=image_tag("tasknew_21.png",width:"24", class: 'iconnew triangle')%></span>
+        </div>
+      </div>
+
+    <hr class="line">
+
+  </div>
+  
+  <div class="form-group">
+    <div class="col-xs-6 text-center">
+      <button class="btn btn-success" type="submit">
+        保存
+      </button>
+    </div>
+    <div class="col-xs-6 text-center">
+      <button class="btn btn-success" type="">
+        取消
+      </button>
+    </div>
+  </div>
+
+<% end %>
+
+<script type="text/javascript">
+//时间选择器实现代码
+  var selectDate = new MobileSelectDate();
+  selectDate.init({trigger:'#task_deadline', min:'2015/01/01', max:'2050/12/30'});
+
+//地区选择器存取数据
+  function onChangeSum(){
+    p = $("#p  option:selected").val();
+    $("#task_p").val(p);
+    c = $("#c  option:selected").val();
+    $("#task_c").val(c);
+  };
+</script>

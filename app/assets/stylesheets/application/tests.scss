@@ -1,0 +1,49 @@
+@import "variables";
+
+.test-btn{
+	padding: 0 30px;
+	position: fixed;
+	left: 0;
+	bottom: 30px;
+	width: 100%;
+	z-index: 10;
+}
+/** tests#new **/
+.tests__new{
+	overflow-x: hidden;
+	.test-head{
+		padding: 11px 20px 0;
+		font-size: 16px;
+	}
+	.test-question{
+		position: absolute;
+		float: left;
+		font-size: 16px;
+		padding: 0 30px 20px;
+		line-height: 2;
+		z-index: 1;
+		.problem{
+			padding: 20px 0;
+		}
+		.answer{
+			padding-bottom: 40px;
+			.p-l-0{
+				padding-left: 0;
+			}
+			.p-r-0{
+				padding-right: 0;
+			}
+			label{
+				font-weight: normal;
+				img{
+					width: 100%;
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+	.next-btn, .commit-btn{
+		background-color: $btn_blue;
+		font-size: 16px;
+	}
+}

@@ -1,0 +1,70 @@
+<%= render partial: "share/head", locals: { head_title: "个人信息", url: "#" } %>
+
+<div class="title_bar">会员升级</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h4 class="indent">你现在是<span class="club-style" style="font-size: 14px;"><%= User::ROLE[@user.role.to_sym] %></span></h4>
+			<!-- 会员展示表格 -->
+			<% role = role_kind(@user) %>
+			<table class="table table-bordered table-condensed">
+				<thead>
+					<tr>
+						<th>特权</th>
+						<th>普通<%= role %></th>
+						<th>黄金<%= role %></th>
+						<th>钻石<%= role %></th>
+					</tr>
+				</thead>
+				<tbody class="text-center">
+					<tr>
+						<th class="text-center">任务包发包</th>
+						<td><span class="glyphicon glyphicon-remove"></span></td>
+						<td><span class="glyphicon glyphicon-ok"></span></td>
+						<td><span class="glyphicon glyphicon-ok"></span></td>
+					</tr>
+					<tr>
+						<th class="text-center">参加鸟窝大学的机会</th>
+						<td><span class="glyphicon glyphicon-remove"></span></td>
+						<td><span class="glyphicon glyphicon-remove"></span></td>
+						<td><span class="glyphicon glyphicon-ok"></span></td>
+					</tr>
+					<tr>
+						<th class="text-center">任务包发包</th>
+						<td><span class="glyphicon glyphicon-remove"></span></td>
+						<td><span class="glyphicon glyphicon-remove"></span></td>
+						<td><span class="glyphicon glyphicon-ok"></span></td>
+					</tr>
+					<tr>
+						<th class="text-center">参加鸟窝大学的机会</th>
+						<td><span class="glyphicon glyphicon-remove"></span></td>
+						<td><span class="glyphicon glyphicon-ok"></span></td>
+						<td><span class="glyphicon glyphicon-ok"></span></td>
+					</tr>
+					<tr>
+						<th class="text-center">任务包发包</th>
+						<td><span class="glyphicon glyphicon-remove"></span></td>
+						<td><span class="glyphicon glyphicon-ok"></span></td>
+						<td><span class="glyphicon glyphicon-ok"></span></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="row">
+				<div class="col-xs-7 p-r-0"><p class="indent">黄金<%= role %>：￥99/年</p></div>
+				<div class="col-xs-5">
+					<%= link_to "立即升级", "#", class: "btn btn-blue", data: {confirm: "暂未开通，敬请期待！"} %>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-xs-7 p-r-0"><p class="indent">钻石<%= role %>：￥999/年</p></div>
+				<div class="col-xs-5">
+					<%= link_to "立即升级", "#", class: "btn btn-white", data: {confirm: "暂未开通，敬请期待！"} %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

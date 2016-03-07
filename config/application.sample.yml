@@ -1,0 +1,15 @@
+defaults: &defaults
+  APPID: "wx8cbc369ae3d74887"
+  APPSECRET: "6f719d088020a1ed5b6dbf8eda94c2b4"
+  HOST: "https://120.24.80.204"
+  WeixinTokenString: "529f2ed084b685624be3bde1"
+  WeixinSecretString: "ReWckhxChahsXgBR9TWMaeH66-qqvzK0"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

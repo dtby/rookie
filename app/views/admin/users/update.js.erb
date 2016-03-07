@@ -1,0 +1,6 @@
+<% if @success %>
+	$('#global_modal').modal('hide');
+	$("#role_<%= @user.id %>").text("<%= User::ROLE[@user.role.to_sym] %>");
+<% else %>
+	$("#global_modal .modal-body").html("<%= j( render partial: 'form', locals: {user: @user} )%>");
+<% end %>

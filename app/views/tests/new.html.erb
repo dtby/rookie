@@ -1,0 +1,128 @@
+<% content_for :title do %>
+  能力测试
+<% end %>
+
+<!-- 顶部信息条 -->
+<div class="head text-center test-head">
+	<span class="pull-left"><%= Question::POWER[@questions[0].power.to_sym] %></span>
+	<span><%= Question::LEVEL[@questions[0].level.to_sym] %></span>
+	<span class="pull-right">
+		<span id="now_num"><%= 1 %></span>/<span id="total_num"><%= @questions.length %></span>
+	</span>
+</div>
+
+<!-- 取出所有题目的id -->
+<div id="ids" data-ids="<%= @ids %>"></div>
+
+<!-- 所有题目及选项 -->
+<div id="questionContent">
+	<% @questions.each do |question| %>
+		<div class="test-question">
+			<!-- 问题 -->
+			<div class="problem">
+				<p class="text-justify"><%= question.problem %></p>
+			</div>
+			<!-- 选项 -->
+			<div class="answer">
+				<% if question.kind == 'word' %>
+					<%= render partial: "word_options", locals: {question: question} %>
+				<% else %>
+					<%= render partial: "image_options", locals: {question: question} %>
+				<% end %>
+			</div>
+		</div>	
+	<% end %>
+</div>
+
+<!-- 下一题 (最后一题显示提交)-->
+<div class="test-btn">
+	<%= link_to "下一题", "javascript:void(0);", class: "btn btn-info btn-block next-btn", alt: 0 %>
+	<%= link_to "提交", "javascript:void(0);", class: "btn btn-info btn-block commit-btn", style: "display: none;" %>
+</div>
+
+
+<script>
+	$(function() {
+		// 禁止测试页面的拖动，恢复可改变tag
+		var tag=0;
+		document.addEventListener("touchmove",function(e){
+			if(tag==0){
+				// 禁止手势缩放
+				e.preventDefault();
+				// 禁止拖动
+				e.stopPropagation();
+			}
+		},false);
+
+		// 初始化
+	  var answers, bodyWidth, num, wrap_width;
+	  bodyWidth = document.body.clientWidth;
+	  num = $(".test-question").length;
+	  wrap_width = num * bodyWidth;
+
+	  // 初始化容器宽度
+	  $(".test-question").outerWidth(bodyWidth);
+	  $("#questionContent").width(wrap_width);
+
+	  // 初始化每一题的位置
+	  $(".test-question").each(function(index) {
+	    var leftVal;
+	    leftVal = index * bodyWidth;
+	    return $(this).css("left", leftVal);
+	  });
+
+	  // 定义用户答题记录表
+	  answers = new Array();
+
+	  // 点击下一题效果
+	  $(".next-btn").click(function() {
+	    var index, leftVal, select, total_num;
+	    index = parseInt($(this).attr("alt"));
+	    select = $(".test-question").eq(index).find("input:radio:checked");
+	    total_num = parseInt($("#total_num").text());
+	    if (select.length === 0) {
+	      return alert("请选择你的答案");
+	    } else {
+	      index += 1;
+	      $(this).attr("alt", index);
+
+	      // 当前题号 + 1
+	      $("#now_num").text(index + 1);
+
+	      // 存储用户答案
+	      answers[index - 1] = select.val();
+
+	      // 改变题目的位置
+	      leftVal = -(index * bodyWidth);
+	      $(".test-question").eq(index - 1).css("left", leftVal);
+	      $(".test-question").eq(index).css("left", 0);
+
+	      // 判断下一题是否是最后一题，是则改变按钮
+	      if (index === (total_num - 1)) {
+	        $(".next-btn").hide();
+	        return $(".commit-btn").show();
+	      }
+	    }
+	  });
+
+	  // 提交按钮的点击
+	  $(".commit-btn").click(function() {
+	    var index, select;
+	    index = parseInt($("#total_num").text());
+	    select = $(".test-question").eq(index - 1).find("input:radio:checked");
+	    if (select.length === 0) {
+	      return alert("请选择你的答案");
+	    } else {
+	      answers[index - 1] = select.val();
+	      $.ajax({
+	        type: "POST",
+	        url: "<%= tests_path %>.js",
+	        data: {
+	          answers: answers,
+	          questions_ids: $("#ids").data("ids")
+	        }
+	      });
+	    }
+	  });
+	});
+</script>

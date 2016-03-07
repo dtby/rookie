@@ -11,6 +11,16 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery.remotipart
+//= require bootstrap-sprockets
+//= require ./date/zepto.min
+//= require ./date/mobile-select-date
+//= require ./date/dialog
+//= require china_city/jquery.china_city
+//= require ./plugin/echarts/echarts
+//= require_tree ./plugin/echarts/chart
+//= require_tree ./common/.
+//= require_tree ./application
 //= require turbolinks
-//= require_tree .

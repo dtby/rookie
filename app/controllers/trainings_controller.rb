@@ -1,0 +1,3 @@
+class TrainingsController < BaseController
+  
+end

@@ -1,0 +1,8 @@
+<% if @mark %>
+	$("#apply_<%= @apply.id %>").addClass("disabled");
+	$("#apply_<%= @apply.id %>").text("已确认");
+<% else %>
+	alert("本任务的接报人数已达上限！");
+	$("#apply_<%= @apply.id %>").addClass("disabled");
+	$("#apply_<%= @apply.id %>").text("失效");
+<% end %>

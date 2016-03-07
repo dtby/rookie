@@ -1,0 +1,18 @@
+<% unless @success %>
+  alert("操作失败，请刷新重试");
+<% else %>
+  <% case params[:style_type] %>
+    <% when "task-list"%>
+    <% unless @is_like %>
+      $("#taskListShowLink<%= params[:voteable_id]%>").html('<%= escape_javascript("取消收藏") %>');
+    <% else %>
+      $("#taskListShowLink<%= params[:voteable_id]%>").html('<%= escape_javascript("收藏") %>');
+    <% end %>
+    <% when "user-list"%>
+    <% unless @is_like %>
+      $("#userListShowLink<%= params[:voteable_id]%>").html('<%= escape_javascript("取消关注") %>');
+    <% else %>
+      $("#userListShowLink<%= params[:voteable_id]%>").html('<%= escape_javascript("关注") %>');
+    <% end %>
+  <% end %>
+<% end %>

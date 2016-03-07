@@ -1,0 +1,157 @@
+@import "variables";
+
+html, body{
+	height: 100%;
+}
+
+/** 官方活动顶部功能条 **/
+.head{
+	height: 45px;
+	width: 100%;
+	font-size: 18px;
+	color: $color_white;
+	background: image-url("head_bg.png") repeat-x;
+	padding: 0 15px;
+	.title{
+		line-height: 45px;
+	}
+	.image{
+		img{
+			margin-top: 10px;
+		}
+	}
+	.head-drop{
+		margin: 10px 0 0;
+		border: 1px solid $head_bg;
+		border-radius: 0;
+		padding: 0;
+		.head-li{
+			border-top: 1px solid $head_bg;
+		}
+		li a{
+			padding: 10px 10px;
+			text-align: center;
+		}
+	}
+}
+
+/** 官方活动底部标签 **/
+.foot-tab{
+	height: 55px;
+	color: $color_white;
+	background-color: $foot_tab_bg;
+	padding-top: 5px;
+	p{ margin-bottom: 5px; }
+	img{ margin-bottom: 2px; }
+}
+
+/** 官方活动公用样式 **/
+.activity-content{
+	overflow: auto;
+	padding-top: 15px;
+	.activity-item{
+		border-top: 1px solid $activity_item_border;
+		border-bottom: 1px solid $activity_item_border;
+		padding: 10px 30px;
+		margin-bottom: 15px;
+		background-color: $color_white;
+	}	
+}
+
+/** 我的主页－－我的简历公用样式 **/
+.resume-content{
+	background-color: #F2F2F2;
+	.resume-item{
+		background-color: $color_white;
+		margin-bottom: 15px;
+		padding: 10px 0;
+	}
+}
+
+/** 蓝色与白色按钮（需加btn类） **/
+.btn-blue{
+  color: $color_white;
+  background-color: $head_bg;
+  border-color: $head_bg;
+  border-width: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  &:hover, &:focus{
+  	background-color: darken($head_bg, 10);
+  	color: $color_white;
+  	border-color: darken($head_bg, 10);
+  }
+}
+.btn-white{
+  color: $head_bg;
+  background-color: $color_white;
+  border-width: 2px;
+  border-color: $head_bg;	
+  padding-left: 20px;
+  padding-right: 20px;
+  &:hover, &:focus{
+  	background-color: $color_white;
+  	color: darken($head_bg, 10);
+  }
+}
+
+/** 注册完成 & 测试完成 **/
+.explain-head{
+	height: 120px;
+	line-height: 120px;
+	text-align: center;
+	background-color: $head_bg;
+}
+.explain-title{
+	color: $head_bg;
+	margin-top: 40px;
+	margin-bottom: 50px;
+	font-weight: bolder;
+}
+.explain-content{
+	font-size: 16px;
+	line-height: 2;
+	text-align: justify;
+	font-weight: bold;
+}
+.explain-tips{
+	color: #F53735;
+	margin-bottom: 50px;
+	font-weight: bold;
+}
+.explain-boy{
+	padding-top: 10px !important;
+	img{
+		height: 400px;
+	}
+}
+
+/** 控制基本样式 **/
+.p-0{
+	padding: 0;
+}
+.p-l-0{
+	padding-left: 0;
+}
+.p-r-0{
+	padding-right: 0;
+}
+.m-t-0{
+	margin-top: 0 !important;
+}
+.bgc-none, .bgc-none > input{
+	background-color: #fff !important;
+}
+
+::-webkit-input-placeholder {
+  color: #555;
+}
+:-moz-placeholder {/* Firefox 18- */
+  color: #555;
+}
+::-moz-placeholder{/* Firefox 19+ */
+ color: #555;
+}
+:-ms-input-placeholder {
+  color: #555;
+}

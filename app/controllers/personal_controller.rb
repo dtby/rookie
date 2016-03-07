@@ -1,0 +1,3 @@
+class PersonalController < BaseController
+  
+end

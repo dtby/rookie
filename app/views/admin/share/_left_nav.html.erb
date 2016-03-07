@@ -1,0 +1,86 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+  <div class="sidebar-collapse">
+    <ul class="nav metismenu" id="side-menu">
+      <li class="nav-header">
+        <div class="dropdown profile-element"> 
+          <span><%= image_tag "profile_small.jpg", class: "img-circle" %></span>
+          <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <span class="clear"> 
+              <span class="block m-t-xs"> <strong class="font-bold">管理员</strong></span>
+              <!-- <span class="text-muted text-xs block">管理员<b class="caret"></b></span> -->
+            </span>
+          </a>
+<!--           <ul class="dropdown-menu animated fadeInRight m-t-xs">
+            <li><%#= link_to "叶良辰", "#" %></li>
+            <li><%#= link_to "个人中心", "#" %></li>
+            <li class="divider"></li>
+            <li><%#= link_to "退出", "#" %></li>
+          </ul> -->
+        </div>
+        <div class="logo-element">
+          <%= image_tag "logo.png", height: 30 %>
+        </div>
+      </li>
+      <!-- 用户 -->
+      <li class="<%= 'active' if params[:controller] == 'admin/users' %>">
+        <%= link_to admin_users_path do %>
+          <i class="fa fa-user"></i> 
+          <span class="nav-label">用户</span>
+          <span class="fa arrow"></span>
+        <% end %>
+
+        <ul class="nav nav-second-level collapse">
+          <% user_categories.each do |category| %>
+            <li class="<%= 'active' if current_page?(role: category.first) %>">
+              <%= link_to "#{category.second}", admin_users_path(role: category.first) %>
+            </li>
+          <% end %>
+        </ul> 
+      </li>  
+
+      <!-- 权限管理 -->
+      <li class="<%= 'active' if params[:controller] == 'admin/permissions' %>">
+        <%= link_to admin_permissions_path do %>
+          <i class="fa fa-legal"></i> 
+          <span class="nav-label">用户权限</span>
+          <span class="fa arrow"></span>
+        <% end %>
+
+        <ul class="nav nav-second-level collapse">
+          <% user_categories.each do |category| %>
+            <li class="<%= 'active' if current_page?(role: category.first) %>">
+              <%= link_to "#{category.second}", admin_permissions_path(role: category.first) %>
+            </li>
+          <% end %>
+        </ul> 
+      </li> 
+          
+      <!-- 测试题 -->
+      <li class="<%= 'active' if params[:controller] == 'admin/questions' || params[:question_id].present? %>">
+        <%= link_to "#" do %>
+          <i class="fa fa-book"></i> 
+          <span class="nav-label">测试</span>
+          <span class="fa arrow"></span>
+        <% end %> 
+
+        <ul class="nav nav-second-level collapse">
+          <li class="<%= 'active' if current_page?(kind: 'word') %>">
+            <%= link_to "文字题", admin_questions_path(kind: 'word') %>
+          </li>
+          <li class="<%= 'active' if current_page?(kind: 'image') %>">
+            <%= link_to "图片题", admin_questions_path(kind: 'image') %>
+          </li>
+        </ul> 
+      </li>
+
+      <!-- 调查问卷数据 -->
+      <li class="<%= 'active' if params[:controller] == 'admin/searchs' %>">
+        <%= link_to admin_searchs_path do %>
+          <i class="fa fa-edit"></i> 
+          <span class="nav-label">调查问卷数据</span>
+        <% end %> 
+      </li>
+
+    </ul>
+  </div>
+</nav>

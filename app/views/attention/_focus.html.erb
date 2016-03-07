@@ -1,0 +1,17 @@
+<% @focus.each do |focus|%>
+  <%= link_to user_path(focus), class: "vote-a" do %>
+    <div class="follow-row clearfix">
+      <div class="col-xs-12 vote-border">
+        <div class="col-xs-3">
+          <%= image_tag "logo.png",height: "50" %>
+        </div>
+        <div class="col-xs-7">
+          <p style="line-height: 30px;"><%= focus.nickname %></p>
+        </div>
+        <div class="col-xs-2">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </div>  
+      </div>
+    </div>
+  <% end %>
+<% end %>

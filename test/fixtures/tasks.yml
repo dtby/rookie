@@ -1,0 +1,86 @@
+# == Schema Information
+#
+# Table name: tasks
+#
+#  id             :integer          not null, primary key
+#  figure         :integer
+#  communicate    :integer
+#  coordination   :integer
+#  control        :integer
+#  decision       :integer
+#  p_figure       :integer
+#  p_communicate  :integer
+#  p_coordination :integer
+#  p_control      :integer
+#  p_decision     :integer
+#  grade          :integer
+#  name           :string(255)
+#  state          :integer          default(3)
+#  range          :integer
+#  coin           :integer
+#  describe       :text(65535)
+#  goal           :text(65535)
+#  extra          :text(65535)
+#  place          :string(255)
+#  user_id        :integer
+#  task_type_id   :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  tab            :string(255)
+#  deadline       :string(255)
+#  p              :string(255)
+#  c              :string(255)
+#  a              :string(255)
+#  member_count   :integer
+#  task_type      :string(255)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  figure: 1
+  communicate: 1
+  coordination: 1
+  control: 1
+  decision: 1
+  p_figure: 1
+  p_communicate: 1
+  p_coordination: 1
+  p_control: 1
+  p_decision: 1
+  grade: 1
+  name: MyString
+  state: 1
+  deadline: 2015-11-18 15:08:59
+  range: 1
+  coin: 1
+  describe: MyText
+  goal: MyText
+  extra: MyText
+  place: MyString
+  user_id: 
+  task_type_id: 
+
+two:
+  figure: 1
+  communicate: 1
+  coordination: 1
+  control: 1
+  decision: 1
+  p_figure: 1
+  p_communicate: 1
+  p_coordination: 1
+  p_control: 1
+  p_decision: 1
+  grade: 1
+  name: MyString
+  state: 1
+  deadline: 2015-11-18 15:08:59
+  range: 1
+  coin: 1
+  describe: MyText
+  goal: MyText
+  extra: MyText
+  place: MyString
+  user_id: 
+  task_type_id: 

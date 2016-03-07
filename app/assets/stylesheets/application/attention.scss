@@ -1,0 +1,109 @@
+.interest-content {
+  padding: 20px 0 10px 0;
+  .interest-name {
+    padding-right: 0;
+    font-size: 15px;
+    .interest-person {
+      font-size: 14px;
+      span {
+        color: #3282FF;
+        padding-right: 7px;
+      }
+    }
+  }
+  .interest-5 {
+    font-size: 12px;
+    span {
+      padding-right: 70px;
+    }
+    .interest-gift {
+      padding-left: 24px;
+    }
+    .task-state-btn{
+      padding: 2px 5px;
+      font-size: 12px;
+      border-width: 1px;
+    }
+    .default{
+      border-color: #ccc;
+      color: #333;
+    }
+    .failed{
+      border-color: #D1544B;
+      color: #D1544B;
+    }
+    .complete{
+      border-color: #407ABA;
+      color: #407ABA;
+    }
+    .underway{
+      border-color: #66B854;
+      color: #66B854;
+    }
+    .wait{
+      border-color: #6AC0E0;
+      color: #6AC0E0;
+    }
+  }
+  .interest-grade {
+    padding-right: 0;
+    padding-left: 6px;
+    .interest-map {
+      padding-left: 5px;
+    }
+    .interest-time {
+      padding-top: 3px;
+    }
+    .glyphicon-star, .glyphicon-star-empty {
+      color: #F50602;
+    }
+  }
+  .interest-word {
+    margin-bottom: 0;
+  }
+  .interest-match {
+    color: #F50602;
+    font-size: 30px;
+  }
+  .match-sub {
+    color: #F50602;
+  }
+  .feedback-icon {
+    padding-left: 0;
+  }
+}
+
+.sub-content {
+  padding: 15px 20px 5px 20px;
+  .delete-div {
+    line-height: 52px;
+    .delete {
+      background-color: #F51C03;
+      font-size: 25px;
+      color: #fff;
+    }
+  }
+}
+
+.subscrip {
+  select {
+    border:0;
+    box-shadow: none;
+    color: #000;
+  }
+}
+
+.vote-a{
+  color: #333;
+  .follow-row{
+    padding: 0 15px;
+    .vote-border{
+      min-height: 50px;
+      padding: 15px;
+      height: 80px;
+      line-height: 50px;
+      border-bottom: 1px solid #eee;
+    }
+  }
+}
+

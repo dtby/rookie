@@ -1,0 +1,22 @@
+@import "variables";
+
+.courses__index,.meetings__index,.trainings__index{
+	background-color: $boday_bg;
+
+	.btn-details{
+		color:$btn_blue;
+		border-color: $btn_blue;
+		margin:0 5px;
+	}
+	.btn-playback{
+		color: $btn_red;
+		border-color: $btn_red;
+	}
+}
+.meetings__index,.trainings__index{
+	.btn-apply{
+		color: $btn_green;
+		border-color: $btn_green;
+		padding: 5px 15px; 
+	}
+}

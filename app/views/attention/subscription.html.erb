@@ -1,0 +1,25 @@
+<% content_for :title do %>
+  我的订阅
+<% end %>
+
+<%= render partial: "share/head", locals: { head_title: "我的订阅" } %>
+<%= render partial: "attention/subscript_form_modal" %>
+
+<div class="container" id="subscrip">
+  <% @subscriptions.each do |subs| %>
+    <div class="row sub-content">
+      <div class="col-xs-8">
+        <p><span><%=image_tag("map.png",width:"25", class: 'icon')%></span><span>工作类型：<%= subs.address %></span></p>
+        <p><span><%=image_tag("aa.png",width:"25", class: 'icon')%></span><span>工作地点：<%= subs.task_type %></span></p>
+      </div>
+      <div class="col-xs-4 delete-div">
+        <div class="delete text-center">
+          <%= link_to user_subscription_path(@user, subs) , style:"color: #fff;", method: :delete do %>
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          <% end -%>
+        </div>
+      </div>
+    </div>
+    <hr class="apply-line">
+  <% end %>  
+</div>

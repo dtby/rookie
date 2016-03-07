@@ -1,0 +1,38 @@
+<% content_for :title do %>
+  用户登录
+<% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 logo_bg">
+      <div class="row text-center">
+        <div class="col-xs-4 col-xs-offset-4"><%= image_tag "logo.png", class: "",width:"100%" %>
+        </div>
+        <div class="col-xs-12"><h2 class="title">菜鸟烩</h2></div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), wrapper: :admin_form) do |f| %>
+      <%= f.error_notification %>
+      <div class="input-a">
+        <div class="field">
+          <%= f.input :phone, autofocus: true, class: "form-control input-login", placeholder: "手机号" %>
+        </div>
+
+        <div class="field">
+          <%= f.input :password, autocomplete: "off", class: "form-control input-login", placeholder: "密码" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "我要登录", class: "btn btn-blue btn-block btn-login", data: { disable_with: '正在登录...' } %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="signup">
+  <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+    <%= link_to "注册菜鸟烩", new_registration_path(resource_name), class: "btn btn-default btn-block" %><br />
+  <% end %>
+</div>

@@ -1,0 +1,42 @@
+<div class="lg-box animated">
+  <div class="row">
+    <!-- 添加试题表单 -->
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>调查问卷数据列表</h5>
+          <div class="ibox-tools">
+            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="table-responsive">
+            <!-- start列表 -->
+            <table class="table table-striped table-condensed">
+              <thead>
+                <tr class="tests-table">
+                  <th></th>
+                  <th>朋友圈的转发文章</th>
+                  <th>校园公开课</th>
+                  <th>好友推荐</th>
+                  <th>其他</th> 
+                  <th>其他补充</th> 
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="tests-table">
+                  <th>数量统计</th>
+                  <th><%= @searchs.where(options: 0).size %></th>
+                  <th><%= @searchs.where(options: 1).size %></th>
+                  <th><%= @searchs.where(options: 2).size %></th>
+                  <th><%= @searchs.where(options: 3).size %></th> 
+                  <th><%#= @searchs.other %></th> 
+                </tr>
+              </tbody>
+            </table>
+          </div><!-- end列表 -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

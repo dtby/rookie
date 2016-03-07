@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: works
+#
+#  id         :integer          not null, primary key
+#  company    :string(255)
+#  start_time :date
+#  end_time   :date
+#  position   :string(255)
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company: MyString
+  start_time: 2015-11-18
+  end_time: 2015-11-18
+  position: MyString
+  user_id: 
+
+two:
+  company: MyString
+  start_time: 2015-11-18
+  end_time: 2015-11-18
+  position: MyString
+  user_id: 

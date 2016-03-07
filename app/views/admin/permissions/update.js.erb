@@ -1,0 +1,5 @@
+<% if @success %>
+	location.href="<%= admin_permissions_path(role: @permission.role) %>"
+<% else %>
+	$("#global_modal .modal-body").html("<%= j( render partial: 'form', locals: {permission: @permission} )%>");
+<% end %>

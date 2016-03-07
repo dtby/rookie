@@ -1,0 +1,32 @@
+<%= simple_form_for(:work, url: user_works_path(@user), remote: true, format: :js) do |f| %>
+  <div class="row form-input-group">
+    
+    <div class="label-text">
+      <%= f.input :company, class: 'form-control form-input', placeholder: '公司名称', label: false %>
+    </div>
+
+    <div class="label-text">
+      <%= f.input :position, class: 'form-control form-input', placeholder: '职位', label: false %>
+    </div>
+
+    <div class="label-text">
+      <%= f.input :start_time, class: 'form-control form-input', placeholder: '开始时间', label: false %>
+    </div>
+
+    <div class="label-text">
+      <%= f.input :end_time, class: 'form-control form-input', placeholder: '结束时间', label: false %>
+    </div>
+    
+    <div class="col-xs-12 input-a text-right">
+      <%= link_to '取消', resume_user_pages_path(@user), class: 'btn btn-delete btn-sm'  %>
+      <%= f.submit "提交信息", class: "btn btn-info btn-sm" %>
+    </div>
+  </div>
+<% end %>
+<script type="text/javascript">
+  var selectDate = new MobileSelectDate();
+  selectDate.init({trigger:'#work_start_time', min:'1970/01/01'});
+
+  var selectDate1 = new MobileSelectDate();
+  selectDate1.init({trigger:'#work_end_time', min:'1970/01/01'});
+</script>

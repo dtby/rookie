@@ -1,0 +1,11 @@
+<% content_for :title do %>
+  发包
+<% end %>
+
+<%= render partial: "share/head", locals: { head_title: "发包", url: "#" } %>
+
+<div class="container">
+  <div class="row">
+    <%= render partial: "form" %>
+  </div>
+</div>

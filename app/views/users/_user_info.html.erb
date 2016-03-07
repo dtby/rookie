@@ -1,0 +1,43 @@
+<div class="user-info">
+	<div class="user-row top-none row">
+		<div class="col-xs-6 pr-0">昵称：<%= @user.nickname %></div>
+		<div class="col-xs-6 pr-0" id="<%= "coin_#{params[:id]}"%>">鸟币：<%= @user.points(category: 'coin') %></div>
+	</div>
+	<div class="user-row row">
+		<div class="col-xs-6 pr-0">性别：<%= @user.gender %></div>
+		<div class="col-xs-6 pr-0">生日：<%= @user.birth %></div>
+	</div>
+	<div class="user-row row">
+		<div class="col-xs-6 pr-0">年龄：<%= getage(@user.birth) %></div>
+		<div class="col-xs-6 pr-0">星座：<%= constellation(@user.birth) %></div>
+	</div>
+	<div class="user-row row">
+		<div class="col-xs-6 pr-0">民族：<%= @user.nation %></div>
+		<div class="col-xs-6 pr-0">籍贯：<%= truncate(User.address(@user.native),length: 7) %></div>
+	</div>
+	<div class="user-row row">
+		<div class="col-xs-6 pr-0">现居地：<%= truncate(User.address(@user.present),length: 7) %></div>
+		<div class="col-xs-6 pr-0">户口地：<%= truncate(User.address(@user.native),length: 7) %></div>
+	</div>
+	<div class="user-row bottom-none row">
+		<div class="col-xs-6 pr-0">信息完善度：<%= perfection(@user, @education, @work, @internship) %></div>
+		<div class="col-xs-6 pr-0">
+		<% if current_user.id == @user.id %>
+			<%= link_to '完善资料', resume_user_pages_path(current_user), class:"btn btn-white user-btn"  %>
+		<% end -%>
+		</div>
+	</div>
+
+	<% unless current_user.id != @user.id %>
+		<div class="generate-resume1 text-center" style="margin-top: 50px;" id="sign_t">
+			<% if @signed %>
+				<button class="btn btn-blue" disabled="disabled">今日已签到,明天再来吧！</button>
+			<% else %>
+				<%= link_to "今日签到!", "javascript:void(0);", class: "sign-create btn btn-blue", id: 'sign_s'  %>
+			<% end %>
+		</div>
+	<% end -%>
+</div>
+<%= javascript_tag do %>
+  sign_create_path = "<%= user_signs_path(current_user) %>.js"
+<% end %>

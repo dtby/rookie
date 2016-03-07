@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 personal_bg">
+      <div class="row text-center">
+        <div class="col-xs-4 col-xs-offset-4"><%= image_tag "logo.png", class: "",width:"100%" %>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <div class="info-form">
+    <%= render partial: "base_info_form" %>
+  </div>
+  <% unless current_user.sign_in_count != 1 %>
+    <div class="row" id="searchmodal">
+      <%= render partial: "search_modal" %>
+    </div>
+  <% end -%>
+</div>
+<script type="text/javascript">
+  $(function(){ 
+      $('#myModal').modal({
+        keyboard: false
+      });
+  });
+</script>

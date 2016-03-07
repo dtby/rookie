@@ -1,0 +1,16 @@
+<% content_for :title do %>
+  其他活动
+<% end %>
+
+<%= render partial: "share/head", locals: { head_title: "其他活动", url: "#" } %>
+
+<div class="tasks-content">
+  <% 5.times do %>
+    <div class="tasks-item ">
+      <h4>任务包名称</h4>
+      <p><%=image_tag("course_text.png",width:"20")%> 任务概述 ：XXXXXXXXXXXXXXXXX</p>
+      <p><%=image_tag("course_time.png",width:"20")%> 执行时间：2015年04月30日<%= link_to "查看详情>>", "#", class: "btn btn-default btn-sm btn-detail pull-right" %></p>
+    </div>
+  <% end %>
+</div>
+<%= render partial: "foot" %>

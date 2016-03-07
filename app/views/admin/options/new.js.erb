@@ -1,0 +1,4 @@
+$(".modal-backdrop").remove();
+$("#testsModal").html("<%= escape_javascript( render partial: 'admin/share/modal', locals: { title: '添加试题选项' } )%>");
+$("#global_modal .modal-body").html("<%= j( render partial: 'form', locals: {question: @question, option: @option} )%>")
+$('#global_modal').modal('show');

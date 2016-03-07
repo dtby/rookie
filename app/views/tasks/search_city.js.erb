@@ -1,0 +1,11 @@
+// 工作类型
+<% if @option.present? %>
+  $("#search_city_line").html("<%= escape_javascript(render partial: "search_city_line", locals: {option: @option}) %>");
+  $("#task-index").html("<%= escape_javascript(render partial: "task_index") %>");
+// 工作地点
+<% elsif @province.present? %>
+  $("#city_line").html("<%= escape_javascript(render partial: "city_line", locals: {province: @province}) %>");
+  $("#task-index").html("<%= escape_javascript(render partial: "task_index") %>");
+<% else %>
+  $("#task-index").html("<%= escape_javascript(render partial: "task_index") %>");
+<% end %>

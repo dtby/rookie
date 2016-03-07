@@ -1,0 +1,91 @@
+<% content_for :title do %>
+  任务包
+<% end %>
+
+<%= render partial: "head", locals: { head_title: "任务包" } %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 gift-title">
+      <div class="task-show-title text-center">
+        <h3><%= @task.name %></h3>
+      </div>
+      <div class="col-xs-10 col-xs-offset-2 task-tabshow">
+        <p><%=image_tag("time.png",width:"21", class: 'icon')%><span>截止时间：<%= @task.deadline %></span></p>
+        <p><%=image_tag("map.png",width:"22", class: 'icon')%><span>任务地点：<%= truncate(ChinaCity.get(@task.p)) %><%= truncate(ChinaCity.get(@task.c)) %></span>
+        </p>
+        <p><%= render partial: "tag_new" %></p>
+      </div>
+    </div>
+    <hr class="line">
+    <div class="col-xs-12 text-center">
+      <div class="gift-title">
+        <%=image_tag("gift.png",width:"21", class: 'icon')%><span>任务奖励</span>
+      </div>
+      <div class="col-xs-4">
+        <%=image_tag("5_03.png", width:"70%")%><p><%= step_g(@task.grade) %>EXP</p>
+      </div>
+      <div class="col-xs-4">
+        <%=image_tag("5_05.png", width:"70%")%><p><%= step_g(@task.grade) %>EXP</p>
+      </div>
+      <div class="col-xs-4">
+        <%=image_tag("5_07.png", width:"70%")%><p><%= step_g(@task.grade) %>EXP</p>
+      </div>
+      <div class="col-xs-4">
+        <%=image_tag("5_13.png", width:"70%")%><p><%= step_g(@task.grade) %>EXP</p>
+      </div>
+      <div class="col-xs-4">
+        <%=image_tag("5_15.png", width:"70%")%><p><%= step_g(@task.grade) %>EXP</p>
+      </div>
+      <div class="col-xs-4">
+        <%=image_tag("5_17.png", width:"70%")%><%= coin(@task.grade) %>
+      </div>
+    </div>
+    <hr class="line">
+    <div class="col-xs-12 text-center">
+      <div id="main" style="height: 300px"></div>
+      <button type="button" class="btn task-btn gift-title">匹配度：<%= @task.suit_degree(current_user) %>%</button>
+      <br><p class="gift-title">我的能力值除以要求能力（最高100%）<br>得出五项能力值匹配度的平均值</p>
+    </div>
+    <hr class="line">
+    <div class="col-xs-12 task-description">
+      <%=image_tag("map.png",width:"20", class: 'icon')%><span>额外报酬：<%= @task.extra %></span><br>
+      <%=image_tag("tab2_active.png",width:"19", class: 'icon')%><span>任务描述：<%= @task.describe %></span><br>
+      <%=image_tag("star.png",width:"20", class: 'icon')%><span>任务目标：<%= @task.goal %></span><br>
+    </div>
+    <div class="col-xs-12">
+      <% if current_user.id == @task.user_id %>
+        <% if @task.state == 'complete' %>
+          <button id="completed" class="btn btn-info btn-block" disabled="disabled">已归档</button>
+        <% else %>
+          <button id="completed" class="btn btn-info btn-block" disabled="disabled" style="display: none;">已归档</button>
+          <%= link_to("归档任务", complete_task_path(@task), class: "btn btn-blue btn-block", id: "complete_task", method: :put, remote: true, format: :js) %>
+        <% end %>
+      <% else %>
+        <% if User.roles[current_user.role.to_sym] > 3 %>
+          <!-- 什么都不显示 -->
+        <% elsif Apply.where(:user_id => current_user.id, :task_id => @task.id).present? %>
+          <button class="btn btn-info btn-block" disabled="disabled">已申请</button>
+        <% else %>
+          <%= simple_form_for :apply, url: task_applies_path(current_user), remote: true, format: :js, wrapper: :task_form do |f| %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <%= f.hidden_field :task_id, :value => params[:id] %>
+            <%= hidden_field_tag :grade, Task.grades[@task.grade.to_sym] %>
+            <%= hidden_field_tag :money, @task.extra.present? %>
+            <%= f.submit "申请接包", class: "btn btn-blue btn-block", id: "apply_task" %>
+            <button id="applied" class="btn btn-info btn-block" disabled="disabled" style="display: none;">已申请</button>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  <%= render partial: "share/powers", locals: { id: "main", 
+                                              legend_data: ['我的能力', '要求能力'],
+                                              series_data: [
+                                                ['我的能力', current_user.power_scores],
+                                                ['要求能力', @task.require]
+                                              ] } %>
+</script>

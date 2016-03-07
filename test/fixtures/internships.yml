@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: internships
+#
+#  id          :integer          not null, primary key
+#  company     :string(255)
+#  position    :string(255)
+#  performance :string(255)
+#  user_id     :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company: MyString
+  position: MyString
+  performance: MyString
+  user_id: 
+
+two:
+  company: MyString
+  position: MyString
+  performance: MyString
+  user_id: 

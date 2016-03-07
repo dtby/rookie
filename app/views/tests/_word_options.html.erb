@@ -1,0 +1,15 @@
+<div class="row">
+	<% index = 1 %>
+	<!-- start 答案选项 -->
+	<% question.options.shuffle.each do |option| %>
+		<div class="col-xs-12">
+			<p>
+				<%= radio_button_tag("question#{question.id}", "#{option.tab}") %>&nbsp;
+				<label for="question<%= question.id %>_<%= option.tab %>">
+					<%= answer(index) %>. <%= option.content %>
+				</label>
+			</p>
+		</div>
+		<% index += 1 %>
+	<% end %> <!-- end 答案选项 -->
+</div>

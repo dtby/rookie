@@ -1,0 +1,39 @@
+<table class="table table-striped">
+  <thead>
+    <tr class="tests-table">
+      <th>序号</th>
+      <th>题目</th>
+      <th>能力</th>
+      <th>等级</th> 
+      <th>题型</th>
+      <th>正确答案</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% questions.each do |question| %>
+      <tr class="text-center <%= "tr_#{question.id}" %>">
+        <td><%= question.id %></td>
+        <td class="problem"><%= question.problem %></td>
+        <td><%= Question::POWER[question.power.to_sym] %></td>
+        <td><%= Question::LEVEL[question.level.to_sym] %></td>
+        <td><%= Question::GENRE[question.genre.to_sym] %></td>
+        <td><%= answer(question.answer) %></td>
+        <td>
+          <%= link_to admin_question_options_path(question, kind: question.kind), class: "btn btn-xs btn-info" do %>
+            <span class="glyphicon glyphicon-list"></span>
+          <% end %>
+
+          <%= link_to edit_admin_question_path(question, kind: question.kind), class: 'btn btn-xs btn-default', remote: true, format: :js do %>
+            <span class="glyphicon glyphicon-edit"></span>
+          <% end %>
+
+          <%= link_to admin_question_path(question, kind: params[:kind], page: params[:page]), method: :delete, remote: true, format: :js, data: { confirm: "确定删除？" }, class: 'btn btn-xs btn-danger' do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<h3 class="text-center"><%= paginate questions %></h3>

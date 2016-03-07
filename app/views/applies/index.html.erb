@@ -1,0 +1,11 @@
+<% content_for :title do %>
+  任务申请列表
+<% end %>
+
+<%= render partial: "share/head", locals: { head_title: "处理申请", url: "#" } %>
+
+<div class="container">
+  <div id="apply-main", class="row apply-content">
+    <%= render partial: 'applied' %>
+  </div>
+</div>

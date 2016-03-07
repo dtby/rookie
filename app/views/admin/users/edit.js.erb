@@ -1,0 +1,4 @@
+$(".modal-backdrop").remove();
+$("#usersModal").html("<%= escape_javascript( render partial: 'admin/share/modal', locals: { title: '编辑用户类别' } )%>");
+$("#global_modal .modal-body").html("<%= j( render partial: 'form', locals: {user: @user} )%>")
+$('#global_modal').modal('show');

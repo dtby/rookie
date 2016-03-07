@@ -1,0 +1,58 @@
+<% content_for :title do %>
+	我的主页
+<% end %>
+<%= render partial: "share/head", locals: { head_title: "我的主页", url: "#" } %>
+<div class="container">
+	<div class="row pages-head">
+		<%= render partial: "pages_header" %>
+	</div>
+	<div class="row">
+		<ul>
+			<li>
+				<%=link_to resume_user_pages_path(current_user) do |i| %>
+					<%=image_tag("pages_resume.png")%>我的简历<span class="pull-right mygt mygt">&gt;</span>
+				<% end %>
+			</li>
+			<hr class="divide">
+			<li>
+				<%=link_to focus_user_attention_index_path(current_user) do |i| %>
+					<%=image_tag("pages_attention.png")%>我的关注<span class="pull-right mygt">&gt;</span>
+				<% end %>
+			</li>
+			<hr class="divide">
+			<li>
+				<%=link_to subscription_user_attention_index_path(current_user) do |i| %>
+					<%=image_tag("pages_read.png")%>我的订阅<span class="pull-right mygt">&gt;</span>
+				<% end %>
+			</li>
+			<hr class="divide">
+			<% count = current_user.applies.success.count == 0 ? nil : current_user.applies.success.count %>
+			<li>
+				<%=link_to feedback_user_path(current_user) do |i| %>
+					<%=image_tag("pages_send.png")%>投递反馈
+					<span class="pull-right mygt"><span class="badge"id="badge"><%= count %></span>&gt;</span>
+				<% end %>
+			</li>
+			<hr class="divide">
+			<li>
+				<%=link_to interest_user_attention_index_path(current_user) do |i| %>
+					<%=image_tag("pages_interest.png")%>感兴趣的任务
+					<span class="pull-right mygt"><span class="badge"id="badge"><%= current_user.votes.up.for_type(Task).votables.count %></span>&gt;</span>
+				<% end %>
+			</li>
+			<hr class="divide">
+			<li>
+				<%=link_to my_activities_path do |i| %>
+					<%=image_tag("pages_activity.png")%>我的活动
+					<span class="pull-right mygt"><span class="badge"id="badge"><%= count %></span>&gt;</span>
+				<% end %>
+			</li>
+			<hr class="divide">
+			<li>
+				<%=link_to personal_tasks_tasks_path do %>
+					<%=image_tag("pages_task.png")%>我发布的任务<span class="pull-right mygt">&gt;</span>
+				<% end %>
+			</li>
+		</ul>
+	</div>
+</div>

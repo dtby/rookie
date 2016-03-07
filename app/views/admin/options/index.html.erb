@@ -1,0 +1,57 @@
+<div class="lg-box">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>选项列表</h5>
+          <div class="pull-right">
+            <div class="ibox-tools">
+              <!-- 添加选项 -->
+              <%= link_to new_admin_question_option_path(params[:question_id], kind: @question.kind), 
+                          remote: true, format: :js do %>
+                <i class="fa fa-plus"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <table class="table">
+            <thead>
+              <tr class="tests-table">
+                <th>选项标识</th>
+                <th>内容</th> 
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @options.each do |option| %>
+                <tr class="text-center">
+                  <td><%= answers.invert[option.tab] %></td>
+                  <td>
+                    <% if params[:kind] == 'word' %>
+                      <%= option.content %>
+                    <% else %>
+                      <%= image_tag option.try(:image).try(:avatar).try(:url, :option) %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to edit_admin_question_option_path(@question, option), 
+                                class: 'btn btn-xs btn-info', remote: true, format: :js do %>
+                      <span class="glyphicon glyphicon-edit"></span>
+                    <% end %>
+
+                    <%= link_to [:admin, @question, option], method: :delete, 
+                                data: { confirm: "确定删除？" }, class: 'btn btn-xs btn-danger' do %>
+                      <span class="glyphicon glyphicon-trash"></span>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="testsModal"></div>
