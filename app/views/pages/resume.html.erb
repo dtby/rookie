@@ -11,8 +11,8 @@
             <%=image_tag("logo.png",width:"80")%>
           </div>
           <div class="media-body" id="my-body">
-            <span>姓名：<%= current_user.nickname %></span><br>
-            <span>编号：CNH15<%= current_user.id %></span><br>
+            <span>姓名：<%= current_user.name %></span><br>
+            <span>编号：<%= user_code current_user.id %></span><br>
             <span>更新时间：<%= current_user.id %></span>
           </div>
         </div>
@@ -34,6 +34,8 @@
   </div>
 
   <div class="resume-item clearfix" id="base_resume">
+    <div class="my-infos">姓名<span class="pull-right"><%= @user.name %></span></div>
+    <hr id="divide"> 
     <div class="my-infos">昵称<span class="pull-right"><%= @user.nickname %></span></div>
     <hr id="divide">
     <div class="my-infos">性别<span class="pull-right"><%= @user.gender %></span></div>
@@ -42,6 +44,8 @@
     <hr id="divide">
     <div class="my-infos">生日<span class="pull-right"><%= @user.birth %></span></div>
     <hr id="divide">
+    <div class="my-infos">邮箱<span class="pull-right"><%= @user.email %></span></div>
+    <hr id="divide"> 
     <div class="my-infos">星座<span class="pull-right"><%= constellation(@user.birth) %></span></div>
     <hr id="divide">
     <div class="my-infos">民族<span class="pull-right"><%= @user.nation %></span></div>

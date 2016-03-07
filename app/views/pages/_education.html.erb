@@ -4,7 +4,7 @@
     <hr id="divide">
     <div class="my-infos">毕业时间<span class="pull-right"><%= edu.time %></span></div>
     <hr id="divide">
-    <div class="my-infos">学校<span class="pull-right"><%= edu.name %></span></div>
+    <div class="my-infos">学校<span class="pull-right"><%= truncate(edu.name, length: 15) %></span></div>
     <hr id="divide">
     <div class="my-infos"><%= link_to '删除', user_education_path(@user, edu), method: :delete, class: "btn btn-delete btn-sm", remote: true, format: :js %></div>
   </div>

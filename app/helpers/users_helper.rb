@@ -1,9 +1,23 @@
 module UsersHelper
-  def perfection(user, education, work, internships)
+  # 生成编号
+  def user_code number
+    cache = number.to_s
+    if cache.length < 5
+      cache.rjust(5, '0');
+    else
+      cache
+    end
+  end
+
+  # 计算资料完整度
+  def perfection user
     sum = 0
     user.slice(:nickname, :name, :nation, :gender, :native, :present, :email, :birth).values.each { |x| x.present? ? sum += 1 : sum }
-    
-    return "#{(sum / 8.0 * 100).round(0)}%"
+    sum += 1 if user.educations.present?
+    sum += 1 if user.works.present? 
+    sum += 1 if user.internships.present?
+
+    return "#{(sum / 11.0 * 100).round(0)}%"
   end
 
   # 计算年龄
@@ -37,22 +51,26 @@ module UsersHelper
 
   # 后台用户权限分类
   def user_categories
-    { all: "所有用户", 
+    { 
+      all: "所有用户", 
       rookie: "普通菜鸟", 
       rookie_gold: "黄金菜鸟", 
       rookie_diamond: "钻石菜鸟", 
       boss: "普通BOSS", 
       boss_gold: "黄金BOSS", 
-      boss_diamond: "钻石BOSS"}
+      boss_diamond: "钻石BOSS"
+    }
   end
 
   # 成长轨迹类型
   def grow_type
-    { 1 => 'green_1.png', 
+    { 
+      1 => 'green_1.png', 
       2 => 'red.png', 
       3 => 'yellow.png', 
       4 => 'blue.png', 
-      5 => 'green.png'}
+      5 => 'green.png'
+    }
   end
 
   # 判断用户类别

@@ -72,9 +72,6 @@
 			.user-btn{
 				padding: 2px 20px;
 			}
-			.pr-0{
-				padding-right: 0;
-			}
 		}
 		//五大能力
 		.powers{
@@ -103,7 +100,7 @@
 					padding: 0 0 30px;
 					.progress{
 						height: 15px;
-						margin-bottom: 0;
+						margin-bottom: -3px;
 						.progress-bar-warning{
 							background-color: #fbeb37;
 						}

@@ -6,7 +6,7 @@
         <div class="col-xs-6 moment left">
           <div class="col-xs-8 l-title">
             <h4 class="name"><%= log.content %></h4>
-            <h5 class="time"><%= log.created_at.strftime("%F") %></h5>
+            <h5 class="time"><%= log.created_at.strftime("%F %H:%M") %></h5>
           </div>
           <div class="col-xs-4 l-img">
             <%= image_tag "#{grow_type[log.grow_type]}",width:'100%' %>
@@ -19,7 +19,7 @@
           </div>
           <div class="col-xs-8 r-title">
             <h4 class="name"><%= log.content %></h4>
-            <h5 class="time"><%= log.created_at.strftime("%F") %></h5>
+            <h5 class="time"><%= log.created_at.strftime("%F %H:%M") %></h5>
           </div>
         </div>
       <% end %>
