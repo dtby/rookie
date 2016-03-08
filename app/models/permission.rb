@@ -18,8 +18,6 @@ class Permission < ActiveRecord::Base
 
 	enum grade: { a: 1, b: 2, c: 3, d: 4 }
 
-	enum money: { yes: true, no: false}
-
 	enum role: {admin: 0, rookie: 1, rookie_gold: 2, rookie_diamond: 3, boss: 4, boss_gold: 5, boss_diamond: 6}
   ROLE = {admin: "管理员", 
   				rookie: "普通菜鸟", 

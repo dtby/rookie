@@ -6,12 +6,20 @@
   <% if ['boss', 'boss_gold', 'boss_diamond'].include? params[:role] %>
     <td><%= export_number(permission.release) %></td>
   <% elsif params[:role] == 'all' %>
-    <td><%= export_number(permission.release) %></td>  
-    <td><%= permission.money %></td>
+    <td><%= export_number(permission.release) %></td>
+    <% if permission.money %>
+    <td><span class="glyphicon glyphicon-ok text-info"></span></td>
+    <% else %>
+    <td><span class="glyphicon glyphicon-remove text-danger"></span></td>
+    <% end %>
     <td><%= export_number(permission.receive_per_month) %></td>
     <td><%= export_number(permission.meanwhile) %></td>
   <% else %>
-    <td><%= permission.money %></td>
+    <% if permission.money %>
+    <td><span class="glyphicon glyphicon-ok text-info"></span></td>
+    <% else %>
+    <td><span class="glyphicon glyphicon-remove text-danger"></span></td>
+    <% end %>
     <td><%= export_number(permission.receive_per_month) %></td>
     <td><%= export_number(permission.meanwhile) %></td>
   <% end %>

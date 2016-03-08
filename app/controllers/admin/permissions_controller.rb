@@ -31,6 +31,6 @@ class Admin::PermissionsController < Admin::BaseController
 	end
 
 	def permission_params
-		params.require(:permission).permit(:release, :receive_per_month, :meanwhile)
+		params.require(:permission).permit(:release, :receive_per_month, :meanwhile, :money)
 	end
 end
