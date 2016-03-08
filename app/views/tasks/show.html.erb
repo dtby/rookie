@@ -82,10 +82,9 @@
 </div>
 
 <script>
+  <% legend_data = current_user.id == @task.user_id ? ['要求能力'] : ['我的能力', '要求能力'] %>
+  <% series_data = current_user.id == @task.user_id ? ['要求能力', @task.require] : ['我的能力', current_user.power_scores],['要求能力', @task.require] %>
   <%= render partial: "share/powers", locals: { id: "main", 
-                                              legend_data: ['我的能力', '要求能力'],
-                                              series_data: [
-                                                ['我的能力', current_user.power_scores],
-                                                ['要求能力', @task.require]
-                                              ] } %>
+                                          legend_data: legend_data,
+                                          series_data: series_data } %>
 </script>

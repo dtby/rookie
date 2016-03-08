@@ -7,11 +7,13 @@
 		<div class="col-xs-8 col-xs-offset-2 title">
 			我的任务
 		</div>
-		<%= link_to tasks_path do %>
-			<div class="col-xs-2 image">
-				<%= image_tag("head_add.png", width: 25) %>
-			</div>
-		<% end %>
+    <% if can? :manage, Task %>
+      <%= link_to new_task_path do %>
+        <div class="col-xs-2 image">
+          <%= image_tag("head_add.png", width: 25) %>
+        </div>
+      <% end %>
+    <% end %>
 	</div>
 </div>
 

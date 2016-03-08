@@ -5,30 +5,14 @@ class Ability
     user ||= User.new
     if user.admin?
       can :manage, :all
-    elsif user.rookie?
+    elsif user.rookie? || user.rookie_gold? || user.rookie_diamond?
       cannot :create, Task
       can :manage, Apply
       can :read, Task
       can :search_city, Task
-    elsif user.rookie_gold?
-      cannot :create, Task
-      can :manage, Apply
-      can :read, Task
-      can :search_city, Task
-    elsif user.rookie_diamond?
-      cannot :create, Task
-      can :manage, Apply
-      can :read, Task
-      can :search_city, Task
-    elsif user.boss?
+    elsif user.boss? || user.boss_gold? || user.boss_diamond?
       can :manage, Apply
       can :manage, Task
-    elsif user.boss_gold?
-      can :manage, Task
-      can :manage, Apply
-    elsif user.boss_diamond?
-      can :manage, Task
-      can :manage, Apply
     end
       
     # Define abilities for the passed in user here. For example:

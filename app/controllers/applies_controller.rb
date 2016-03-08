@@ -1,7 +1,7 @@
 class AppliesController < BaseController
   load_and_authorize_resource param_method: :apply_params
-
   respond_to :js, :json
+
   def index
     @task = Task.find(params[:task_id])
     applies_all = @task.applies
@@ -19,7 +19,9 @@ class AppliesController < BaseController
   end
 
   def create
-    permission = Permission.where(role: User.roles[current_user.role.to_sym], grade: params[:grade].to_i, money: (params[:money] == "true")).first
+    # 用户权限
+    money = params[:money] == "true" ? true : nil
+    permission = Permission.where(role: User.roles[current_user.role.to_sym], grade: params[:grade].to_i, money: money).first
     # 用户同时接包数量
     meanwhile_count = current_user.applies.success.size
     # 用户本月接包数量
@@ -29,7 +31,7 @@ class AppliesController < BaseController
     if meanwhile_count < permission.meanwhile && month_count < permission.receive_per_month
       @apply = Apply.new(apply_params)
       if @apply.save
-        respond_with @apply
+        redirect_to :index
       else
         render :new
       end

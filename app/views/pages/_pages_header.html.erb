@@ -1,11 +1,11 @@
 <div class="col-xs-offset-2">
   <div class="media">
     <div class="media-left media-middle">
-      <%=image_tag("logo.png",width:"80")%>
+      <%=image_tag("logo2.png",width:"60")%>
     </div>
-    <div class="media-body" id="my-body">
-      <p>姓名：<%= current_user.nickname %> &nbsp;&nbsp;<small><%= User::ROLE[current_user.role.to_sym] %></small></p>
-      <p>编号：CNH15<%= current_user.id %></p>
+    <div class="media-body" id="my-body" style="padding-bottom: 10px; height: 60px;">
+      <p style="margin-bottom: 0px;">姓名：<%= current_user.nickname %> &nbsp;&nbsp;<small><%= User::ROLE[current_user.role.to_sym] %></small></p>
+      <p style="margin-bottom: 0px;">编号：<%= user_code current_user.id %></p>
     </div>
   </div>
 </div>
