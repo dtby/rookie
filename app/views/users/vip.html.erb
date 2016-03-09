@@ -5,7 +5,15 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<h4 class="indent">你现在是<span class="club-style" style="font-size: 14px;"><%= User::ROLE[current_user.role.to_sym] %></span></h4>
+			<h4 class="indent" style="line-height: 1.5;">
+				你现在是<span class="vip-mark"><%= User::ROLE[current_user.role.to_sym] %></span>
+				<% if @info[:type] == "rookie" %>
+					，你申请的是
+					<span class="vip-mark"><%= @info[:money] %></span> 的 
+					<span class="vip-mark"><%= @info[:task_grade] %></span> 任务包：
+				<% end %>
+			</h4>
+			<div class="alert alert-danger"><%= vip_msg @info %></div>
 			<!-- 会员展示表格 -->
 			<% role = role_kind(current_user) %>
 			<table class="table table-bordered table-condensed">

@@ -33,4 +33,11 @@ module ApplicationHelper
      "青海省" => ["不限", "西宁市", "海东地区", "海北藏族自治州", "海南藏族自治州", "黄南藏族自治州", "果洛藏族自治州", "玉树藏族自治州", "海西蒙古族藏族自治州"],
      "新疆维吾尔自治区" => ["不限", "乌鲁木齐", "克拉玛依", "吐鲁番地区", "哈密地区", "和田地区", "阿克苏地区", "喀什地区", "克孜勒苏柯尔克孜自治州", "巴音郭楞蒙古自治州", "昌吉回族自治州", "博尔塔拉蒙古自治州", "石河子", "阿拉尔", "图木舒克", "五家渠", "伊犁哈萨克自治州"]}
   end
+
+  def display_notice_and_alert
+    msg = ''
+    msg << (content_tag :div, notice, :class => "alert alert-info") if notice
+    msg << (content_tag :div, alert, :class => "alert alert-danger") if alert
+    sanitize msg
+  end
 end

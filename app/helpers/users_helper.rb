@@ -82,6 +82,25 @@ module UsersHelper
       return 'BOSS'
     end
   end
+
+  # 会员升级提示信息
+  def vip_msg info
+    if info[:type] == "rookie"
+      if info[:money] == "涉及现金" && info[:vip_per_month] == "0"
+        "无法申请涉及现金的任务，赶紧升级会员吧"
+      elsif info[:count_per_month].to_i >= info[:vip_per_month].to_i
+        "本月已接 #{info[:vip_per_month]} 个任务包，下个月再申请任务 或者 升级会员权限"
+      elsif info[:count_total].to_i >= info[:vip_total].to_i
+        "待完成任务已达 #{info[:vip_total]} 个，完成已接任务后再来申请 或者 升级会员权限"
+      end
+    elsif info[:type] == "boss"
+      if info[:release_count] == "0"
+        "无权发布#{info[:task_grade]}任务包，赶紧升级会员吧"
+      else
+        "#{info[:task_grade]}任务包的发布数量已达#{info[:release_count]}个，无法继续发布，赶紧升级会员吧"
+      end
+    end
+  end
 end
 
                                                            

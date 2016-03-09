@@ -1,4 +1,14 @@
 <%= simple_form_for @task, wrapper: :task_form do |f| %>
+  <% if @task.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <ul>
+        <% @task.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div> 
+  <% end %>
+
   <div class="form-group">
       <div class="form-text clearfix">
         <%= f.hidden_field :user_id, :value => current_user.id %>
@@ -19,7 +29,7 @@
           </span>
         </div>
         <div class="col-xs-11">
-          <%= f.input :deadline, class: 'form-control form-input', placeholder: '截止时间' %>
+          <%= f.input :deadline, required: true, class: 'form-control form-input', placeholder: '截止时间' %>
         </div>
       </div>
     <hr class="line">
@@ -141,9 +151,8 @@
           <span><%=image_tag("tasknew_17.png",width:"24", class: 'iconnew')%></span>
           <%#= image_tag("tab1.png", width: 24) %>
         </div>
-        <div class="col-xs-11 task-text">
-          <%= f.text_field :describe, class: 'form-control form-input', placeholder: '任务描述' %>
-          <span><%=image_tag("tasknew_21.png",width:"24", class: 'iconnew triangle')%></span>
+        <div class="col-xs-11">
+          <%= f.text_area :describe, required: true, class: 'form-control form-input', placeholder: '任务描述', rows: 4 %>
         </div>
       </div>
 
@@ -154,29 +163,20 @@
           <span><%=image_tag("tasknew_24.png",width:"28", class: 'iconnew')%></span>
           <%#= image_tag("tab1.png", width: 24) %>
         </div>
-        <div class="col-xs-11 task-text">
-          <%= f.text_field :goal, class: 'form-control form-input', placeholder: '任务目标' %>
-          <span><%=image_tag("tasknew_21.png",width:"24", class: 'iconnew triangle')%></span>
+        <div class="col-xs-11">
+          <%= f.text_area :goal, required: true, class: 'form-control form-input', placeholder: '任务目标', rows: 4 %>
         </div>
       </div>
 
     <hr class="line">
 
-  </div>
-  
-  <div class="form-group">
-    <div class="col-xs-6 text-center">
-      <button class="btn btn-success" type="submit">
-        保存
-      </button>
+    <div class="form-group">
+      <div class="col-xs-12 text-center">
+        <button class="btn btn-blue btn-block btn-login" id="task_submit">发布</button>
+      </div>
     </div>
-    <div class="col-xs-6 text-center">
-      <button class="btn btn-success" type="">
-        取消
-      </button>
-    </div>
+    
   </div>
-
 <% end %>
 
 <script type="text/javascript">

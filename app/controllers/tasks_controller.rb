@@ -52,7 +52,9 @@ class TasksController < BaseController
   end
 
   def create
+    # 可发包数量
     release = Permission.where(role: User.roles[current_user.role.to_sym], grade: Task.grades[task_params[:grade].to_sym]).first.release
+    # 已发包数量
     released = current_user.tasks.send(task_params[:grade]).size
     if released < release
       @task = Task.new(task_params)
@@ -64,7 +66,12 @@ class TasksController < BaseController
         render :new
       end
     else
-      redirect_to vip_user_path(current_user)
+      info = {
+        type: "boss",
+        task_grade: Task::GRADE[task_params[:grade].to_sym],
+        release_count: release
+      }
+      redirect_to vip_user_path(current_user, info: info)
     end
   end
 

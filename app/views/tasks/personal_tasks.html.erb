@@ -21,7 +21,7 @@
       <h4 class="m-t-0"><%= personal_task.name %></h4>
       <p><%= image_tag("course_text.png",width:"20")%> 任务概述 ：<%= personal_task.describe %></p>
       <p><%= image_tag("course_time.png",width:"20")%> 执行时间：<%= personal_task.deadline %></p>
-      <p><%= link_to "查看详情>>", task_path(personal_task), class: "btn btn-default btn-sm btn-detail" %>
+      <p><%= link_to "#{personal_task.complete? ? "已完成" : "查看详情>>"}", task_path(personal_task), class: "btn btn-default btn-sm btn-detail" %>
       <%= link_to '删除', task_path(personal_task), data:{ confirm: 'Are you sure?'},method: :delete, class: "btn btn-delete btn-sm" %></p>
     </div>
   <% end %>

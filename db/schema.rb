@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223025825) do
+ActiveRecord::Schema.define(version: 20160309062032) do
 
   create_table "applies", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20151223025825) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.integer  "state",      limit: 4, default: 2
+    t.integer  "task_grade", limit: 4
   end
 
   create_table "badges_sashes", force: :cascade do |t|

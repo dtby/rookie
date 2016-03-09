@@ -2,20 +2,7 @@
   所有任务
 <% end %>
 
-<div class="head text-center">
-  <div class="row">
-    <div class="col-xs-8 col-xs-offset-2 title">
-      所有任务
-    </div>
-    <% if can? :manage, Task %>
-      <div class="col-xs-2 image">
-        <%= link_to tasks_path do %>
-          <%= image_tag("head_add.png", width: 25) %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-</div>
+<%= render partial: "share/head", locals: { head_title: "所有任务", url: new_task_path, show: true } %>
 
 <div class="search-nav">
   <%= render partial: "search_nav" %>

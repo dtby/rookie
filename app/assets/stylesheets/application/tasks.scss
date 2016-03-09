@@ -4,6 +4,9 @@
   padding-bottom: 10px;
 }
 .form-text {
+  .input-error {
+    border: 1px solid red !important;
+  }
   .iconnew {
     padding: 8px 6px 4px 0;
   }

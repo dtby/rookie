@@ -7,7 +7,7 @@
   </div>
   <div class="col-xs-5 apply-discrib">
     <p><span>&nbsp;<%= apply_user.nickname %></span></p>
-    <% if apply.success? %>
+    <% if apply.success? || apply.complete? %>
       <a href="#" class="btn btn-default apply-btn disabled">已确认</a>
     <% elsif apply.fail? %>
       <a href="#" class="btn btn-default apply-btn disabled">已失效</a>

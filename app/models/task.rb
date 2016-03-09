@@ -47,9 +47,9 @@ class Task < ActiveRecord::Base
   # belongs_to :task_type
   has_many :applies, dependent: :destroy
 
-  validates :grade, :member_count, presence: true, on: :create
-  validates :name, presence: true, on: :create
-  validates :deadline, presence: true, on: :create
+  validates :user_id, :name, :deadline, :grade, :p, :c, :member_count, :task_type, 
+            :figure, :p_figure, :communicate, :p_communicate, :control, :p_control, 
+            :coordination, :p_coordination, :decision, :p_decision, :describe, :goal, presence: true
 
   enum grade: { 
     a: 1, 
@@ -57,11 +57,11 @@ class Task < ActiveRecord::Base
     c: 3, 
     d: 4
   }
+  GRADE = {a: 'A级', b: 'B级', c: 'C级', d: 'D级' }
 
   enum state: {failed: 0, complete: 1, underway: 2, wait: 3}
   STATE = {failed: '已失效', complete: '已完成', underway: '进行中', wait: '召集中'}
 
-  GRADE = {a: 'A级', b: 'B级', c: 'C级', d: 'D级' }
 
   POWER = { surface: :p_figure, communicate: :p_communicate, decision: :p_decision, cooperate: :p_coordination, control: :p_control }
 
@@ -95,7 +95,11 @@ class Task < ActiveRecord::Base
       Task.transaction do
         self.update!(state: 1)
         self.applies.each do |apply|
-          apply.update!(state: 3)
+          if apply.deal?
+            apply.update!(state: 0)
+          else
+            apply.update!(state: 3)
+          end
         end
       end
     rescue Exception => e

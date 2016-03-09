@@ -19,36 +19,50 @@ class AppliesController < BaseController
   end
 
   def create
-    # 用户权限
     money = params[:money] == "true" ? true : nil
-    permission = Permission.where(role: User.roles[current_user.role.to_sym], grade: params[:grade].to_i, money: money).first
-    # 用户同时接包数量
-    meanwhile_count = current_user.applies.success.size
-    # 用户本月接包数量
-    month_applies = current_user.applies.by_month(Date.today.month)
-    month_count = month_applies.success.size + month_applies.complete.size
+    @applies = current_user.applies
+    grade = Task.grades[params[:grade].to_sym].to_i
+    # 用户权限
+    permission = Permission.where(role: User.roles[current_user.role.to_sym], grade: grade, money: money).first
+    # state: 0: 接包失败，1：接包成功，2；正在处理，3：任务完成
+    # 用户：对应等级任务的，同时接包数量
+    meanwhile_count = @applies.where(state: [1, 2], task_grade: grade).size
+    # 用户：对应等级任务的，接包数量/本月
+    month_count = @applies.by_month(Date.today.month).where(state: [1, 2, 3], task_grade: grade).size
 
     if meanwhile_count < permission.meanwhile && month_count < permission.receive_per_month
       @apply = Apply.new(apply_params)
       if @apply.save
         respond_with @apply
       else
-        render :new
+        respond_to do |format|
+          flash[:alert] = "申请任务失败"
+          format.js { render js: "location.href='#{task_path(@apply.task_id)}'" }
+        end
       end
     else
+      info = {
+        type: "rookie",
+        task_grade: Task::GRADE[params[:grade].to_sym],
+        money: money.present? ? "涉及现金" : "不涉及现金",
+        vip_per_month: permission.receive_per_month,
+        count_per_month: month_count,
+        vip_total: permission.meanwhile,
+        count_total: meanwhile_count 
+      }
       respond_to do |format|
-        format.js { render js: "location.href='#{vip_user_path(current_user)}'" }
+        format.js { render js: "location.href='#{vip_user_path(current_user, info: info)}'" }
       end
     end
   end
 
+  def destroy
+    Apply.find(params[:id]).destroy
+    redirect_to feedback_user_path(current_user)
+  end
+
   private
-
-  def apply_params
-    params.require(:apply).permit(:user_id, :task_id, :state, :money, :grade)
-  end
-
-  def set_user
-    @user = current_user
-  end
+    def apply_params
+      params.require(:apply).permit(:user_id, :task_id, :state, :money, :task_grade, :grade)
+    end
 end

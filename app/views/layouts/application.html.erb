@@ -18,7 +18,10 @@
 	<%#= render partial: "share/flash" %>
 
 	<%= yield %>
-	<%#= debug params %>
+
+	<div class="container">
+		<%#= display_notice_and_alert %>
+	</div>
 
 	<%= yield :scripts %>
 	<%= link_to('登出', destroy_user_session_path, :method => :delete) %>
