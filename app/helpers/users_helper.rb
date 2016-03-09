@@ -1,4 +1,54 @@
 module UsersHelper
+
+  def fetch_user_info
+    subscriber_list = Subscriber.where("nick_name is null")
+    return if subscriber_list.length == 0
+    unless $client.is_valid?
+      $client ||= WeixinAuthorize::Client.new(WeixinRailsMiddleware.config.app_id, WeixinRailsMiddleware.config.weixin_secret_string)
+    end
+    subscriber_list.each do |item|
+      begin
+        result = $client.user(item.openid)
+      rescue Exception => e
+        next
+      end
+
+      if result.code == 40001
+        $client ||= WeixinAuthorize::Client.new(WeixinRailsMiddleware.config.app_id, WeixinRailsMiddleware.config.weixin_secret_string)
+        return
+      end
+
+      item.nick_name = result.result['nickname']
+      item.sex = result.result['sex'].to_i
+      item.city = result.result['city']
+      item.province = result.result['province']
+      item.country = result.result['country']
+      item.headimgurl = result.result['headimgurl']
+      item.save
+    end
+    subscriber_list = nil
+  end
+
+  def self.process_user_list(next_openid)
+    unless $client.is_valid?
+      $client ||= WeixinAuthorize::Client.new(WeixinRailsMiddleware.config.app_id, WeixinRailsMiddleware.config.weixin_secret_string)
+    end
+    result = $client.followers(next_openid)
+    save_user result.result['data']['openid']
+    next_openid = result.result['next_openid']
+    while next_openid.present?
+      process_user_list(next_openid)
+    end
+  end
+
+  def self.save_user user_list
+    user_list.each do |id|
+        update_subscriber(id)
+
+      # $redis.hset "subscriber_infos", user.openid, user.to_json
+    end
+  end
+
   # 生成编号
   def user_code number
     cache = number.to_s

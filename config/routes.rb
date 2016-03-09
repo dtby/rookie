@@ -7,6 +7,12 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+
+  resources :oauths do
+    collection do
+      get :check
+    end
+  end
   
   # 网站主页
   root 'tests#new'
