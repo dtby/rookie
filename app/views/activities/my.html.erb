@@ -2,20 +2,7 @@
   我的任务
 <% end %>
 
-<div class="head text-center">
-	<div class="row">
-		<div class="col-xs-8 col-xs-offset-2 title">
-			我的任务
-		</div>
-    <% if can? :manage, Task %>
-      <%= link_to new_task_path do %>
-        <div class="col-xs-2 image">
-          <%= image_tag("head_add.png", width: 25) %>
-        </div>
-      <% end %>
-    <% end %>
-	</div>
-</div>
+<%= render partial: "share/head", locals: { head_title: "我的任务", url: tasks_path, show: true } %>
 
 <div class="tasks-content">
   <% current_user.applies.each do |apply| %>

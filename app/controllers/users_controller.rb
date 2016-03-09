@@ -36,7 +36,7 @@ class UsersController < BaseController
 
   # 充值会员
   def vip
-    @user = User.find(params[:id])
+
   end
 
   private

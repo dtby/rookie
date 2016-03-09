@@ -31,7 +31,7 @@ class AppliesController < BaseController
     if meanwhile_count < permission.meanwhile && month_count < permission.receive_per_month
       @apply = Apply.new(apply_params)
       if @apply.save
-        redirect_to :index
+        respond_with @apply
       else
         render :new
       end

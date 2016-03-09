@@ -4,6 +4,7 @@
 			<%= head_title %>
 		</div>
 		<div class="col-xs-2 image">
+    <% if show %>
       <% if params[:action] == 'subscription' %>
         <div class="dropdown">
           <a id="dLabel" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -21,7 +22,12 @@
             </li>
           </ul>
         </div>
+      <% else %>
+        <%= link_to url do %>
+          <%= image_tag("head_add.png", width: 25) %>
+        <% end %>
       <% end %>
+    <% end %>
 		</div>
 	</div>
 </div>

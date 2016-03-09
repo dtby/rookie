@@ -2,7 +2,18 @@
   我发布的任务包
 <% end %>
 
-<%= render partial: "share/head", locals: { head_title: "我发布的任务包", url: new_task_path } %>
+<div class="head text-center">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2 title">
+      我发布的任务包
+    </div>
+    <%= link_to new_task_path do %>
+      <div class="col-xs-2 image">
+        <%= image_tag("head_add.png", width: 25) %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <div class="tasks-content">
   <% @personal_tasks.each do |personal_task|%>

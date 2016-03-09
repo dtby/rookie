@@ -2,7 +2,7 @@
   感兴趣的任务
 <% end %>
 
-<%= render partial: "share/head", locals: { head_title: "感兴趣的任务", url: "#" } %>
+<%= render partial: "share/head", locals: { head_title: "感兴趣的任务", url: tasks_path, show: true } %>
 
 <div class="container">
   <% @interests.each do |interest|%>

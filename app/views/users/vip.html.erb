@@ -1,13 +1,13 @@
-<%= render partial: "share/head", locals: { head_title: "个人信息", url: "#" } %>
+<%= render partial: "share/head", locals: { head_title: "个人信息", url: "#", show: false } %>
 
 <div class="title_bar">会员升级</div>
 
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<h4 class="indent">你现在是<span class="club-style" style="font-size: 14px;"><%= User::ROLE[@user.role.to_sym] %></span></h4>
+			<h4 class="indent">你现在是<span class="club-style" style="font-size: 14px;"><%= User::ROLE[current_user.role.to_sym] %></span></h4>
 			<!-- 会员展示表格 -->
-			<% role = role_kind(@user) %>
+			<% role = role_kind(current_user) %>
 			<table class="table table-bordered table-condensed">
 				<thead>
 					<tr>
