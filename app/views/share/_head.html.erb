@@ -23,8 +23,10 @@
           </ul>
         </div>
       <% else %>
-        <%= link_to url do %>
-          <%= image_tag("head_add.png", width: 25) %>
+        <% if can? :manage, Task %>
+          <%= link_to url do %>
+            <%= image_tag("head_add.png", width: 25) %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>

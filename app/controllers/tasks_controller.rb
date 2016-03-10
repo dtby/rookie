@@ -19,6 +19,7 @@ class TasksController < BaseController
     @type = params[:type]
     @typ = params[:typ]
     @city = params[:city]
+
     if @type.present? && params[:figure] == "figure"
       @tasks = Task.order(p_figure: :desc)
     elsif @type.present? && params[:communicate] == "communicate"
@@ -32,7 +33,7 @@ class TasksController < BaseController
     elsif @type.present? && params[:unlimit] == "unlimit"
       @tasks = Task.order(grade: :desc)
     elsif @typ.present?
-      @tasks = Task.where(task_type:params[:option]).order(grade: :desc)
+      @tasks = Task.where(task_type: params[:option]).order(grade: :desc)
     else
       @tasks = Task.order(grade: :desc)
     end
