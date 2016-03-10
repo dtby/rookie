@@ -14,6 +14,7 @@
       </div>
     </div>
     <div class="row">
+
       <div class="col-xs-12 input-a">
         <%= f.input :phone, autofocus: true, class: "form-control input-login", placeholder: "手机号", label: false %>
         <div class="input-group clearfix" style="margin-bottom: 15px;">
@@ -25,10 +26,18 @@
         <%= f.input :password, required: true, class: "form-control input-login", label: false, placeholder: "输入密码（不少于6个字符）" %>
         <%= f.input :password_confirmation, required: true, class: "form-control input-login", placeholder: "密码确认", label: false %>
       </div>
+
       <div class="col-xs-12 input-btn">
         <%= f.button :submit, "注册", class: "btn btn-blue btn-block"%>
         <!-- <button class="btn btn-primary btn-lg btn-block btn-login" type="button">我要注册</button> -->
       </div>
+
+      <div class="col-xs-12 input-btn">
+        <%= link_to oauths_path(recurl: '/users/sessions/new') do %>
+          <botton class="btn btn-default my-btn"><div class="text-left">&nbsp;&nbsp;我要报名</div></botton>
+        <% end %> 
+      </div>
+
     </div>
   </div>
 <% end %>
