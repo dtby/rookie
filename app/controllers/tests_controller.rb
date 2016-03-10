@@ -14,8 +14,19 @@ class TestsController < BaseController
 				@questions.push Question.find(id)
 			end
 		else
+			# 已完成测试：更新用户的完成测试时间：tested_at
+			current_user.update(tested_at: Time.now)
+
 			redirect_to result_tests_path(status: 'end')
 		end
+	end
+
+	# 重新测试
+	def retest
+		# 如果上次测试距今超过一个月，点击重新测试，重新创建成绩记录
+		current_user.create_score_cache
+    current_user.scores.create
+    redirect_to action: 'new'
 	end
 
 	# 提交单次成绩
@@ -30,6 +41,10 @@ class TestsController < BaseController
 	# 保存退出
 	def update
 		current_user.save_score(@power, @level, params[:score], params[:upgrade])
+
+		# 保存退出时，把上次测试时间置空
+		current_user.update(tested_at: nil)
+
 		redirect_to user_path(current_user)
 	end
 
@@ -37,13 +52,22 @@ class TestsController < BaseController
 	def next
 		result = current_user.save_score(@power, @level, params[:score], params[:upgrade])
 		if result == 'test_end'
+			# 已完成测试：更新用户的完成测试时间：tested_at
+			current_user.update(tested_at: Time.now)
+
 			redirect_to result_tests_path(status: 'end')
 		elsif result == 'level_up'
 			session[:level] += 1
+			# 升级时，把上次测试时间置空
+			current_user.update(tested_at: nil)
+
 			redirect_to action: 'new'
 		else
 			session[:power] += 1
 			session[:level] = 1
+			# 升级时，把上次测试时间置空
+			current_user.update(tested_at: nil)
+
 			redirect_to action: 'new'
 		end
 	end

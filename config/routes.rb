@@ -30,13 +30,9 @@ Rails.application.routes.draw do
     end
 
     resources :educations
-
     resources :works
-    
     resources :internships
-
     resources :subscriptions
-
     resources :signs, only: [:create]
 
     # 我的主页
@@ -78,6 +74,7 @@ Rails.application.routes.draw do
     collection do
       get 'result'
       get 'next'
+      get 'retest'
     end
   end
 

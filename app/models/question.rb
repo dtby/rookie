@@ -73,25 +73,25 @@ class Question < ActiveRecord::Base
 			score += 1 if answer.to_i == standard_answers[index]
 		end
 		# 计算段位
-		# if score <= 6
-		# 	[1, 0]
-		# elsif score <= 12 && score > 6
-		# 	[2, 0]
-		# elsif score <= 18 && score > 12
-		# 	[3, 0]
-		# elsif score > 18
-		# 	[3, 1]
-		# end
-
-		if score <= 1
+		if score <= 6
 			[1, 0]
-		elsif score == 2
+		elsif score <= 12 && score > 6
 			[2, 0]
-		elsif score == 3
+		elsif score <= 18 && score > 12
 			[3, 0]
-		elsif score == 4
+		elsif score > 18
 			[3, 1]
 		end
+
+		# if score <= 1
+		# 	[1, 0]
+		# elsif score == 2
+		# 	[2, 0]
+		# elsif score == 3
+		# 	[3, 0]
+		# elsif score == 4
+		# 	[3, 1]
+		# end
 	end
 
 	# 从excel导入试题

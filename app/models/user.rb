@@ -154,7 +154,7 @@ class User < ActiveRecord::Base
     return cache
   end
 
-  # 用的地址输出
+  # 用户地址输出
   def self.address(number)
     if number.present?
       p = ChinaCity.get(number.split(',').first)
@@ -178,8 +178,29 @@ class User < ActiveRecord::Base
     # 发包数量
     release = self.release
   end
+
+
+  # 进入show之前，检查tested_at是否是一月之前
+  # 是：为用户创建新的score和score_cache；
+  # 否：无操作
+  # 返回：nil: 第一次测试未完成；false：距上次测试小于一个月；true：距上次测试大于一个月
+  def tested_month_ago
+    # 上次测试完成的时间
+    last_tested_at = self.tested_at
+    if last_tested_at.present?
+      # 距今的时间(天)
+      if (Time.now.to_date - last_tested_at.to_date).to_i > 30
+        return true
+      else
+        return false
+      end
+    else
+      return nil
+    end
+  end
   
   private
+    # 新增用户的成绩记录，和成绩暂存记录
     def create_score_and_score_cache
       self.create_score_cache
       self.scores.create

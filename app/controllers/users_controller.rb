@@ -37,7 +37,6 @@ class UsersController < BaseController
   # 充值会员
   def vip
     @info = params[:info]
-    pp @info
   end
 
   private
