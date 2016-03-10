@@ -1,4 +1,5 @@
 <%= simple_form_for(current_user, url: user_path(current_user), html: { method: :patch }) do |f| %>
+<div class="container">
   <div class="row">
     <div class="col-xs-12 select-input">
       <div class="label-text">
@@ -7,6 +8,10 @@
 
       <div class="label-text">
         <%= f.input :nickname, required: true, class: 'form-control label-input', placeholder: '昵称', label: false %>
+      </div>
+
+      <div class="label-text">
+        <%= f.input :phone, required: true, class: 'form-control label-input', placeholder: '手机号码', label: false %>
       </div>
 
       <div class="dropdown label-text">
@@ -54,6 +59,7 @@
       </div>      
     </div>
   </div>
+</div>
 <% end %>
 <script type="text/javascript">
   var selectDate = new MobileSelectDate();

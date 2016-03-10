@@ -16,11 +16,18 @@
 		}
 	}
 	ul{
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
 		li{
 		list-style: none;
 			a{
 				color: #373737;
-				margin-right: 20px;
+				display: block;
+				height: 60px;
+				line-height: 60px;
+				&:hover {
+					text-decoration: none;
+				}
 				.mygt{
 					padding-right: 20px;
 					#badge{
@@ -35,6 +42,7 @@
 		padding: 20px;
 		.divide {
 			border-top:1px solid #aeaeae;
+			margin: 0;
 		}
 		img {
 			margin: 0 15px;

@@ -20,7 +20,9 @@
 			<li>
 				<%=link_to my_activities_path do |i| %>
 					<%=image_tag("pages_activity.png")%>我的任务
-					<span class="pull-right mygt"><span class="badge"id="badge"><%= count %></span>&gt;</span>
+					<span class="pull-right mygt">
+						<span class="badge"id="badge"><%= count %></span>
+					&gt;</span>
 				<% end %>
 			</li>
 			<hr class="divide">
@@ -34,15 +36,20 @@
 			<% end %>
 			<li>
 				<%=link_to interest_user_attention_index_path(current_user) do |i| %>
+					<% interest_count = current_user.votes.up.for_type(Task).votables.count %>
 					<%=image_tag("pages_interest.png")%>感兴趣的任务
-					<span class="pull-right mygt"><span class="badge"id="badge"><%= current_user.votes.up.for_type(Task).votables.count %></span>&gt;</span>
+					<span class="pull-right mygt">
+						<span class="badge"id="badge"><%= interest_count == 0 ? nil : interest_count %></span>
+					&gt;</span>
 				<% end %>
 			</li>
 			<hr class="divide">
 			<li>
 				<%=link_to feedback_user_path(current_user) do |i| %>
 					<%=image_tag("pages_send.png")%>投递反馈
-					<span class="pull-right mygt"><span class="badge"id="badge"><%= count %></span>&gt;</span>
+					<span class="pull-right mygt">
+						<span class="badge"id="badge"><%= count %></span>
+					&gt;</span>
 				<% end %>
 			</li>
 			<hr class="divide">
