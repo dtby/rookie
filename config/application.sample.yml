@@ -1,9 +1,9 @@
 defaults: &defaults
-  APPID: "wx8cbc369ae3d74887"
-  APPSECRET: "6f719d088020a1ed5b6dbf8eda94c2b4"
-  HOST: "https://120.24.80.204"
-  WeixinTokenString: "529f2ed084b685624be3bde1"
-  WeixinSecretString: "ReWckhxChahsXgBR9TWMaeH66-qqvzK0"
+  APPID: "wx94eac922bbda0127"
+  APPSECRET: "db9996995a940ca1c07f823493a271ad"
+  HOST: "https://9e491ca0.ngrok.io"
+  WeixinTokenString: "8f67d8759e78b265d23c2fec"
+  WeixinSecretString: "FYQr4MI-I67TD6tiyEI0Hdv7knI0h_Vp"
 
 development:
   <<: *defaults
