@@ -1,6 +1,6 @@
 class UsersController < BaseController
   before_action :set_user, only: [:edit, :show, :update, :personal]
-  before_action :is_user_login?, only:[:show, :feedback]
+  before_action :is_user_login?, only:[:feedback]
   # 个人信息
   def show
     @grow_logs = @user.grow_logs
@@ -50,7 +50,13 @@ class UsersController < BaseController
   def update
     if @user.update_columns(user_params)
       flash.now[:notice] = "更新成功"
+      user = User.find_by(open_id: session[:openid])
+    if user
+      current_user = user
+      return redirect_to user_path(@user)
+    else
       return redirect_to explain_user_path(@user)
+    end
     else
       return render :update
     end

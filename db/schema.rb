@@ -338,8 +338,8 @@ ActiveRecord::Schema.define(version: 20160310095753) do
     t.integer  "role",                   limit: 4,   default: 1
     t.integer  "permission_id",          limit: 4
     t.integer  "tasks_count",            limit: 4
-    t.datetime "tested_at"
     t.string   "open_id",                limit: 255
+    t.datetime "tested_at"
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
