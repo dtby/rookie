@@ -12,8 +12,8 @@ class UsersController < BaseController
     end
   end
 
+  # 一键注册
   def new
-    # @user = User.new
     user = User.find_by(open_id: session[:openid])
     if user
       @user = user
@@ -21,17 +21,19 @@ class UsersController < BaseController
       @user = User.create
     end
     return redirect_to edit_user_path(@user)
-    # if @user
-    #   current_user = @user
-    #   pp current_user.id, "========="
-    #   # redirect_to explain_user_path(current_user)
-    # else
-    #   pp "=====-----"
-    #   render new_user_path
-    # end
   end
 
   def create   
+  end
+
+  # 微信菜单：我的信息（获取用户）
+  def user_info
+    redirect_to user_path(current_user)
+  end
+
+  # 微信菜单：我的主页 （获取用户）
+  def user_page
+    redirect_to user_pages_path(current_user)
   end
 
   # 注册后的说明页
@@ -40,7 +42,6 @@ class UsersController < BaseController
 
   # 完善个人基本信息
   def personal
-    pp "xxxxxxxxxxxxxxx"
     pp session[:openid]
   end
 

@@ -27,7 +27,12 @@ Rails.application.routes.draw do
 
   # 用户
   resources :users do
-    #个人基础信息, 我的活动
+    # 微信菜单
+    collection do
+      get 'user_info'
+      get 'user_page'
+    end
+    # 个人基础信息, 我的活动
     member do
       get 'personal'
       get 'explain'
