@@ -1,6 +1,6 @@
-class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :personal]
-
+class UsersController < BaseController
+  before_action :set_user, only: [:edit, :show, :update, :personal]
+  before_action :is_user_login?, only:[:show, :feedback]
   # 个人信息
   def show
     @grow_logs = @user.grow_logs
@@ -14,19 +14,24 @@ class UsersController < ApplicationController
 
   def new
     # @user = User.new
-    @user = User.create
-    if @user
-      current_user = @user
-      pp current_user.id, "========="
-      # redirect_to explain_user_path(current_user)
+    user = User.find_by(open_id: session[:openid])
+    if user
+      @user = user
     else
-      pp "=====-----"
-      render new_user_path
+      @user = User.create
     end
+    return redirect_to edit_user_path(@user)
+    # if @user
+    #   current_user = @user
+    #   pp current_user.id, "========="
+    #   # redirect_to explain_user_path(current_user)
+    # else
+    #   pp "=====-----"
+    #   render new_user_path
+    # end
   end
 
-  def create
-    
+  def create   
   end
 
   # 注册后的说明页
@@ -35,14 +40,19 @@ class UsersController < ApplicationController
 
   # 完善个人基本信息
   def personal
+    pp "xxxxxxxxxxxxxxx"
+    pp session[:openid]
+  end
+
+  def edit
   end
 
   def update
     if @user.update_columns(user_params)
       flash.now[:notice] = "更新成功"
-      redirect_to user_path
+      return redirect_to explain_user_path(@user)
     else
-      render :update
+      return render :update
     end
   end
 

@@ -1,9 +1,29 @@
 class BaseController < ApplicationController
   include ApplicationHelper
   before_action :invoke_wx_auth
-  before_action :get_wechat_sns
+  
 
   # before_action :authenticate_user!
+
+  def is_user_login?
+    sns_info = $client.get_oauth_access_token(params[:code])
+    if sns_info.result["errcode"] != "40029"
+      session[:openid] = sns_info.result["openid"]
+    end
+
+    user = User.find_by(open_id: session["openid"])
+    if user
+      return redirect_to explain_user_path(user)
+    else
+      return redirect_to new_user_path
+    end
+  end
+
+
+  def current_user
+    @current_user ||= User.find_by(open_id: session[:openid])
+  end
+
 
   private
   def invoke_wx_auth
@@ -13,10 +33,12 @@ class BaseController < ApplicationController
     # if params["need_wx_auth"].present?
       # 生成授权url，再进行跳转
       sns_url =  $client.authorize_url(request.url)
+      pp "qqqqqqqqqqqqqqqqq"
       pp sns_url 
       redirect_to sns_url and return
     # end
   end
+
   # 在invoke_wx_auth中做了跳转之后，此方法截取
   def get_wechat_sns
     # params[:state] 这个参数是微信特定参数，所以可以以此来判断授权成功后微信回调。
@@ -31,7 +53,7 @@ class BaseController < ApplicationController
         if user.present?
           current_user = user
           pp "=====-----"
-          redirect_to explain_user_path(current_user)
+          redirect_to explain_user_path
         else
           redirect_to new_user_path
         end

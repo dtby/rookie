@@ -14,7 +14,7 @@
   <div class="info-form">
     <%= render partial: "base_info_form" %>
   </div>
-  <% unless current_user.sign_in_count != 1 %>
+  <% unless @user.sign_in_count != 1 %>
     <div class="row" id="searchmodal">
       <%= render partial: "search_modal" %>
     </div>

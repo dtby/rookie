@@ -1,5 +1,5 @@
-<%= simple_form_for(current_user, url: user_path(current_user), html: { method: :patch }) do |f| %>
 <div class="container">
+<%= simple_form_for(@user, url: user_path(@user), html: { method: :patch }) do |f| %>
   <div class="row">
     <div class="col-xs-12 select-input">
       <div class="label-text">

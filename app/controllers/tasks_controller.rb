@@ -1,6 +1,6 @@
 class TasksController < BaseController
   load_and_authorize_resource param_method: :task_params
-
+  before_action :is_user_login?
   before_action :set_task, only: [:show, :edit, :update, :destroy, :complete, :tag, :remove]
   before_action :set_user
 
