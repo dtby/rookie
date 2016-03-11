@@ -13,7 +13,6 @@ class BaseController < ApplicationController
 
     if user
       current_user = user
-      # return redirect_to explain_user_path(current_user)
     else
       return redirect_to new_user_path
     end
