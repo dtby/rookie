@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col-xs-12 select-input">
       <div class="label-text">
+        <%#= f.hidden_field :openid, value: session[:openid] %>
         <%= f.input :name, required: true, class: 'form-control label-input', placeholder: '姓名', label: false %>
       </div>
 

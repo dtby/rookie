@@ -1,4 +1,4 @@
-class UsersController < BaseController
+class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :personal]
 
   # 个人信息
@@ -10,6 +10,23 @@ class UsersController < BaseController
     else
       @signed = false
     end
+  end
+
+  def new
+    # @user = User.new
+    @user = User.create
+    if @user
+      current_user = @user
+      pp current_user.id, "========="
+      # redirect_to explain_user_path(current_user)
+    else
+      pp "=====-----"
+      render new_user_path
+    end
+  end
+
+  def create
+    
   end
 
   # 注册后的说明页
@@ -41,7 +58,7 @@ class UsersController < BaseController
 
   private
     def user_params
-      params.require(:user).permit(:number, :nickname, :name, :birth, :nation, :gender, :phone, :native, :email, :present, :constellation)
+      params.require(:user).permit(:number, :nickname, :name, :birth, :nation, :gender, :phone, :native, :email, :present, :constellation, :open_id)
     end
 
     def set_user

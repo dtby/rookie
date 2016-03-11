@@ -54,10 +54,10 @@ class User < ActiveRecord::Base
 
   belongs_to :permission
 
-  validates :phone, presence: true, uniqueness: true, on: :create
-  validate :phone_reg?, on: :create
-  validates :message, presence: true, on: :create
-  validate :is_right_sms?, if: "message.present?", on: :create
+  # validates :phone, presence: true, uniqueness: true, on: :create
+  # validate :phone_reg?, on: :create
+  # validates :message, presence: true, on: :create
+  # validate :is_right_sms?, if: "message.present?", on: :create
 
   # 回调
   after_create :add_grow_log
@@ -85,12 +85,12 @@ class User < ActiveRecord::Base
   }
 
   # 手机格式
-  def phone_reg?
-    reg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/
-    if not phone.match reg
-      errors.add(:phone, :phone_reg)
-    end
-  end
+  # def phone_reg?
+  #   reg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/
+  #   if not phone.match reg
+  #     errors.add(:phone, :phone_reg)
+  #   end
+  # end
 
   # 验证码是否正确
   def is_right_sms?
@@ -101,6 +101,10 @@ class User < ActiveRecord::Base
 
   # 不验证邮箱
   def email_required?
+    false
+  end
+
+  def password_required?
     false
   end
 

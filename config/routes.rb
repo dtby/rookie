@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   mount ChinaCity::Engine => '/china_city'
 
   # 前台用户登录
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations'
-  }
+  # devise_for :users, controllers: {
+  #   sessions: 'users/sessions',
+  #   registrations: 'users/registrations'
+  # }
 
   resources :oauths do
     collection do
