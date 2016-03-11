@@ -10,16 +10,13 @@ class BaseController < ApplicationController
     end
 
     user = User.find_by(open_id: session["openid"])
+
     if user
       current_user = user
-      return redirect_to explain_user_path(current_user)
+      # return redirect_to explain_user_path(current_user)
     else
       return redirect_to new_user_path
     end
-  end
-
-  def current_user
-    @current_user ||= User.find_by(open_id: session[:openid])
   end
 
   private
@@ -55,7 +52,6 @@ class BaseController < ApplicationController
   #     end
   #   end
   # end
-
   # def configure_permitted_parameters
   #   devise_parameter_sanitizer.for(:sign_up) << [:message, :phone]
   # end

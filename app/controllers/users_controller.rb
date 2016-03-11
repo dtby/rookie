@@ -42,7 +42,6 @@ class UsersController < BaseController
 
   # 完善个人基本信息
   def personal
-    pp session[:openid]
   end
 
   def edit
