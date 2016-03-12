@@ -14,7 +14,8 @@ class ApplicationController < ActionController::Base
   private
   def weixin_global
     unless $client.try(:is_valid?)
-      $client ||= WeixinAuthorize::Client.new(ENV["APPID"], ENV["APPSECRET"])
+      $client ||= WeixinAuthorize::Client.new(WeixinRailsMiddleware.config.app_id, WeixinRailsMiddleware.config.weixin_secret_string)
+      # $client ||= WeixinAuthorize::Client.new(ENV["APPID"], ENV["APPSECRET"])
     end
   end
 

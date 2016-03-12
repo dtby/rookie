@@ -23,5 +23,5 @@ WeixinRailsMiddleware.configure do |config|
   ## You can custom your adapter to validate your weixin account ##
   # Wiki https://github.com/lanrion/weixin_rails_middleware/wiki/Custom-Adapter
   # config.custom_adapter = "MyCustomAdapter"
-
+  $client ||= WeixinAuthorize::Client.new(WeixinRailsMiddleware.config.app_id, WeixinRailsMiddleware.config.weixin_secret_string)
 end

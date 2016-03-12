@@ -60,7 +60,7 @@ gem 'kaminari'
 
 # 数据库日期操作
 gem 'by_star', :git => "git://github.com/radar/by_star"
-
+# gem 'by_star', :git => "git://github.com/radar/by_star"
 gem 'chronic'
 #微信开发相关
 gem 'weixin_rails_middleware'

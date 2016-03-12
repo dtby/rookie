@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/radar/by_star
-  revision: eaf25d75c78ebd56e8c68e94c6d4b2e0153d951a
-  specs:
-    by_star (2.2.1)
-      activesupport
-
 GEM
   remote: https://gems.ruby-china.org/
   specs:
@@ -58,6 +51,8 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.2)
+    by_star (2.2.1)
+      activesupport
     byebug (8.2.2)
     cancancan (1.13.1)
     carrierwave (0.10.0)
@@ -261,7 +256,7 @@ DEPENDENCIES
   acts_as_votable (~> 0.10.0)
   awesome_print
   bootstrap-sass
-  by_star!
+  by_star
   byebug
   cancancan (~> 1.10)
   china_city
