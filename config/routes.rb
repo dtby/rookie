@@ -60,6 +60,7 @@ Rails.application.routes.draw do
       collection do
         get 'resume'
         get 'info'
+        patch 'update_info'
       end
     end
   end

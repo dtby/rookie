@@ -51,12 +51,12 @@ class UsersController < BaseController
     if @user.update_columns(user_params)
       flash.now[:notice] = "更新成功"
       user = User.find_by(open_id: session[:openid])
-    if user
-      current_user = user
-      return redirect_to user_path(@user)
-    else
-      return redirect_to explain_user_path(@user)
-    end
+      if user
+        current_user = user
+        return redirect_to user_path(@user)
+      else
+        return redirect_to explain_user_path(@user)
+      end
     else
       return render :update
     end
