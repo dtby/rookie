@@ -2,10 +2,14 @@ class SignsController < ApplicationController
   respond_to :js, :json
 
   def create
+    @current_user ||= User.find_by(open_id: session[:openid])
+    current_user = @current_user
     @user_id = current_user.id
     @sign = Sign.new(user_id: @user_id)
     
     if @sign.save
+      @current_user ||= User.find_by(open_id: session[:openid])
+      current_user = @current_user
       current_user.grow_logs.create!(content: "每日签到", grow_type: 5)
       if User.roles[current_user.try(:role)] <= 3
         @coin = current_user.points(category: 'coin')+5

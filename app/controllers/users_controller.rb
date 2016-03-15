@@ -1,6 +1,6 @@
 class UsersController < BaseController
   before_action :set_user, only: [:edit, :show, :update, :personal]
-  before_action :is_user_login?, only:[:feedback]
+  before_action :is_user_login?, only: [:user_page, :user_info]
   # 个人信息
   def show
     @grow_logs = @user.grow_logs

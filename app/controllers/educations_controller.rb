@@ -43,9 +43,13 @@ class EducationsController < ApplicationController
     params.require(:education).permit(:stage, :time, :name)
   end
   def set_user
+    @current_user ||= User.find_by(open_id: session[:openid])
+    current_user = @current_user
     @user = current_user
   end
   def find_edu
+    @current_user ||= User.find_by(open_id: session[:openid])
+    current_user = @current_user
     @educations = current_user.educations
   end
 end

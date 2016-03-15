@@ -3,7 +3,7 @@ class TestsController < BaseController
 
 	before_action :get_last_score, only: [:new]
 	before_action :import_session, only: [:new, :create, :update, :next]
-
+	before_action :set_user
 	# 进入测试为用户的等级与能力级别
 	def new
 		# 取出测试题[question_id, ...]，参数 (能力，等级)
@@ -77,6 +77,11 @@ class TestsController < BaseController
 	end
 
 	private
+
+	def set_user
+		@current_user ||= User.find_by(open_id: session[:openid])
+    current_user = @current_user
+	end
 		# 取出power 和 level
 		def import_session
 			@power = session[:power]

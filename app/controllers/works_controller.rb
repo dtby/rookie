@@ -10,6 +10,8 @@ class WorksController < ApplicationController
   end
 
   def create
+    @current_user ||= User.find_by(open_id: session[:openid])
+    current_user = @current_user
     @work = current_user.works.create(work_params)
     if @work.save
       flash.now[:notice] = "创建成功"
@@ -43,9 +45,13 @@ class WorksController < ApplicationController
     params.require(:work).permit(:company, :position, :start_time, :end_time)
   end
   def set_user
+    @current_user ||= User.find_by(open_id: session[:openid])
+    current_user = @current_user
     @user = current_user
   end
   def find_work
+    @current_user ||= User.find_by(open_id: session[:openid])
+    current_user = @current_user
     @works = current_user.works
   end
 end

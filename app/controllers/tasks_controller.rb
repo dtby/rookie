@@ -1,6 +1,6 @@
 class TasksController < BaseController
   load_and_authorize_resource param_method: :task_params
-  before_action :is_user_login?
+  before_action :is_user_login?, only: [:index]
   before_action :set_task, only: [:show, :edit, :update, :destroy, :complete, :tag, :remove]
   before_action :set_user
 
@@ -127,6 +127,8 @@ class TasksController < BaseController
   end
 
   def set_user
+    @current_user ||= User.find_by(open_id: session[:openid])
+    current_user = @current_user
     @user = current_user
   end
 

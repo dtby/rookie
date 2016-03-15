@@ -10,6 +10,8 @@ class InternshipsController < ApplicationController
   end
 
   def create
+    @current_user ||= User.find_by(open_id: session[:openid])
+    current_user = @current_user
     @internship = current_user.internships.create(internship_params)
     if @internship.save
       flash.now[:notice] = "创建成功"
@@ -43,9 +45,13 @@ class InternshipsController < ApplicationController
     params.require(:internship).permit(:company, :position, :performance)
   end
   def set_user
+    @current_user ||= User.find_by(open_id: session[:openid])
+    current_user = @current_user
     @user = current_user
   end
   def find_internship
+    @current_user ||= User.find_by(open_id: session[:openid])
+    current_user = @current_user
     @internships = current_user.internships
   end
 end

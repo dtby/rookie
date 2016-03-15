@@ -18,8 +18,8 @@
     <%= simple_form_for(@user, url: user_path(@user), html: { method: :patch }) do |f| %>
       <%= f.hidden_field :open_id, value: session[:openid] %>
       <% if @user.open_id.present? %>
-      <div class="col-xs-12 input-btn">
-        <%= link_to "您已经是烩员了", "#", class: "btn btn-blue btn-block text-center disabled" %>
+        <div class="col-xs-12 input-btn">
+          <%= link_to "您已经是烩员了", "#", class: "btn btn-blue btn-block text-center disabled" %>
         </div>
       <% else %>
         <div class="col-xs-12 input-btn">
