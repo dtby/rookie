@@ -19,6 +19,8 @@ gem 'jquery-rails'
 
 gem 'hirb'
 
+# gem "redis-namespace", "~> 1.4.1"
+
 gem 'awesome_print'
 
 gem 'merit'

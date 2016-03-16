@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
 
   # validates :phone, presence: true, uniqueness: true, on: :create
   # validate :phone_reg?, on: :create
-  # validates :message, presence: true, on: :create
+  # validates :open_id, presence: true, on: :create
   # validate :is_right_sms?, if: "message.present?", on: :create
 
   # 回调

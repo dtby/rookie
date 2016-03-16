@@ -15,12 +15,12 @@ class UsersController < BaseController
   # 一键注册
   def new
     user = User.find_by(open_id: session[:openid])
-    if user
-      @user = user
+    if user.present?
+      current_user = user
     else
-      @user = User.create
+      current_user = User.create
     end
-    return redirect_to edit_user_path(@user)
+    return redirect_to edit_user_path(current_user)
   end
 
   def create   
@@ -50,13 +50,7 @@ class UsersController < BaseController
   def update
     if @user.update_columns(user_params)
       flash.now[:notice] = "更新成功"
-      user = User.find_by(open_id: session[:openid])
-      if user
-        current_user = user
-        return redirect_to user_path(@user)
-      else
-        return redirect_to explain_user_path(@user)
-      end
+      return redirect_to user_path(@user)
     else
       return render :update
     end
@@ -74,7 +68,7 @@ class UsersController < BaseController
 
   private
     def user_params
-      params.require(:user).permit(:number, :nickname, :name, :birth, :nation, :gender, :phone, :native, :email, :present, :constellation, :open_id)
+      params.require(:user).permit(:number, :nickname, :name, :birth, :nation, :gender, :phone, :native, :email, :present, :constellation, :open_id, :image_url)
     end
 
     def set_user
