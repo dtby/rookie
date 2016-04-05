@@ -15,7 +15,7 @@ WeixinRailsMiddleware.configure do |config|
   # If you config `weixin_token_string`, so it will directly use it
   config.weixin_token_string = '529f2ed084b685624be3bde1'
   # using to weixin server url to validate the token can be trusted.
-  config.weixin_secret_string = 'ReWckhxChahsXgBR9TWMaeH66-qqvzK0'
+  config.weixin_secret_string = '6f719d088020a1ed5b6dbf8eda94c2b4'
   # 加密配置，如果需要加密，配置以下参数
   config.encoding_aes_key = 'FNeadBk1tyGukdK5uMC09uOqSFYNwMYt1PQlS0ufDBr'
   config.app_id = "wx8cbc369ae3d74887"
